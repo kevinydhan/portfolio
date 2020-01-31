@@ -2,7 +2,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
+import { projects } from './data/data'
 
 const App: React.FC = (): JSX.Element => {
     return (

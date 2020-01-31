@@ -4,8 +4,9 @@
   "description": "Personal portfolio",
   "main": "index.js",
   "scripts": {
-    "build": "react-scripts build",
-    "dev": "react-scripts start"
+    "build": "npm run prepopulate && react-scripts build",
+    "dev": "npm run prepopulate && react-scripts start",
+    "prepopulate": "node utils/prepopulate.js"
   },
   "keywords": [],
   "author": "Kevin Han",
