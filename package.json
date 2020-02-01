@@ -4,7 +4,7 @@
   "description": "Personal portfolio",
   "main": "index.js",
   "scripts": {
-    "build": "npm run prepopulate && react-scripts build",
+    "build": "react-scripts build",
     "dev": "npm run prepopulate && react-scripts start",
     "prepopulate": "node utils/prepopulate.js"
   },

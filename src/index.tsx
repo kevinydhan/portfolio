@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components'
 import { projects } from './data/data'
 
 const App: React.FC = (): JSX.Element => {
+    console.log(projects)
     return (
         <>
             <GlobalStyle />
