@@ -2,10 +2,27 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const fs = require('fs').promises
 const path = require('path')
-const { entry, output } = require('./prepopulate.config.js')
 
+/**
+ * This variable contains the configuration for `writeData()`.
+ */
+const config = {
+    entry: path.resolve(__dirname, '..', 'src', 'data', 'template.ts'),
+    output: {
+        path: path.resolve(__dirname, '..', 'src', 'data'),
+        filename: 'data.ts',
+    },
+}
+const { entry, output } = config
+
+/**
+ * MongoDB schema for projects.
+ */
 const ProjectSchema = mongoose.model('project', {})
 
+/**
+ * Fetches data from MongoDB and writes
+ */
 const writeData = async () => {
     /**
      * Connects to MongoDB database.
