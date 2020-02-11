@@ -7,7 +7,7 @@
     "build": "npm run exec:utils && npm run build:client",
     "build:client": "react-scripts build",
     "dev": "npm run exec:utils && react-scripts start",
-    "exec:utils": "npm run prepopulate",
+    "exec:utils": "npm run prepopulate && npm run write:html",
     "prepopulate": "node utils/scripts/prepopulate.js",
     "write:html": "ts-node ./utils/scripts/write-html.ts"
   },

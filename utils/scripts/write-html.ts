@@ -1,6 +1,6 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { App } from '../../src/App'
+import App from '../../src/App'
 import writeFile from './write-file'
 import pathConfig from '../../configs/write-html.config'
 
