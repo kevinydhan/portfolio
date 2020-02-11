@@ -4,9 +4,12 @@
   "description": "Personal portfolio",
   "main": "index.js",
   "scripts": {
-    "build": "react-scripts build",
-    "dev": "npm run prepopulate && react-scripts start",
-    "prepopulate": "node utils/prepopulate.js"
+    "build": "npm run exec:utils && npm run build:client",
+    "build:client": "react-scripts build",
+    "dev": "npm run exec:utils && react-scripts start",
+    "exec:utils": "npm run prepopulate",
+    "prepopulate": "node utils/scripts/prepopulate.js",
+    "write:html": "ts-node ./utils/scripts/write-html.ts"
   },
   "keywords": [],
   "author": "Kevin Han",
@@ -15,15 +18,16 @@
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "@types/styled-components": "^4.4.2",
-    "dotenv": "^8.2.0",
-    "mongoose": "^5.8.11",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
+    "mongoose": "^5.8.11",
     "react-scripts": "^3.3.0",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
   "browserslist": {

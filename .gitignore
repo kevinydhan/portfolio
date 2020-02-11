@@ -6,7 +6,9 @@
 
 # Production
 /build
-src/react-app-env.d.ts
+/src/data
+/src/react-app-env.d.ts
+/public/index.html
 
 # Misc.
 .DS_Store
