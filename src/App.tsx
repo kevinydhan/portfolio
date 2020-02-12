@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createGlobalStyle } from 'styled-components'
 
-const App = (): React.ReactElement => {
+const App: React.FC = (): React.ReactElement => {
     return (
         <>
             <GlobalStyle />
@@ -11,8 +11,6 @@ const App = (): React.ReactElement => {
 }
 
 const GlobalStyle = createGlobalStyle`
-    @import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,700&display=swap");
-
     :root {
         --color-primary: 32, 5, 137;
         --color-secondary: 125, 18, 255;
