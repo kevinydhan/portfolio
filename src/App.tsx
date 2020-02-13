@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { createGlobalStyle } from 'styled-components'
+import * as data from './data/data'
 
 const App: React.FC = (): React.ReactElement => {
+    const [projects, setProjects] = useState(data.projects)
+
+    console.log(projects)
+
     return (
         <>
             <GlobalStyle />
