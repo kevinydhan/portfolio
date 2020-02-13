@@ -8,9 +8,11 @@
     "build:client": "react-scripts build",
     "dev": "npm run exec:utils && npm run write:html && react-scripts start",
     "prepopulate": "node utils/index.js",
-    "write:html": "ts-node utils/scripts/write-html.ts"
+    "write:html": "ts-node -T -P configs/tsconfig.utils.json utils/scripts/write-html.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "portfolio"
+  ],
   "author": "Kevin Han",
   "license": "ISC",
   "dependencies": {

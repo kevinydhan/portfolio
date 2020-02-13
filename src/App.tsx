@@ -5,8 +5,6 @@ import * as data from './data/data'
 const App: React.FC = (): React.ReactElement => {
     const [projects, setProjects] = useState(data.projects)
 
-    console.log(projects)
-
     return (
         <>
             <GlobalStyle />
