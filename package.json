@@ -4,10 +4,10 @@
   "description": "Personal portfolio",
   "main": "index.js",
   "scripts": {
-    "build": "npm run exec:utils && npm run build:client",
+    "build": "npm run write:html && npm run build:client",
     "build:client": "react-scripts build",
-    "dev": "npm run exec:utils && react-scripts start",
-    "exec:utils": "node utils/index.js && npm run write:html",
+    "dev": "npm run exec:utils && npm run write:html && react-scripts start",
+    "prepopulate": "node utils/index.js",
     "write:html": "ts-node utils/scripts/write-html.ts"
   },
   "keywords": [],
