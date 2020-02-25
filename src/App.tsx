@@ -1,15 +1,27 @@
 import React, { useState } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+
 import theme from './styles/theme'
-import * as data from './data/data'
+
+// Views
+import Landing from './views/Landing/Landing'
+
+// Components
+import Navbar from './components/Navbar/Navbar'
 
 const App: React.FC = (): React.ReactElement => {
-    const [projects, setProjects] = useState(data.projects)
+    /**
+     * This state is used to manage whether or not the landing section is
+     * intersecting. The state is used to toggle the navigation bar's CSS
+     * properties.
+     */
+    const [isLandingIntersecting, setIsLandingIntersecting] = useState(true)
 
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <div>Hello world</div>
+            <Navbar isLandingIntersecting={isLandingIntersecting} />
+            <Landing setIsLandingIntersecting={setIsLandingIntersecting} />
         </ThemeProvider>
     )
 }
@@ -42,6 +54,9 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         align-items: center;
+        background: linear-gradient(black, orange);
+
+        height: 200vh;
     }
 `
 

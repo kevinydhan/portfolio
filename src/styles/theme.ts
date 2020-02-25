@@ -7,6 +7,13 @@ const theme: DefaultTheme = {
         accent: '34, 34, 34',
         dark: '0, 0, 0',
         light: '253, 253, 253'
+    },
+    dimensions: {
+        breakpoints: {
+            mobile: 400,
+            tablet: 768,
+            desktop: 1024
+        }
     }
 }
 
