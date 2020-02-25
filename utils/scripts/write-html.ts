@@ -1,23 +1,26 @@
-import * as React from 'react'
-import { renderToString } from 'react-dom/server'
-import App from '../../src/App'
 import writeFile from './write-file'
-import pathConfig from '../../configs/write-html.config'
+import writeHTMLConfig from '../../configs/write-html.config'
+import generateReactHTML from './generate-react-html'
+import generateMetaTags from './generate-meta-tags'
 
 const writeHtml = async (): Promise<void> => {
-    const html: string = renderToString(React.createElement(App))
+    const bodyHTML: string = generateReactHTML()
+    const metaTags: string = generateMetaTags(writeHTMLConfig.metaTags)
 
     const config = Object.assign(
         {
-            encoding: 'utf8',
             replacementRules: [
                 {
-                    searchValue: `<!-- Replace this line with the HTML from React. -->`,
-                    replacementValue: html,
+                    searchValue: `<!-- Utils: generate-react-html.ts -->`,
+                    replacementValue: bodyHTML,
+                },
+                {
+                    searchValue: `<!-- Utils: generate-meta-tags.ts -->`,
+                    replacementValue: metaTags,
                 },
             ],
         },
-        pathConfig
+        writeHTMLConfig
     )
 
     await writeFile(config)

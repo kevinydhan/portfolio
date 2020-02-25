@@ -17,7 +17,8 @@ module.exports = async config => {
      * @TODO
      * - Write checks and error handlers for arguments
      */
-    const { entry, output, encoding, replacementRules } = config
+    const { entry, output, replacementRules } = config
+    const encoding = config.encoding ? config.encoding : 'utf8'
 
     let file = await fs.readFile(entry, encoding)
 
