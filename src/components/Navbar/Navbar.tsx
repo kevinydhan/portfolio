@@ -2,6 +2,7 @@ import React from 'react'
 import {
     Root,
     NavContainer,
+    Logo,
     NavList,
     NavListItem,
     NavLink
@@ -22,7 +23,7 @@ const Navbar = (props: INavbarProps): React.ReactElement => {
     return (
         <Root isLandingIntersecting={isLandingIntersecting}>
             <NavContainer>
-                {/* Logo here */}
+                <Logo role="logo">kevin han</Logo>
                 <NavList>
                     {navLinks.map(link => (
                         <NavListItem key={link.id}>

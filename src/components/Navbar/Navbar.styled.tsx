@@ -5,6 +5,9 @@ import styled, {
     ThemedStyledProps
 } from 'styled-components'
 
+// =============================================================================
+// =============================================================================
+
 export interface IRootProps {
     isLandingIntersecting: boolean
 }
@@ -47,6 +50,9 @@ export const Root: StyledComponent<
     `}
 `
 
+// =============================================================================
+// =============================================================================
+
 export const NavContainer = styled.nav`
     width: 100%;
     height: 100%;
@@ -54,7 +60,33 @@ export const NavContainer = styled.nav`
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `
+
+// =============================================================================
+// =============================================================================
+
+export interface ILogoProps {}
+
+export const Logo: StyledComponent<
+    'a',
+    DefaultTheme,
+    ILogoProps,
+    never
+> = styled.a`
+    height: 64px;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+
+    display: flex;
+    align-items: center;
+
+    ${(props: ThemedStyledProps<ILogoProps, DefaultTheme>) => css``}
+`
+
+// =============================================================================
+// =============================================================================
 
 export const NavList = styled.ul`
     position: absolute;
@@ -83,6 +115,9 @@ export const NavList = styled.ul`
         }
     `}
 `
+
+// =============================================================================
+// =============================================================================
 
 export const NavListItem = styled.li`
     padding: 1em;
@@ -128,6 +163,9 @@ export const NavListItem = styled.li`
         }
     `}
 `
+
+// =============================================================================
+// =============================================================================
 
 export const NavLink = styled.a`
     font-size: 1.175rem;
