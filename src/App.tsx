@@ -56,7 +56,8 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         background: linear-gradient(black, orange);
 
-        height: 200vh;
+        width: 100vw;
+        height: 300vh;
     }
 `
 

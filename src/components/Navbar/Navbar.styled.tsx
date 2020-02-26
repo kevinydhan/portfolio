@@ -1,4 +1,13 @@
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components'
+import styled, {
+    css,
+    StyledComponent,
+    DefaultTheme,
+    ThemedStyledProps
+} from 'styled-components'
+
+export interface IRootProps {
+    isLandingIntersecting: boolean
+}
 
 /**
  * @todo - Modify `background-color` to accept theme color
@@ -6,7 +15,7 @@ import styled, { css, DefaultTheme, StyledComponent } from 'styled-components'
 export const Root: StyledComponent<
     'header',
     DefaultTheme,
-    { backgroundColor: string },
+    IRootProps,
     never
 > = styled.header`
     position: fixed;
@@ -20,9 +29,18 @@ export const Root: StyledComponent<
     display: flex;
     align-items: center;
 
-    background-color: transparent;
+    transition: background 500ms ease;
 
-    ${props => css`
+    ${(props: ThemedStyledProps<IRootProps, DefaultTheme>) => css`
+        ${props.isLandingIntersecting
+            ? `
+                background-color: transparent;
+            `
+            : `
+                background-color: rgba(${props.theme.colors.primary}, 0.95);
+                box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+            `}
+
         @media only screen and (min-width: 600px) {
             justify-content: center;
         }

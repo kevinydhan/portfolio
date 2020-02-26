@@ -17,12 +17,10 @@ export interface INavbarProps {
  * @returns {React.ReactElement}
  */
 const Navbar = (props: INavbarProps): React.ReactElement => {
-    const backgroundColor: string = props.isLandingIntersecting
-        ? 'transparent'
-        : 'white'
+    const { isLandingIntersecting } = props
 
     return (
-        <Root backgroundColor={{ backgroundColor }}>
+        <Root isLandingIntersecting={isLandingIntersecting}>
             <NavContainer>
                 {/* Logo here */}
                 <NavList>
