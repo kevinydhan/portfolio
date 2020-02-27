@@ -13,7 +13,7 @@ export interface INavbarProps {
 }
 
 /**
- * Renders a navigation bar.
+ * Renders a navigation bar. Test
  *
  * @returns {React.ReactElement}
  */
