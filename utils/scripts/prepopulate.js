@@ -13,16 +13,20 @@ const ProjectSchema = mongoose.model('project', {})
  * @returns {Promise<mongoose.Document[]>}
  */
 const fetchData = async () => {
-    await mongoose.connect(process.env.DATABASE_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    try {
+        await mongoose.connect(process.env.DATABASE_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
 
-    const projects = await ProjectSchema.find()
+        const projects = await ProjectSchema.find()
 
-    mongoose.disconnect()
+        mongoose.disconnect()
 
-    return projects
+        return projects
+    } catch (err) {
+        throw new Error(err)
+    }
 }
 
 /**
@@ -42,9 +46,9 @@ module.exports = async () => {
                         projects,
                         null,
                         4
-                    )}`,
-                },
-            ],
+                    )}`
+                }
+            ]
         },
         pathConfig
     )
