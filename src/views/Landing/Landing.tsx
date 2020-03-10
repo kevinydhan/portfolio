@@ -1,7 +1,7 @@
 import React, { createRef, useEffect } from 'react'
 import { Root } from './Landing.styled'
 
-export interface ILandingProps {
+export interface LandingProps {
     setIsLandingIntersecting: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -10,17 +10,17 @@ export interface ILandingProps {
  *         own standalone component. Other components can be able to subscribe
  *         and interact with the new IntersectionObserver component.
  *
- * @param {ILandingProps} props
+ * @param {LandingProps} props
  */
-const Landing = (props: ILandingProps): React.ReactElement => {
+function Landing(props: LandingProps): React.ReactElement {
     const { setIsLandingIntersecting } = props
 
     const ref: React.RefObject<HTMLDivElement> = createRef()
 
     useEffect(() => {
         const observer: IntersectionObserver = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach(entry => {
+            (entries) => {
+                entries.forEach((entry) => {
                     setIsLandingIntersecting(entry.isIntersecting)
                 })
             },
@@ -32,7 +32,7 @@ const Landing = (props: ILandingProps): React.ReactElement => {
         }
     }, [ref, setIsLandingIntersecting])
 
-    return <Root ref={ref}></Root>
+    return <Root ref={ref} />
 }
 
 export default Landing

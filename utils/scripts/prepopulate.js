@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const writeFile = require('./write-file')
-const pathConfig = require('../../configs/prepopulate.config')
+import mongoose from 'mongoose'
+import writeFile from './write-file.js'
+import pathConfig from '../../configs/utils/prepopulate.config.js'
 
 /**
  * MongoDB schema for projects.
@@ -16,7 +16,7 @@ const fetchData = async () => {
     try {
         await mongoose.connect(process.env.DATABASE_URL, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
         })
 
         const projects = await ProjectSchema.find()
@@ -33,25 +33,26 @@ const fetchData = async () => {
  *
  * @returns {Promise<void>}
  */
-module.exports = async () => {
+export default async () => {
     const projects = await fetchData()
 
-    const config = Object.assign(
-        {
-            encoding: 'utf8',
-            replacementRules: [
-                {
-                    searchValue: `export const projects: Array<IProject> = []`,
-                    replacementValue: `export const projects: Array<IProject> =${JSON.stringify(
-                        projects,
-                        null,
-                        4
-                    )}`
-                }
-            ]
-        },
-        pathConfig
-    )
+    const config = {
+        encoding: 'utf8',
+        replacementRules: [
+            {
+                searchValue:
+                    'export const projects: Array<PortfolioProject> = []',
+                replacementValue: `export const projects: Array<PortfolioProject> =${JSON.stringify(
+                    projects,
+                    null,
+                    4
+                )}`,
+            },
+        ],
+        ...pathConfig,
+    }
 
     await writeFile(config)
+
+    console.log(`Data successfully written to ${pathConfig.output}.\n`)
 }

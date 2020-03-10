@@ -1,0 +1,4 @@
+build
+public
+node_modules
+src/data/data.ts

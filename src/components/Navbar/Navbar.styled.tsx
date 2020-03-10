@@ -2,13 +2,14 @@ import styled, {
     css,
     StyledComponent,
     DefaultTheme,
-    ThemedStyledProps
+    ThemedStyledProps,
+    FlattenSimpleInterpolation,
 } from 'styled-components'
 
 // =============================================================================
 // =============================================================================
 
-export interface IRootProps {
+export interface RootProps {
     isLandingIntersecting: boolean
 }
 
@@ -18,7 +19,7 @@ export interface IRootProps {
 export const Root: StyledComponent<
     'header',
     DefaultTheme,
-    IRootProps,
+    RootProps,
     never
 > = styled.header`
     position: fixed;
@@ -34,15 +35,17 @@ export const Root: StyledComponent<
 
     transition: background 500ms ease;
 
-    ${(props: ThemedStyledProps<IRootProps, DefaultTheme>) => css`
+    ${(
+        props: ThemedStyledProps<RootProps, DefaultTheme>
+    ): FlattenSimpleInterpolation => css`
         ${props.isLandingIntersecting
             ? `
-                background-color: transparent;
+            background-color: transparent;
             `
             : `
-                background-color: rgba(${props.theme.colors.primary}, 0.95);
-                box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
-            `}
+            background-color: rgba(${props.theme.colors.primary}, 0.95);
+            box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+        `}
 
         @media only screen and (min-width: 600px) {
             justify-content: center;
@@ -66,14 +69,7 @@ export const NavContainer = styled.nav`
 // =============================================================================
 // =============================================================================
 
-export interface ILogoProps {}
-
-export const Logo: StyledComponent<
-    'a',
-    DefaultTheme,
-    ILogoProps,
-    never
-> = styled.a`
+export const Logo: StyledComponent<'a', DefaultTheme, {}, never> = styled.a`
     height: 64px;
 
     font-family: 'Orbitron', sans-serif;
@@ -81,9 +77,9 @@ export const Logo: StyledComponent<
 
     display: flex;
     align-items: center;
-
-    ${(props: ThemedStyledProps<ILogoProps, DefaultTheme>) => css``}
 `
+
+// ${(props: ThemedStyledProps<{}, DefaultTheme>,): FlattenSimpleInterpolation => css``}
 
 // =============================================================================
 // =============================================================================
@@ -98,7 +94,7 @@ export const NavList = styled.ul`
 
     list-style: none;
 
-    ${({ theme: { dimensions } }) => css`
+    ${({ theme: { dimensions } }): FlattenSimpleInterpolation => css`
         @media only screen and (min-width: ${dimensions.breakpoints.tablet}px) {
             position: relative;
             top: unset;
@@ -125,7 +121,7 @@ export const NavListItem = styled.li`
     display: flex;
     align-items: center;
 
-    ${({ theme: { colors, dimensions } }) => css`
+    ${({ theme: { colors, dimensions } }): FlattenSimpleInterpolation => css`
         @media only screen and (min-width: ${dimensions.breakpoints.tablet}px) {
             position: relative;
 
@@ -172,6 +168,6 @@ export const NavLink = styled.a`
     cursor: pointer;
 
     &:hover {
-        color: rgba(${({ theme: { colors } }) => colors.primary}, 1);
+        color: rgba(${({ theme: { colors } }): string => colors.primary}, 1);
     }
 `

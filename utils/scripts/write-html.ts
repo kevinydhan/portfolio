@@ -1,11 +1,9 @@
 import writeFile from './write-file'
-import writeHTMLConfig from '../../configs/write-html.config'
+import writeHTMLConfig from '../../configs/utils/write-html.config'
 import generateReactHTML from './generate-react-html'
-import generateMetaTags from './generate-meta-tags'
 
 const writeHtml = async (): Promise<void> => {
     const bodyHTML: string = generateReactHTML()
-    const metaTags: string = generateMetaTags(writeHTMLConfig.metaTags)
 
     const config = Object.assign(
         {
@@ -16,7 +14,7 @@ const writeHtml = async (): Promise<void> => {
                 },
                 {
                     searchValue: `<!-- Utils: generate-meta-tags.ts -->`,
-                    replacementValue: metaTags,
+                    replacementValue: '',
                 },
             ],
         },

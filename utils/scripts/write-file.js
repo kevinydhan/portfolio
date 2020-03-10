@@ -1,4 +1,4 @@
-const fs = require('fs').promises
+import fs from 'fs'
 
 /**
  * Reads a specified template file, modifies the data within the template file
@@ -12,7 +12,7 @@ const fs = require('fs').promises
  *
  * @returns {Promise<void>}
  */
-module.exports = async config => {
+export default async (config) => {
     /**
      * @TODO
      * - Write checks and error handlers for arguments
@@ -20,7 +20,7 @@ module.exports = async config => {
     const { entry, output, replacementRules } = config
     const encoding = config.encoding ? config.encoding : 'utf8'
 
-    let file = await fs.readFile(entry, encoding)
+    let file = await fs.promises.readFile(entry, encoding)
 
     /**
      * @example
@@ -28,9 +28,9 @@ module.exports = async config => {
      *
      * ]
      */
-    replacementRules.forEach(rule => {
+    replacementRules.forEach((rule) => {
         file = file.replace(rule.searchValue, rule.replacementValue)
     })
 
-    await fs.writeFile(output, file)
+    await fs.promises.writeFile(output, file)
 }

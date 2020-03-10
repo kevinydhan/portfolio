@@ -1,4 +1,4 @@
-export interface IProject {
+export interface PortfolioProject {
     _id: string
     title: string
     description: string
@@ -9,13 +9,13 @@ export interface IProject {
     }
 }
 
-export interface ISocialLinks {
+export interface SocialLinks {
     linkedIn?: string
     stackOverflow?: string
     github?: string
 }
 
-export const projects: Array<IProject> =[
+export const projects: Array<PortfolioProject> =[
     {
         "_id": "5dc8a01b1c9d440000da1924",
         "title": "Grace Shopper",
@@ -50,7 +50,7 @@ export const projects: Array<IProject> =[
     }
 ]
 
-export const socialLinks: ISocialLinks = {
+export const socialLinks: SocialLinks = {
     linkedIn: 'https://linkedin.com/in/kevinydhan',
     github: 'https://github.com/kevinydhan',
     stackOverflow: 'https://stackoverflow.com/users/11715889/khan?tab=profile',

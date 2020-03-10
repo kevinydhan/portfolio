@@ -1,2 +1,4 @@
-require('dotenv').config()
-require('./scripts/prepopulate.js')()
+import dotenv from 'dotenv'
+import prepopulate from './scripts/prepopulate.js'
+dotenv.config()
+prepopulate()

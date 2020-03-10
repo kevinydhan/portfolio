@@ -9,10 +9,11 @@ declare module 'styled-components' {
          */
         colors: {
             primary: string
-            secondary: string
-            accent: string
-            dark: string
-            light: string
+            secondary?: string
+            accent?: string
+            dark?: string
+            light?: string
+            white?: string
         }
         dimensions: {
             /**

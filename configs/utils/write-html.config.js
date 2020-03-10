@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = {
+export default {
     entry: path.resolve('utils', 'templates', 'index.template.html'),
     output: path.resolve('public', 'index.html'),
     metaTags: {

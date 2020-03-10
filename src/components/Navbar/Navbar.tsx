@@ -5,48 +5,65 @@ import {
     Logo,
     NavList,
     NavListItem,
-    NavLink
+    NavLink,
 } from './Navbar.styled'
 
-export interface INavbarProps {
+/**
+ * @interface
+ * Defines the React props accepted by the `Navbar` component.
+ */
+export interface NavbarProps {
     isLandingIntersecting: boolean
 }
 
 /**
- * Renders a navigation bar. Test
- *
- * @returns {React.ReactElement}
+ * @type
+ * Defines the navigation link object's properties.
  */
-const Navbar = (props: INavbarProps): React.ReactElement => {
+export type NavLink = {
+    id: string
+    href: string
+    name: string
+}
+
+/**
+ *
+ */
+const navLinks: Array<NavLink> = [
+    { id: 'experience', href: '#experience', name: 'Experience' },
+    { id: 'projects', href: '#projects', name: 'Projects' },
+    { id: 'resume', href: '#', name: 'Resume' },
+    { id: 'contact', href: '#', name: 'Contact' },
+]
+
+/**
+ * Renders a navigation bar.
+ *
+ * @returns {React.ReactElement} - Navigation bar element
+ */
+function Navbar(props: NavbarProps): React.ReactElement {
     const { isLandingIntersecting } = props
 
     return (
         <Root isLandingIntersecting={isLandingIntersecting}>
             <NavContainer>
-                <Logo role="logo">kevin han</Logo>
+                <Logo role="presentation">kevin han</Logo>
                 <NavList>
-                    {navLinks.map(link => (
-                        <NavListItem key={link.id}>
-                            <NavLink href={link.href}>{link.name}</NavLink>
-                        </NavListItem>
-                    ))}
+                    {navLinks.map(
+                        (link): React.ReactElement => (
+                            <NavListItem key={link.id}>
+                                <NavLink href={link.href}>{link.name}</NavLink>
+                            </NavListItem>
+                        )
+                    )}
                 </NavList>
             </NavContainer>
         </Root>
     )
 }
 
-export interface INavLinkObjectLiteral {
-    id: string
-    href: string
-    name: string
+Navbar.defaultProps = {
+    isLandingIntersecting: false,
 }
-
-const navLinks: Array<INavLinkObjectLiteral> = [
-    { id: 'experience', href: '#experience', name: 'Experience' },
-    { id: 'projects', href: '#projects', name: 'Projects' },
-    { id: 'resume', href: '#', name: 'Resume' },
-    { id: 'contact', href: '#', name: 'Contact' }
-]
 
 export default Navbar
