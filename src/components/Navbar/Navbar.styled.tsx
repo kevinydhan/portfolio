@@ -1,27 +1,16 @@
-import styled, {
-    css,
-    StyledComponent,
-    DefaultTheme,
-    ThemedStyledProps,
-    FlattenSimpleInterpolation,
-} from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 // =============================================================================
 // =============================================================================
 
 export interface RootProps {
-    isLandingIntersecting: boolean
+    isTransparent: boolean
 }
 
 /**
  * @todo - Modify `background-color` to accept theme color
  */
-export const Root: StyledComponent<
-    'header',
-    DefaultTheme,
-    RootProps,
-    never
-> = styled.header`
+export const Root = styled('header')<RootProps>`
     position: fixed;
     top: 0;
     left: 0;
@@ -35,10 +24,8 @@ export const Root: StyledComponent<
 
     transition: background 500ms ease;
 
-    ${(
-        props: ThemedStyledProps<RootProps, DefaultTheme>
-    ): FlattenSimpleInterpolation => css`
-        ${props.isLandingIntersecting
+    ${(props): FlattenSimpleInterpolation => css`
+        ${props.isTransparent
             ? `
             background-color: transparent;
             `
@@ -56,7 +43,7 @@ export const Root: StyledComponent<
 // =============================================================================
 // =============================================================================
 
-export const NavContainer = styled.nav`
+export const NavContainer = styled('nav')`
     width: 100%;
     height: 100%;
     max-width: 1024px;
@@ -69,7 +56,7 @@ export const NavContainer = styled.nav`
 // =============================================================================
 // =============================================================================
 
-export const Logo: StyledComponent<'a', DefaultTheme, {}, never> = styled.a`
+export const Logo = styled('a')`
     height: 64px;
 
     font-family: 'Orbitron', sans-serif;
@@ -79,12 +66,10 @@ export const Logo: StyledComponent<'a', DefaultTheme, {}, never> = styled.a`
     align-items: center;
 `
 
-// ${(props: ThemedStyledProps<{}, DefaultTheme>,): FlattenSimpleInterpolation => css``}
-
 // =============================================================================
 // =============================================================================
 
-export const NavList = styled.ul`
+export const NavList = styled('ul')`
     position: absolute;
     top: 100%;
     left: 0;

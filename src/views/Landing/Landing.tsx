@@ -1,8 +1,14 @@
-import React, { createRef, useEffect } from 'react'
+import React, { Component, createRef } from 'react'
 import { Root } from './Landing.styled'
 
 export interface LandingProps {
-    setIsLandingIntersecting: React.Dispatch<React.SetStateAction<boolean>>
+    handleScroll: IntersectionObserverCallback
+}
+
+export interface IntersectionObserverOptions {
+    root?: HTMLElement
+    rootMargin?: string
+    threshold?: number
 }
 
 /**
@@ -12,27 +18,30 @@ export interface LandingProps {
  *
  * @param {LandingProps} props
  */
-function Landing(props: LandingProps): React.ReactElement {
-    const { setIsLandingIntersecting } = props
+class Landing extends Component<LandingProps> {
+    ref: React.RefObject<HTMLDivElement> = createRef()
 
-    const ref: React.RefObject<HTMLDivElement> = createRef()
+    observer: IntersectionObserver | undefined
 
-    useEffect(() => {
-        const observer: IntersectionObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    setIsLandingIntersecting(entry.isIntersecting)
-                })
-            },
-            { rootMargin: '-68px 0px 0px 0px' }
-        )
+    observerOptions: IntersectionObserverOptions = {
+        rootMargin: '-68px 0px 0px 0px',
+    }
+
+    componentDidMount(): void {
+        const { handleScroll } = this.props
+        const { ref, observerOptions } = this
+
+        this.observer = new IntersectionObserver(handleScroll, observerOptions)
 
         if (ref.current) {
-            observer.observe(ref.current)
+            this.observer.observe(ref.current)
         }
-    }, [ref, setIsLandingIntersecting])
+    }
 
-    return <Root ref={ref} />
+    render(): React.ReactElement {
+        const { ref } = this
+
+        return <Root ref={ref} />
+    }
 }
-
 export default Landing

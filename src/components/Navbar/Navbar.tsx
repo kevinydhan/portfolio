@@ -7,34 +7,15 @@ import {
     NavListItem,
     NavLink,
 } from './Navbar.styled'
+import navLinks from '../../data/nav-links'
 
 /**
  * @interface
  * Defines the React props accepted by the `Navbar` component.
  */
 export interface NavbarProps {
-    isLandingIntersecting: boolean
+    isTransparent: boolean
 }
-
-/**
- * @type
- * Defines the navigation link object's properties.
- */
-export type NavLink = {
-    id: string
-    href: string
-    name: string
-}
-
-/**
- *
- */
-const navLinks: Array<NavLink> = [
-    { id: 'experience', href: '#experience', name: 'Experience' },
-    { id: 'projects', href: '#projects', name: 'Projects' },
-    { id: 'resume', href: '#', name: 'Resume' },
-    { id: 'contact', href: '#', name: 'Contact' },
-]
 
 /**
  * Renders a navigation bar.
@@ -42,10 +23,10 @@ const navLinks: Array<NavLink> = [
  * @returns {React.ReactElement} - Navigation bar element
  */
 function Navbar(props: NavbarProps): React.ReactElement {
-    const { isLandingIntersecting } = props
+    const { isTransparent } = props
 
     return (
-        <Root isLandingIntersecting={isLandingIntersecting}>
+        <Root isTransparent={isTransparent}>
             <NavContainer>
                 <Logo role="presentation">kevin han</Logo>
                 <NavList>
