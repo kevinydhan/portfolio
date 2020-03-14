@@ -1,22 +1,22 @@
-# Dependencies
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 /node_modules
-*/node_modules
+/.pnp
+.pnp.js
 
-# Testing
+# testing
+/coverage
 
-# Production
+# production
 /build
-/src/react-app-env.d.ts
-/public/index.html
 
-# Misc.
+# misc
 .DS_Store
-.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-*/.env
 
 npm-debug.log*
 yarn-debug.log*

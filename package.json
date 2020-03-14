@@ -1,35 +1,40 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Personal portfolio",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm run write:html && npm run build:client",
-    "build:client": "react-scripts build",
-    "dev": "npm run exec:utils && npm run write:html && react-scripts start",
-    "prepopulate": "node utils/index.js",
-    "write:html": "ts-node -T -P configs/tsconfig.utils.json utils/scripts/write-html.ts"
-  },
-  "keywords": [
-    "portfolio"
-  ],
   "author": "Kevin Han",
   "license": "ISC",
+  "scripts": {
+    "build": "react-scripts build",
+    "dev": "react-scripts start",
+    "lint": "yarn eslint & yarn stylelint",
+    "eslint": "eslint \"./src/**/*.js?(x)\"",
+    "stylelint": "stylelint \"./src/**/*.js?(x)\""
+  },
   "dependencies": {
-    "@types/react": "^16.9.19",
-    "@types/react-dom": "^16.9.5",
-    "@types/styled-components": "^4.4.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "styled-components": "^5.0.0"
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0",
+    "styled-components": "^5.0.1",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
-    "mongoose": "^5.8.11",
-    "react-scripts": "^3.3.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "prettier": "^1.19.1",
+    "stylelint": "^13.2.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^4.0.0"
   },
   "browserslist": {
     "production": [
@@ -42,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [
+    "portfolio"
+  ]
 }
