@@ -3,7 +3,7 @@ import Components from './components'
 import Views from './views'
 
 const { Navbar } = Components
-const { Landing } = Views
+const { Landing, Projects } = Views
 
 class App extends Component {
     constructor(props) {
@@ -28,6 +28,7 @@ class App extends Component {
             <>
                 <Navbar isTransparent={isLandingIntersecting} />
                 <Landing handleScroll={handleScroll} />
+                <Projects />
             </>
         )
     }
