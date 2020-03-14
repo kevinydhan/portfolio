@@ -7,6 +7,7 @@
  */
 export const isRootTransparent = (props) => {
     const { isTransparent } = props
+
     return isTransparent
         ? `
         background-color: transparent;`

@@ -15,7 +15,18 @@ const dimensions = {
      * the application.
      */
     heights: {
-        Navbar: '68px',
+        Navbar: '72px',
+    },
+    /**
+     * Contains CSS dimensional values for paddings for different breakpoint
+     * keys.
+     */
+    paddings: {
+        xs: '8px',
+        sm: '16px',
+        md: '32px',
+        lg: '64px',
+        xl: '132px',
     },
 }
 

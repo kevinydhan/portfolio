@@ -9,6 +9,8 @@ export default {
      * Is a higher-order function that returns a function that is invoked by
      * `styled-components`.
      *
+     * @todo - Needs to allow user to utilize props inside their style block
+     *
      * @example
      * mediaQueries.between({ min: 'xs', max: 'md' }, `
      *     background: blue;
