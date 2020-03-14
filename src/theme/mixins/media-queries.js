@@ -38,6 +38,15 @@ export default {
      * Is a higher-order function that returns a function that is invoked by
      * `styled-components`.
      *
+     * @example
+     * mediaQueries.up({ min: 'md' }, `
+     *     background: blue;
+     * `)
+     *
+     * `@media only screen and (min-width: 768px) {
+     *     background: blue;
+     * }`
+     *
      * @param {*} breakpointKeys - Valid keys for `props.theme.dimensions.breakpoints`
      * @param {*} style - Style block for media query
      */

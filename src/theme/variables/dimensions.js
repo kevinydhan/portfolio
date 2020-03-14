@@ -6,6 +6,9 @@ const dimensions = {
         lg: 992,
         xl: 1200,
     },
+    heights: {
+        Navbar: '68px',
+    },
 }
 
 export default dimensions

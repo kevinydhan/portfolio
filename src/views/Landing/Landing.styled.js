@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import theme from '../../theme'
+import styled from 'styled-components'
+// import theme from '../../theme'
 
-const { mediaQueries } = theme
+// const { mediaQueries } = theme
 
 export const Root = styled('section')`
     display: flex;
@@ -12,12 +12,7 @@ export const Root = styled('section')`
     width: 100vw;
     min-height: 100vh;
 
-    ${mediaQueries.up(
-        { min: 'md' },
-        `
-        background: blue;
-        `
-    )}
+    background: linear-gradient(180deg, #abc, #fff);
 `
 
 export const EmphasizedWord = styled('em')``
