@@ -22,6 +22,20 @@ html {
     scroll-behavior: smooth;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: ${(props) => props.theme.colors.black};
+}
+
+p,
+a {
+    color: ${(props) => props.theme.colors.darkgrey};
+}
+
 a {
     text-decoration: none;
 }

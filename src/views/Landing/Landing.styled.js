@@ -56,9 +56,11 @@ export const VerticalLine = styled('div')`
     background: ${(props) => props.theme.colors.primary};
 `
 
-export const TextShadowWord = styled('p')`
+export const TextShadowWord = styled('h1')`
     margin-left: -6px;
+
     font-size: 76px;
+    font-weight: 400;
     letter-spacing: 3px;
 `
 
@@ -67,10 +69,16 @@ export const IntroductionParagraph = styled('p')`
     line-height: 36px;
     letter-spacing: 1px;
 
-    margin-top: 10px;
+    &:first-of-type {
+        margin-top: 30px;
+    }
+
+    & ~ & {
+        margin-top: 14px;
+    }
 `
 
 export const EmphasizedWord = styled('em')`
     color: ${(props) => props.theme.colors.primary};
-    font: normal 24px 'Karla';
+    font: bold 25px 'Karla';
 `
