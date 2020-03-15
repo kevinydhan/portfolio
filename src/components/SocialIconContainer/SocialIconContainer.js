@@ -5,8 +5,10 @@ import { LinkedInIcon, GithubIcon, StackOverflowIcon } from '../Icons/Icons'
 import socialLinks from '../../data/social-links'
 
 const SocialIconContainer = (props) => {
+    const { isLandingVisible } = props
+
     return (
-        <Root>
+        <Root isLandingVisible={isLandingVisible}>
             <IconLink href={socialLinks.linkedIn} target="_blank">
                 <LinkedInIcon />
             </IconLink>
@@ -20,6 +22,12 @@ const SocialIconContainer = (props) => {
     )
 }
 
-SocialIconContainer.propTypes = {}
+SocialIconContainer.propTypes = {
+    isLandingVisible: PropTypes.bool.isRequired,
+}
+
+SocialIconContainer.defaultProps = {
+    isLandingVisible: false,
+}
 
 export default SocialIconContainer

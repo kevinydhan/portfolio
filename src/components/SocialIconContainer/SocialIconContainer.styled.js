@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 export const Root = styled('div')`
     position: fixed;
     bottom: calc(1em + 60px);
-    right: 3em;
+    right: 2.75em;
 
     display: flex;
     flex-direction: column;
@@ -12,6 +12,16 @@ export const Root = styled('div')`
 
     height: 200px;
 
+    transition: transform 350ms ease;
+
+    ${(props) => {
+        const { isLandingVisible } = props
+
+        return isLandingVisible
+            ? `transform: translateY(0);`
+            : `transform: translateY(60px);`
+    }}
+
     &::before,
     &::after {
         content: '';
@@ -19,7 +29,19 @@ export const Root = styled('div')`
 
         width: 5px;
         height: 60px;
+
         background: ${(props) => props.theme.colors.primary};
+
+        transition: opacity 250ms ease;
+
+        ${(props) => {
+            const { isLandingVisible } = props
+            return isLandingVisible
+                ? `
+                opacity: 1;`
+                : `
+                opacity: 0;`
+        }}
     }
 
     &::before {
@@ -32,6 +54,7 @@ export const Root = styled('div')`
 
     ${(props) => {
         const { sm } = props.theme.dimensions.breakpoints
+
         return css`
             @media only screen and (min-width: ${sm}px) {
                 svg {

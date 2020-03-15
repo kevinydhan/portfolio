@@ -9,27 +9,28 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLandingIntersecting: true,
+            isLandingVisible: true,
         }
         this.handleScroll = this.handleScroll.bind(this)
     }
 
     handleScroll(entries) {
         entries.forEach((entry) => {
-            this.setState({ isLandingIntersecting: entry.isIntersecting })
+            this.setState({ isLandingVisible: entry.isIntersecting })
         })
     }
 
     render() {
         const { state, handleScroll } = this
-        const { isLandingIntersecting } = state
+        const { isLandingVisible } = state
 
         return (
             <>
-                <Navbar isTransparent={isLandingIntersecting} />
-                <Landing handleScroll={handleScroll} />
+                <Navbar isTransparent={isLandingVisible} />
+                <Landing handleScroll={handleScroll}>
+                    <SocialIconContainer isLandingVisible={isLandingVisible} />
+                </Landing>
                 <Projects />
-                <SocialIconContainer />
             </>
         )
     }

@@ -26,7 +26,8 @@ class Landing extends Component {
     }
 
     render() {
-        const { ref } = this
+        const { props, ref } = this
+        const { children } = props
 
         return (
             <Root ref={ref}>
@@ -46,12 +47,14 @@ class Landing extends Component {
                         am also open to remote opportunities.
                     </IntroductionParagraph>
                 </TextContainer>
+                {children}
             </Root>
         )
     }
 }
 
 Landing.propTypes = {
+    children: PropTypes.node,
     theme: PropTypes.object,
     handleScroll: PropTypes.func.isRequired,
 }
