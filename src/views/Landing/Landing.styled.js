@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components'
 
 export const Root = styled('section')`
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     width: 100vw;
+    max-width: 1024px;
     min-height: 110vh;
 
     background: ${(props) => props.theme.colors.white};
@@ -44,6 +47,13 @@ export const TextContainer = styled('div')`
             }
         `
     }}
+`
+
+export const VerticalLine = styled('div')`
+    width: 5px;
+    height: 100%;
+
+    background: ${(props) => props.theme.colors.primary};
 `
 
 export const TextShadowWord = styled('p')`

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { rootPseudoElements } from './SocialIconContainer.styled.func'
 
 export const Root = styled('div')`
     position: fixed;
@@ -22,35 +23,8 @@ export const Root = styled('div')`
             : `transform: translateY(60px);`
     }}
 
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
+    ${rootPseudoElements}
 
-        width: 5px;
-        height: 60px;
-
-        background: ${(props) => props.theme.colors.primary};
-
-        transition: opacity 250ms ease;
-
-        ${(props) => {
-            const { isLandingVisible } = props
-            return isLandingVisible
-                ? `
-                opacity: 1;`
-                : `
-                opacity: 0;`
-        }}
-    }
-
-    &::before {
-        bottom: 100%;
-    }
-
-    &::after {
-        top: 100%;
-    }
 
     ${(props) => {
         const { sm } = props.theme.dimensions.breakpoints

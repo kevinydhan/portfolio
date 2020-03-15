@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withTheme } from 'styled-components'
 import {
     Root,
+    VerticalLine,
     TextContainer,
     TextShadowWord,
     IntroductionParagraph,
@@ -46,8 +47,8 @@ class Landing extends Component {
                         for junior- to mid-level positions in the NJ/NY area. I
                         am also open to remote opportunities.
                     </IntroductionParagraph>
+                    {children}
                 </TextContainer>
-                {children}
             </Root>
         )
     }
