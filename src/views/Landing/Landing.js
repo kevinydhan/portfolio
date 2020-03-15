@@ -1,7 +1,13 @@
 import React, { Component, createRef } from 'react'
 import PropTypes from 'prop-types'
 import { withTheme } from 'styled-components'
-import { Root } from './Landing.styled'
+import {
+    Root,
+    TextContainer,
+    TextShadowWord,
+    IntroductionParagraph,
+    EmphasizedWord,
+} from './Landing.styled'
 
 class Landing extends Component {
     constructor(props) {
@@ -24,9 +30,22 @@ class Landing extends Component {
 
         return (
             <Root ref={ref}>
-                <p>Hi there,</p>
-                <p>My name is Kevin. I am a full-stack developer</p>
-                <p>I am currently based in North Jersey, NJ.</p>
+                <TextContainer>
+                    <TextShadowWord>Hi there,</TextShadowWord>
+                    <IntroductionParagraph>
+                        I am a full-stack developer specializing in building web
+                        applications using{' '}
+                        <EmphasizedWord>React</EmphasizedWord>,{' '}
+                        <EmphasizedWord>Redux</EmphasizedWord>,{' '}
+                        <EmphasizedWord>Sass</EmphasizedWord>, and{' '}
+                        <EmphasizedWord>Express</EmphasizedWord>.
+                    </IntroductionParagraph>
+                    <IntroductionParagraph>
+                        I am based in North Jersey, NJ and am currently looking
+                        for junior- to mid-level positions in the NJ/NY area. I
+                        am also open to remote opportunities.
+                    </IntroductionParagraph>
+                </TextContainer>
             </Root>
         )
     }

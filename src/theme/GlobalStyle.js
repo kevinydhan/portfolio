@@ -1,5 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
+/**
+ * List of possible fonts:
+ * - Bai Jamjuree
+ * - Inter
+ * - Karla
+ */
 const GlobalStyle = createGlobalStyle`
 *,
 *::before,
@@ -12,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 html {
     box-sizing: border-box;
 
-    font-family: 'Bai Jamjuree', sans-serif;
+    font-family: 'Karla', sans-serif;
     scroll-behavior: smooth;
 }
 

@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Root } from './Projects.styled'
+import { Root, SectionHeading } from './Projects.styled'
 
 const Projects = () => {
-    return <Root id="projects">projects</Root>
+    return (
+        <Root id="projects">
+            <SectionHeading>Projects</SectionHeading>
+        </Root>
+    )
 }
 
 export default Projects
