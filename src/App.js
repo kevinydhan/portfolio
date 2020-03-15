@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Components from './components'
 import Views from './views'
 
-const { Navbar } = Components
+const { Navbar, SocialIconContainer } = Components
 const { Landing, Projects } = Views
 
 class App extends Component {
@@ -29,6 +29,7 @@ class App extends Component {
                 <Navbar isTransparent={isLandingIntersecting} />
                 <Landing handleScroll={handleScroll} />
                 <Projects />
+                <SocialIconContainer />
             </>
         )
     }
