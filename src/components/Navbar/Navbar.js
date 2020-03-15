@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
     Root,
+    ToggleNavListButton,
     NavContainer,
     NavList,
     NavListItem,
@@ -9,22 +10,41 @@ import {
 } from './Navbar.styled'
 import navLinks from '../../data/nav-links'
 
-const Navbar = (props) => {
-    const { isTransparent } = props
+class Navbar extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isVisible: false,
+        }
 
-    return (
-        <Root isTransparent={isTransparent}>
-            <NavContainer>
-                <NavList>
-                    {navLinks.map((link) => (
-                        <NavListItem key={link.id}>
-                            <NavLink href={link.href}>{link.name}</NavLink>
-                        </NavListItem>
-                    ))}
-                </NavList>
-            </NavContainer>
-        </Root>
-    )
+        this.toggleNavList = this.toggleNavList.bind(this)
+    }
+
+    toggleNavList() {
+        const { isVisible } = this.state
+        this.setState({ isVisible: !isVisible })
+    }
+
+    render() {
+        const { props, state, toggleNavList } = this
+        const { isTransparent } = props
+        const { isVisible } = state
+
+        return (
+            <Root isTransparent={isTransparent}>
+                <NavContainer>
+                    <ToggleNavListButton onClick={toggleNavList} />
+                    <NavList isVisible={isVisible}>
+                        {navLinks.map((link) => (
+                            <NavListItem key={link.id}>
+                                <NavLink href={link.href}>{link.name}</NavLink>
+                            </NavListItem>
+                        ))}
+                    </NavList>
+                </NavContainer>
+            </Root>
+        )
+    }
 }
 
 Navbar.propTypes = {

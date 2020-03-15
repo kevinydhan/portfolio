@@ -2,32 +2,35 @@ import React, { Component } from 'react'
 import Components from './components'
 import Views from './views'
 
-const { Navbar } = Components
-const { Landing } = Views
+const { Navbar, SocialIconContainer } = Components
+const { Landing, Projects } = Views
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLandingIntersecting: true,
+            isLandingVisible: true,
         }
         this.handleScroll = this.handleScroll.bind(this)
     }
 
     handleScroll(entries) {
         entries.forEach((entry) => {
-            this.setState({ isLandingIntersecting: entry.isIntersecting })
+            this.setState({ isLandingVisible: entry.isIntersecting })
         })
     }
 
     render() {
         const { state, handleScroll } = this
-        const { isLandingIntersecting } = state
+        const { isLandingVisible } = state
 
         return (
             <>
-                <Navbar isTransparent={isLandingIntersecting} />
-                <Landing handleScroll={handleScroll} />
+                <Navbar isTransparent={isLandingVisible} />
+                <Landing handleScroll={handleScroll}>
+                    <SocialIconContainer isLandingVisible={isLandingVisible} />
+                </Landing>
+                <Projects />
             </>
         )
     }
