@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Navbar = () => {
     return (
-        <header>
+        <Header>
             <nav>
                 <ul>
                     <li>Experience</li>
@@ -12,8 +12,12 @@ const Navbar = () => {
                     <li>Contact</li>
                 </ul>
             </nav>
-        </header>
+        </Header>
     )
 }
+
+const Header = styled('header')`
+    position: absolute;
+`
 
 export default Navbar

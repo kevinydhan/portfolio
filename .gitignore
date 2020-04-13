@@ -18,7 +18,7 @@
 /public/webpack.stats.json
 /public/chunk-map.json
 /public/index.html
-
+/public/manifest.webmanifest
 
 # Misc.
 .DS_Store
