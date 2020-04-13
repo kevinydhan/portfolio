@@ -10,7 +10,7 @@ const ButtonLink = (props) => {
 
 const Anchor = styled('a')`
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid #fff;
     display: flex;
     height: 56px;
     justify-content: center;
@@ -21,7 +21,7 @@ const Anchor = styled('a')`
 
     &:hover,
     &:active {
-        color: blue;
+        color: #fff;
     }
 `
 
