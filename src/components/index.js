@@ -1,7 +1,3 @@
-import Navbar from './Navbar/Navbar'
-import SocialIconContainer from './SocialIconContainer/SocialIconContainer'
+import Navbar from './Navbar'
 
-export default {
-    Navbar,
-    SocialIconContainer,
-}
+export { Navbar }

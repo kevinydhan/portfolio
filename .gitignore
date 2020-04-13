@@ -1,17 +1,26 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
 
-# testing
+# Testing
 /coverage
 
-# production
-/build
+# Development
+/.cache
 
-# misc
+# Production
+/public/page-data
+/public/*.js
+/public/*.js.map
+/public/webpack.stats.json
+/public/chunk-map.json
+/public/index.html
+
+
+# Misc.
 .DS_Store
 .env.local
 .env.development.local
