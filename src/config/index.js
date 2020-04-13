@@ -1,29 +1,11 @@
 module.exports = {
-    /**
-     * Defines the site's types.
-     *
-     * This property is used by the following:
-     * - `<meta property="og:type">`
-     */
+    // Defines the site's types.
     siteType: 'website',
 
-    /**
-     * Defines the site's title.
-     *
-     * This property is used by the following:
-     * - `<meta property="title">`
-     * - `<meta property="og:title">`
-     * - `<meta property="twitter:title">`
-     */
+    // Defines the site's title.
     siteTitle: 'Kevin Han | Software Engineer',
 
-    /**
-     * Defines the site's url.
-     *
-     * This property is used by the following:
-     * - `<meta property="og:url">`
-     * - `<meta property="twitter:url">`
-     */
+    // Defines the site's url.
     siteUrl: 'https://kevinhan.dev',
 
     /**

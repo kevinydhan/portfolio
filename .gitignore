@@ -12,13 +12,7 @@
 /.cache
 
 # Production
-/public/page-data
-/public/*.js
-/public/*.js.map
-/public/webpack.stats.json
-/public/chunk-map.json
-/public/index.html
-/public/manifest.webmanifest
+/public
 
 # Misc.
 .DS_Store

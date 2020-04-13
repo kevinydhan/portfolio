@@ -1,0 +1,60 @@
+# The `projects` attribute contains an array of project objects, each object
+# following the schema:
+#
+# {
+#   name: string,
+#   description: string,
+#   tags: Array<string>
+#   url: {
+#     external: string,
+#     git: string,
+#   }
+# }
+projects:
+
+  # ---------------------------------------------------
+  - name: Grace Shopper
+    description: Mock e-commerce website
+    url:
+      external: https://
+      git: https://github.com/grace-shoppers
+    tags:
+      - React
+      - Redux
+
+  # ---------------------------------------------------
+  - name: Keenbot
+    description: AI chatbot for Twitch
+    url:
+      external:
+      git: https://gitlab.com/keenbot/client
+    tags:
+      - Javascript
+      - React
+      - Redux
+
+  # ---------------------------------------------------
+  - name: Keenbot Server
+    description: API server for Keenbot
+    url:
+      external: https://keenbot-server.herokuapp.com
+      git: https://gitlab.com/keenbot/server
+    tags:
+      - Python
+      - Flask
+      - SQLAlchemy
+      - PostgreSQL
+      - GitLab CI
+      - Heroku
+
+  # ---------------------------------------------------
+  - name: Bunny Eats
+    description: Simple grid-based browser game
+    url:
+      external: https://bunny-eats.netlify.com
+      git: https://github.com/kevinydhan/bunny-eats
+    tags:
+      - TypeScript
+      - React
+      - Redux
+      - Webpack
