@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { appMediaQueries } from './global-media-queries'
 
 /**
  * List of possible fonts:
@@ -49,6 +50,8 @@ a {
 
     width: 100vw;
     height: 300vh;
+
+    ${appMediaQueries.betweenXSAndMD}
 }
 `
 

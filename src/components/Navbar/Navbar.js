@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import navLinks from '../../data/nav-links'
 import {
     Root,
     ToggleNavListButton,
@@ -8,7 +9,6 @@ import {
     NavListItem,
     NavLink,
 } from './Navbar.styled'
-import navLinks from '../../data/nav-links'
 
 class Navbar extends Component {
     constructor(props) {

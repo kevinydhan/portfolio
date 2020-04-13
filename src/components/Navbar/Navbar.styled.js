@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import theme from '../../theme'
-import { isRootTransparent, handleNavListDisplay } from './Navbar.styled.func'
+import RootFuncThemes from './function-themes/Root.styled.func'
 const { mediaQueries } = theme
 
 /**
@@ -19,19 +19,15 @@ export const Root = styled('header')`
     display: flex;
     justify-content: center;
 
-    width: 100vw;
+    width: 100%;
     height: ${(props) => props.theme.dimensions.heights.Navbar};
 
     transition: background 500ms ease;
 
-    ${isRootTransparent}
-
-    ${mediaQueries.between(
-        { min: 'xs', max: 'sm' },
-        `
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid lightgrey;`
-    )}
+    ${RootFuncThemes.isTransparent}
+    ${RootFuncThemes.mediaQueries.betweenXSandSM}
+    ${RootFuncThemes.mediaQueries.betweenXSAndMD}
+    ${RootFuncThemes.mediaQueries.upMD}
 `
 
 export const ToggleNavListButton = styled('span')`
@@ -65,12 +61,6 @@ export const NavContainer = styled('nav')`
     width: 100%;
     max-width: 1024px;
     height: 100%;
-
-    ${mediaQueries.between(
-        { min: 'xs', max: 'sm' },
-        `
-        padding: 16px;`
-    )}
 `
 
 export const NavList = styled('ul')`
@@ -98,6 +88,38 @@ export const NavList = styled('ul')`
         `
     }}
 
+    ${(props) => {
+        const { sm, md } = props.theme.dimensions.breakpoints
+
+        return css`
+            @media only screen and (max-width: ${md}px) and (min-width: ${sm}px) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                width: 100%;
+            }
+        `
+    }}
+
+    ${(props) => {
+        const { md } = props.theme.dimensions.breakpoints
+
+        return css`
+            @media only screen and (min-width: ${md}px) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                width: 100%;
+                max-width: 400px;
+            }
+        `
+    }}
+`
+
+/**
+ *
     ${mediaQueries.up(
         { min: 'sm' },
         `
@@ -107,7 +129,7 @@ export const NavList = styled('ul')`
 
         width: 400px;`
     )}
-`
+ */
 
 export const NavListItem = styled('li')`
     ${mediaQueries.between(

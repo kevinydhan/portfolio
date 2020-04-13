@@ -19,7 +19,7 @@ export const Root = styled('div')`
 
         return css`
             @media only screen and (max-width: ${md}px) {
-                margin-top: 40px;
+                margin-top: 56px;
                 justify-content: space-between;
                 width: 170px;
             }
