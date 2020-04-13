@@ -1,3 +1,5 @@
+heading: Here's what I've been working on
+
 # The `projects` attribute contains an array of project objects, each object
 # following the schema:
 #
@@ -11,16 +13,6 @@
 #   }
 # }
 projects:
-
-  # ---------------------------------------------------
-  - name: Grace Shopper
-    description: Mock e-commerce website
-    url:
-      external: https://
-      git: https://github.com/grace-shoppers
-    tags:
-      - React
-      - Redux
 
   # ---------------------------------------------------
   - name: Keenbot
@@ -58,3 +50,18 @@ projects:
       - React
       - Redux
       - Webpack
+      - Netlify
+
+  # ---------------------------------------------------
+  - name: Grace Shopper
+    description: Mock e-commerce website
+    url:
+      external: https://
+      git: https://github.com/grace-shoppers
+    tags:
+      - Javascript
+      - React
+      - Redux
+      - Express
+      - Sequelize
+      - PostgreSQL

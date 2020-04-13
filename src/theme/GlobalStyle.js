@@ -18,6 +18,7 @@ export default createGlobalStyle`
         color: rgba(${colors.text}, 1);
         font-family: 'Bai Jamjuree', sans-serif;
         font-size: 1.125rem;
+        scroll-behavior: smooth;
     }
 
     body {
@@ -41,22 +42,6 @@ export default createGlobalStyle`
     h2 {
         font-size: 2.5rem;
         letter-spacing: 6px;
-    }
-
-    h3 {
-        font-size: 2.125rem;
-    }
-
-    h4 {
-        font-size: 1.75rem;
-    }
-
-    h5 {
-        font-size: 1.5rem;
-    }
-
-    h6 {
-        font-size: 1.25rem;
     }
 
     p {

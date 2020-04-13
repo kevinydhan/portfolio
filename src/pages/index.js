@@ -10,7 +10,7 @@ const Main = () => {
             <GlobalStyle />
             <Navbar />
             <Landing />
-            {/* <Projects /> */}
+            <Projects />
         </>
     )
 }
