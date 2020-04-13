@@ -1,39 +1,35 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "description": "Personal portfolio",
-  "author": "Kevin Han",
-  "license": "ISC",
+  "description": "Personal developer portfolio",
+  "author": "Kevin Han <kevinhanyd@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "build": "react-scripts build",
-    "dev": "react-scripts start",
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "serve": "gatsby serve",
     "lint": "yarn eslint & yarn stylelint",
     "eslint": "eslint \"./src/**/*.js?(x)\"",
     "stylelint": "stylelint \"./src/**/*.js?(x)\""
   },
   "dependencies": {
+    "gatsby": "^2.20.18",
+    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-react-helmet": "^3.2.2",
     "prop-types": "^15.7.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
-    "styled-components": "^5.0.1",
-    "styled-system": "^5.1.5"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
     "prettier": "^1.19.1",
     "stylelint": "^13.2.1",
-    "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-sass-guidelines": "^7.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^4.0.0"
   },
   "browserslist": {
