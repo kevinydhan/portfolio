@@ -21,6 +21,7 @@ export default createGlobalStyle`
         color: rgba(${colors.text}, 1);
         font-family: ${fontFamily.primary}, sans-serif;
         letter-spacing: 0.1rem;
+        overflow-x: hidden;
         scroll-behavior: smooth;
     }
 
@@ -45,5 +46,15 @@ export default createGlobalStyle`
     #gatsby-focus-wrapper {
         /* Offsets the entire page away from the navigation bar. */
         padding-top: ${heights.navbar.sm};
+    }
+
+    @media only screen and (min-width: 768px) {
+        #gatsby-focus-wrapper {
+            display: flex;
+            justify-content: center;
+
+            /* Offsets the entire page away from the navigation bar. */
+            padding-top: ${heights.navbar.md};
+        }
     }
 `

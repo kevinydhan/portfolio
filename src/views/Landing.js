@@ -7,9 +7,7 @@ import content from '@content/landing.yml'
 const Landing = () => {
     return (
         <Section>
-            <WatermarkBackgroundContainer>
-                <WatermarkBackground />
-            </WatermarkBackgroundContainer>
+            <WatermarkBackground />
             <Heading>
                 I am a <Keyword>full-stack developer</Keyword> based in New
                 Jersey, USA.
@@ -43,6 +41,8 @@ const Section = styled('section')`
 
     justify-content: center;
 
+    max-width: 1440px;
+
     /* Offsets the entire landing page's content down. */
     padding: 0 16px;
 
@@ -52,36 +52,56 @@ const Section = styled('section')`
 
     width: 100vw;
 
+    /* Targets the SVG background image. */
+    > svg {
+        max-width: 699px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100vw;
+    }
+
     @media only screen and (min-width: 320px) {
+        /* Pushes the contents up from the bottom of the screen. */
         padding-bottom: 7.8vw;
     }
 
     @media only screen and (min-width: 375px) {
+        /* Pushes the contents up from the bottom of the screen. */
         padding-bottom: 9.6vw;
     }
 
-    @media only screen and (min-width: 414px) {
+    @media only screen and (min-width: 375px) and (min-height: 812px) {
+        /* Pushes the contents up from the bottom of the screen. */
         padding-bottom: 14.8vw;
     }
-`
 
-const WatermarkBackgroundContainer = styled('div')`
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -999;
+    @media only screen and (min-width: 414px) and (min-height: 640px) {
+        /* Pushes the contents up from the bottom of the screen. */
+        padding-bottom: 14.8vw;
+    }
 
-    /* Targets the SVG background image. */
-    > svg {
-        width: 100vw;
+    @media only screen and (min-width: 768px) {
+        height: calc(100vh - ${heights.navbar.md});
+    }
+
+    @media only screen and (min-width: 1024px) {
+        padding: 0 60px 3vw;
+
+        > svg {
+            right: 60px;
+        }
     }
 `
 
 const Heading = styled('h1')`
     font-size: 24px;
+
     font-weight: 400;
+
+    /* Limits the amount of horizontal space the heading takes up at larger
+        viewport widths. */
+    max-width: 885px;
 
     & + & {
         /* Defines the space between each heading. */
@@ -123,6 +143,22 @@ const CTAContainer = styled('div')`
         /* Sets a dynamic and consistent separation between the landing view's
            headings and the call-to-action buttons. */
         margin-top: 21.3vw;
+    }
+
+    @media only screen and (min-width: 768px) {
+        /* Changes the display orientation of the call-to-action buttons from
+           top-to-bottom to left-to-right at larger viewport sizes. */
+        flex-direction: row;
+
+        a + a {
+            /* Resets the top margin set at smaller viewport sizes and applies
+               a left margin. */
+            margin: 0 0 0 52px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        margin-top: 10vw;
     }
 `
 

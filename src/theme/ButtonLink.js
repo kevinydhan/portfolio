@@ -29,6 +29,12 @@ const ButtonLink = styled('a')`
 
         return css`
             border: 2px solid rgba(${color}, 1);
+
+            &:hover,
+            &:active {
+                border: 2px solid rgba(${color}, 0.6);
+                color: rgba(${color}, 0.6);
+            }
         `
     }}
 
@@ -37,8 +43,10 @@ const ButtonLink = styled('a')`
         const color = colors[props.color]
             ? colors[props.color]
             : colors['heading']
+
         if (props.variant === 'filled') {
             return css`
+                color: rgba(${colors.heading}, 1);
                 position: relative;
 
                 &::before {
@@ -49,9 +57,24 @@ const ButtonLink = styled('a')`
                     width: calc(100% - 4px);
                     z-index: -999;
                 }
+
+                &:hover,
+                &:active {
+                    color: rgba(${colors.heading}, 0.6);
+
+                    &::before {
+                        background-color: rgba(${color}, 0.6);
+                    }
+                }
             `
         } else return ``
     }}
+
+    @media only screen and (min-width: 768px) {
+        font-size: 22px;
+        height: 82px;
+        width: 280px;
+    }
 `
 
 export default ButtonLink
