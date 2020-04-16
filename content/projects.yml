@@ -6,20 +6,21 @@ heading: Here's what I've been working on
 # {
 #   name: string,
 #   description: string,
-#   tags: Array<string>
+#   tags: Array<string>,
 #   url: {
 #     external: string,
-#     git: string,
+#     github?: string,
+#     gitlab?: string
 #   }
 # }
 projects:
 
   # ---------------------------------------------------
   - name: Keenbot
-    description: AI chatbot for Twitch
+    description: AI chatbot for Twitch that answers frequently asked questions about the streamer
     url:
       external:
-      git: https://gitlab.com/keenbot/client
+      gitlab: https://gitlab.com/keenbot/client
     tags:
       - Javascript
       - React
@@ -27,10 +28,10 @@ projects:
 
   # ---------------------------------------------------
   - name: Keenbot Server
-    description: API server for Keenbot
+    description: API server for Twitch's Keenbot
     url:
       external: https://keenbot-server.herokuapp.com
-      git: https://gitlab.com/keenbot/server
+      gitlab: https://gitlab.com/keenbot/server
     tags:
       - Python
       - Flask
@@ -41,10 +42,10 @@ projects:
 
   # ---------------------------------------------------
   - name: Bunny Eats
-    description: Simple grid-based browser game
+    description: Simple grid-based browser game based on the Maze Problem video
     url:
       external: https://bunny-eats.netlify.com
-      git: https://github.com/kevinydhan/bunny-eats
+      github: https://github.com/kevinydhan/bunny-eats
     tags:
       - TypeScript
       - React
@@ -54,10 +55,10 @@ projects:
 
   # ---------------------------------------------------
   - name: Grace Shopper
-    description: Mock e-commerce website
+    description: Mock e-commerce website built during my time at Fullstack Academy
     url:
       external: https://
-      git: https://github.com/grace-shoppers
+      github: https://github.com/grace-shoppers
     tags:
       - Javascript
       - React

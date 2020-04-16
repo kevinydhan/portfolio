@@ -22,11 +22,11 @@ const Navbar = () => {
  * breakpoints. This element displays the navigation bar's background color.
  */
 const Header = styled('header')`
-    background: rgba(${theme.colors.background}, 0.95);
+    background: rgba(${theme.colors.background}, 0.97);
     border-bottom: 1px solid rgba(${theme.colors.border}, 0.95);
     height: ${theme.dimensions.heights.navbar};
     left: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100vw;
     z-index: 999;
