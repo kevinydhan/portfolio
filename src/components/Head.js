@@ -9,10 +9,6 @@ const Head = () => (
     <Helmet>
         {/* HTML-related head tags */}
         <link rel="canonical" href={config.siteUrl} data-react-helmet="" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,600&display=swap"
-            rel="stylesheet"
-        />
 
         {/* General meta tags */}
         <title>{config.siteTitle}</title>
