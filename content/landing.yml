@@ -1,10 +1,18 @@
-heading: Hi there,
-description: My name is Kevin Han and I am a full-stack developer based in New Jersey, USA. I specialize in building web applications using Javascript, React, and Node.js.
-cta:
-  - text: View my projects
-    href: /#projects
-    color:
+heading:
+  - text: I am a full-stack developer based in New Jersey, USA.
+    keywords:
+      - full-stack developer
+  - text: I build websites and web applications.
+    keywords:
+      - websites
+      - web applications
 
-  - text: Get in touch
-    href: /#contact
-    color:
+cta:
+  - text: See my projects
+    href: /#projects
+    variant: outline
+
+  - text: View my resume
+    href: https://google.com
+    variant: filled
+    color: blue

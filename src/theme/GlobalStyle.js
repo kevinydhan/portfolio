@@ -1,10 +1,13 @@
 import { createGlobalStyle } from 'styled-components'
+import FontFace from '@theme/FontFace'
 import { theme } from '@theme'
 
-const { colors } = theme
-const { heights, breakpoints } = theme.dimensions
+const { colors, fontFamily, dimensions } = theme
+const { breakpoints, heights } = dimensions
 
 export default createGlobalStyle`
+    ${FontFace}
+
     *,
     *::before,
     *::after {
@@ -16,8 +19,9 @@ export default createGlobalStyle`
     html {
         box-sizing: border-box;
         color: rgba(${colors.text}, 1);
-        font-family: 'Bai Jamjuree', sans-serif;
-        font-size: 1.125rem;
+        font-family: ${fontFamily.primary}, sans-serif;
+        letter-spacing: 0.1rem;
+        overflow-x: hidden;
         scroll-behavior: smooth;
     }
 
@@ -34,32 +38,23 @@ export default createGlobalStyle`
         color: rgba(${colors.heading}, 1);
     }
 
-    h1 {
-        font-size: 2.5rem;
-        letter-spacing: 8px;
-    }
-
-    h2 {
-        font-size: 2.5rem;
-        letter-spacing: 6px;
-    }
-
-    p {
-        letter-spacing: 1px;
-        line-height: 1.75rem;
-    }
-
     a {
-        color: rgba(${colors.text}, 1);
-        cursor: pointer;
-        letter-spacing: 2px;
-        padding-right: -2px;
+        color: rgba(${colors.heading}, 1);
         text-decoration: none;
     }
 
-    @media only screen and (max-width: ${breakpoints['iPhone5/SE']}) {
+    #gatsby-focus-wrapper {
+        /* Offsets the entire page away from the navigation bar. */
+        padding-top: ${heights.navbar.sm};
+    }
+
+    @media only screen and (min-width: 768px) {
         #gatsby-focus-wrapper {
-            padding-top: ${heights.navbar};
+            display: flex;
+            justify-content: center;
+
+            /* Offsets the entire page away from the navigation bar. */
+            padding-top: ${heights.navbar.md};
         }
     }
 `

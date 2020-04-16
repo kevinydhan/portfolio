@@ -22,7 +22,7 @@ const Projects = () => {
 }
 
 const Section = styled('section')`
-    margin-top: 70px;
+    margin: 200px auto 0;
     max-width: 1024px;
     min-height: 100vh;
     padding: 0.75em 1.25em 3em;
