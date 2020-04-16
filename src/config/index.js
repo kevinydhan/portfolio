@@ -15,7 +15,8 @@ module.exports = {
      * - `<meta property="og:description">`
      * - `<meta property="twitter:description">`
      */
-    siteDescription: `Personal portfolio displaying Kevin Han's developer experience and projects`,
+    siteDescription:
+        'Kevin Han is a full-stack developer based in New Jersey, USA. He creates simplistic yet intuitive websites and web applications.',
 
     /**
      *
