@@ -3,13 +3,6 @@ const path = require('path')
 
 module.exports = {
     plugins: [
-        // @see https://github.com/nfl/react-helmet
-        // @see https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-react-helmet
-        'gatsby-plugin-react-helmet',
-
-        // @see https://www.gatsbyjs.org/docs/styled-components/
-        'gatsby-plugin-styled-components',
-
         // @see https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-manifest
         // @see https://web.dev/add-manifest/#create
         {
@@ -34,8 +27,22 @@ module.exports = {
                 path: path.join(__dirname, 'src', 'images'),
             },
         },
+
+        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-sharp
         'gatsby-plugin-sharp',
+
+        // @see https://www.gatsbyjs.org/packages/gatsby-transformer-sharp
         'gatsby-transformer-sharp',
+
+        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-robots-txt
+        'gatsby-plugin-robots-txt',
+
+        // @see https://github.com/nfl/react-helmet
+        // @see https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-react-helmet
+        'gatsby-plugin-react-helmet',
+
+        // @see https://www.gatsbyjs.org/docs/styled-components
+        'gatsby-plugin-styled-components',
     ],
     siteMetadata: {
         title: config.siteTitle,

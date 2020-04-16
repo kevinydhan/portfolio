@@ -5,7 +5,11 @@ module.exports = {
     // Defines the site's title.
     siteTitle: 'Kevin Han | Software Engineer',
 
-    // Defines the site's url.
+    /**
+     *
+     * This property is used by:
+     * - `gatsby-plugin-robots-txt`
+     */
     siteUrl: 'https://kevinhan.dev',
 
     /**
