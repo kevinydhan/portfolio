@@ -34,18 +34,35 @@ const { colors, dimensions } = theme
 const { heights } = dimensions
 
 const Section = styled('section')`
+    display: flex;
+    flex-direction: column;
+
     /* Fills the remaining space of the screen, taking into account the
        navigation bar's height.  */
-    height: calc(100% - ${heights.navbar.sm});
+    height: calc(100vh - ${heights.navbar.sm});
+
+    justify-content: center;
 
     /* Offsets the entire landing page's content down. */
-    padding: 36px 16px 0;
+    padding: 0 16px;
 
     /* Ensures the watermark background container positions itself relative to
        this element. */
     position: relative;
 
     width: 100vw;
+
+    @media only screen and (min-width: 320px) {
+        padding-bottom: 7.8vw;
+    }
+
+    @media only screen and (min-width: 375px) {
+        padding-bottom: 9.6vw;
+    }
+
+    @media only screen and (min-width: 414px) {
+        padding-bottom: 14.8vw;
+    }
 `
 
 const WatermarkBackgroundContainer = styled('div')`
@@ -92,10 +109,20 @@ const Keyword = styled('b')`
 const CTAContainer = styled('div')`
     display: flex;
     flex-direction: column;
+
+    /* Defines the default top margin at screen widths lower than 320px. */
     margin-top: 80px;
 
     a + a {
+        /* Defines the spacing between each 'ButtonLink' component within the
+           container. */
         margin-top: 20px;
+    }
+
+    @media only screen and (min-width: 320px) {
+        /* Sets a dynamic and consistent separation between the landing view's
+           headings and the call-to-action buttons. */
+        margin-top: 21.3vw;
     }
 `
 

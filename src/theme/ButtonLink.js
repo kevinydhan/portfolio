@@ -15,6 +15,7 @@ const ButtonLink = styled('a')`
     font-size: 18px;
     height: 60px;
     justify-content: center;
+    text-align: center;
     text-transform: uppercase;
     width: 100%;
 
