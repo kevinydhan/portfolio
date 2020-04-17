@@ -11,9 +11,7 @@ const Navbar = () => (
             <MenuButtonContainer>
                 <SquareOutlineButton />
             </MenuButtonContainer>
-
             <Logo>Kevin Han</Logo>
-
             <NavList>
                 {navLinks.map((link, i) => (
                     <NavListItem key={generateKey(link.name, i)}>
