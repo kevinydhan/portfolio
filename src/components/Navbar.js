@@ -101,6 +101,9 @@ const NavList = styled('ul')`
     /* Visual styles */
     list-style: none;
     background: rgba(${colors.background}, 0.98);
+
+    border-top: 1px solid rgba(${colors.text}, 0.1);
+    border-bottom: 1px solid rgba(${colors.text}, 0.1);
     /* background: blue; */
 
     @media only screen and (min-width: 768px) {
@@ -114,6 +117,7 @@ const NavList = styled('ul')`
         width: auto;
         height: 100%;
         padding: 0;
+        border: 0;
     }
 `
 
@@ -126,7 +130,6 @@ const NavListItem = styled('li')`
 
     @media only screen and (min-width: 768px) {
         padding: 0;
-        /* background: red; */
 
         & + & {
             margin-left: 40px;
