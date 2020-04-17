@@ -5,7 +5,11 @@ module.exports = {
     // Defines the site's title.
     siteTitle: 'Kevin Han | Software Engineer',
 
-    // Defines the site's url.
+    /**
+     *
+     * This property is used by:
+     * - `gatsby-plugin-robots-txt`
+     */
     siteUrl: 'https://kevinhan.dev',
 
     /**
@@ -18,19 +22,10 @@ module.exports = {
     siteDescription:
         'Kevin Han is a full-stack developer based in New Jersey, USA. He creates simplistic yet intuitive websites and web applications.',
 
-    /**
-     *
-     */
     siteAuthor: 'Kevin Han',
 
-    /**
-     *
-     */
     siteLanguage: 'en_US',
 
-    /**
-     *
-     */
     siteKeywords: [
         // Personal keywords
         'Kevin Han',
@@ -49,16 +44,15 @@ module.exports = {
     ].join(', '),
 
     /**
-     *
+     * Defines the navigation links on your website. This property is used by
+     * the `Navbar` component to render out the navigation links.
      */
     navLinks: [
-        { name: 'Experience', href: '/#experience' },
         { name: 'Projects', href: '/#projects' },
+        { name: 'Resume', href: '#' },
+        { name: 'Contact', href: 'mailto:kevinhanyd@gmail.com' },
     ],
 
-    /**
-     *
-     */
     socialLinks: {
         linkedin: 'https://linkedin.com/in/kevinydhan',
         github: 'https://github.com/kevinydhan',

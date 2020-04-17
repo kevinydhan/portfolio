@@ -22,11 +22,11 @@ const Projects = () => {
 }
 
 const Section = styled('section')`
-    margin: 200px auto 0;
+    width: 100vw;
     max-width: 1024px;
     min-height: 100vh;
+    margin: 200px auto 0;
     padding: 0.75em 1.25em 3em;
-    width: 100vw;
 `
 
 export default Projects

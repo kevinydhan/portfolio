@@ -1,7 +1,58 @@
 import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
 import theme from './theme'
 
-const { colors } = theme
+const handleButtonLinkVariants = (props) => {
+    const { colors } = theme
+
+    // Chooses default color if no color is specified.
+    const color = colors[props.color] ? colors[props.color] : colors['heading']
+
+    const filled =
+        props.variant === 'filled'
+            ? `
+            position: relative;
+
+            &::before {
+                position: absolute;
+                z-index: -999;
+
+                height: calc(100% - 4px);
+                width: calc(100% - 4px);
+
+                content: '';
+
+                background-color: rgba(${color}, 1);
+            }
+
+            &:hover,
+            &:active {
+                color: rgba(${colors.heading}, 0.6);
+
+                &::before {
+                    background-color: rgba(${color}, 0.6);
+                }
+            }`
+            : ``
+
+    return css`
+        border: 2px solid rgba(${color}, 1);
+
+        &:hover,
+        &:active {
+            color: rgba(${color}, 0.6);
+            border: 2px solid rgba(${color}, 0.6);
+        }
+
+        @media only screen and (min-width: 768px) {
+            width: 280px;
+            height: 82px;
+            font-size: 22px;
+        }
+
+        ${filled}
+    `
+}
 
 /**
  * @param {string} [props.variant="outline"] - Button variation
@@ -9,72 +60,32 @@ const { colors } = theme
  * @param {string} props.href - Button link url/route
  */
 const ButtonLink = styled('a')`
-    align-items: center;
-    cursor: pointer;
+    /* Box model styles */
     display: flex;
-    font-size: 18px;
-    height: 60px;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 60px;
+
+    /* Typography styles */
+    font-size: 18px;
     text-align: center;
     text-transform: uppercase;
-    width: 100%;
 
-    /* This styled function assigns the appropriate CSS properties based on
-       'props.color'. */
-    ${(props) => {
-        // Assigns a default color if no color is specified.
-        const color = colors[props.color]
-            ? colors[props.color]
-            : colors['heading']
+    /* Misc. styles */
+    cursor: pointer;
 
-        return css`
-            border: 2px solid rgba(${color}, 1);
-
-            &:hover,
-            &:active {
-                border: 2px solid rgba(${color}, 0.6);
-                color: rgba(${color}, 0.6);
-            }
-        `
-    }}
-
-    ${(props) => {
-        // Assigns a default color if no color is specified.
-        const color = colors[props.color]
-            ? colors[props.color]
-            : colors['heading']
-
-        if (props.variant === 'filled') {
-            return css`
-                color: rgba(${colors.heading}, 1);
-                position: relative;
-
-                &::before {
-                    background-color: rgba(${color}, 1);
-                    content: '';
-                    height: calc(100% - 4px);
-                    position: absolute;
-                    width: calc(100% - 4px);
-                    z-index: -999;
-                }
-
-                &:hover,
-                &:active {
-                    color: rgba(${colors.heading}, 0.6);
-
-                    &::before {
-                        background-color: rgba(${color}, 0.6);
-                    }
-                }
-            `
-        } else return ``
-    }}
-
-    @media only screen and (min-width: 768px) {
-        font-size: 22px;
-        height: 82px;
-        width: 280px;
-    }
+    ${handleButtonLinkVariants}
 `
+
+ButtonLink.defaultProps = {
+    color: 'heading',
+}
+
+ButtonLink.propTypes = {
+    color: PropTypes.string,
+    children: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+}
 
 export default ButtonLink

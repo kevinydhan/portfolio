@@ -17,11 +17,16 @@ export default createGlobalStyle`
     }
 
     html {
+        /* Box model styles */
         box-sizing: border-box;
+        overflow-x: hidden;
+
+        /* Typography styles */
         color: rgba(${colors.text}, 1);
         font-family: ${fontFamily.primary}, sans-serif;
         letter-spacing: 0.1rem;
-        overflow-x: hidden;
+
+        /* Misc. styles */
         scroll-behavior: smooth;
     }
 

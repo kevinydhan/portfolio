@@ -17,6 +17,7 @@
     "gatsby-image": "^2.3.2",
     "gatsby-plugin-manifest": "^2.3.3",
     "gatsby-plugin-react-helmet": "^3.2.2",
+    "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-plugin-styled-components": "^3.2.1",
     "gatsby-source-filesystem": "^2.2.2",
@@ -33,6 +34,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
     "stylelint": "^13.2.1",
+    "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-order": "^4.0.0"
