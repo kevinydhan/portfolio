@@ -21,10 +21,10 @@ export default {
     dimensions: {
         heights: {
             navbar: {
-                sm: '80px',
-                md: '90px',
-                lg: '90px',
-                xl: '90px',
+                sm: '96px',
+                md: '96px',
+                lg: '96px',
+                xl: '96px',
             },
         },
         breakpoints: {

@@ -41,7 +41,6 @@ const { colors, dimensions } = theme
 const { heights } = dimensions
 
 const Section = styled('section')`
-
     /* Ensures the watermark background container positions itself relative to
        this element. */
     position: relative;
@@ -59,7 +58,7 @@ const Section = styled('section')`
     height: calc(100vh - ${heights.navbar.sm});
 
     /* Offsets the entire landing page's content down. */
-    padding: 0 16px;
+    padding: 0 24px;
 
     /* Targets the SVG background image. */
     > svg {
@@ -72,7 +71,6 @@ const Section = styled('section')`
 `
 
 const Heading = styled('h1')`
-
     /* Limits the amount of horizontal space the heading takes up at larger
         viewport widths. */
     max-width: 885px;

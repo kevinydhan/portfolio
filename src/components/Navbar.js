@@ -1,30 +1,50 @@
-import React from 'react'
+// React modules
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { SquareOutlineButton } from '@theme/icons'
+
+// Styling modules
 import styled from 'styled-components'
 import { theme } from '@theme'
-import { SquareOutlineButton } from '@theme/icons'
+
+// Misc. modules
 import { navLinks } from '@config'
 import { generateKey } from '@utils'
 
-const Navbar = () => (
-    <Header>
-        <Nav>
-            <MenuButtonContainer>
-                <SquareOutlineButton />
-            </MenuButtonContainer>
-            <Logo>Kevin Han</Logo>
-            <NavList>
-                {navLinks.map((link, i) => (
-                    <NavListItem key={generateKey(link.name, i)}>
-                        <NavLink href={link.href}>{link.name}</NavLink>
-                    </NavListItem>
-                ))}
-            </NavList>
-        </Nav>
-    </Header>
-)
+// =============================================================================
+
+const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleNavList = () => setIsOpen(!isOpen)
+    const closeNavList = () => setIsOpen(false)
+
+    return (
+        <Header>
+            <Nav>
+                <MenuButtonContainer onClick={toggleNavList}>
+                    <SquareOutlineButton />
+                </MenuButtonContainer>
+                <Logo href="#">Kevin Han</Logo>
+                <NavList isOpen={isOpen}>
+                    {navLinks.map((link, i) => (
+                        <NavListItem key={generateKey(link.name, i)}>
+                            <NavLink href={link.href} onClick={closeNavList}>
+                                {link.name}
+                            </NavLink>
+                        </NavListItem>
+                    ))}
+                </NavList>
+            </Nav>
+        </Header>
+    )
+}
+
+// =============================================================================
 
 const colors = theme.colors
 const heights = theme.dimensions.heights
+
+// =============================================================================
 
 /**
  * This element expands to `100vw` at all breakpoints. This element displays
@@ -56,6 +76,8 @@ const Header = styled('header')`
     }
 `
 
+// =============================================================================
+
 /**
  * This element expands to `100%`, or `100vw`, at smaller viewport widths but
  * caps at a `max-width: 1024px;`. This element contains the portfolio logo
@@ -71,7 +93,7 @@ const Nav = styled('nav')`
     width: 100%;
     max-width: 1440px;
     height: 100%;
-    padding: 0 16px;
+    padding: 0 24px;
 
     /* Visual styles */
     /* background: pink; */
@@ -80,6 +102,8 @@ const Nav = styled('nav')`
         justify-content: space-between;
     }
 `
+
+// =============================================================================
 
 /**
  * This element contains the navigation links. It is a fixed width at larger
@@ -92,9 +116,9 @@ const NavList = styled('ul')`
     left: 0;
 
     /* Box model styles */
-    /* display: none; */
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
     width: 100%;
-    padding: 0 16px;
+    padding: 0 24px;
 
     /* Visual styles */
     list-style: none;
@@ -119,6 +143,11 @@ const NavList = styled('ul')`
     }
 `
 
+NavList.defaultProps = { isOpen: false }
+NavList.propTypes = { isOpen: PropTypes.bool }
+
+// =============================================================================
+
 /**
  * This element parents the navigation link. This element provides top and
  * bottom padding at mobile viewports and left margins at larger viewports.
@@ -130,10 +159,18 @@ const NavListItem = styled('li')`
         padding: 0;
 
         & + & {
-            margin-left: 40px;
+            margin-left: 36px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        & + & {
+            margin-left: 48px;
         }
     }
 `
+
+// =============================================================================
 
 /**
  * This element contains the navigation link. It takes up the entire width and
@@ -143,6 +180,7 @@ const NavListItem = styled('li')`
  * element is hovered or active.
  */
 const NavLink = styled('a')`
+    color: rgba(${colors.heading}, 1);
     font-size: 20px;
 
     @media only screen and (min-width: 768px) {
@@ -150,6 +188,8 @@ const NavLink = styled('a')`
         display: flex;
         align-items: center;
         height: 100%;
+        font-size: 19px;
+        transition: color 200ms ease;
 
         /* Defines the underline at the bottom of each navigation list item. */
         &::after {
@@ -167,6 +207,8 @@ const NavLink = styled('a')`
 
         &:hover,
         &:active {
+            color: rgba(${colors.heading}, 0.6);
+
             &::after {
                 transform: scaleX(1);
                 transform-origin: left;
@@ -175,9 +217,11 @@ const NavLink = styled('a')`
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: 24px;
+        font-size: 21px;
     }
 `
+
+// =============================================================================
 
 /**
  * This element contains the square outline SVG.
@@ -190,10 +234,12 @@ const MenuButtonContainer = styled('span')`
     }
 `
 
+// =============================================================================
+
 /**
  * This element contains the website's logo.
  */
-const Logo = styled('span')`
+const Logo = styled('a')`
     display: none;
     color: rgba(${colors.heading}, 1);
 
@@ -201,12 +247,14 @@ const Logo = styled('span')`
 
     @media only screen and (min-width: 768px) {
         display: inline-block;
-        font-size: 32px;
+        font-size: 28px;
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: 36px;
+        font-size: 32px;
     }
 `
+
+// =============================================================================
 
 export default Navbar

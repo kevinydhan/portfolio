@@ -48,6 +48,7 @@ module.exports = {
      * the `Navbar` component to render out the navigation links.
      */
     navLinks: [
+        { name: 'Home', href: '#' },
         { name: 'Projects', href: '/#projects' },
         { name: 'Resume', href: '#' },
         { name: 'Contact', href: 'mailto:kevinhanyd@gmail.com' },
