@@ -17,6 +17,7 @@ export default createGlobalStyle`
     }
 
     html {
+        /* Box model styles */
         box-sizing: border-box;
         overflow-x: hidden;
 
@@ -25,6 +26,7 @@ export default createGlobalStyle`
         font-family: ${fontFamily.primary}, sans-serif;
         letter-spacing: 0.1rem;
 
+        /* Misc. styles */
         scroll-behavior: smooth;
     }
 
