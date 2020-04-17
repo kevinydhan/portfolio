@@ -6,6 +6,10 @@ module.exports = {
     plugins: [
         'stylelint-order',
     ],
+    ignoreFiles: [
+        'src/images',
+        'src/theme/fonts'
+    ],
     rules: {
         // Disables indentation rule. This rule is handled by Prettier.
         indentation: null,
