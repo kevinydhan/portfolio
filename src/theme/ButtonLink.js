@@ -1,4 +1,3 @@
-import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import theme from './theme'
@@ -15,12 +14,15 @@ const handleButtonLinkVariants = (props) => {
             position: relative;
 
             &::before {
-                background-color: rgba(${color}, 1);
-                content: '';
-                height: calc(100% - 4px);
                 position: absolute;
-                width: calc(100% - 4px);
                 z-index: -999;
+
+                height: calc(100% - 4px);
+                width: calc(100% - 4px);
+
+                content: '';
+
+                background-color: rgba(${color}, 1);
             }
 
             &:hover,
@@ -38,14 +40,14 @@ const handleButtonLinkVariants = (props) => {
 
         &:hover,
         &:active {
-            border: 2px solid rgba(${color}, 0.6);
             color: rgba(${color}, 0.6);
+            border: 2px solid rgba(${color}, 0.6);
         }
 
         @media only screen and (min-width: 768px) {
-            font-size: 22px;
-            height: 82px;
             width: 280px;
+            height: 82px;
+            font-size: 22px;
         }
 
         ${filled}
@@ -58,15 +60,20 @@ const handleButtonLinkVariants = (props) => {
  * @param {string} props.href - Button link url/route
  */
 const ButtonLink = styled('a')`
-    align-items: center;
-    cursor: pointer;
+    /* Box model styles */
     display: flex;
-    font-size: 18px;
-    height: 60px;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 60px;
+
+    /* Typography styles */
+    font-size: 18px;
     text-align: center;
     text-transform: uppercase;
-    width: 100%;
+
+    /* Misc. styles */
+    cursor: pointer;
 
     ${handleButtonLinkVariants}
 `

@@ -22,14 +22,19 @@ const Navbar = () => {
  * breakpoints. This element displays the navigation bar's background color.
  */
 const Header = styled('header')`
-    background: rgba(${theme.colors.background}, 0.97);
-    border-bottom: 1px solid rgba(${theme.colors.border}, 0.95);
-    height: ${theme.dimensions.heights.navbar};
-    left: 0;
+    /* Positional styles */
     position: fixed;
     top: 0;
-    width: 100vw;
+    left: 0;
     z-index: 999;
+
+    /* Box model styles */
+    width: 100vw;
+    height: ${theme.dimensions.heights.navbar};
+
+    /* Visual styles */
+    background: rgba(${theme.colors.background}, 0.97);
+    border-bottom: 1px solid rgba(${theme.colors.border}, 0.95);
 `
 
 /**
@@ -38,10 +43,13 @@ const Header = styled('header')`
  * contains the portfolio logo image and navigation list.
  */
 const Nav = styled('nav')`
-    height: 100%;
-    max-width: 1024px;
+    /* Positional styles */
     position: relative;
+
+    /* Box model styles */
     width: 100%;
+    max-width: 1024px;
+    height: 100%;
 `
 
 /**
@@ -49,11 +57,16 @@ const Nav = styled('nav')`
  * fixed width at larger viewport widths.
  */
 const NavList = styled('ul')`
-    display: none;
-    left: 0;
-    list-style: none;
+    /* Positional styles */
     position: absolute;
     top: 100%;
+    left: 0;
+
+    /* Box model styles */
+    display: none;
+
+    /* Visual styles */
+    list-style: none;
 `
 
 export default Navbar

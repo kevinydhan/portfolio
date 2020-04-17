@@ -12,96 +12,72 @@ const Landing = () => {
                 I am a <Keyword>full-stack developer</Keyword> based in New
                 Jersey, USA.
             </Heading>
-            <Heading>
+            {/* <Heading>
                 I build <Keyword>websites</Keyword> and{' '}
                 <Keyword>web applications</Keyword>.
-            </Heading>
+            </Heading> */}
 
-            <CTAContainer>
+            {/* <CTAContainer>
                 {content.cta.map((cta, i) => (
                     <ButtonLink key={generateKey(cta.text, i)} {...cta}>
                         {cta.text}
                     </ButtonLink>
                 ))}
-            </CTAContainer>
+            </CTAContainer> */}
         </Section>
     )
 }
+
+/**
+ *
+ * @param {*} text
+ * @param {*} keywords
+ *
+ * @returns {Array<string | JSX.Element>} - Array of text split
+ */
+const highlightKeywords = (text, keywords) => {}
 
 const { colors, dimensions } = theme
 const { heights } = dimensions
 
 const Section = styled('section')`
+
+    /* Ensures the watermark background container positions itself relative to
+       this element. */
+    position: relative;
     display: flex;
     flex-direction: column;
+
+    justify-content: center;
+
+    width: 100vw;
+
+    max-width: 1440px;
 
     /* Fills the remaining space of the screen, taking into account the
        navigation bar's height.  */
     height: calc(100vh - ${heights.navbar.sm});
 
-    justify-content: center;
-
-    max-width: 1440px;
-
     /* Offsets the entire landing page's content down. */
     padding: 0 16px;
 
-    /* Ensures the watermark background container positions itself relative to
-       this element. */
-    position: relative;
-
-    width: 100vw;
-
     /* Targets the SVG background image. */
     > svg {
-        max-width: 699px;
         position: absolute;
-        right: 0;
         top: 0;
+        right: 0;
         width: 100vw;
-    }
-
-    @media only screen and (min-width: 320px) {
-        /* Pushes the contents up from the bottom of the screen. */
-        padding-bottom: 7.8vw;
-    }
-
-    @media only screen and (min-width: 375px) {
-        /* Pushes the contents up from the bottom of the screen. */
-        padding-bottom: 9.6vw;
-    }
-
-    @media only screen and (min-width: 375px) and (min-height: 812px) {
-        /* Pushes the contents up from the bottom of the screen. */
-        padding-bottom: 14.8vw;
-    }
-
-    @media only screen and (min-width: 414px) and (min-height: 640px) {
-        /* Pushes the contents up from the bottom of the screen. */
-        padding-bottom: 14.8vw;
-    }
-
-    @media only screen and (min-width: 768px) {
-        height: calc(100vh - ${heights.navbar.md});
-    }
-
-    @media only screen and (min-width: 1024px) {
-        padding: 0 60px 3vw;
-
-        > svg {
-            right: 60px;
-        }
+        max-width: 699px;
     }
 `
 
 const Heading = styled('h1')`
-    font-size: 24px;
-
-    font-weight: 400;
 
     /* Limits the amount of horizontal space the heading takes up at larger
         viewport widths. */
     max-width: 885px;
+    font-weight: 400;
+    font-size: 24px;
 
     & + & {
         /* Defines the space between each heading. */

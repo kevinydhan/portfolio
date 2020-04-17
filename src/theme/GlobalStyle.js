@@ -18,10 +18,13 @@ export default createGlobalStyle`
 
     html {
         box-sizing: border-box;
+        overflow-x: hidden;
+
+        /* Typography styles */
         color: rgba(${colors.text}, 1);
         font-family: ${fontFamily.primary}, sans-serif;
         letter-spacing: 0.1rem;
-        overflow-x: hidden;
+
         scroll-behavior: smooth;
     }
 
