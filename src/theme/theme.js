@@ -34,4 +34,8 @@ export default {
             xl: '1440px',
         },
     },
+    transitions: {
+        navLinks: '200ms ease',
+        buttons: '150ms ease',
+    },
 }
