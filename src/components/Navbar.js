@@ -41,7 +41,7 @@ const Navbar = () => {
 
 // =============================================================================
 
-const colors = theme.colors
+const { colors, transitions } = theme
 const heights = theme.dimensions.heights
 
 // =============================================================================
@@ -199,7 +199,7 @@ const NavLink = styled('a')`
         align-items: center;
         height: 100%;
         font-size: 19px;
-        transition: color 200ms ease;
+        transition: color ${transitions.navLinks};
 
         /* Defines the underline at the bottom of each navigation list item. */
         &::after {
@@ -211,7 +211,7 @@ const NavLink = styled('a')`
             background: rgba(${colors.blue}, 1);
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform 200ms ease;
+            transition: transform ${transitions.navLinks};
             content: '';
         }
 

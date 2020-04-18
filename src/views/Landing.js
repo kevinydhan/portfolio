@@ -78,6 +78,7 @@ const Section = styled('section')`
         position: absolute;
         top: 0;
         right: 0;
+        z-index: -999;
         width: 100vw;
         max-width: 699px;
     }
@@ -193,7 +194,7 @@ const CTAContainer = styled('div')`
     }
 
     @media only screen and (min-width: 1024px) {
-        margin-top: 180px;
+        margin-top: 196px;
     }
 `
 

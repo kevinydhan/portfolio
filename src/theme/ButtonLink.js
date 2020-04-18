@@ -2,28 +2,22 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import theme from './theme'
 
-const handleButtonLinkVariants = (props) => {
-    const { colors } = theme
+const { colors, transitions } = theme
 
+const handleButtonLinkVariants = (props) => {
     // Chooses default color if no color is specified.
     const color = colors[props.color] ? colors[props.color] : colors['heading']
 
     const filled =
         props.variant === 'filled'
             ? `
-            position: relative;
-
             &::before {
-                position: absolute;
-                z-index: -999;
-
+                z-index: -1;
                 height: calc(100% - 4px);
                 width: calc(100% - 4px);
 
-                content: '';
-
                 background-color: rgba(${color}, 1);
-                transition: background 150ms ease;
+                transition: background ${transitions.buttons};
             }
 
             &:hover,
@@ -38,7 +32,7 @@ const handleButtonLinkVariants = (props) => {
 
     return css`
         border: 2px solid rgba(${color}, 1);
-        transition: color 150ms ease, border 150ms ease;
+        transition: color ${transitions.buttons}, border ${transitions.buttons};
 
         &:hover,
         &:active {
@@ -56,6 +50,8 @@ const handleButtonLinkVariants = (props) => {
  * @param {string} props.href - Button link url/route
  */
 const ButtonLink = styled('a')`
+    position: relative;
+
     /* Box model styles */
     display: flex;
     align-items: center;
@@ -68,8 +64,26 @@ const ButtonLink = styled('a')`
     text-align: center;
     text-transform: uppercase;
 
+    /* Visual styles */
+    /* background: rgba(${colors.background}, 1); */
+
     /* Misc. styles */
     cursor: pointer;
+
+    &::before,
+    &::after {
+        position: absolute;
+        z-index: -2;
+        content: '';
+    }
+
+    &::after {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(${colors.background}, 1);
+    }
 
     @media only screen and (min-width: 768px) {
         width: 280px;
