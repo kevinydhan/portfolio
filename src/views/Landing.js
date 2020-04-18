@@ -130,11 +130,7 @@ const Heading = styled('h1')`
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: 48px;
-
-        & + & {
-            margin-top: 48px;
-        }
+        font-size: 46px;
     }
 
     @media only screen and (min-height: 768px) {
