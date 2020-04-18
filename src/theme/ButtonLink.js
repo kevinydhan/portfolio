@@ -23,6 +23,7 @@ const handleButtonLinkVariants = (props) => {
                 content: '';
 
                 background-color: rgba(${color}, 1);
+                transition: background 150ms ease;
             }
 
             &:hover,
@@ -37,17 +38,12 @@ const handleButtonLinkVariants = (props) => {
 
     return css`
         border: 2px solid rgba(${color}, 1);
+        transition: color 150ms ease, border 150ms ease;
 
         &:hover,
         &:active {
             color: rgba(${color}, 0.6);
             border: 2px solid rgba(${color}, 0.6);
-        }
-
-        @media only screen and (min-width: 768px) {
-            width: 280px;
-            height: 82px;
-            font-size: 22px;
         }
 
         ${filled}
@@ -74,6 +70,18 @@ const ButtonLink = styled('a')`
 
     /* Misc. styles */
     cursor: pointer;
+
+    @media only screen and (min-width: 768px) {
+        width: 280px;
+        height: 72px;
+        font-size: 20px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        width: 300px;
+        height: 78px;
+        font-size: 22px;
+    }
 
     ${handleButtonLinkVariants}
 `
