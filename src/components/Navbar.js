@@ -96,6 +96,10 @@ const Nav = styled('nav')`
     padding: 0 24px;
 
     /* Visual styles */
+    /* border-right: 1px solid white;
+    border-left: 1px solid white; */
+
+    /* Visual styles */
     /* background: pink; */
 
     @media only screen and (min-width: 768px) {
@@ -168,6 +172,12 @@ const NavListItem = styled('li')`
             margin-left: 48px;
         }
     }
+
+    @media only screen and (min-width: 1024px) {
+        & + & {
+            margin-left: 56px;
+        }
+    }
 `
 
 // =============================================================================
@@ -219,6 +229,10 @@ const NavLink = styled('a')`
     @media only screen and (min-width: 1024px) {
         font-size: 21px;
     }
+
+    @media only screen and (min-width: 1440px) {
+        font-size: 24px;
+    }
 `
 
 // =============================================================================
@@ -252,6 +266,10 @@ const Logo = styled('a')`
 
     @media only screen and (min-width: 1024px) {
         font-size: 32px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        font-size: 40px;
     }
 `
 
