@@ -117,12 +117,6 @@ const Heading = styled('h1')`
         }
     }
 
-    @media only screen and (min-height: 768px) {
-        &:first-of-type {
-            margin-top: 0;
-        }
-    }
-
     @media only screen and (min-width: 667px) {
         font-size: 36px;
     }
@@ -140,6 +134,18 @@ const Heading = styled('h1')`
 
         & + & {
             margin-top: 48px;
+        }
+    }
+
+    @media only screen and (min-height: 768px) {
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+
+    @media only screen and (width: 1024px) and (height: 768px) {
+        &:first-of-type {
+            margin-top: 108px;
         }
     }
 `
@@ -169,13 +175,19 @@ const CTAContainer = styled('div')`
     @media only screen and (min-width: 320px) {
         /* Sets a dynamic and consistent separation between the landing view's
            headings and the call-to-action buttons. */
-        margin-top: 21.3vw;
+        margin-top: 80px;
+    }
+
+    @media only screen and (min-width: 568px) {
+        margin-top: 90px;
     }
 
     @media only screen and (min-width: 768px) {
         /* Changes the display orientation of the call-to-action buttons from
            top-to-bottom to left-to-right at larger viewport sizes. */
         flex-direction: row;
+
+        margin-top: 120px;
 
         a + a {
             /* Resets the top margin set at smaller viewport sizes and applies
@@ -185,7 +197,7 @@ const CTAContainer = styled('div')`
     }
 
     @media only screen and (min-width: 1024px) {
-        margin-top: 10vw;
+        margin-top: 180px;
     }
 `
 
