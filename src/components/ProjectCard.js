@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 
 // Styling modules
 import styled from 'styled-components'
-import { theme } from '@theme'
+import { theme, IconLink } from '@theme'
+import { ExternalLinkIcon, GithubCircleIcon, GitLabIcon } from '@theme/icons'
 
 // Misc. modules
 import { generateKey } from '@utils'
@@ -13,6 +14,24 @@ import { generateKey } from '@utils'
 
 const ProjectCard = (props) => {
     const { name, description, tags, url, imgSrc } = props
+
+    const ExternalLink = url.external ? (
+        <IconLink>
+            <ExternalLinkIcon />
+        </IconLink>
+    ) : null
+
+    const Github = url.github ? (
+        <IconLink>
+            <GithubCircleIcon />
+        </IconLink>
+    ) : null
+
+    const GitLab = url.gitlab ? (
+        <IconLink>
+            <GitLabIcon />
+        </IconLink>
+    ) : null
 
     return (
         <Card>
@@ -26,6 +45,11 @@ const ProjectCard = (props) => {
                     <TagItem key={generateKey(tag, i)}>{tag}</TagItem>
                 ))}
             </TagList>
+            <IconContainer>
+                {Github}
+                {GitLab}
+                {ExternalLink}
+            </IconContainer>
         </Card>
     )
 }
@@ -47,6 +71,15 @@ ProjectCard.propTypes = {
 // =============================================================================
 
 const colors = theme.colors
+
+/**
+ * This variable contains the dimension for the title's underline and icons'
+ * top border width.
+ */
+const underlineWidthMobile = '96px'
+const underlineDistanceMobile = '8px'
+const underlineThicknessMobile = '2px'
+const underlineBackground = `rgba(${colors.heading}, 1)`
 
 // =============================================================================
 
@@ -111,13 +144,13 @@ const Title = styled('h3')`
     &::after {
         /* Positional styles */
         position: absolute;
-        bottom: -8px;
+        bottom: calc(${underlineDistanceMobile} * -1);
         left: 0;
 
         /* Box model styles */
-        width: 90px;
-        height: 1px;
-        background: rgba(${colors.heading}, 1);
+        width: ${underlineWidthMobile};
+        height: ${underlineThicknessMobile};
+        background: ${underlineBackground};
 
         /* Misc. styles */
         content: '';
@@ -144,6 +177,32 @@ const TagList = styled('ul')`
 const TagItem = styled('li')`
     margin: 6px 16px 0 0;
     font-size: 14px;
+`
+
+// =============================================================================
+
+const IconContainer = styled('div')`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: ${underlineWidthMobile};
+    margin-top: 40px;
+
+    &::before {
+        position: absolute;
+        top: calc(${underlineDistanceMobile} * -2);
+        left: 0;
+        width: 100%;
+        height: ${underlineThicknessMobile};
+        background: ${underlineBackground};
+        content: '';
+    }
+
+    svg {
+        width: 40px;
+        height: 40px;
+    }
 `
 
 // =============================================================================
