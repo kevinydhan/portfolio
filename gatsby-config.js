@@ -28,6 +28,9 @@ module.exports = {
             },
         },
 
+        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-offline
+        'gatsby-plugin-offline',
+
         // @see https://www.gatsbyjs.org/packages/gatsby-plugin-sharp
         'gatsby-plugin-sharp',
 
