@@ -289,6 +289,7 @@ const Title = styled('h3')`
     @media only screen and (min-width: 768px) {
         width: ${bodyWidth};
         font-size: ${fontSizes.title.md};
+        letter-spacing: 0.2rem;
     }
 
     @media only screen and (min-width: 1024px) {

@@ -67,7 +67,7 @@ projects:
 
   # ---------------------------------------------------
   - name: Grace Shopper
-    description: Mock e-commerce website built during my time at Fullstack Academy
+    description: Mock e-commerce website built with a team of 4 members over the course of 5-6 weeks at Fullstack Academy
     url:
       external: https://kbmk.herokuapp.com
       github: https://github.com/grace-shoppers

@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 import PoppinsRegular from '@theme/fonts/Poppins-Regular.ttf'
-import PoppinsSemiBold from '@theme/fonts/Poppins-SemiBold.ttf'
+import PoppinsMedium from '@theme/fonts/Poppins-Medium.ttf'
 
 const FontFace = css`
     @font-face {
@@ -12,10 +12,10 @@ const FontFace = css`
     }
 
     @font-face {
-        font-weight: 600;
+        font-weight: 500;
         font-family: 'Poppins';
         font-style: normal;
-        src: url(${PoppinsSemiBold}) format('truetype');
+        src: url(${PoppinsMedium}) format('truetype');
     }
 `
 

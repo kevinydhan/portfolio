@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 // Styling modules
 import styled, { css } from 'styled-components'
-import { Section } from '@theme'
+import { theme, Section } from '@theme'
 
 // Misc. modules
 import content from '@content/projects.yml'
@@ -66,29 +66,108 @@ const Projects = () => {
 
     return (
         <Section id="projects" additionalStyles={additionalSectionStyles}>
-            {/* <Heading>{content.heading}</Heading> */}
-            {projects.map((project, i) => {
-                return (
-                    <ProjectCard
-                        key={generateKey(project.name, i)}
-                        {...project}
-                    />
-                )
-            })}
+            <Heading>{content.heading}</Heading>
+            <ProjectList>
+                {projects.map((project, i) => {
+                    return (
+                        <ProjectCard
+                            key={generateKey(project.name, i)}
+                            {...project}
+                        />
+                    )
+                })}
+            </ProjectList>
         </Section>
     )
 }
 
 // =============================================================================
 
+const colors = theme.colors
+const heights = theme.dimensions.heights
+
+const fontSizes = {
+    heading: {
+        xs: '28px',
+        sm: '32px',
+        md: '38px',
+        lg: '48px',
+        xl: '50px',
+    },
+}
+
+// =============================================================================
+
 const additionalSectionStyles = css`
-    padding-top: 100px;
+    margin-top: 100px;
+
+    /* The top offset is calculated by adding the navigation bar's height and
+       the additional space. */
+    padding-top: calc(${heights.navbar.md} + 48px);
+
+    @media only screen and (min-width: 768px) {
+        margin-top: 300px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        margin-top: 300px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        margin-top: 300px;
+    }
 `
 
 // =============================================================================
 
 const Heading = styled('h2')`
-    font-size: 27px;
+    position: relative;
+    font-weight: 500;
+    font-size: ${fontSizes.heading.xs};
+
+    &::after {
+        position: absolute;
+        bottom: -18px;
+        left: 0;
+        width: 30%;
+        height: 4px;
+        background: rgba(${colors.blue}, 0.6);
+        content: '';
+    }
+
+    @media only screen and (min-width: 568px) {
+        font-size: ${fontSizes.heading.sm};
+    }
+
+    @media only screen and (min-width: 768px) {
+        font-size: ${fontSizes.heading.md};
+    }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: ${fontSizes.heading.lg};
+    }
+
+    @media only screen and (min-width: 1440px) {
+        font-size: ${fontSizes.heading.xl};
+    }
+`
+
+// =============================================================================
+
+const ProjectList = styled('ul')`
+    margin-top: 60px;
+
+    @media only screen and (min-width: 768px) {
+        margin-top: 70px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        margin-top: 120px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        margin-top: 150px;
+    }
 `
 
 // =============================================================================
