@@ -38,6 +38,6 @@ export default {
         navbar: '250ms ease',
         navLinks: '200ms ease',
         buttons: '150ms ease',
-        projectCard: '250ms ease',
+        projectCard: '300ms ease',
     },
 }
