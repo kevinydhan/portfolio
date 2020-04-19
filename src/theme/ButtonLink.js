@@ -45,6 +45,36 @@ const handleButtonLinkVariants = (props) => {
 }
 
 /**
+ * xs: 0px
+ * sm: 375px
+ * md: 768px
+ * lg: 1024px
+ * xl: 1440px
+ */
+
+const width = {
+    xs: '100%',
+    sm: '100%',
+    md: '260px',
+    lg: '280px',
+    xl: '',
+}
+const height = {
+    xs: '60px',
+    sm: '60px',
+    md: '68px',
+    lg: '70px',
+    xl: '',
+}
+const fontSize = {
+    xs: '17px',
+    sm: '17px',
+    md: '18px',
+    lg: '19px',
+    xl: '',
+}
+
+/**
  * @param {string} [props.variant="outline"] - Button variation
  * @param {string} [props.color="blue"] - Button color
  * @param {string} props.href - Button link url/route
@@ -56,11 +86,11 @@ const ButtonLink = styled('a')`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 60px;
+    width: ${width.xs};
+    height: ${height.xs};
 
     /* Typography styles */
-    font-size: 18px;
+    font-size: ${fontSize.xs};
     text-align: center;
     text-transform: uppercase;
 
@@ -86,15 +116,15 @@ const ButtonLink = styled('a')`
     }
 
     @media only screen and (min-width: 768px) {
-        width: 280px;
-        height: 72px;
-        font-size: 20px;
+        width: ${width.md};
+        height: ${height.md};
+        font-size: ${fontSize.md};
     }
 
     @media only screen and (min-width: 1024px) {
-        width: 300px;
-        height: 78px;
-        font-size: 22px;
+        width: ${width.lg};
+        height: ${height.lg};
+        font-size: ${fontSize.lg};
     }
 
     ${handleButtonLinkVariants}
