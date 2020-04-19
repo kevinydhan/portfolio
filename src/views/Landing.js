@@ -126,6 +126,12 @@ const Heading = styled('h1')`
             margin-top: 108px;
         }
     }
+
+    @media only screen and (min-width: 1024px) and (min-height: 375px) {
+        &:first-of-type {
+            margin-top: 108px;
+        }
+    }
 `
 
 // =============================================================================

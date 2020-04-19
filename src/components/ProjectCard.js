@@ -16,19 +16,19 @@ const ProjectCard = (props) => {
     const { name, description, tags, url, imgSrc } = props
 
     const ExternalLink = url.external ? (
-        <IconLink>
+        <IconLink href={url.external}>
             <ExternalLinkIcon />
         </IconLink>
     ) : null
 
     const Github = url.github ? (
-        <IconLink>
+        <IconLink href={url.github}>
             <GithubCircleIcon />
         </IconLink>
     ) : null
 
     const GitLab = url.gitlab ? (
-        <IconLink>
+        <IconLink href={url.gitlab}>
             <GitLabIcon />
         </IconLink>
     ) : null
@@ -38,18 +38,20 @@ const ProjectCard = (props) => {
             <ImageContainer>
                 <Image src={imgSrc} />
             </ImageContainer>
-            <Title>{name}</Title>
-            <Description>{description}</Description>
-            <TagList>
-                {tags.map((tag, i) => (
-                    <TagItem key={generateKey(tag, i)}>{tag}</TagItem>
-                ))}
-            </TagList>
-            <IconContainer>
-                {Github}
-                {GitLab}
-                {ExternalLink}
-            </IconContainer>
+            <Content>
+                <Title>{name}</Title>
+                <Description>{description}</Description>
+                <TagList>
+                    {tags.map((tag, i) => (
+                        <TagItem key={generateKey(tag, i)}>{tag}</TagItem>
+                    ))}
+                </TagList>
+                <IconContainer>
+                    {Github}
+                    {GitLab}
+                    {ExternalLink}
+                </IconContainer>
+            </Content>
         </Card>
     )
 }
@@ -73,13 +75,117 @@ ProjectCard.propTypes = {
 const colors = theme.colors
 
 /**
- * This variable contains the dimension for the title's underline and icons'
- * top border width.
+ * This variable references the width for the title's underline and icons'
+ * top border.
  */
 const underlineWidthMobile = '96px'
+
+const underlineWidthDesktop = '116px'
+
+/**
+ * This variable references the distance between the underline and the title.
+ * It is also used to calculate the distance between the top border of the icon
+ * container and the container's top edge.
+ */
 const underlineDistanceMobile = '8px'
+
+const underlineDistanceDesktop = '12px'
+
+/**
+ * This variable references the underline's thickness.
+ */
 const underlineThicknessMobile = '2px'
+
+const underlineThicknessDesktop = '3px'
+
+/**
+ * This variable references the underline's background color.
+ */
 const underlineBackground = `rgba(${colors.heading}, 1)`
+
+/**
+ * This variable references the width for the project's title, description,
+ * and tag list at viewport widths of `768px` and above.
+ */
+const bodyWidth = '85%'
+
+/**
+ * xs = 0px
+ * sm = 375px
+ * md = 768px
+ * lg = 1024px
+ * xl = 1440px
+ */
+const fontSizes = {
+    title: {
+        xs: '24px',
+        sm: '24px',
+        md: '30px',
+        lg: '33px',
+        xl: '36px',
+    },
+    description: {
+        xs: '17px',
+        sm: '17px',
+        md: '18px',
+        lg: '20px',
+        xl: '20px',
+    },
+    tags: {
+        xs: '14px',
+        sm: '14px',
+        md: '14px',
+        lg: '15px',
+        xl: '16px',
+    },
+}
+
+const lineHeights = {
+    description: {
+        xs: '',
+        sm: '',
+        md: '32px',
+        lg: '36px',
+        xl: '36px',
+    },
+}
+
+// =============================================================================
+
+const ImageContainer = styled('picture')`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @media only screen and (min-width: 768px) {
+        flex: 1;
+    }
+`
+
+// =============================================================================
+
+const TagList = styled('ul')`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    font-size: ${fontSizes.tags.xs};
+    list-style: none;
+
+    @media only screen and (min-width: 768px) {
+        width: ${bodyWidth};
+        font-size: ${fontSizes.tags.md};
+    }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: ${fontSizes.tags.lg};
+    }
+
+    @media only screen and (min-width: 1440px) {
+        margin-top: 120px;
+        font-size: ${fontSizes.tags.xl};
+    }
+`
 
 // =============================================================================
 
@@ -91,38 +197,47 @@ const Card = styled('li')`
         margin-top: 90px;
     }
 
-    &:nth-child(3n + 1) > ul {
+    &:nth-child(3n + 1) ${TagList} {
         color: rgba(${colors.lightblue}, 1);
     }
 
-    &:nth-child(3n + 2) > ul {
+    &:nth-child(3n + 2) ${TagList} {
         color: rgba(${colors.yellow}, 1);
     }
 
-    &:nth-child(3n + 3) > ul {
+    &:nth-child(3n + 3) ${TagList} {
         color: rgba(${colors.red}, 1);
     }
 
-    &:nth-child(3n + 1) > picture {
+    &:nth-child(3n + 1) > ${ImageContainer} {
         background: rgba(${colors.lightblue}, 1);
     }
 
-    &:nth-child(3n + 2) > picture {
+    &:nth-child(3n + 2) > ${ImageContainer} {
         background: rgba(${colors.yellow}, 1);
     }
 
-    &:nth-child(3n + 3) > picture {
+    &:nth-child(3n + 3) > ${ImageContainer} {
         background: rgba(${colors.red}, 1);
     }
-`
 
-// =============================================================================
+    @media only screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: row-reverse;
+        height: 550px;
 
-const ImageContainer = styled('picture')`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+        & + & {
+            margin-top: 0;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        height: 600px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        height: 720px;
+    }
 `
 
 // =============================================================================
@@ -133,11 +248,26 @@ const Image = styled('img')`
 
 // =============================================================================
 
+/**
+ * This element parents the project's content, including the project title,
+ * description, tags, and icons.
+ */
+const Content = styled('div')`
+    @media only screen and (min-width: 768px) {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+    }
+`
+
+// =============================================================================
+
 const Title = styled('h3')`
     position: relative;
     margin-top: 30px;
     font-weight: 400;
-    font-size: 24px;
+    font-size: ${fontSizes.title.xs};
     text-transform: uppercase;
 
     /* Creates the underline underneath the project title. */
@@ -155,28 +285,55 @@ const Title = styled('h3')`
         /* Misc. styles */
         content: '';
     }
+
+    @media only screen and (min-width: 768px) {
+        width: ${bodyWidth};
+        font-size: ${fontSizes.title.md};
+        letter-spacing: 0.2rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: ${fontSizes.title.lg};
+
+        &::after {
+            bottom: calc(${underlineDistanceDesktop} * -1);
+            width: ${underlineWidthDesktop};
+            height: ${underlineThicknessDesktop};
+        }
+    }
+
+    @media only screen and (min-width: 1440px) {
+        font-size: ${fontSizes.title.xl};
+    }
 `
 
 // =============================================================================
 
 const Description = styled('p')`
     margin-top: 32px;
-`
 
-// =============================================================================
+    @media only screen and (min-width: 768px) {
+        width: ${bodyWidth};
+        margin-top: 38px;
+        font-size: ${fontSizes.description.md};
+        line-height: ${lineHeights.description.md};
+    }
 
-const TagList = styled('ul')`
-    display: flex;
-    flex-wrap: wrap;
-    margin: 80px 0 0;
-    list-style: none;
+    @media only screen and (min-width: 1024px) {
+        font-size: ${fontSizes.description.lg};
+        line-height: ${lineHeights.description.lg};
+    }
+
+    @media only screen and (min-width: 1440px) {
+        font-size: ${fontSizes.description.xl};
+        line-height: ${lineHeights.description.xl};
+    }
 `
 
 // =============================================================================
 
 const TagItem = styled('li')`
     margin: 6px 16px 0 0;
-    font-size: 14px;
 `
 
 // =============================================================================
@@ -197,6 +354,20 @@ const IconContainer = styled('div')`
         height: ${underlineThicknessMobile};
         background: ${underlineBackground};
         content: '';
+    }
+
+    @media only screen and (min-width: 768px) {
+        margin-top: 44px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        width: ${underlineWidthDesktop};
+        margin-top: 52px;
+
+        &::before {
+            top: calc(${underlineDistanceDesktop} * -1.9);
+            height: ${underlineThicknessDesktop};
+        }
     }
 `
 

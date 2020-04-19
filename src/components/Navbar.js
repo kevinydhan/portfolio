@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { SquareOutlineButton } from '@theme/icons'
 
 // Styling modules
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from '@theme'
 
 // Misc. modules
@@ -14,6 +14,8 @@ import { generateKey } from '@utils'
 // =============================================================================
 
 const Navbar = () => {
+    const hiddenNavListItems = ['Home']
+
     const [isOpen, setIsOpen] = useState(false)
     const toggleNavList = () => setIsOpen(!isOpen)
     const closeNavList = () => setIsOpen(false)
@@ -26,13 +28,26 @@ const Navbar = () => {
                 </MenuButtonContainer>
                 <Logo href="#">Kevin Han</Logo>
                 <NavList isOpen={isOpen}>
-                    {navLinks.map((link, i) => (
-                        <NavListItem key={generateKey(link.name, i)}>
-                            <NavLink href={link.href} onClick={closeNavList}>
-                                {link.name}
-                            </NavLink>
-                        </NavListItem>
-                    ))}
+                    {navLinks.map((link, i) => {
+                        const navListItemProps = {}
+
+                        if (hiddenNavListItems.includes(link.name)) {
+                            navListItemProps.additionalStyles = additionalHiddenNavListItemStyles
+                        }
+                        return (
+                            <NavListItem
+                                key={generateKey(link.name, i)}
+                                {...navListItemProps}
+                            >
+                                <NavLink
+                                    href={link.href}
+                                    onClick={closeNavList}
+                                >
+                                    {link.name}
+                                </NavLink>
+                            </NavListItem>
+                        )
+                    })}
                 </NavList>
             </Nav>
         </Header>
@@ -163,20 +178,28 @@ const NavListItem = styled('li')`
         padding: 0;
 
         & + & {
-            margin-left: 36px;
+            margin-left: 46px;
         }
     }
 
     @media only screen and (min-width: 1024px) {
         & + & {
-            margin-left: 48px;
+            margin-left: 50px;
         }
     }
 
     @media only screen and (min-width: 1024px) {
         & + & {
-            margin-left: 56px;
+            margin-left: 60px;
         }
+    }
+
+    ${(props) => props.additionalStyles}
+`
+
+const additionalHiddenNavListItemStyles = css`
+    @media only screen and (min-width: 768px) {
+        display: none;
     }
 `
 
@@ -198,7 +221,6 @@ const NavLink = styled('a')`
         display: flex;
         align-items: center;
         height: 100%;
-        font-size: 19px;
         transition: color ${transitions.navLinks};
 
         /* Defines the underline at the bottom of each navigation list item. */
@@ -226,12 +248,8 @@ const NavLink = styled('a')`
         }
     }
 
-    @media only screen and (min-width: 1024px) {
-        font-size: 21px;
-    }
-
     @media only screen and (min-width: 1440px) {
-        font-size: 24px;
+        font-size: 19px;
     }
 `
 
@@ -256,20 +274,25 @@ const MenuButtonContainer = styled('span')`
 const Logo = styled('a')`
     display: none;
     color: rgba(${colors.heading}, 1);
-
     text-transform: uppercase;
+    transition: color ${transitions.navLinks};
+
+    &:hover,
+    &:active {
+        color: rgba(${colors.heading}, 0.6);
+    }
 
     @media only screen and (min-width: 768px) {
-        display: inline-block;
-        font-size: 28px;
+        display: block;
+        font-size: 24px;
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     @media only screen and (min-width: 1440px) {
-        font-size: 40px;
+        font-size: 28px;
     }
 `
 

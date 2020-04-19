@@ -12,7 +12,7 @@ const Section = styled('section')`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     max-width: 1440px;
 
     /* Fills the remaining space of the screen, taking into account the
