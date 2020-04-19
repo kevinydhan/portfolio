@@ -34,7 +34,7 @@ projects:
       - Gatsby
       - GitLab CI
       - Netlify
-    imgSrc: project-mockup-small.png
+    imgSrc: project-mockup-sample.png
 
   # ---------------------------------------------------
   - name: Keenbot Server
@@ -49,7 +49,7 @@ projects:
       - PostgreSQL
       - GitLab CI
       - Heroku
-    imgSrc: project-mockup-small.png
+    imgSrc: project-mockup-sample.png
 
   # ---------------------------------------------------
   - name: Bunny Eats
@@ -63,7 +63,7 @@ projects:
       - Redux
       - Webpack
       - Netlify
-    imgSrc: project-mockup-small.png
+    imgSrc: project-mockup-sample.png
 
   # ---------------------------------------------------
   - name: Grace Shopper
@@ -80,4 +80,4 @@ projects:
       - Sequelize
       - PostgreSQL
       - Heroku
-    imgSrc: project-mockup-small.png
+    imgSrc: project-mockup-sample.png
