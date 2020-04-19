@@ -1,5 +1,5 @@
 // React modules
-import React from 'react'
+import React, { useEffect, createRef } from 'react'
 import PropTypes from 'prop-types'
 
 // Styling modules
@@ -13,7 +13,13 @@ import { generateKey } from '@utils'
 // =============================================================================
 
 const ProjectCard = (props) => {
-    const { name, description, tags, url, imgSrc } = props
+    const { name, description, tags, url, imgSrc, observeElement } = props
+
+    const ref = createRef()
+
+    useEffect(() => {
+        if (ref.current) observeElement(ref.current)
+    }, [])
 
     const ExternalLink = url.external ? (
         <IconLink href={url.external}>
@@ -34,7 +40,7 @@ const ProjectCard = (props) => {
     ) : null
 
     return (
-        <Card>
+        <Card ref={ref}>
             <ImageContainer>
                 <Image src={imgSrc} />
             </ImageContainer>
@@ -68,11 +74,12 @@ ProjectCard.propTypes = {
         github: PropTypes.string,
     }),
     imgSrc: PropTypes.string.isRequired,
+    observeElement: PropTypes.func.isRequired,
 }
 
 // =============================================================================
 
-const colors = theme.colors
+const { colors, transitions } = theme
 
 /**
  * This variable references the width for the title's underline and icons'
@@ -192,6 +199,12 @@ const TagList = styled('ul')`
 const Card = styled('li')`
     width: 100%;
     list-style: none;
+    opacity: 0.1;
+    transition: opacity ${transitions.projectCard};
+
+    &.opaque {
+        opacity: 1;
+    }
 
     & + & {
         margin-top: 90px;

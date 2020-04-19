@@ -51,8 +51,6 @@ class Navbar extends Component {
         const { state, hiddenNavListItems, toggleNavList, closeNavList } = this
         const { isOpen, isHidden } = state
 
-        console.log(isHidden)
-
         return (
             <Header className={isHidden && 'hidden'}>
                 <Nav>
@@ -132,8 +130,6 @@ const Header = styled('header')`
         background: rgba(${colors.background}, 0.98);
     }
 `
-
-Header.propTypes = { isHidden: PropTypes.bool.isRequired }
 
 // =============================================================================
 

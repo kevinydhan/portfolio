@@ -1,5 +1,5 @@
 // React modules
-import React from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import { ProjectCard } from '@components'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -71,6 +71,26 @@ const Projects = () => {
             : imageHashMap['project-mockup-sample.png'][endAttr],
     }))
 
+    /**
+     * This portion handles the opacity of each project card. It uses an
+     * intersection observer, observing each card.
+     */
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opaque')
+                } else {
+                    entry.target.classList.remove('opaque')
+                }
+            })
+        },
+        { threshold: [0.7, 0.5, 0.5, 0.5] }
+    )
+
+    const observeElement = (ref) => observer.observe(ref)
+
     return (
         <Section id="projects" additionalStyles={additionalSectionStyles}>
             <Heading>{content.heading}</Heading>
@@ -79,6 +99,7 @@ const Projects = () => {
                     return (
                         <ProjectCard
                             key={generateKey(project.name, i)}
+                            observeElement={observeElement}
                             {...project}
                         />
                     )
