@@ -88,7 +88,7 @@ const Card = styled('li')`
     list-style: none;
 
     & + & {
-        margin-top: 80px;
+        margin-top: 90px;
     }
 
     &:nth-child(3n + 1) > ul {
@@ -191,17 +191,12 @@ const IconContainer = styled('div')`
 
     &::before {
         position: absolute;
-        top: calc(${underlineDistanceMobile} * -2);
+        top: calc(${underlineDistanceMobile} * -1.9);
         left: 0;
         width: 100%;
         height: ${underlineThicknessMobile};
         background: ${underlineBackground};
         content: '';
-    }
-
-    svg {
-        width: 40px;
-        height: 40px;
     }
 `
 
