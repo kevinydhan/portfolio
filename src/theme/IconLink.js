@@ -6,10 +6,15 @@ import { theme } from '@theme'
 // =============================================================================
 
 const IconLink = (props) => {
-    const { children, href } = props
+    const { children, href, additionalStyles } = props
 
     return (
-        <Link href={href} target="_blank" rel="noreferrer noopener nofollow">
+        <Link
+            href={href}
+            target="_blank"
+            rel="noreferrer noopener nofollow"
+            additionalStyles={additionalStyles}
+        >
             {children}
         </Link>
     )
@@ -18,6 +23,7 @@ const IconLink = (props) => {
 IconLink.propTypes = {
     children: PropTypes.node,
     href: PropTypes.string,
+    additionalStyles: PropTypes.array,
 }
 
 // =============================================================================
@@ -53,8 +59,13 @@ const Link = styled('a')`
             height: 48px;
         }
     }
+
+    ${(props) => props.additionalStyles}
 `
 
+Link.propTypes = {
+    additionalStyles: PropTypes.array,
+}
 // =============================================================================
 
 export default IconLink

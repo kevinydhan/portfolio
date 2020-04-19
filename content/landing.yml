@@ -13,7 +13,7 @@ cta:
     variant: outline
 
   - text: View my resume
-    href: https://google.com
+    href: https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing
     variant: filled
     color: blue
     target: _blank

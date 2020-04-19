@@ -48,10 +48,23 @@ module.exports = {
      * the `Navbar` component to render out the navigation links.
      */
     navLinks: [
-        { name: 'Home', href: '#' },
-        { name: 'Projects', href: '/#projects' },
-        { name: 'Resume', href: '#' },
-        { name: 'Contact', href: 'mailto:kevinhanyd@gmail.com' },
+        {
+            name: 'Home',
+            href: '#',
+        },
+        {
+            name: 'Projects',
+            href: '/#projects',
+        },
+        {
+            name: 'Resume',
+            href:
+                'https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing',
+        },
+        {
+            name: 'Contact',
+            href: 'mailto:kevinhanyd@gmail.com',
+        },
     ],
 
     socialLinks: {

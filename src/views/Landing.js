@@ -3,10 +3,25 @@ import React from 'react'
 
 // Styling modules
 import styled, { css } from 'styled-components'
-import { theme, WatermarkBackground, Section, ButtonLink } from '@theme'
+
+import {
+    theme,
+    WatermarkBackground,
+    Section,
+    ButtonLink,
+    IconLink,
+} from '@theme'
+
+import {
+    LinkedInIcon,
+    GithubCircleIcon,
+    GitLabIcon,
+    StackOverflowIcon,
+} from '@theme/icons'
 
 // Misc. modules
 import content from '@content/landing.yml'
+import { socialLinks } from '@config'
 import { generateKey } from '@utils'
 
 // =============================================================================
@@ -15,14 +30,44 @@ const Landing = () => {
     return (
         <Section additionalStyles={additionalSectionStyles}>
             <WatermarkBackground />
-            <Heading>
-                I am a <Keyword>full-stack developer</Keyword> based in New
-                Jersey, USA.
-            </Heading>
-            <Heading>
-                I help others by building <Keyword>functional websites</Keyword>{' '}
-                and <Keyword>web applications</Keyword>.
-            </Heading>
+
+            <HeadingContainer>
+                <Heading>
+                    I am a <Keyword>full-stack developer</Keyword> based in New
+                    Jersey, USA.
+                </Heading>
+                <Heading>
+                    I help others by building{' '}
+                    <Keyword>functional websites</Keyword> and{' '}
+                    <Keyword>web applications</Keyword>.
+                </Heading>
+                <SocialIconContainer>
+                    <IconLink
+                        href={socialLinks.linkedin}
+                        additionalStyles={additionalIconLinkStyles}
+                    >
+                        <LinkedInIcon />
+                    </IconLink>
+                    <IconLink
+                        href={socialLinks.github}
+                        additionalStyles={additionalIconLinkStyles}
+                    >
+                        <GithubCircleIcon />
+                    </IconLink>
+                    <IconLink
+                        href={socialLinks.gitlab}
+                        additionalStyles={additionalIconLinkStyles}
+                    >
+                        <GitLabIcon />
+                    </IconLink>
+                    <IconLink
+                        href={socialLinks.stackoverflow}
+                        additionalStyles={additionalIconLinkStyles}
+                    >
+                        <StackOverflowIcon />
+                    </IconLink>
+                </SocialIconContainer>
+            </HeadingContainer>
 
             <CTAContainer>
                 {content.cta.map((cta, i) => (
@@ -48,8 +93,7 @@ const highlightKeywords = (text, keywords) => {}
 
 // =============================================================================
 
-const { colors, dimensions } = theme
-const { heights } = dimensions
+const { colors } = theme
 
 // =============================================================================
 
@@ -73,10 +117,36 @@ const additionalSectionStyles = css`
 
 // =============================================================================
 
+const HeadingContainer = styled('div')`
+    position: relative;
+    width: 100%;
+
+    @media only screen and (min-width: 320px) {
+        margin-top: 20px;
+    }
+
+    @media only screen and (min-width: 320px) {
+        margin-top: 30px;
+    }
+
+    @media only screen and (min-height: 768px) {
+        margin-top: 0;
+    }
+
+    @media only screen and (width: 1024px) and (height: 768px) {
+        margin-top: 108px;
+    }
+
+    @media only screen and (min-width: 1024px) and (min-height: 375px) {
+        margin-top: 108px;
+    }
+`
+
+// =============================================================================
+
 const Heading = styled('h1')`
     /* Limits the amount of horizontal space the heading takes up at larger
         viewport widths. */
-    max-width: 950px;
     font-weight: 400;
     font-size: 25px;
 
@@ -85,18 +155,8 @@ const Heading = styled('h1')`
         margin-top: 24px;
     }
 
-    @media only screen and (min-width: 320px) {
-        &:first-of-type {
-            margin-top: 20px;
-        }
-    }
-
     @media only screen and (min-width: 375px) {
         font-size: 30px;
-
-        &:first-of-type {
-            margin-top: 30px;
-        }
     }
 
     @media only screen and (min-width: 667px) {
@@ -104,6 +164,7 @@ const Heading = styled('h1')`
     }
 
     @media only screen and (min-width: 768px) {
+        max-width: 820px;
         font-size: 42px;
 
         & + & {
@@ -112,24 +173,56 @@ const Heading = styled('h1')`
     }
 
     @media only screen and (min-width: 1024px) {
+        max-width: 820px;
         font-size: 46px;
     }
 
-    @media only screen and (min-height: 768px) {
-        &:first-of-type {
-            margin-top: 0;
-        }
+    @media only screen and (min-width: 1440px) {
+        max-width: 950px;
+    }
+`
+
+// =============================================================================
+
+const SocialIconContainer = styled('aside')`
+    display: none;
+
+    @media only screen and (min-width: 1024px) {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        z-index: 1;
+        display: block;
+    }
+`
+
+const additionalIconLinkStyles = css`
+    & + & {
+        margin-top: 32px;
     }
 
-    @media only screen and (width: 1024px) and (height: 768px) {
-        &:first-of-type {
-            margin-top: 108px;
-        }
+    &:hover,
+    &:active {
+        transform: translateX(-2px);
+        transform-origin: right;
     }
 
-    @media only screen and (min-width: 1024px) and (min-height: 375px) {
-        &:first-of-type {
-            margin-top: 108px;
+    path,
+    rect {
+        fill: rgba(${colors.heading}, 0.6);
+    }
+
+    &:hover path,
+    &:active path,
+    &:hover rect,
+    &:active rect {
+        fill: rgba(${colors.heading}, 0.4);
+    }
+
+    @media only screen and (min-width: 1024px) {
+        svg {
+            width: 40px;
+            height: 40px;
         }
     }
 `
