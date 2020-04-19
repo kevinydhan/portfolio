@@ -21,6 +21,7 @@ import content from '@content/projects.yml'
 class Projects extends Component {
     observer = null
     threshold = [0.7, 0.5, 0.5, 0.5]
+
     componentDidMount() {
         const { handleObservedEntries, threshold } = this
         this.observer = new IntersectionObserver(handleObservedEntries, {
@@ -33,33 +34,21 @@ class Projects extends Component {
     }
 
     handleObservedEntries = (entries) => {
-        console.log(entries)
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opaque')
+            } else {
+                entry.target.classList.remove('opaque')
+            }
+        })
     }
 
-    observeElement = () => {}
+    observeElement = (ref) => {
+        if (this.observer) this.observer.observe(ref)
+    }
 
     render() {
-        /**
-         * This portion handles the opacity of each project card. It uses an
-         * intersection observer, observing each card.
-         */
-
-        // useEffect(() => {
-        //     const observer = new IntersectionObserver(
-        //         (entries) => {
-        //             entries.forEach((entry) => {
-        //                 if (entry.isIntersecting) {
-        //                     entry.target.classList.add('opaque')
-        //                 } else {
-        //                     entry.target.classList.remove('opaque')
-        //                 }
-        //             })
-        //         },
-        //         { threshold: [0.7, 0.5, 0.5, 0.5] }
-        //     )
-        // }, [])
-
-        const observeElement = () => console.log('hi')
+        const { observeElement } = this
 
         return (
             <Section id="projects" additionalStyles={additionalSectionStyles}>
