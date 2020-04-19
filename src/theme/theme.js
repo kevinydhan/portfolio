@@ -35,6 +35,7 @@ export default {
         },
     },
     transitions: {
+        navbar: '200ms ease',
         navLinks: '200ms ease',
         buttons: '150ms ease',
     },
