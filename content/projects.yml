@@ -17,14 +17,18 @@ projects:
 
   # ---------------------------------------------------
   - name: Keenbot
-    description: AI chatbot for Twitch that answers frequently asked questions about the streamer
+    description: AI chatbot for Twitch that answers frequently asked questions about the streamers
     url:
       external:
       gitlab: https://gitlab.com/keenbot/client
     tags:
-      - Javascript
+      - TypeScript
       - React
       - Redux
+      - Gatsby
+      - GitLab CI
+      - Netlify
+    imgSrc: project-mockup-small.png
 
   # ---------------------------------------------------
   - name: Keenbot Server
@@ -39,6 +43,7 @@ projects:
       - PostgreSQL
       - GitLab CI
       - Heroku
+    imgSrc: project-mockup-small.png
 
   # ---------------------------------------------------
   - name: Bunny Eats
@@ -52,6 +57,7 @@ projects:
       - Redux
       - Webpack
       - Netlify
+    imgSrc: project-mockup-small.png
 
   # ---------------------------------------------------
   - name: Grace Shopper
@@ -63,6 +69,9 @@ projects:
       - Javascript
       - React
       - Redux
+      - Webpack
       - Express
       - Sequelize
       - PostgreSQL
+      - Heroku
+    imgSrc: project-mockup-small.png

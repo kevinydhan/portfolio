@@ -1,7 +1,7 @@
 import React from 'react'
 import { Head, Navbar } from '@components'
 import { GlobalStyle } from '@theme'
-import { Landing } from '@views'
+import { Landing, Projects } from '@views'
 
 const Main = () => {
     return (
@@ -10,6 +10,7 @@ const Main = () => {
             <GlobalStyle />
             <Navbar />
             <Landing />
+            <Projects />
         </>
     )
 }

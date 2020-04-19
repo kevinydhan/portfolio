@@ -56,7 +56,8 @@ export default createGlobalStyle`
     @media only screen and (min-width: 768px) {
         #gatsby-focus-wrapper {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
 
             /* Offsets the entire page away from the navigation bar. */
             padding-top: ${heights.navbar.md};
