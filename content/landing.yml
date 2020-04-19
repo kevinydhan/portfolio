@@ -16,3 +16,5 @@ cta:
     href: https://google.com
     variant: filled
     color: blue
+    target: _blank
+    rel: noreferrer noopener nofollow

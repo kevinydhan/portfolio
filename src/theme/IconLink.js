@@ -9,7 +9,7 @@ const IconLink = (props) => {
     const { children, href } = props
 
     return (
-        <Link href={href} rel="noreferrer noopener nofollow">
+        <Link href={href} target="_blank" rel="noreferrer noopener nofollow">
             {children}
         </Link>
     )

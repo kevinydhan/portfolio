@@ -1,5 +1,5 @@
 // React modules
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import PropTypes from 'prop-types'
 import { SquareOutlineButton } from '@theme/icons'
 
@@ -13,45 +13,77 @@ import { generateKey } from '@utils'
 
 // =============================================================================
 
-const Navbar = () => {
-    const hiddenNavListItems = ['Home']
+class Navbar extends Component {
+    hiddenNavListItems = ['Home']
+    state = {
+        // Keeps track of the open/close state of the dropdown menu
+        isOpen: false,
 
-    const [isOpen, setIsOpen] = useState(false)
-    const toggleNavList = () => setIsOpen(!isOpen)
-    const closeNavList = () => setIsOpen(false)
+        // Keeps track of the visible/hidden state when a user scrolls up or
+        // down
+        isHidden: false,
+        scrollPosition: 0,
+    }
 
-    return (
-        <Header>
-            <Nav>
-                <MenuButtonContainer onClick={toggleNavList}>
-                    <SquareOutlineButton />
-                </MenuButtonContainer>
-                <Logo href="#">Kevin Han</Logo>
-                <NavList isOpen={isOpen}>
-                    {navLinks.map((link, i) => {
-                        const navListItemProps = {}
+    toggleNavList = () => this.setState({ isOpen: !this.state.isOpen })
+    closeNavList = () => this.setState({ isOpen: false })
 
-                        if (hiddenNavListItems.includes(link.name)) {
-                            navListItemProps.additionalStyles = additionalHiddenNavListItemStyles
-                        }
-                        return (
-                            <NavListItem
-                                key={generateKey(link.name, i)}
-                                {...navListItemProps}
-                            >
-                                <NavLink
-                                    href={link.href}
-                                    onClick={closeNavList}
+    handleScroll = () => {
+        this.setState((prevState) => {
+            const scrollPosition = document.body.getBoundingClientRect().top
+            return {
+                ...prevState,
+                scrollPosition,
+                isHidden: scrollPosition < prevState.scrollPosition,
+            }
+        })
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
+    }
+
+    render() {
+        const { state, hiddenNavListItems, toggleNavList, closeNavList } = this
+        const { isOpen, isHidden } = state
+
+        return (
+            <Header className={isHidden && 'hidden'}>
+                <Nav>
+                    <MenuButtonContainer onClick={toggleNavList}>
+                        <SquareOutlineButton />
+                    </MenuButtonContainer>
+                    <Logo href="#">Kevin Han</Logo>
+                    <NavList isOpen={isOpen}>
+                        {navLinks.map((link, i) => {
+                            const navListItemProps = {}
+
+                            if (hiddenNavListItems.includes(link.name)) {
+                                navListItemProps.additionalStyles = additionalHiddenNavListItemStyles
+                            }
+                            return (
+                                <NavListItem
+                                    key={generateKey(link.name, i)}
+                                    {...navListItemProps}
                                 >
-                                    {link.name}
-                                </NavLink>
-                            </NavListItem>
-                        )
-                    })}
-                </NavList>
-            </Nav>
-        </Header>
-    )
+                                    <NavLink
+                                        href={link.href}
+                                        onClick={closeNavList}
+                                    >
+                                        {link.name}
+                                    </NavLink>
+                                </NavListItem>
+                            )
+                        })}
+                    </NavList>
+                </Nav>
+            </Header>
+        )
+    }
 }
 
 // =============================================================================
@@ -82,12 +114,20 @@ const Header = styled('header')`
     height: ${heights.navbar.sm};
 
     /* Visual styles */
-    background: rgba(${colors.background}, 0.98);
+    background: rgba(${colors.background}, 1);
     /* background: white; */
     /* border-bottom: 1px solid rgba(${colors.border}, 0.95); */
 
+    transform: translateY(0);
+    transition: transform ${transitions.navbar};
+
+    &.hidden {
+        transform: translateY(calc(${heights.navbar.md} * -1));
+    }
+
     @media only screen and (min-width: 768px) {
         height: ${heights.navbar.md};
+        background: rgba(${colors.background}, 0.98);
     }
 `
 
@@ -141,7 +181,7 @@ const NavList = styled('ul')`
 
     /* Visual styles */
     list-style: none;
-    background: rgba(${colors.background}, 0.98);
+    background: rgba(${colors.background}, 1);
 
     border-top: 1px solid rgba(${colors.text}, 0.1);
     border-bottom: 1px solid rgba(${colors.text}, 0.1);
@@ -158,6 +198,9 @@ const NavList = styled('ul')`
         width: auto;
         height: 100%;
         padding: 0;
+
+        /* Visual styles */
+        background: rgba(${colors.background}, 0.98);
         border: 0;
     }
 `
@@ -172,11 +215,7 @@ NavList.propTypes = { isOpen: PropTypes.bool }
  * bottom padding at mobile viewports and left margins at larger viewports.
  */
 const NavListItem = styled('li')`
-    padding: 18px 0;
-
     @media only screen and (min-width: 768px) {
-        padding: 0;
-
         & + & {
             margin-left: 46px;
         }
@@ -213,14 +252,16 @@ const additionalHiddenNavListItemStyles = css`
  * element is hovered or active.
  */
 const NavLink = styled('a')`
+    display: flex;
+    padding: 18px 0;
     color: rgba(${colors.heading}, 1);
     font-size: 18px;
 
     @media only screen and (min-width: 768px) {
         position: relative;
-        display: flex;
         align-items: center;
         height: 100%;
+        padding: 0;
         transition: color ${transitions.navLinks};
 
         /* Defines the underline at the bottom of each navigation list item. */
