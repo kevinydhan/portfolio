@@ -1,5 +1,11 @@
 heading: Here's what I've been working on
 
+# This property instructs how many projects to display as featured. A featured
+# project has its own dedicated panel, a Read More section, and an image of the
+# project mockup displayed. Featured projects are automatically picked from the
+# beginning of the projects list.
+featured: 3
+
 # The `projects` attribute contains an array of project objects, each object
 # following the schema:
 #
@@ -17,18 +23,22 @@ projects:
 
   # ---------------------------------------------------
   - name: Keenbot
-    description: AI chatbot for Twitch that answers frequently asked questions about the streamer
+    description: AI chatbot that answers frequently asked questions about Twitch streamers
     url:
       external:
       gitlab: https://gitlab.com/keenbot/client
     tags:
-      - Javascript
+      - TypeScript
       - React
       - Redux
+      - Gatsby
+      - GitLab CI
+      - Netlify
+    imgSrc: project-mockup-small.png
 
   # ---------------------------------------------------
   - name: Keenbot Server
-    description: API server for Twitch's Keenbot
+    description: API server that manages Twitch streamers' configurations for Keenbot
     url:
       external: https://keenbot-server.herokuapp.com
       gitlab: https://gitlab.com/keenbot/server
@@ -39,6 +49,7 @@ projects:
       - PostgreSQL
       - GitLab CI
       - Heroku
+    imgSrc: project-mockup-small.png
 
   # ---------------------------------------------------
   - name: Bunny Eats
@@ -52,17 +63,21 @@ projects:
       - Redux
       - Webpack
       - Netlify
+    imgSrc: project-mockup-small.png
 
   # ---------------------------------------------------
   - name: Grace Shopper
     description: Mock e-commerce website built during my time at Fullstack Academy
     url:
-      external: https://
+      external: https://kbmk.herokuapp.com
       github: https://github.com/grace-shoppers
     tags:
       - Javascript
       - React
       - Redux
+      - Webpack
       - Express
       - Sequelize
       - PostgreSQL
+      - Heroku
+    imgSrc: project-mockup-small.png

@@ -2,8 +2,8 @@
 import React from 'react'
 
 // Styling modules
-import styled from 'styled-components'
-import { theme, WatermarkBackground, ButtonLink } from '@theme'
+import styled, { css } from 'styled-components'
+import { theme, WatermarkBackground, Section, ButtonLink } from '@theme'
 
 // Misc. modules
 import content from '@content/landing.yml'
@@ -13,7 +13,7 @@ import { generateKey } from '@utils'
 
 const Landing = () => {
     return (
-        <Section>
+        <Section additionalStyles={additionalSectionStyles}>
             <WatermarkBackground />
             <Heading>
                 I am a <Keyword>full-stack developer</Keyword> based in New
@@ -53,26 +53,7 @@ const { heights } = dimensions
 
 // =============================================================================
 
-const Section = styled('section')`
-    /* Positional styles */
-    position: relative;
-
-    /* Box model styles */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-    max-width: 1440px;
-
-    /* Fills the remaining space of the screen, taking into account the
-       navigation bar's height.  */
-    min-height: calc(100vh - ${heights.navbar.sm});
-    padding: 0 24px;
-
-    /* Visual styles */
-    /* border-right: 1px solid white;
-    border-left: 1px solid white; */
-
+const additionalSectionStyles = css`
     /* Targets the SVG background image. */
     > svg {
         position: absolute;
