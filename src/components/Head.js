@@ -1,7 +1,7 @@
 import React from 'react'
 import config from '@config'
 import { Helmet } from 'react-helmet'
-
+import { logo } from '@config'
 /**
  * Generates the `<head>` tag.
  */
@@ -9,6 +9,10 @@ const Head = () => (
     <Helmet>
         {/* HTML-related head tags */}
         <link rel="canonical" href={config.siteUrl} data-react-helmet="" />
+        {/* <link
+            href={`https://fonts.googleapis.com/css2?family=${logo.fontLink}@${logo.fontWeight}&display=swap`}
+            rel="stylesheet"
+        ></link> */}
 
         {/* General meta tags */}
         <title>{config.siteTitle}</title>

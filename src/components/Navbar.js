@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components'
 import { theme } from '@theme'
 
 // Misc. modules
-import { navLinks } from '@config'
+import { navLinks, logo } from '@config'
 import { generateKey } from '@utils'
 
 // =============================================================================
@@ -315,6 +315,8 @@ const MenuButtonContainer = styled('span')`
 const Logo = styled('a')`
     display: none;
     color: rgba(${colors.heading}, 1);
+    font-weight: ${logo.fontWeight};
+    font-family: ${logo.fontFamily}, sans-serif;
     text-transform: uppercase;
     transition: color ${transitions.navLinks};
 
