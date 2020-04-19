@@ -198,7 +198,6 @@ const NavLink = styled('a')`
         display: flex;
         align-items: center;
         height: 100%;
-        font-size: 19px;
         transition: color ${transitions.navLinks};
 
         /* Defines the underline at the bottom of each navigation list item. */
@@ -226,12 +225,8 @@ const NavLink = styled('a')`
         }
     }
 
-    @media only screen and (min-width: 1024px) {
-        font-size: 21px;
-    }
-
     @media only screen and (min-width: 1440px) {
-        font-size: 24px;
+        font-size: 19px;
     }
 `
 
@@ -256,20 +251,19 @@ const MenuButtonContainer = styled('span')`
 const Logo = styled('a')`
     display: none;
     color: rgba(${colors.heading}, 1);
-
     text-transform: uppercase;
 
     @media only screen and (min-width: 768px) {
-        display: inline-block;
-        font-size: 28px;
+        display: block;
+        font-size: 24px;
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     @media only screen and (min-width: 1440px) {
-        font-size: 40px;
+        font-size: 28px;
     }
 `
 
