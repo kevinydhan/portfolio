@@ -157,7 +157,7 @@ NavList.propTypes = { isOpen: PropTypes.bool }
  * bottom padding at mobile viewports and left margins at larger viewports.
  */
 const NavListItem = styled('li')`
-    padding: 24px 0;
+    padding: 18px 0;
 
     @media only screen and (min-width: 768px) {
         padding: 0;
@@ -191,7 +191,7 @@ const NavListItem = styled('li')`
  */
 const NavLink = styled('a')`
     color: rgba(${colors.heading}, 1);
-    font-size: 20px;
+    font-size: 18px;
 
     @media only screen and (min-width: 768px) {
         position: relative;

@@ -46,6 +46,7 @@ const Projects = () => {
     const imageHashMap = data.allImageSharp.edges.reduce((hashMap, edge) => {
         const imageDetails = edge.node.fixed
         if (hashMap[imageDetails.originalName]) {
+            // Do something with duplicate entries
         } else {
             hashMap[imageDetails.originalName] = { ...imageDetails }
         }
