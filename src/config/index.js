@@ -73,4 +73,15 @@ module.exports = {
         gitlab: 'https://gitlab.com/kevinydhan',
         stackoverflow: 'https://stackoverflow.com/users/11715889/khan',
     },
+
+    /**
+     * Possible fonts to use:
+     * - Quicksand 500, 600
+     * - Heebo 500
+     */
+    logo: {
+        fontLink: 'Archivo:wght',
+        fontFamily: 'Archivo',
+        fontWeight: 400,
+    },
 }
