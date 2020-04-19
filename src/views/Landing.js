@@ -189,7 +189,7 @@ const SocialIconContainer = styled('aside')`
 
     @media only screen and (min-width: 1024px) {
         position: absolute;
-        top: 10px;
+        top: 12px;
         right: 0;
         z-index: 1;
         display: block;
@@ -209,14 +209,14 @@ const additionalIconLinkStyles = css`
 
     path,
     rect {
-        fill: rgba(${colors.heading}, 0.6);
+        fill: rgba(${colors.heading}, 0.65);
     }
 
     &:hover path,
     &:active path,
     &:hover rect,
     &:active rect {
-        fill: rgba(${colors.heading}, 0.4);
+        fill: rgba(${colors.lightblue}, 0.65);
     }
 
     @media only screen and (min-width: 1024px) {

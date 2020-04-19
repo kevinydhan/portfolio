@@ -54,7 +54,7 @@ module.exports = {
         },
         {
             name: 'Projects',
-            href: '/#projects',
+            href: '#projects',
         },
         {
             name: 'Resume',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Head, Navbar } from '@components'
+import { Head, Navbar, Footer } from '@components'
 import { GlobalStyle } from '@theme'
 import { Landing, Projects } from '@views'
 
@@ -11,6 +11,7 @@ const Main = () => {
             <Navbar />
             <Landing />
             <Projects />
+            {/* <Footer /> */}
         </>
     )
 }
