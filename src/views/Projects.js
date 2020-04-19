@@ -77,7 +77,7 @@ const fontSizes = {
 // =============================================================================
 
 const additionalSectionStyles = css`
-    margin-top: 100px;
+    margin: 100px 0;
 
     /* The top offset is calculated by adding the navigation bar's height and
        the additional space. */

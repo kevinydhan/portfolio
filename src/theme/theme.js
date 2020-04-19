@@ -7,6 +7,7 @@ export default {
         yellow: '234, 255, 25',
         red: '178, 68, 9',
         lightblue: '13, 136, 255',
+        footer: '40, 40, 40',
     },
     fontFamily: {
         primary: 'Poppins',

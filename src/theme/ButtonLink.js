@@ -94,9 +94,6 @@ const ButtonLink = styled('a')`
     text-align: center;
     text-transform: uppercase;
 
-    /* Visual styles */
-    /* background: rgba(${colors.background}, 1); */
-
     /* Misc. styles */
     cursor: pointer;
 
