@@ -26,7 +26,7 @@ const Projects = () => {
      * - srcWebp
      * - src
      */
-    const endAttr = 'src'
+    const endAttr = 'srcWebp'
 
     const data = useStaticQuery(
         graphql`
@@ -36,7 +36,7 @@ const Projects = () => {
                         node {
                             fluid(maxWidth: 696, quality: 100) {
                                 originalName
-                                src
+                                srcWebp
                             }
                         }
                     }
