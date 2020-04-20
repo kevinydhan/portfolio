@@ -199,12 +199,6 @@ const TagList = styled('ul')`
 const Card = styled('li')`
     width: 100%;
     list-style: none;
-    opacity: 0.1;
-    transition: opacity ${transitions.projectCard};
-
-    &.opaque {
-        opacity: 1;
-    }
 
     & + & {
         margin-top: 90px;
@@ -238,9 +232,15 @@ const Card = styled('li')`
         display: flex;
         flex-direction: row-reverse;
         height: 550px;
+        opacity: 0.1;
+        transition: opacity ${transitions.projectCard};
 
         & + & {
             margin-top: 0;
+        }
+
+        &.opaque {
+            opacity: 1;
         }
     }
 
@@ -324,6 +324,7 @@ const Title = styled('h3')`
 
 const Description = styled('p')`
     margin-top: 32px;
+    white-space: pre-wrap;
 
     @media only screen and (min-width: 768px) {
         width: ${bodyWidth};

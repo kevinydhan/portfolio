@@ -4,7 +4,7 @@ heading: Here's what I've been working on
 # project has its own dedicated panel, a Read More section, and an image of the
 # project mockup displayed. Featured projects are automatically picked from the
 # beginning of the projects list.
-featured: 3
+# featured: 3
 
 # The `projects` attribute contains an array of project objects, each object
 # following the schema:
@@ -63,14 +63,34 @@ projects:
       - Redux
       - Webpack
       - Netlify
-    imgSrc: project-mockup-sample.png
+    imgSrc: project-mockup-bunny-eats.png
+
+  # ---------------------------------------------------
+  - name: CodeJar
+    description: "Management tool for code exercises and one-on-one code reviews \n\n(demo credentials are: a@gmail.com, 12345)"
+    url:
+      external: https://code-jar.herokuapp.com/#/admin
+      github: https://github.com/snippet-good/snippet-good
+    tags:
+      - Javascript
+      - React
+      - Redux
+      - D3.js
+      - Webpack
+      - Express
+      - Socket.IO
+      - Sequelize
+      - PostgreSQL
+      - CircleCI
+      - Heroku
+    imgSrc: project-mockup-codejar.png
 
   # ---------------------------------------------------
   - name: Grace Shopper
-    description: Mock e-commerce website built with a team of 4 members over the course of 5-6 weeks at Fullstack Academy
+    description: Mock e-commerce website built while I was attending Fullstack Academy, a coding bootcamp
     url:
       external: https://kbmk.herokuapp.com
-      github: https://github.com/grace-shoppers
+      github: https://github.com/graceshoppers/grace-shoppers
     tags:
       - Javascript
       - React
@@ -80,4 +100,4 @@ projects:
       - Sequelize
       - PostgreSQL
       - Heroku
-    imgSrc: project-mockup-sample.png
+    imgSrc: project-mockup-grace-shopper.png
