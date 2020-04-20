@@ -20,7 +20,7 @@ module.exports = {
      * - `<meta property="twitter:description">`
      */
     siteDescription:
-        'Kevin Han is a full-stack developer based in New Jersey, USA. He creates simplistic yet intuitive websites and web applications.',
+        'Kevin Han is a full-stack developer based in New Jersey, USA. He creates functional, intuitive websites and web applications.',
 
     siteAuthor: 'Kevin Han',
 
