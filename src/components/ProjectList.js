@@ -28,7 +28,7 @@ const ProjectList = (props) => {
                 allImageSharp {
                     edges {
                         node {
-                            fluid(maxWidth: 696, quality: 100) {
+                            fluid(maxWidth: 696, quality: 80) {
                                 originalName
                                 src
                             }

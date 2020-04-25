@@ -21,20 +21,20 @@ heading: Here's what I've been working on
 # }
 projects:
 
-  # ---------------------------------------------------
-  - name: Keenbot
-    description: AI chatbot that answers frequently asked questions about Twitch streamers
-    url:
-      external:
-      gitlab: https://gitlab.com/keenbot/client
-    tags:
-      - TypeScript
-      - React
-      - Redux
-      - Gatsby
-      - GitLab CI
-      - Netlify
-    imgSrc: project-mockup-sample.png
+  # # ---------------------------------------------------
+  # - name: Keenbot
+  #   description: AI chatbot that answers frequently asked questions about Twitch streamers
+  #   url:
+  #     external:
+  #     gitlab: https://gitlab.com/keenbot/client
+  #   tags:
+  #     - TypeScript
+  #     - React
+  #     - Redux
+  #     - Gatsby
+  #     - GitLab CI
+  #     - Netlify
+  #   imgSrc: project-mockup-sample.png
 
   # ---------------------------------------------------
   - name: Keenbot Server
@@ -50,6 +50,7 @@ projects:
       - GitLab CI
       - Heroku
     imgSrc: project-mockup-sample.png
+    imgAlt: Macbook Pro and iPhone 11 mockups displaying https://kevinhan.dev on their screen
 
   # ---------------------------------------------------
   - name: Bunny Eats
@@ -64,10 +65,11 @@ projects:
       - Webpack
       - Netlify
     imgSrc: project-mockup-bunny-eats.png
+    imgAlt: Macbook Pro mockup displaying https://bunny-eats.netlify.com on its screen
 
   # ---------------------------------------------------
   - name: CodeJar
-    description: "Management tool for code exercises and one-on-one code reviews \n\n(demo credentials are: a@gmail.com, 12345)"
+    description: "Management tool for code exercises and one-on-one code reviews \n\nDemo credentials are: a@gmail.com, 12345"
     url:
       external: https://code-jar.herokuapp.com/#/admin
       github: https://github.com/snippet-good/snippet-good
@@ -84,10 +86,11 @@ projects:
       - CircleCI
       - Heroku
     imgSrc: project-mockup-codejar.png
+    imgAlt: Macbook Pro mockup displaying https://code-jar.herokuapp.com on its screens
 
   # ---------------------------------------------------
   - name: Grace Shopper
-    description: Mock e-commerce website built while I was attending Fullstack Academy, a coding bootcamp
+    description: Mock e-commerce website
     url:
       external: https://kbmk.herokuapp.com
       github: https://github.com/graceshoppers/grace-shoppers
@@ -101,3 +104,4 @@ projects:
       - PostgreSQL
       - Heroku
     imgSrc: project-mockup-grace-shopper.png
+    imgAlt: Macbook Pro mockup displaying https://kbmk.herokuapp.com on its screen

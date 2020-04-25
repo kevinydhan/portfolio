@@ -255,7 +255,7 @@ const NavLink = styled('a')`
     display: flex;
     padding: 18px 0;
     color: rgba(${colors.heading}, 1);
-    font-size: 18px;
+    font-size: 16px;
 
     @media only screen and (min-width: 768px) {
         position: relative;
@@ -290,7 +290,7 @@ const NavLink = styled('a')`
     }
 
     @media only screen and (min-width: 1440px) {
-        font-size: 19px;
+        font-size: 18px;
     }
 `
 
@@ -327,15 +327,15 @@ const Logo = styled('a')`
 
     @media only screen and (min-width: 768px) {
         display: block;
-        font-size: 24px;
+        font-size: 20px;
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: 26px;
+        font-size: 22px;
     }
 
     @media only screen and (min-width: 1440px) {
-        font-size: 28px;
+        font-size: 24px;
     }
 `
 
