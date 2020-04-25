@@ -12,8 +12,8 @@ module.exports = {
                 short_name: `Kevin Han's Portfolio`,
                 description: config.siteDescription,
                 start_url: `/`,
-                background_color: `#000`,
-                theme_color: `#fff`,
+                background_color: `#161616`,
+                theme_color: `#161616`,
                 display: `standalone`,
                 icon: 'src/images/icon.png',
             },
@@ -25,6 +25,13 @@ module.exports = {
             options: {
                 name: 'images',
                 path: path.join(__dirname, 'src', 'images'),
+            },
+        },
+
+        {
+            resolve: 'gatsby-plugin-html-attributes',
+            options: {
+                lang: 'en',
             },
         },
 

@@ -69,8 +69,8 @@ const fontSizes = {
         xs: '28px',
         sm: '32px',
         md: '42px',
-        lg: '50px',
-        xl: '54px',
+        lg: '40px',
+        xl: '50px',
     },
 }
 

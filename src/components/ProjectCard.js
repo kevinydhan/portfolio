@@ -13,7 +13,15 @@ import { generateKey } from '@utils'
 // =============================================================================
 
 const ProjectCard = (props) => {
-    const { name, description, tags, url, imgSrc, observeElement } = props
+    const {
+        name,
+        description,
+        tags,
+        url,
+        imgSrc,
+        imgAlt,
+        observeElement,
+    } = props
 
     const ref = createRef()
 
@@ -42,7 +50,7 @@ const ProjectCard = (props) => {
     return (
         <Card ref={ref}>
             <ImageContainer>
-                <Image src={imgSrc} />
+                <Image src={imgSrc} alt={imgAlt} />
             </ImageContainer>
             <Content>
                 <Title>{name}</Title>
@@ -74,6 +82,7 @@ ProjectCard.propTypes = {
         github: PropTypes.string,
     }),
     imgSrc: PropTypes.string.isRequired,
+    imgAlt: PropTypes.string.isRequired,
     observeElement: PropTypes.func.isRequired,
 }
 
@@ -87,7 +96,7 @@ const { colors, transitions } = theme
  */
 const underlineWidthMobile = '96px'
 
-const underlineWidthDesktop = '116px'
+const underlineWidthDesktop = '100px'
 
 /**
  * This variable references the distance between the underline and the title.
@@ -381,6 +390,11 @@ const IconContainer = styled('div')`
         &::before {
             top: calc(${underlineDistanceDesktop} * -1.9);
             height: ${underlineThicknessDesktop};
+        }
+
+        > a svg {
+            width: 42px;
+            height: 42px;
         }
     }
 `
