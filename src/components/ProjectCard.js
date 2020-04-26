@@ -29,20 +29,24 @@ const ProjectCard = (props) => {
         if (ref.current) observeElement(ref.current)
     }, [])
 
+    const externalDomain = ['Netlify', 'Heroku'].filter((domain) => {
+        return url.external.includes(domain.toLowerCase())
+    })
+
     const ExternalLink = url.external ? (
-        <IconLink href={url.external}>
+        <IconLink href={url.external} aria-label={externalDomain}>
             <ExternalLinkIcon />
         </IconLink>
     ) : null
 
     const Github = url.github ? (
-        <IconLink href={url.github}>
+        <IconLink href={url.github} aria-label="Github">
             <GithubCircleIcon />
         </IconLink>
     ) : null
 
     const GitLab = url.gitlab ? (
-        <IconLink href={url.gitlab}>
+        <IconLink href={url.gitlab} aria-label="GitLab">
             <GitLabIcon />
         </IconLink>
     ) : null

@@ -35,6 +35,7 @@ module.exports = {
 
         // Job-related keywords
         'software engineer',
+        'full-stack developer',
         'front-end developer',
         'web developer',
 
@@ -60,6 +61,8 @@ module.exports = {
             name: 'Resume',
             href:
                 'https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing',
+            target: '_blank',
+            rel: 'noreferrer noopener nofollow',
         },
         {
             name: 'Contact',
