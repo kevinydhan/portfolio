@@ -7,6 +7,7 @@ import { theme } from '@theme'
 
 const IconLink = (props) => {
     const { children, href, additionalStyles } = props
+    const ariaLabel = props['aria-label']
 
     return (
         <Link
@@ -14,6 +15,7 @@ const IconLink = (props) => {
             target="_blank"
             rel="noreferrer noopener nofollow"
             additionalStyles={additionalStyles}
+            aria-label={ariaLabel}
         >
             {children}
         </Link>
@@ -24,6 +26,7 @@ IconLink.propTypes = {
     children: PropTypes.node,
     href: PropTypes.string,
     additionalStyles: PropTypes.array,
+    'aria-label': PropTypes.string,
 }
 
 // =============================================================================
@@ -66,6 +69,7 @@ const Link = styled('a')`
 Link.propTypes = {
     additionalStyles: PropTypes.array,
 }
+
 // =============================================================================
 
 export default IconLink

@@ -45,24 +45,28 @@ const Landing = () => {
                     <IconLink
                         href={socialLinks.linkedin}
                         additionalStyles={additionalIconLinkStyles}
+                        aria-label="LinkedIn"
                     >
                         <LinkedInIcon />
                     </IconLink>
                     <IconLink
                         href={socialLinks.github}
                         additionalStyles={additionalIconLinkStyles}
+                        aria-label="Github"
                     >
                         <GithubCircleIcon />
                     </IconLink>
                     <IconLink
                         href={socialLinks.gitlab}
                         additionalStyles={additionalIconLinkStyles}
+                        aria-label="GitLab"
                     >
                         <GitLabIcon />
                     </IconLink>
                     <IconLink
                         href={socialLinks.stackoverflow}
                         additionalStyles={additionalIconLinkStyles}
+                        aria-label="Stack Overflow"
                     >
                         <StackOverflowIcon />
                     </IconLink>
