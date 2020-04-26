@@ -34,7 +34,7 @@ const ProjectCard = (props) => {
     })
 
     const ExternalLink = url.external ? (
-        <IconLink href={url.external} aria-label={externalDomain}>
+        <IconLink href={url.external} aria-label={externalDomain[0]}>
             <ExternalLinkIcon />
         </IconLink>
     ) : null
