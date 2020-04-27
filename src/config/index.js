@@ -1,36 +1,16 @@
 module.exports = {
-    // Defines the site's types.
     siteType: 'website',
-
-    // Defines the site's title.
     siteTitle: 'Kevin Han | Software Engineer',
-
-    /**
-     *
-     * This property is used by:
-     * - `gatsby-plugin-robots-txt`
-     */
     siteUrl: 'https://kevinhan.dev',
-
-    /**
-     * Defines the site's description.
-     *
-     * This property is used by the following:
-     * - `<meta property="og:description">`
-     * - `<meta property="twitter:description">`
-     */
     siteDescription:
         'Kevin Han is a full-stack developer based in New Jersey, USA. He creates functional, intuitive websites and web applications.',
-
     siteAuthor: 'Kevin Han',
-
     siteLanguage: 'en_US',
-
     siteKeywords: [
         // Personal keywords
-        'Kevin Han',
-        'Kevin',
-        'Han',
+        'kevin kan',
+        'kevin',
+        'han',
         'kevinydhan',
 
         // Job-related keywords
@@ -43,11 +23,6 @@ module.exports = {
         'javascript',
         'react',
     ].join(', '),
-
-    /**
-     * Defines the navigation links on your website. This property is used by
-     * the `Navbar` component to render out the navigation links.
-     */
     navLinks: [
         {
             name: 'Home',
@@ -75,16 +50,5 @@ module.exports = {
         github: 'https://github.com/kevinydhan',
         gitlab: 'https://gitlab.com/kevinydhan',
         stackoverflow: 'https://stackoverflow.com/users/11715889/khan',
-    },
-
-    /**
-     * Possible fonts to use:
-     * - Quicksand 500, 600
-     * - Heebo 500
-     */
-    logo: {
-        fontLink: 'Archivo:wght',
-        fontFamily: 'Archivo',
-        fontWeight: 400,
     },
 }

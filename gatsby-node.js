@@ -12,8 +12,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
                 // Contains the site's configuration.
                 '@config': path.resolve(__dirname, 'src', 'config'),
 
-                // Contains the site content.
-                '@content': path.resolve(__dirname, 'content'),
+                // Contains the site data.
+                '@data': path.resolve(__dirname, 'src', 'data'),
 
                 // Contains `styled-components`-related configurations, the
                 // global style component, and singular, multi-use components.

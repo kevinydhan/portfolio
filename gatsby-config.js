@@ -8,7 +8,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `Kevin Han's Personal Developer Portfolio`,
+                name: config.siteTitle,
                 short_name: `Kevin Han's Portfolio`,
                 description: config.siteDescription,
                 start_url: `/`,
@@ -28,6 +28,7 @@ module.exports = {
             },
         },
 
+        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-html-attributes
         {
             resolve: 'gatsby-plugin-html-attributes',
             options: {

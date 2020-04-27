@@ -5,7 +5,7 @@ module.exports = {
     },
     extends: [
         'plugin:prettier/recommended',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
     ],
     globals: {
         Atomics: 'readonly',
@@ -20,12 +20,12 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: [
-        'react'
+        'jsx-a11y',
+        'react',
     ],
-    rules: {},
     settings: {
         react: {
             version: 'detect',
-        }
-    }
+        },
+    },
 }

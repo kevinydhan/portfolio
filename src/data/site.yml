@@ -1,0 +1,18 @@
+landing:
+  heading: Full-Stack Developer
+  adCopy: I design and build functional websites and web applications.
+
+navLinks:
+  - text: Home
+    href: "#"
+
+  - text: Projects
+    href: "#projects"
+
+  - text: Resume
+    href: https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing
+    target: _blank
+    rel: noreferrer noopener nofollow
+
+  - text: Contact
+    href: mailto:kevinhanyd@gmail.com

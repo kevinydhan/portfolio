@@ -1,28 +1,39 @@
 import React from 'react'
-import { Head, Navbar, Footer } from '@components'
-import { GlobalStyle } from '@theme'
+import { useStaticQuery, graphql } from 'gatsby'
 import { Landing, Projects } from '@views'
+import { Head, Background, Navbar } from '@components'
+import styled from 'styled-components'
+import { GlobalStyle } from '@theme'
 
 const Main = () => {
+    const { ogImage } = useStaticQuery(graphql`
+        query getImages {
+            ogImage: file(relativePath: { eq: "og.png" }) {
+                childImageSharp {
+                    fixed(width: 1100, height: 600) {
+                        srcWebp
+                    }
+                }
+            }
+        }
+    `)
+
     return (
         <>
-            <Head />
+            <Head ogImgSrc={ogImage.childImageSharp.fixed.srcWebp} />
             <GlobalStyle />
-            <Navbar />
-            <Landing />
-            <Projects />
-            {/* <Footer /> */}
+            {/* <Navbar /> */}
+            <Background />
+            <MainContent>
+                <Landing />
+                <Projects />
+            </MainContent>
         </>
     )
 }
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     const metaTags = document.querySelectorAll('meta')
-//     metaTags.forEach((tag) => {
-//         if (tag.dataset && tag.dataset.reactHelmet) {
-//             tag.removeAttribute('data-react-helmet')
-//         }
-//     })
-// })
+const MainContent = styled('main')`
+    position: relative;
+`
 
 export default Main

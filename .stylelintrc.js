@@ -18,6 +18,7 @@ module.exports = {
         // This rule is handled by Prettier.
         'no-missing-end-of-source-newline': null,
 
+        // This rule is disabled in favor of rational-order.
         'order/properties-alphabetical-order': null,
 
         // Limits the number of ID selectors in a selector.
