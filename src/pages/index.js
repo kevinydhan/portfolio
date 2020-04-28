@@ -1,28 +1,37 @@
 import React from 'react'
-import { Head, Navbar, Footer } from '@components'
-import { GlobalStyle } from '@theme'
 import { Landing, Projects } from '@views'
+import { Head, Background, Navbar } from '@components'
+import styled from 'styled-components'
+import { GlobalStyle } from '@theme'
+import { useQuery, useObserver } from '@utils'
 
 const Main = () => {
+    const { ogImage, projectImageSrc } = useQuery()
+    const { observeElement } = useObserver()
+
     return (
         <>
-            <Head />
+            <Head ogImgSrc={ogImage} />
             <GlobalStyle />
             <Navbar />
-            <Landing />
-            <Projects />
-            {/* <Footer /> */}
+            <Background
+            // backgroundColor={backgroundColor}
+            // opacities={opacities}
+            />
+
+            <MainContent>
+                <Landing observeElement={observeElement} />
+                <Projects
+                    observeElement={observeElement}
+                    projectImageSrc={projectImageSrc}
+                />
+            </MainContent>
         </>
     )
 }
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     const metaTags = document.querySelectorAll('meta')
-//     metaTags.forEach((tag) => {
-//         if (tag.dataset && tag.dataset.reactHelmet) {
-//             tag.removeAttribute('data-react-helmet')
-//         }
-//     })
-// })
+const MainContent = styled('main')`
+    position: relative;
+`
 
 export default Main

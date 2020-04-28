@@ -1,146 +1,33 @@
-// React modules
-import React, { Component } from 'react'
-import { ProjectList } from '@components'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ProjectCard } from '@components'
+import data from '@data/projects.yml'
 
-// Styling modules
-import styled, { css } from 'styled-components'
-import { theme, Section } from '@theme'
+const Projects = (props) => {
+    const { observeElement, projectImageSrc } = props
 
-// Misc. modules
-import content from '@content/projects.yml'
+    const projects = data.projects.map((project) => ({
+        ...project,
+        imgSrc: projectImageSrc[project.originalImgName],
+    }))
 
-// =============================================================================
-
-/**
- * For this to work, each project in `projects.yml` must have a `imgSrc`
- * property set to the corresponding image file name.
- *
- * @example
- * imgSrc: project-mockup-small.png
- */
-class Projects extends Component {
-    observer = null
-    threshold = [0.7, 0.5, 0.5, 0.5]
-
-    componentDidMount() {
-        const { handleObservedEntries, threshold } = this
-        this.observer = new IntersectionObserver(handleObservedEntries, {
-            threshold,
-        })
-    }
-
-    componentWillUnmount() {
-        this.observer = null
-    }
-
-    handleObservedEntries = (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('opaque')
-            } else {
-                entry.target.classList.remove('opaque')
-            }
-        })
-    }
-
-    observeElement = (ref) => {
-        if (this.observer) this.observer.observe(ref)
-    }
-
-    render() {
-        const { observeElement } = this
-
-        return (
-            <Section id="projects" additionalStyles={additionalSectionStyles}>
-                <Heading>{content.heading}</Heading>
-                <ProjectList observeElement={observeElement} />
-            </Section>
-        )
-    }
+    return (
+        <section id="projects">
+            {projects.map((project, i) => (
+                <ProjectCard
+                    {...project}
+                    className={data.classNames[i % data.classNames.length]}
+                    key={project.originalImgName}
+                    observeElement={observeElement}
+                />
+            ))}
+        </section>
+    )
 }
 
-// =============================================================================
-
-const colors = theme.colors
-const heights = theme.dimensions.heights
-
-const fontSizes = {
-    heading: {
-        xs: '28px',
-        sm: '32px',
-        md: '42px',
-        lg: '40px',
-        xl: '50px',
-    },
+Projects.propTypes = {
+    observeElement: PropTypes.func.isRequired,
+    projectImageSrc: PropTypes.objectOf(PropTypes.string).isRequired,
 }
-
-// =============================================================================
-
-const additionalSectionStyles = css`
-    margin: 100px 0 50px;
-
-    /* The top offset is calculated by adding the navigation bar's height and
-       the additional space. */
-    padding-top: calc(${heights.navbar.md} + 48px);
-
-    @media only screen and (min-width: 768px) {
-        margin-top: 300px;
-    }
-
-    @media only screen and (min-width: 1024px) {
-        margin-top: 300px;
-    }
-
-    @media only screen and (min-width: 1440px) {
-        margin-top: 300px;
-    }
-`
-
-// =============================================================================
-
-const Heading = styled('h2')`
-    position: relative;
-    font-weight: 500;
-    font-size: ${fontSizes.heading.xs};
-
-    &::after {
-        position: absolute;
-        bottom: -18px;
-        left: 0;
-        width: 30%;
-        height: 4px;
-        background: rgba(${colors.blue}, 0.6);
-        content: '';
-    }
-
-    @media only screen and (min-width: 568px) {
-        font-size: ${fontSizes.heading.sm};
-    }
-
-    @media only screen and (min-width: 768px) {
-        font-size: ${fontSizes.heading.md};
-    }
-
-    @media only screen and (min-width: 1024px) {
-        font-size: ${fontSizes.heading.lg};
-
-        &::after {
-            height: 5px;
-        }
-    }
-
-    @media only screen and (min-width: 1440px) {
-        display: flex;
-        justify-content: center;
-        font-size: ${fontSizes.heading.xl};
-
-        &::after {
-            left: unset;
-            height: 6px;
-        }
-    }
-`
-
-// =============================================================================
 
 export default Projects

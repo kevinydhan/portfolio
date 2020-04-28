@@ -1,4 +1,5 @@
 export { default as Head } from './Head'
 export { default as Navbar } from './Navbar'
-export { default as ProjectList } from './ProjectList'
-export { default as Footer } from './Footer'
+export { default as Background } from './Background'
+export { default as ProjectCard } from './ProjectCard'
+// export { default as Footer } from './Footer'
