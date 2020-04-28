@@ -146,9 +146,6 @@ const Picture = styled('picture')`
         width: 90%;
     }
 
-    @media only screen and (min-width: 1024px) {
-    }
-
     @media only screen and (min-width: 1366px) {
         width: 500px;
         height: 500px;

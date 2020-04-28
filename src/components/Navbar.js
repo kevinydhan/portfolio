@@ -156,11 +156,6 @@ const Nav = styled('nav')`
     @media only screen and (min-width: 1024px) {
         margin: 0 48px;
     }
-
-    /*
-    @media only screen and (min-width: 1366px) {
-        margin: 0;
-    } */
 `
 
 // =============================================================================
@@ -279,9 +274,6 @@ const NavLink = styled('a')`
                 transform-origin: left;
             }
         }
-    }
-
-    @media only screen and (min-width: 1366px) {
     }
 `
 
