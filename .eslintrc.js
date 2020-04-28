@@ -4,6 +4,7 @@ module.exports = {
         es6: true,
     },
     extends: [
+        'plugin:jsx-a11y/recommended',
         'plugin:prettier/recommended',
         'plugin:react/recommended',
     ],

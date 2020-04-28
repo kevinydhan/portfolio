@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { theme } from '@theme'
 
 const ButtonLink = styled('a')`
@@ -7,6 +7,7 @@ const ButtonLink = styled('a')`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 0 0 5px;
     padding: 16px 22px;
     background: ${({ variant }) =>
         variant === 'outlined'
@@ -47,6 +48,26 @@ const ButtonLink = styled('a')`
         &::before {
             opacity: 0.6;
         }
+    }
+
+    @media only screen and (min-width: 768px) {
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+
+    @media only screen and (min-width: 1366px) {
+        padding: 14px 20px;
+        font-size: 17px;
+    }
+
+    @media only screen and (min-width: 1600px) {
+        padding: 16px 22px;
+        font-size: 17px;
     }
 `
 

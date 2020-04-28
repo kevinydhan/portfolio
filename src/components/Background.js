@@ -1,46 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
+import { CSSMixins as CMx } from '@theme'
 
 const Background = (props) => {
-    const { backgroundColor, opacities } = props
-
     console.log('Background component re-rendered.')
 
     return (
         <BackgroundContainer>
             <SVG viewBox="0 0 1366 768" xmlns="http://www.w3.org/2000/svg">
                 <path
-                    className="trapezoid"
+                    className="bg-trapezoid yellow-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-yellow)"
                     fillOpacity="0.07"
-                    // opacity={opacities.yellow}
                 />
                 <path
-                    className="trapezoid"
+                    className="bg-trapezoid lightblue-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-lightblue)"
                     fillOpacity="0.1"
-                    // opacity={opacities.blue}
                 />
                 <path
-                    className="trapezoid"
+                    className="bg-trapezoid red-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-red)"
                     fillOpacity="0.12"
-                    // opacity={opacities.red}
                 />
                 <path
-                    className="trapezoid"
+                    className="bg-trapezoid midnightblue-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-midnightblue)"
-                    // opacity={opacities.landing}
                 />
                 <path
-                    className="stripe"
+                    className="bg-stripe"
                     d="M451 0L879 768H929L501 0H451Z"
                     fill="#010027"
-                    // fill={backgroundColor}
                 />
                 <defs>
                     <linearGradient
@@ -100,9 +94,7 @@ const BackgroundContainer = styled('div')`
     top: 0;
     left: 0;
     z-index: -999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    ${CMx.flexbox()}
     width: 100%;
     height: 100vh;
 `
@@ -112,11 +104,11 @@ const BackgroundContainer = styled('div')`
 const SVG = styled('svg')`
     position: absolute;
 
-    .stripe {
+    .bg-stripe {
         transition: fill 250ms linear;
     }
 
-    .trapezoid {
+    .bg-trapezoid {
         transition: opacity 250ms linear;
     }
 

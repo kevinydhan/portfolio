@@ -6,7 +6,7 @@ import { GlobalStyle } from '@theme'
 import { useQuery, useObserver } from '@utils'
 
 const Main = () => {
-    const { ogImage } = useQuery()
+    const { ogImage, projectImageSrc } = useQuery()
     const { observeElement } = useObserver()
 
     return (
@@ -21,7 +21,10 @@ const Main = () => {
 
             <MainContent>
                 <Landing observeElement={observeElement} />
-                <Projects observeElement={observeElement} />
+                <Projects
+                    observeElement={observeElement}
+                    projectImageSrc={projectImageSrc}
+                />
             </MainContent>
         </>
     )

@@ -130,7 +130,7 @@ const Logo = styled('a')`
         font-size: 22px;
     }
 
-    @media only screen and (min-width: 1440px) {
+    @media only screen and (min-width: 1366px) {
         font-size: 24px;
     }
 `
@@ -144,21 +144,23 @@ const Nav = styled('nav')`
     width: 100%;
     max-width: ${theme.maxWidthMain};
     height: 100%;
-    padding: 0 ${theme.paddingSidesMain};
+    margin: 0 ${theme.paddingSidesMain};
     /* border-right: 1px solid white;
     border-left: 1px solid white; */
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
+        margin: 0 36px;
     }
 
     @media only screen and (min-width: 1024px) {
         margin: 0 48px;
-        padding: 0;
     }
 
-    @media only screen and (min-width: 1440px) {
-    }
+    /*
+    @media only screen and (min-width: 1366px) {
+        margin: 0;
+    } */
 `
 
 // =============================================================================
@@ -207,15 +209,15 @@ const NavListItem = styled('li')`
         }
 
         &:nth-child(2) {
-            animation: ${KF.slide} 500ms linear 1600ms 1 forwards;
+            animation: ${KF.slide} 500ms linear 1750ms 1 forwards;
         }
 
         &:nth-child(3) {
-            animation: ${KF.slide} 500ms linear 1700ms 1 forwards;
+            animation: ${KF.slide} 500ms linear 1900ms 1 forwards;
         }
 
         &:nth-child(4) {
-            animation: ${KF.slide} 500ms linear 1800ms 1 forwards;
+            animation: ${KF.slide} 500ms linear 2050ms 1 forwards;
         }
     }
 
@@ -279,7 +281,7 @@ const NavLink = styled('a')`
         }
     }
 
-    @media only screen and (min-width: 1440px) {
+    @media only screen and (min-width: 1366px) {
     }
 `
 

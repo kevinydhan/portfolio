@@ -1,6 +1,6 @@
 module.exports = {
     siteType: 'website',
-    siteTitle: 'Kevin Han | Software Engineer',
+    siteTitle: 'Kevin Han | Full-Stack Developer',
     siteUrl: 'https://kevinhan.dev',
     siteDescription:
         'Kevin Han is a full-stack developer based in New Jersey, USA. He creates functional, intuitive websites and web applications.',
@@ -8,7 +8,7 @@ module.exports = {
     siteLanguage: 'en_US',
     siteKeywords: [
         // Personal keywords
-        'kevin kan',
+        'kevin han',
         'kevin',
         'han',
         'kevinydhan',

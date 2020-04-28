@@ -1,68 +1,33 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { ProjectCard } from '@components'
+import data from '@data/projects.yml'
 
 const Projects = (props) => {
-    const { observeElement } = props
+    const { observeElement, projectImageSrc } = props
 
-    const div1 = useRef()
-    const div2 = useRef()
-    const div3 = useRef()
-
-    console.log('Projects component re-rendered.')
+    const projects = data.projects.map((project) => ({
+        ...project,
+        imgSrc: projectImageSrc[project.originalImgName],
+    }))
 
     return (
         <section id="projects">
-            <div
-                ref={div1}
-                style={{
-                    height: '100vh',
-                    width: '100%',
-                    maxWidth: '1400px',
-                    margin: '0 auto',
-                    display: 'grid',
-                    placeItems: 'center',
-                    border: '1px solid white',
-                }}
-                className="blue"
-            >
-                Blue
-            </div>
-            <div
-                ref={div2}
-                style={{
-                    height: '100vh',
-                    width: '100%',
-                    maxWidth: '1400px',
-                    margin: '0 auto',
-                    display: 'grid',
-                    placeItems: 'center',
-                    border: '1px solid white',
-                }}
-                className="yellow"
-            >
-                Yellow
-            </div>
-            <div
-                ref={div3}
-                style={{
-                    height: '100vh',
-                    width: '100%',
-                    maxWidth: '1400px',
-                    margin: '0 auto',
-                    display: 'grid',
-                    placeItems: 'center',
-                    border: '1px solid white',
-                }}
-                className="red"
-            >
-                Red
-            </div>
+            {projects.map((project, i) => (
+                <ProjectCard
+                    {...project}
+                    className={data.classNames[i % data.classNames.length]}
+                    key={project.originalImgName}
+                    observeElement={observeElement}
+                />
+            ))}
         </section>
     )
 }
 
 Projects.propTypes = {
     observeElement: PropTypes.func.isRequired,
+    projectImageSrc: PropTypes.objectOf(PropTypes.string).isRequired,
 }
 
 export default Projects
