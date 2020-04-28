@@ -12,5 +12,10 @@ export default {
 
     heightNavbar: '80px',
     maxWidthMain: '1400px',
+    minHeightMain: '768px',
     paddingSidesMain: '16px',
+
+    transitionButtonLink: '150ms ease-in-out',
+    transitionNavLink: '250ms ease-in-out',
+    transitionLogo: '100ms ease-in-out',
 }

@@ -1,34 +1,47 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Background = () => {
+const Background = (props) => {
+    const { backgroundColor, opacities } = props
+
+    console.log('Background component re-rendered.')
+
     return (
         <BackgroundContainer>
             <SVG viewBox="0 0 1366 768" xmlns="http://www.w3.org/2000/svg">
                 <path
+                    className="trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-yellow)"
                     fillOpacity="0.07"
-                    opacity="0"
+                    // opacity={opacities.yellow}
                 />
                 <path
+                    className="trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-lightblue)"
                     fillOpacity="0.1"
-                    opacity="0"
+                    // opacity={opacities.blue}
                 />
                 <path
+                    className="trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-red)"
                     fillOpacity="0.12"
-                    opacity="0"
+                    // opacity={opacities.red}
                 />
                 <path
+                    className="trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-midnightblue)"
-                    opacity="1"
+                    // opacity={opacities.landing}
                 />
-                <path d="M451 0L879 768H929L501 0H451Z" fill="#010027" />
+                <path
+                    className="stripe"
+                    d="M451 0L879 768H929L501 0H451Z"
+                    fill="#010027"
+                    // fill={backgroundColor}
+                />
                 <defs>
                     <linearGradient
                         id="background-trapezoid-yellow"
@@ -98,6 +111,14 @@ const BackgroundContainer = styled('div')`
 
 const SVG = styled('svg')`
     position: absolute;
+
+    .stripe {
+        transition: fill 250ms linear;
+    }
+
+    .trapezoid {
+        transition: opacity 250ms linear;
+    }
 
     @media only screen and (orientation: portrait) {
         height: 100%;

@@ -1,32 +1,27 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import { Landing, Projects } from '@views'
 import { Head, Background, Navbar } from '@components'
 import styled from 'styled-components'
 import { GlobalStyle } from '@theme'
+import { useQuery, useObserver } from '@utils'
 
 const Main = () => {
-    const { ogImage } = useStaticQuery(graphql`
-        query getImages {
-            ogImage: file(relativePath: { eq: "og.png" }) {
-                childImageSharp {
-                    fixed(width: 1100, height: 600) {
-                        srcWebp
-                    }
-                }
-            }
-        }
-    `)
+    const { ogImage } = useQuery()
+    const { observeElement } = useObserver()
 
     return (
         <>
-            <Head ogImgSrc={ogImage.childImageSharp.fixed.srcWebp} />
+            <Head ogImgSrc={ogImage} />
             <GlobalStyle />
-            {/* <Navbar /> */}
-            <Background />
+            <Navbar />
+            <Background
+            // backgroundColor={backgroundColor}
+            // opacities={opacities}
+            />
+
             <MainContent>
-                <Landing />
-                <Projects />
+                <Landing observeElement={observeElement} />
+                <Projects observeElement={observeElement} />
             </MainContent>
         </>
     )

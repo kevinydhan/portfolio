@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { theme } from '@theme'
+import { theme, Keyframes as KF } from '@theme'
 import { generateKey } from '@utils'
 import { navLinks } from '@data/site.yml'
 
@@ -90,7 +90,7 @@ const Header = styled('header')`
     justify-content: center;
     width: 100%;
     height: ${theme.heightNavbar};
-    background: rgba(${theme.colorBackground}, 1);
+    /* background: rgba(${theme.colorBackground}, 1); */
 
     transform: translateY(0);
     /* transition: transform ${transitions.navbar}; */
@@ -100,7 +100,7 @@ const Header = styled('header')`
     }
 
     @media only screen and (min-width: 768px) {
-        background: rgba(${theme.colorBackground}, 0.98);
+        /* background: rgba(${theme.colorBackground}, 0.98); */
     }
 `
 
@@ -112,7 +112,9 @@ const Logo = styled('a')`
     font-weight: 400;
     font-family: ${theme.fontFamilyLogo};
     text-transform: uppercase;
-    /* transition: color ${transitions.navLinks}; */
+    opacity: 0;
+    transition: color ${theme.transitionLogo};
+    animation: ${KF.slide} 500ms linear 1500ms 1 forwards;
 
     &:hover,
     &:active {
@@ -143,8 +145,8 @@ const Nav = styled('nav')`
     max-width: ${theme.maxWidthMain};
     height: 100%;
     padding: 0 ${theme.paddingSidesMain};
-    border-right: 1px solid white;
-    border-left: 1px solid white;
+    /* border-right: 1px solid white;
+    border-left: 1px solid white; */
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
@@ -169,9 +171,9 @@ const NavList = styled('ul')`
     width: 100%;
     padding: 0 24px;
     list-style: none;
-    background: rgba(${theme.colorBackground}, 1);
+    /* background: rgba(${theme.colorBackground}, 1);
     border-top: 1px solid rgba(${theme.colorText}, 0.1);
-    border-bottom: 1px solid rgba(${theme.colorText}, 0.1);
+    border-bottom: 1px solid rgba(${theme.colorText}, 0.1); */
 
     @media only screen and (min-width: 768px) {
         position: relative;
@@ -181,20 +183,39 @@ const NavList = styled('ul')`
         width: auto;
         height: 100%;
         padding: 0;
-        background: rgba(${theme.colorBackground}, 0.98);
+        /* background: rgba(${theme.colorBackground}, 0.98); */
         border: 0;
     }
 `
 
-NavList.defaultProps = { isOpen: false }
-NavList.propTypes = { isOpen: PropTypes.bool }
+NavList.defaultProps = {
+    isOpen: false,
+}
+
+NavList.propTypes = {
+    isOpen: PropTypes.bool,
+}
 
 // =============================================================================
 
 const NavListItem = styled('li')`
     @media only screen and (min-width: 768px) {
+        opacity: 0;
+
         & + & {
             margin-left: 46px;
+        }
+
+        &:nth-child(2) {
+            animation: ${KF.slide} 500ms linear 1600ms 1 forwards;
+        }
+
+        &:nth-child(3) {
+            animation: ${KF.slide} 500ms linear 1700ms 1 forwards;
+        }
+
+        &:nth-child(4) {
+            animation: ${KF.slide} 500ms linear 1800ms 1 forwards;
         }
     }
 
@@ -231,7 +252,7 @@ const NavLink = styled('a')`
         align-items: center;
         height: 100%;
         padding: 0;
-        /* transition: color ${transitions.navLinks}; */
+        transition: color ${theme.transitionNavLink};
 
         /* Defines the underline at the bottom of each navigation list item. */
         &::after {
@@ -243,7 +264,7 @@ const NavLink = styled('a')`
             background: rgba(${theme.colorPrimary}, 1);
             transform: scaleX(0);
             transform-origin: right;
-            /* transition: transform ${transitions.navLinks}; */
+            transition: transform ${theme.transitionNavLink};
             content: '';
         }
 

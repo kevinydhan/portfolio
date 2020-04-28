@@ -1,3 +1,5 @@
+import { useObserver, useQuery } from './hooks'
+
 /**
  * Generates a key that is passed to the React element.
  *
@@ -11,3 +13,5 @@
  * @returns {string} - Key
  */
 export const generateKey = (str, i) => `${str.split(' ').join('-')}-${i}`
+
+export { useObserver, useQuery }
