@@ -44,10 +44,12 @@ projects:
         href: https://google.com
         target: _blank
         rel: noreferrer noopener nofollow
+        aria-label: Netlify
       - type: github
         href: https://google.com
         target: _blank
         rel: noreferrer noopener nofollow
+        aria-label: Github
       - type: figma
         href: https://google.com
         target: _blank
@@ -71,10 +73,12 @@ projects:
         href: https://google.com
         target: _blank
         rel: noreferrer noopener nofollow
+        aria-label: Netlify
       - type: github
         href: https://google.com
         target: _blank
         rel: noreferrer noopener nofollow
+        aria-label: Github
       - type: figma
         href: https://www.figma.com/file/NMrONKvni9bdgLOVmpXiyI/Fitness-Factory---Website-Redesign
         target: _blank
@@ -94,10 +98,12 @@ projects:
         href: https://google.com
         target: _blank
         rel: noreferrer noopener nofollow
+        aria-label: Netlify
       - type: github
         href: https://google.com
         target: _blank
         rel: noreferrer noopener nofollow
+        aria-label: Github
       - type: figma
         href: https://google.com
         target: _blank

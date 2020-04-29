@@ -8,8 +8,6 @@ const Landing = (props) => {
     const ref = useRef()
     const { observeElement } = props
 
-    console.log('Landing component re-rendered.')
-
     useEffect(() => {
         if (ref.current) observeElement(ref.current)
     }, [observeElement])

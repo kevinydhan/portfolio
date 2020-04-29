@@ -23,8 +23,6 @@ const ProjectCard = (props) => {
         observeElement,
     } = props
 
-    console.log('ProjectCard rerendered')
-
     const ref = useRef()
 
     useEffect(() => {
@@ -102,8 +100,8 @@ ProjectCard.propTypes = {
 const ProjectContainer = styled('div')`
     width: 100%;
     max-width: ${theme.maxWidthMain};
-    height: 100vh;
-    padding: 0 16px;
+    min-height: 100vh;
+    padding: 3em 16px;
 
     &:nth-child(3n + 1) {
         picture {
@@ -144,7 +142,7 @@ const ProjectContainer = styled('div')`
 
     @media only screen and (min-width: 1024px) {
         justify-content: center;
-        margin: 0 48px;
+        margin: 0 auto;
     }
 `
 
