@@ -35,8 +35,6 @@ class CSSMixins {
             }
         })
 
-        console.log(properties)
-
         return css`
             display: flex;
             align-items: ${alignItems};

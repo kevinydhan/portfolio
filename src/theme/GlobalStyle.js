@@ -18,7 +18,7 @@ export default createGlobalStyle`
         overflow-x: hidden;
         color: rgba(${theme.colorText}, 1);
         font-family: ${theme.fontFamilyPrimary}, sans-serif;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
         scroll-behavior: smooth;
     }
 

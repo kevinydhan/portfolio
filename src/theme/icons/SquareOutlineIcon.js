@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SquareOutlineButton = () => (
+const SquareOutlineIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect
             x="1.5"
@@ -13,4 +13,4 @@ const SquareOutlineButton = () => (
     </svg>
 )
 
-export default SquareOutlineButton
+export default SquareOutlineIcon

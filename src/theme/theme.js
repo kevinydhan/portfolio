@@ -16,6 +16,7 @@ export default {
     paddingSidesMain: '16px',
 
     transitionButtonLink: '150ms ease-in-out',
+    transitionNavbar: '300ms ease-in-out',
     transitionNavLink: '250ms ease-in-out',
     transitionLogo: '100ms ease-in-out',
 }

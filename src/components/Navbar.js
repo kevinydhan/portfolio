@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { theme, Keyframes as KF } from '@theme'
+import { theme, Keyframes as KF, SquareOutlineIcon } from '@theme'
 import { generateKey } from '@utils'
+import debounce from 'lodash.debounce'
 import { navLinks } from '@data/site.yml'
 
 class Navbar extends Component {
     hiddenNavListItems = ['Home']
+    debounceInteral = 50
 
     state = {
         isOpen: false,
@@ -18,7 +20,7 @@ class Navbar extends Component {
 
     closeNavList = () => this.setState({ isOpen: false })
 
-    handleScroll = () => {
+    handleScroll = debounce(() => {
         this.setState((prevState) => {
             const scrollPosition = document.body.getBoundingClientRect().top
 
@@ -26,12 +28,21 @@ class Navbar extends Component {
                 ...prevState,
                 scrollPosition,
                 isHidden: scrollPosition < prevState.scrollPosition,
+                isOpen: false,
             }
         })
-    }
+    }, this.debounceInteral)
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll)
+    }
+
+    componentDidUpdate(prevProps) {
+        const { mainContentRef } = prevProps
+
+        if (mainContentRef.current) {
+            mainContentRef.current.addEventListener('click', this.closeNavList)
+        }
     }
 
     componentWillUnmount() {
@@ -45,9 +56,9 @@ class Navbar extends Component {
         return (
             <Header className={isHidden && 'hidden'}>
                 <Nav>
-                    {/* <MenuButtonContainer onClick={toggleNavList}>
-                        <SquareOutlineButton />
-                    </MenuButtonContainer> */}
+                    <MenuButtonContainer onClick={toggleNavList}>
+                        <SquareOutlineIcon />
+                    </MenuButtonContainer>
                     <Logo href="#">Kevin Han</Logo>
                     <NavList isOpen={isOpen}>
                         {navLinks.map((link, i) => {
@@ -79,6 +90,10 @@ class Navbar extends Component {
     }
 }
 
+Navbar.propTypes = {
+    mainContentRef: PropTypes.object,
+}
+
 // =============================================================================
 
 const Header = styled('header')`
@@ -90,17 +105,17 @@ const Header = styled('header')`
     justify-content: center;
     width: 100%;
     height: ${theme.heightNavbar};
-    /* background: rgba(${theme.colorBackground}, 1); */
+    background: rgba(${theme.colorBackground}, 1);
 
     transform: translateY(0);
-    /* transition: transform ${transitions.navbar}; */
+    transition: transform ${theme.transitionNavbar};
 
     &.hidden {
-        transform: translateY(calc(${theme.navbarHeight} * -1));
+        transform: translateY(calc(${theme.heightNavbar} * -1));
     }
 
     @media only screen and (min-width: 768px) {
-        /* background: rgba(${theme.colorBackground}, 0.98); */
+        background: rgba(${theme.colorBackground}, 0.98);
     }
 `
 
@@ -137,6 +152,21 @@ const Logo = styled('a')`
 
 // =============================================================================
 
+const MenuButtonContainer = styled('button')`
+    cursor: pointer;
+
+    svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+`
+
+// =============================================================================
+
 const Nav = styled('nav')`
     position: relative;
     display: flex;
@@ -144,13 +174,12 @@ const Nav = styled('nav')`
     width: 100%;
     max-width: ${theme.maxWidthMain};
     height: 100%;
-    margin: 0 ${theme.paddingSidesMain};
-    /* border-right: 1px solid white;
-    border-left: 1px solid white; */
+    padding: 0 16px;
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
         margin: 0 36px;
+        padding: 0;
     }
 
     @media only screen and (min-width: 1024px) {
@@ -166,11 +195,9 @@ const NavList = styled('ul')`
     left: 0;
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
     width: 100%;
-    padding: 0 24px;
+    padding: 0 16px;
     list-style: none;
-    /* background: rgba(${theme.colorBackground}, 1);
-    border-top: 1px solid rgba(${theme.colorText}, 0.1);
-    border-bottom: 1px solid rgba(${theme.colorText}, 0.1); */
+    background: rgba(${theme.colorBackground}, 1);
 
     @media only screen and (min-width: 768px) {
         position: relative;
@@ -241,7 +268,7 @@ const additionalHiddenNavListItemStyles = css`
 
 const NavLink = styled('a')`
     display: flex;
-    padding: 18px 0;
+    padding: 16px 0;
     font-size: 16px;
 
     @media only screen and (min-width: 768px) {

@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Background = () => {
-    console.log('Background component re-rendered.')
-
     return (
         <BackgroundContainer>
             <SVG viewBox="0 0 1366 768" xmlns="http://www.w3.org/2000/svg">
