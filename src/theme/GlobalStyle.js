@@ -41,13 +41,21 @@ export default createGlobalStyle`
         font-size: 7.662vw;
     }
 
+    h3 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
     @media only screen and (min-width: 768px) {
         h1 {
             font-size: 40px;
         }
 
         p {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.8;
         }
     }

@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { theme } from '@theme'
 
 const IconLink = styled('a')`
+    svg {
+        height: 36px;
+    }
+
     path,
     rect {
         transition: fill 150ms ease-in-out;

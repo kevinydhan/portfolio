@@ -1,13 +1,7 @@
 import React from 'react'
 
 const ExternalLinkIcon = () => (
-    <svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M26.6667 0L35.448 8.76231L16.7814 27.3885L20.552 31.151L39.2187 12.5248L48 21.2871V0H26.6667Z"
             fill="white"

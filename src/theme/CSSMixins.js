@@ -2,6 +2,23 @@ import { css } from 'styled-components'
 import theme from './theme'
 
 class CSSMixins {
+    static properties = {
+        flexbox: [
+            {
+                js: 'justifyContent',
+                css: 'justify-content',
+            },
+            {
+                js: 'alignItems',
+                css: 'align-items',
+            },
+            {
+                js: 'flexDirection',
+                css: 'flex-direction',
+            },
+        ],
+    }
+
     static flexbox = (
         options = {
             justifyContent: 'center',
@@ -9,6 +26,16 @@ class CSSMixins {
         }
     ) => {
         const { justifyContent, alignItems } = { ...options }
+
+        let properties = ``
+
+        this.properties.flexbox.forEach((property) => {
+            if (options[property.js]) {
+                properties += `${property.css}: ${options[property.js]};\n`
+            }
+        })
+
+        console.log(properties)
 
         return css`
             display: flex;
