@@ -100,9 +100,10 @@ ProjectCard.propTypes = {
 // =============================================================================
 
 const ProjectContainer = styled('div')`
-    ${CMx.fullPage()}
-    display: flex;
-    flex-direction: row;
+    width: 100%;
+    max-width: ${theme.maxWidthMain};
+    height: 100vh;
+    padding: 0 16px;
 
     &:nth-child(3n + 1) {
         picture {
@@ -133,6 +134,18 @@ const ProjectContainer = styled('div')`
             color: rgba(${theme.colorRed}, 1);
         }
     }
+
+    @media only screen and (min-width: 768px) {
+        ${CMx.fullPage()}
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 36px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        justify-content: center;
+        margin: 0 48px;
+    }
 `
 
 // =============================================================================
@@ -142,8 +155,26 @@ const Picture = styled('picture')`
     align-items: center;
     justify-content: center;
 
-    > img {
-        width: 90%;
+    padding: 36px 16px;
+
+    img {
+        width: 100%;
+    }
+
+    @media only screen and (min-width: 768px) {
+        width: 47.5%;
+        height: 50vw;
+        min-height: 350px;
+        max-height: 425px;
+        padding: 0 16px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        width: 500px;
+        height: 50vw;
+        min-height: 350px;
+        max-height: 500px;
+        padding: 0 24px;
     }
 
     @media only screen and (min-width: 1366px) {
@@ -160,6 +191,16 @@ const Picture = styled('picture')`
 // =============================================================================
 
 const ProjectBody = styled('div')`
+    @media only screen and (min-width: 768px) {
+        width: 47.5%;
+        margin: 0;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        width: 500px;
+        margin: 0 0 0 96px;
+    }
+
     @media only screen and (min-width: 1366px) {
         width: 500px;
         margin: 0 0 0 96px;
@@ -169,12 +210,18 @@ const ProjectBody = styled('div')`
 // =============================================================================
 
 const Title = styled('h3')`
-    /* Filler */
+    margin: 1em 0 0;
+
+    @media only screen and (min-width: 1024px) {
+        margin: 0;
+    }
 `
 
 // =============================================================================
 
 const Description = styled('p')`
+    margin: 0.5em 0 0;
+
     @media only screen and (min-width: 1366px) {
         margin: 1em 0 0;
     }
@@ -185,6 +232,8 @@ const Description = styled('p')`
 const TechnologyList = styled('ul')`
     display: flex;
     flex-wrap: wrap;
+
+    margin: 4em 0 0;
     list-style: none;
 
     @media only screen and (min-width: 1366px) {
@@ -195,7 +244,8 @@ const TechnologyList = styled('ul')`
 // =============================================================================
 
 const TechnologyTag = styled('li')`
-    margin: 12px 24px 0 0;
+    margin: 8px 20px 0 0;
+    font-size: 12px;
 
     @media only screen and (min-width: 1024px) {
         margin: 10px 20px 0 0;
@@ -206,12 +256,14 @@ const TechnologyTag = styled('li')`
 // =============================================================================
 
 const IconContainer = styled('div')`
+    margin: 1.75em 0 0;
+
+    a + a {
+        margin-left: 24px;
+    }
+
     @media only screen and (min-width: 1366px) {
         margin: 2em 0 0;
-
-        a + a {
-            margin-left: 24px;
-        }
     }
 `
 

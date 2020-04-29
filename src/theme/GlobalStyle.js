@@ -18,12 +18,17 @@ export default createGlobalStyle`
         overflow-x: hidden;
         color: rgba(${theme.colorText}, 1);
         font-family: ${theme.fontFamilyPrimary}, sans-serif;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         scroll-behavior: smooth;
     }
 
     body {
         background: rgba(${theme.colorBackground}, 1);
+    }
+
+    a {
+        color: rgba(${theme.colorHeading}, 1);
+        text-decoration: none;
     }
 
     h1,
@@ -32,9 +37,16 @@ export default createGlobalStyle`
         color: rgba(${theme.colorHeading}, 1);
     }
 
-    a {
-        color: rgba(${theme.colorHeading}, 1);
-        text-decoration: none;
+    h1 {
+        font-size: 7.662vw;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 15px;
     }
 
     @media only screen and (min-width: 768px) {
@@ -43,7 +55,7 @@ export default createGlobalStyle`
         }
 
         p {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.8;
         }
     }

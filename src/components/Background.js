@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CSSMixins as CMx } from '@theme'
 
-const Background = (props) => {
+const Background = () => {
     console.log('Background component re-rendered.')
 
     return (
@@ -94,7 +93,9 @@ const BackgroundContainer = styled('div')`
     top: 0;
     left: 0;
     z-index: -999;
-    ${CMx.flexbox()}
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100vh;
 `

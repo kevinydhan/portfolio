@@ -56,13 +56,15 @@ const Heading = styled('h1')`
 // =============================================================================
 
 const AdCopy = styled('p')`
+    margin: 0.5em 0 0;
+    font-size: 18px;
     transform: translateY(-30px);
     opacity: 0;
     animation: ${KF.slide} 500ms linear 500ms 1 forwards;
 
     @media only screen and (min-width: 768px) {
         max-width: 500px;
-        margin-top: 0.75em;
+        margin: 0.75em 0 0;
     }
 
     @media only screen and (min-width: 1366px) {
@@ -75,6 +77,8 @@ const AdCopy = styled('p')`
 // =============================================================================
 
 const CTAContainer = styled('div')`
+    margin: 15vh 0 0;
+
     > a {
         opacity: 0;
     }
@@ -89,15 +93,15 @@ const CTAContainer = styled('div')`
 
     @media only screen and (min-width: 768px) {
         display: flex;
-        margin-top: 6em;
+        margin: 6em 0 0;
     }
 
     @media only screen and (min-width: 1024px) {
-        margin-top: 6em;
+        margin: 6em 0 0;
     }
 
     @media only screen and (min-width: 1366px) {
-        margin-top: 7em;
+        margin: 7em 0 0;
     }
 `
 
