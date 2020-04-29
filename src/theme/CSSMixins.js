@@ -17,14 +17,14 @@ class CSSMixins {
         `
     }
 
-    static fullPage = (options = {}) => {
+    static fullPage = () => {
         return css`
             ${this.flexbox()}
             flex-direction: column;
-            width: 100vw;
+            width: 100%;
             max-width: ${theme.maxWidthMain};
             height: 100vh;
-            margin: 0 auto;
+            padding: 0 16px;
 
             @media only screen and (min-width: 768px) {
                 min-height: 768px;
@@ -36,6 +36,7 @@ class CSSMixins {
 
             @media only screen and (min-width: 1366px) {
                 min-height: 768px;
+                margin: 0 auto;
             }
         `
     }
