@@ -9,6 +9,12 @@ import projectData from '@data/projects.yml'
  *
  * **This hook is used for development purposes only.**
  *
+ * @example
+ * const MyComponent = () => {
+ *     useRenderCounter('MyComponent')
+ *     ...
+ * }
+ *
  * @param {string} componentName - Name of the component
  *
  * @returns {void}
