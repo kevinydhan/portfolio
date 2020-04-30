@@ -1,46 +1,48 @@
-// React modules
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { SquareOutlineButton } from '@theme/icons'
-
-// Styling modules
 import styled, { css } from 'styled-components'
-import { theme } from '@theme'
-
-// Misc. modules
-import { navLinks, logo } from '@config'
+import { theme, Keyframes as KF, SquareOutlineIcon } from '@theme'
 import { generateKey } from '@utils'
-
-// =============================================================================
+import debounce from 'lodash.debounce'
+import { navLinks } from '@data/site.yml'
 
 class Navbar extends Component {
     hiddenNavListItems = ['Home']
-    state = {
-        // Keeps track of the open/close state of the dropdown menu
-        isOpen: false,
+    debounceInteral = 50
 
-        // Keeps track of the visible/hidden state when a user scrolls up or
-        // down
+    state = {
+        isOpen: false,
         isHidden: false,
         scrollPosition: 0,
     }
 
     toggleNavList = () => this.setState({ isOpen: !this.state.isOpen })
+
     closeNavList = () => this.setState({ isOpen: false })
 
-    handleScroll = () => {
+    handleScroll = debounce(() => {
         this.setState((prevState) => {
             const scrollPosition = document.body.getBoundingClientRect().top
+
             return {
                 ...prevState,
                 scrollPosition,
                 isHidden: scrollPosition < prevState.scrollPosition,
+                isOpen: false,
             }
         })
-    }
+    }, this.debounceInteral)
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll)
+    }
+
+    componentDidUpdate(prevProps) {
+        const { mainContentRef } = prevProps
+
+        if (mainContentRef.current) {
+            mainContentRef.current.addEventListener('click', this.closeNavList)
+        }
     }
 
     componentWillUnmount() {
@@ -55,26 +57,28 @@ class Navbar extends Component {
             <Header className={isHidden && 'hidden'}>
                 <Nav>
                     <MenuButtonContainer onClick={toggleNavList}>
-                        <SquareOutlineButton />
+                        <SquareOutlineIcon />
                     </MenuButtonContainer>
                     <Logo href="#">Kevin Han</Logo>
                     <NavList isOpen={isOpen}>
                         {navLinks.map((link, i) => {
+                            const { text, ...linkProps } = link
                             const navListItemProps = {}
 
-                            if (hiddenNavListItems.includes(link.name)) {
+                            if (hiddenNavListItems.includes(text)) {
                                 navListItemProps.additionalStyles = additionalHiddenNavListItemStyles
                             }
+
                             return (
                                 <NavListItem
-                                    key={generateKey(link.name, i)}
+                                    key={generateKey(text, i)}
                                     {...navListItemProps}
                                 >
                                     <NavLink
-                                        href={link.href}
+                                        {...linkProps}
                                         onClick={closeNavList}
                                     >
-                                        {link.name}
+                                        {text}
                                     </NavLink>
                                 </NavListItem>
                             )
@@ -86,138 +90,156 @@ class Navbar extends Component {
     }
 }
 
+Navbar.propTypes = {
+    mainContentRef: PropTypes.object,
+}
+
 // =============================================================================
 
-const { colors, transitions } = theme
-const heights = theme.dimensions.heights
-
-// =============================================================================
-
-/**
- * This element expands to `100vw` at all breakpoints. This element displays
- * the navigation bar's background color.
- */
 const Header = styled('header')`
-    /* Positional styles */
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
-
-    /* Box model styles */
     display: flex;
-
-    /* Horizontally aligns the NavList component at viewport widths larger
-       than 1440px. */
     justify-content: center;
     width: 100%;
-    height: ${heights.navbar.sm};
-
-    /* Visual styles */
-    background: rgba(${colors.background}, 1);
-    /* background: white; */
-    /* border-bottom: 1px solid rgba(${colors.border}, 0.95); */
+    height: ${theme.heightNavbar};
+    background: rgba(${theme.colorBackground}, 1);
 
     transform: translateY(0);
-    transition: transform ${transitions.navbar};
+    transition: transform ${theme.transitionNavbar};
 
     &.hidden {
-        transform: translateY(calc(${heights.navbar.md} * -1));
+        transform: translateY(calc(${theme.heightNavbar} * -1));
     }
 
     @media only screen and (min-width: 768px) {
-        height: ${heights.navbar.md};
-        background: rgba(${colors.background}, 0.98);
+        background: rgba(${theme.colorBackground}, 0.98);
     }
 `
 
 // =============================================================================
 
-/**
- * This element expands to `100%`, or `100vw`, at smaller viewport widths but
- * caps at a `max-width: 1024px;`. This element contains the portfolio logo
- * image and navigation list.
- */
-const Nav = styled('nav')`
-    /* Positional styles */
-    position: relative;
+const Logo = styled('a')`
+    display: none;
+    color: rgba(${theme.colorHeading}, 1);
+    font-weight: 400;
+    font-family: ${theme.fontFamilyLogo};
+    text-transform: uppercase;
+    opacity: 0;
+    transition: color ${theme.transitionLogo};
+    animation: ${KF.slide} 500ms linear 1500ms 1 forwards;
 
-    /* Box model styles */
+    &:hover,
+    &:active {
+        color: rgba(${theme.colorHeading}, 0.6);
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: block;
+        font-size: 20px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: 22px;
+    }
+
+    @media only screen and (min-width: 1366px) {
+        font-size: 24px;
+    }
+`
+
+// =============================================================================
+
+const MenuButtonContainer = styled('button')`
+    cursor: pointer;
+
+    svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+`
+
+// =============================================================================
+
+const Nav = styled('nav')`
+    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 1440px;
+    max-width: ${theme.maxWidthMain};
     height: 100%;
-    padding: 0 24px;
-
-    /* Visual styles */
-    /* border-right: 1px solid white;
-    border-left: 1px solid white; */
-
-    /* Visual styles */
-    /* background: pink; */
+    padding: 0 16px;
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
+        margin: 0 36px;
+        padding: 0;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        margin: 0 48px;
     }
 `
 
 // =============================================================================
 
-/**
- * This element contains the navigation links. It is a fixed width at larger
- * viewport widths.
- */
 const NavList = styled('ul')`
-    /* Positional styles */
     position: absolute;
     top: 100%;
     left: 0;
-
-    /* Box model styles */
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
     width: 100%;
-    padding: 0 24px;
-
-    /* Visual styles */
+    padding: 0 16px;
     list-style: none;
-    background: rgba(${colors.background}, 1);
-
-    border-top: 1px solid rgba(${colors.text}, 0.1);
-    border-bottom: 1px solid rgba(${colors.text}, 0.1);
-    /* background: blue; */
+    background: rgba(${theme.colorBackground}, 1);
 
     @media only screen and (min-width: 768px) {
-        /* Positional styles */
         position: relative;
         top: unset;
         left: unset;
-
-        /* Box model styles */
         display: flex;
         width: auto;
         height: 100%;
         padding: 0;
-
-        /* Visual styles */
-        background: rgba(${colors.background}, 0.98);
+        /* background: rgba(${theme.colorBackground}, 0.98); */
         border: 0;
     }
 `
 
-NavList.defaultProps = { isOpen: false }
-NavList.propTypes = { isOpen: PropTypes.bool }
+NavList.defaultProps = {
+    isOpen: false,
+}
+
+NavList.propTypes = {
+    isOpen: PropTypes.bool,
+}
 
 // =============================================================================
 
-/**
- * This element parents the navigation link. This element provides top and
- * bottom padding at mobile viewports and left margins at larger viewports.
- */
 const NavListItem = styled('li')`
     @media only screen and (min-width: 768px) {
+        opacity: 0;
+
         & + & {
             margin-left: 46px;
+        }
+
+        &:nth-child(2) {
+            animation: ${KF.slide} 500ms linear 1750ms 1 forwards;
+        }
+
+        &:nth-child(3) {
+            animation: ${KF.slide} 500ms linear 1900ms 1 forwards;
+        }
+
+        &:nth-child(4) {
+            animation: ${KF.slide} 500ms linear 2050ms 1 forwards;
         }
     }
 
@@ -244,17 +266,9 @@ const additionalHiddenNavListItemStyles = css`
 
 // =============================================================================
 
-/**
- * This element contains the navigation link. It takes up the entire width and
- * height of its parent at all viewport widths. This is to allow an end user to
- * be able to click anywhere within the box instead of clicking only on the
- * link. It has a pseudo-element that animates an underline whenever this
- * element is hovered or active.
- */
 const NavLink = styled('a')`
     display: flex;
-    padding: 18px 0;
-    color: rgba(${colors.heading}, 1);
+    padding: 16px 0;
     font-size: 16px;
 
     @media only screen and (min-width: 768px) {
@@ -262,7 +276,7 @@ const NavLink = styled('a')`
         align-items: center;
         height: 100%;
         padding: 0;
-        transition: color ${transitions.navLinks};
+        transition: color ${theme.transitionNavLink};
 
         /* Defines the underline at the bottom of each navigation list item. */
         &::after {
@@ -271,71 +285,22 @@ const NavLink = styled('a')`
             left: 0;
             width: 100%;
             height: 3px;
-            background: rgba(${colors.blue}, 1);
+            background: rgba(${theme.colorPrimary}, 1);
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform ${transitions.navLinks};
+            transition: transform ${theme.transitionNavLink};
             content: '';
         }
 
         &:hover,
         &:active {
-            color: rgba(${colors.heading}, 0.6);
+            color: rgba(${theme.colorHeading}, 0.6);
 
             &::after {
                 transform: scaleX(1);
                 transform-origin: left;
             }
         }
-    }
-
-    @media only screen and (min-width: 1440px) {
-        font-size: 18px;
-    }
-`
-
-// =============================================================================
-
-/**
- * This element contains the square outline SVG.
- */
-const MenuButtonContainer = styled('span')`
-    cursor: pointer;
-
-    @media only screen and (min-width: 768px) {
-        display: none;
-    }
-`
-
-// =============================================================================
-
-/**
- * This element contains the website's logo.
- */
-const Logo = styled('a')`
-    display: none;
-    color: rgba(${colors.heading}, 1);
-    font-weight: ${logo.fontWeight};
-    font-family: ${logo.fontFamily}, sans-serif;
-    text-transform: uppercase;
-    transition: color ${transitions.navLinks};
-
-    &:hover,
-    &:active {
-        color: rgba(${colors.heading}, 0.6);
-    }
-
-    @media only screen and (min-width: 768px) {
-        display: block;
-        font-size: 20px;
-    }
-
-    @media only screen and (min-width: 1024px) {
-        font-size: 22px;
-    }
-
-    @media only screen and (min-width: 1440px) {
-        font-size: 24px;
     }
 `
 

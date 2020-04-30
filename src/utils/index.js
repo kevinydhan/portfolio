@@ -1,3 +1,6 @@
+import { useObserver, useQuery } from './hooks'
+export { useObserver, useQuery }
+
 /**
  * Generates a key that is passed to the React element.
  *

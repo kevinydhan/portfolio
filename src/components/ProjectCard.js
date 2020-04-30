@@ -1,408 +1,275 @@
-// React modules
-import React, { useEffect, createRef } from 'react'
+import React, { memo, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-
-// Styling modules
 import styled from 'styled-components'
-import { theme, IconLink } from '@theme'
-import { ExternalLinkIcon, GithubCircleIcon, GitLabIcon } from '@theme/icons'
+import {
+    theme,
+    CSSMixins as CMx,
+    IconLink,
+    ExternalLinkIcon,
+    GithubCircleIcon,
+    GitLabIcon,
+    FigmaIcon,
+} from '@theme'
 
-// Misc. modules
-import { generateKey } from '@utils'
+const ProjectCard = ({
+    title,
+    description,
+    className,
+    imgSrc,
+    imgAlt,
+    technologies,
+    links,
+    observeElement,
+}) => {
+    // const counter = useRef(0)
+    // const increment = () => counter.current++
+    // increment()
+    // console.log(
+    //     `ProjectCard component was rendered ${counter.current} time(s).`
+    // )
 
-// =============================================================================
-
-const ProjectCard = (props) => {
-    const {
-        name,
-        description,
-        tags,
-        url,
-        imgSrc,
-        imgAlt,
-        observeElement,
-    } = props
-
-    const ref = createRef()
+    const ref = useRef()
 
     useEffect(() => {
         if (ref.current) observeElement(ref.current)
-    }, [])
-
-    const externalDomain = ['Netlify', 'Heroku'].filter((domain) => {
-        return url.external.includes(domain.toLowerCase())
-    })
-
-    const ExternalLink = url.external ? (
-        <IconLink href={url.external} aria-label={externalDomain[0]}>
-            <ExternalLinkIcon />
-        </IconLink>
-    ) : null
-
-    const Github = url.github ? (
-        <IconLink href={url.github} aria-label="Github">
-            <GithubCircleIcon />
-        </IconLink>
-    ) : null
-
-    const GitLab = url.gitlab ? (
-        <IconLink href={url.gitlab} aria-label="GitLab">
-            <GitLabIcon />
-        </IconLink>
-    ) : null
+    }, [observeElement])
 
     return (
-        <Card ref={ref}>
-            <ImageContainer>
-                <Image src={imgSrc} alt={imgAlt} />
-            </ImageContainer>
-            <Content>
-                <Title>{name}</Title>
+        <ProjectContainer ref={ref} className={className}>
+            <Picture>
+                <img src={imgSrc} alt={imgAlt} />
+            </Picture>
+
+            <ProjectBody>
+                <Title>{title}</Title>
                 <Description>{description}</Description>
-                <TagList>
-                    {tags.map((tag, i) => (
-                        <TagItem key={generateKey(tag, i)}>{tag}</TagItem>
+                <TechnologyList>
+                    {technologies.map((technology) => (
+                        <TechnologyTag key={technology}>
+                            {technology}
+                        </TechnologyTag>
                     ))}
-                </TagList>
+                </TechnologyList>
+
                 <IconContainer>
-                    {Github}
-                    {GitLab}
-                    {ExternalLink}
+                    {links.map((link, i) => {
+                        const { type, ...linkProps } = link
+                        let child
+                        switch (type) {
+                            case 'external':
+                                child = <ExternalLinkIcon />
+                                break
+                            case 'github':
+                                child = <GithubCircleIcon />
+                                break
+                            case 'gitlab':
+                                child = <GitLabIcon />
+                                break
+                            case 'figma':
+                                child = <FigmaIcon />
+                                break
+                        }
+                        return (
+                            <IconLink key={`${type}-${i}`} {...linkProps}>
+                                {child}
+                            </IconLink>
+                        )
+                    })}
                 </IconContainer>
-            </Content>
-        </Card>
+            </ProjectBody>
+        </ProjectContainer>
     )
 }
 
-ProjectCard.defaultProps = { tags: [], url: {} }
-
 ProjectCard.propTypes = {
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    tags: PropTypes.arrayOf(PropTypes.string),
-    url: PropTypes.shape({
-        external: PropTypes.string,
-        gitlab: PropTypes.string,
-        github: PropTypes.string,
-    }),
+    originalImgName: PropTypes.string.isRequired,
+    className: PropTypes.string,
     imgSrc: PropTypes.string.isRequired,
     imgAlt: PropTypes.string.isRequired,
+    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+            type: PropTypes.string.isRequired,
+            href: PropTypes.string.isRequired,
+            target: PropTypes.string,
+            rel: PropTypes.string,
+        })
+    ).isRequired,
     observeElement: PropTypes.func.isRequired,
 }
 
 // =============================================================================
 
-const { colors, transitions } = theme
+const ProjectContainer = styled('div')`
+    width: 100%;
+    max-width: ${theme.maxWidthMain};
+    min-height: 100vh;
+    padding: 3em 16px;
 
-/**
- * This variable references the width for the title's underline and icons'
- * top border.
- */
-const underlineWidthMobile = '96px'
+    &:nth-child(3n + 1) {
+        picture {
+            background: rgba(${theme.colorLightBlue}, 0.85);
+        }
 
-const underlineWidthDesktop = '100px'
+        ul {
+            color: rgba(${theme.colorLightBlue}, 1);
+        }
+    }
 
-/**
- * This variable references the distance between the underline and the title.
- * It is also used to calculate the distance between the top border of the icon
- * container and the container's top edge.
- */
-const underlineDistanceMobile = '8px'
+    &:nth-child(3n + 2) {
+        picture {
+            background: rgba(${theme.colorYellow}, 0.85);
+        }
 
-const underlineDistanceDesktop = '12px'
+        ul {
+            color: rgba(${theme.colorYellow}, 1);
+        }
+    }
 
-/**
- * This variable references the underline's thickness.
- */
-const underlineThicknessMobile = '2px'
+    &:nth-child(3n + 3) {
+        picture {
+            background: rgba(${theme.colorRed}, 0.85);
+        }
 
-const underlineThicknessDesktop = '3px'
+        ul {
+            color: rgba(${theme.colorRed}, 1);
+        }
+    }
 
-/**
- * This variable references the underline's background color.
- */
-const underlineBackground = `rgba(${colors.heading}, 1)`
+    @media only screen and (min-width: 768px) {
+        ${CMx.fullPage()}
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 36px;
+    }
 
-/**
- * This variable references the width for the project's title, description,
- * and tag list at viewport widths of `768px` and above.
- */
-const bodyWidth = '85%'
-
-/**
- * xs = 0px
- * sm = 375px
- * md = 768px
- * lg = 1024px
- * xl = 1440px
- */
-const fontSizes = {
-    title: {
-        xs: '24px',
-        sm: '24px',
-        md: '30px',
-        lg: '33px',
-        xl: '36px',
-    },
-    description: {
-        xs: '17px',
-        sm: '17px',
-        md: '18px',
-        lg: '20px',
-        xl: '20px',
-    },
-    tags: {
-        xs: '14px',
-        sm: '14px',
-        md: '14px',
-        lg: '15px',
-        xl: '16px',
-    },
-}
-
-const lineHeights = {
-    description: {
-        xs: '',
-        sm: '',
-        md: '32px',
-        lg: '36px',
-        xl: '36px',
-    },
-}
+    @media only screen and (min-width: 1024px) {
+        justify-content: center;
+        margin: 0 auto;
+    }
+`
 
 // =============================================================================
 
-const ImageContainer = styled('picture')`
+const Picture = styled('picture')`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
 
-    @media only screen and (min-width: 768px) {
-        flex: 1;
+    padding: 36px 16px;
+
+    img {
+        width: 100%;
     }
-`
-
-// =============================================================================
-
-const TagList = styled('ul')`
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 80px;
-    font-size: ${fontSizes.tags.xs};
-    list-style: none;
 
     @media only screen and (min-width: 768px) {
-        width: ${bodyWidth};
-        font-size: ${fontSizes.tags.md};
+        width: 47.5%;
+        height: 50vw;
+        min-height: 350px;
+        max-height: 425px;
+        padding: 0 16px;
     }
 
     @media only screen and (min-width: 1024px) {
-        font-size: ${fontSizes.tags.lg};
+        width: 500px;
+        height: 50vw;
+        min-height: 350px;
+        max-height: 500px;
+        padding: 0 24px;
     }
 
-    @media only screen and (min-width: 1440px) {
-        margin-top: 120px;
-        font-size: ${fontSizes.tags.xl};
+    @media only screen and (min-width: 1366px) {
+        width: 500px;
+        height: 500px;
+    }
+
+    @media only screen and (min-width: 1600px) {
+        width: 500px;
+        height: 500px;
     }
 `
 
 // =============================================================================
 
-const Card = styled('li')`
-    width: 100%;
-    list-style: none;
-
-    & + & {
-        margin-top: 90px;
-    }
-
-    &:nth-child(3n + 1) ${TagList} {
-        color: rgba(${colors.lightblue}, 1);
-    }
-
-    &:nth-child(3n + 2) ${TagList} {
-        color: rgba(${colors.yellow}, 1);
-    }
-
-    &:nth-child(3n + 3) ${TagList} {
-        color: rgba(${colors.red}, 1);
-    }
-
-    &:nth-child(3n + 1) > ${ImageContainer} {
-        background: rgba(${colors.lightblue}, 1);
-    }
-
-    &:nth-child(3n + 2) > ${ImageContainer} {
-        background: rgba(${colors.yellow}, 1);
-    }
-
-    &:nth-child(3n + 3) > ${ImageContainer} {
-        background: rgba(${colors.red}, 1);
-    }
-
+const ProjectBody = styled('div')`
     @media only screen and (min-width: 768px) {
-        display: flex;
-        flex-direction: row-reverse;
-        height: 550px;
-        opacity: 0.1;
-        transition: opacity ${transitions.projectCard};
-
-        & + & {
-            margin-top: 0;
-        }
-
-        &.opaque {
-            opacity: 1;
-        }
+        width: 47.5%;
+        margin: 0;
     }
 
     @media only screen and (min-width: 1024px) {
-        height: 600px;
+        width: 500px;
+        margin: 0 0 0 96px;
     }
 
-    @media only screen and (min-width: 1440px) {
-        height: 720px;
-    }
-`
-
-// =============================================================================
-
-const Image = styled('img')`
-    width: 100%;
-`
-
-// =============================================================================
-
-/**
- * This element parents the project's content, including the project title,
- * description, tags, and icons.
- */
-const Content = styled('div')`
-    @media only screen and (min-width: 768px) {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        justify-content: center;
+    @media only screen and (min-width: 1366px) {
+        width: 500px;
+        margin: 0 0 0 96px;
     }
 `
 
 // =============================================================================
 
 const Title = styled('h3')`
-    position: relative;
-    margin-top: 30px;
-    font-weight: 400;
-    font-size: ${fontSizes.title.xs};
-    text-transform: uppercase;
-
-    /* Creates the underline underneath the project title. */
-    &::after {
-        /* Positional styles */
-        position: absolute;
-        bottom: calc(${underlineDistanceMobile} * -1);
-        left: 0;
-
-        /* Box model styles */
-        width: ${underlineWidthMobile};
-        height: ${underlineThicknessMobile};
-        background: ${underlineBackground};
-
-        /* Misc. styles */
-        content: '';
-    }
-
-    @media only screen and (min-width: 768px) {
-        width: ${bodyWidth};
-        font-size: ${fontSizes.title.md};
-        letter-spacing: 0.2rem;
-    }
+    margin: 1em 0 0;
 
     @media only screen and (min-width: 1024px) {
-        font-size: ${fontSizes.title.lg};
-
-        &::after {
-            bottom: calc(${underlineDistanceDesktop} * -1);
-            width: ${underlineWidthDesktop};
-            height: ${underlineThicknessDesktop};
-        }
-    }
-
-    @media only screen and (min-width: 1440px) {
-        font-size: ${fontSizes.title.xl};
+        margin: 0;
     }
 `
 
 // =============================================================================
 
 const Description = styled('p')`
-    margin-top: 32px;
-    white-space: pre-wrap;
+    margin: 0.5em 0 0;
 
-    @media only screen and (min-width: 768px) {
-        width: ${bodyWidth};
-        margin-top: 38px;
-        font-size: ${fontSizes.description.md};
-        line-height: ${lineHeights.description.md};
-    }
-
-    @media only screen and (min-width: 1024px) {
-        font-size: ${fontSizes.description.lg};
-        line-height: ${lineHeights.description.lg};
-    }
-
-    @media only screen and (min-width: 1440px) {
-        font-size: ${fontSizes.description.xl};
-        line-height: ${lineHeights.description.xl};
+    @media only screen and (min-width: 1366px) {
+        margin: 1em 0 0;
     }
 `
 
 // =============================================================================
 
-const TagItem = styled('li')`
-    margin: 6px 16px 0 0;
+const TechnologyList = styled('ul')`
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 4em 0 0;
+    list-style: none;
+
+    @media only screen and (min-width: 1366px) {
+        margin: 7em 0 0;
+    }
+`
+
+// =============================================================================
+
+const TechnologyTag = styled('li')`
+    margin: 8px 20px 0 0;
+    font-size: 12px;
+
+    @media only screen and (min-width: 1024px) {
+        margin: 10px 20px 0 0;
+        font-size: 14px;
+    }
 `
 
 // =============================================================================
 
 const IconContainer = styled('div')`
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: ${underlineWidthMobile};
-    margin-top: 40px;
+    margin: 1.75em 0 0;
 
-    &::before {
-        position: absolute;
-        top: calc(${underlineDistanceMobile} * -1.9);
-        left: 0;
-        width: 100%;
-        height: ${underlineThicknessMobile};
-        background: ${underlineBackground};
-        content: '';
+    a + a {
+        margin-left: 24px;
     }
 
-    @media only screen and (min-width: 768px) {
-        margin-top: 44px;
-    }
-
-    @media only screen and (min-width: 1024px) {
-        width: ${underlineWidthDesktop};
-        margin-top: 52px;
-
-        &::before {
-            top: calc(${underlineDistanceDesktop} * -1.9);
-            height: ${underlineThicknessDesktop};
-        }
-
-        > a svg {
-            width: 42px;
-            height: 42px;
-        }
+    @media only screen and (min-width: 1366px) {
+        margin: 2em 0 0;
     }
 `
 
 // =============================================================================
 
-export default ProjectCard
+export default memo(ProjectCard)
