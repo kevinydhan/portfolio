@@ -1,8 +1,14 @@
 import React, { memo, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { CSSMixins as CMx, Keyframes as KF, ButtonLink } from '@theme'
-import { landing } from '@data/site.yml'
+import styled, { css } from 'styled-components'
+import {
+    theme,
+    CSSMixins as CMx,
+    Keyframes as KF,
+    ButtonLink,
+    IconContainer,
+} from '@theme'
+import { landing, socialLinks } from '@data/site.yml'
 import { backgroundActionClassNames as bgac } from '@data/classnames'
 
 // =============================================================================
@@ -32,6 +38,11 @@ const Landing = ({ observeElement }) => {
                     })}
                 </CTAContainer>
             </div>
+
+            <IconContainer
+                links={socialLinks}
+                additionalStyles={iconLinkAdditionalStyles}
+            />
         </Section>
     )
 }
@@ -43,7 +54,31 @@ Landing.propTypes = {
 // =============================================================================
 
 const Section = styled('section')`
-    ${CMx.fullPage()}
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
+    @media only screen and (max-width: 768px) and (orientation: landscape) {
+        height: auto;
+        padding: 7em 0;
+    }
+
+    @media only screen and (min-width: 768px) {
+        min-height: 768px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        min-height: 576px;
+    }
+
+    @media only screen and (min-width: 1366px) {
+        min-height: 768px;
+        margin: 0 auto;
+    }
 `
 
 // =============================================================================
@@ -102,6 +137,37 @@ const CTAContainer = styled('div')`
 
     @media only screen and (min-width: 1366px) {
         margin: 7em 0 0;
+    }
+`
+
+// =============================================================================
+
+const iconLinkAdditionalStyles = css`
+    svg {
+        width: 28px;
+    }
+
+    @media only screen and (max-width: 767px) and (orientation: landscape) {
+        padding: 36px 0 0;
+
+        svg {
+            width: 30px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        position: absolute;
+        right: 0;
+        bottom: 24px;
+        z-index: 1;
+
+        a + a {
+            margin: 0 0 0 20px;
+        }
+
+        svg {
+            width: 28px;
+        }
     }
 `
 

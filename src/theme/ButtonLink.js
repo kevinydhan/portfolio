@@ -11,12 +11,13 @@ const ButtonLink = styled('a')`
     padding: 14px 0;
     font-size: 14px;
     border: 2px solid
-        ${({ variant }) =>
-            variant === 'outlined'
+        ${({ variant }) => {
+            return variant === 'outlined'
                 ? `rgba(${theme.colorHeading}, 1)`
-                : `rgba(${theme.colorPrimary}, 1)`};
+                : `rgba(${theme.colorPrimary}, 1)`
+        }};
     transition: color ${theme.transitionButtonLink},
-        background ${theme.transitionButtonLink};
+        border ${theme.transitionButtonLink};
 
     & + & {
         margin: 1.25em 0 0;
@@ -27,24 +28,34 @@ const ButtonLink = styled('a')`
         z-index: -1;
         width: calc(100% - 6px);
         height: calc(100% - 6px);
-        background: ${({ variant }) =>
-            variant === 'outlined'
+        background: ${({ variant }) => {
+            return variant === 'outlined'
                 ? `rgba(${theme.colorBackground}, 1)`
-                : `rgba(${theme.colorPrimary}, 1)`};
+                : `rgba(${theme.colorPrimary}, 1)`
+        }};
         transition: opacity ${theme.transitionButtonLink};
         content: '';
     }
 
     &:hover,
     &:active {
-        color: ${({ variant }) =>
-            variant === 'outlined'
+        color: ${({ variant }) => {
+            return variant === 'outlined'
                 ? `rgba(${theme.colorText}, 0.75)`
-                : `rgba(${theme.colorText}, 0.75)`};
-        background: ${({ variant }) =>
-            variant === 'outlined'
+                : `rgba(${theme.colorText}, 0.75)`
+        }};
+        background: ${({ variant }) => {
+            return variant === 'outlined'
                 ? `rgba(${theme.colorBackground}, 0.6)`
-                : `rgba(${theme.colorPrimary}, 0.6)`};
+                : `rgba(${theme.colorPrimary}, 0.6)`
+        }};
+
+        border: 2px solid
+            ${({ variant }) => {
+                return variant === 'outlined'
+                    ? `rgba(${theme.colorHeading}, 0.6)`
+                    : `rgba(${theme.colorPrimary}, 0.6)`
+            }};
 
         &::before {
             opacity: 0.6;

@@ -4,6 +4,8 @@ import { theme } from '@theme'
 const IconLink = styled('a')`
     svg {
         height: 36px;
+        transform: translateY(0);
+        transition: transform ${theme.transitionIconLink};
     }
 
     path,
@@ -14,6 +16,10 @@ const IconLink = styled('a')`
 
     &:hover,
     &:active {
+        svg {
+            transform: translateY(-5px);
+        }
+
         path,
         rect {
             fill: rgba(${theme.colorHeading}, 0.6);

@@ -1,6 +1,6 @@
 import { useObserver, useQuery, useRenderCounter } from './hooks'
-import { ProjectPropType } from './types'
-export { useObserver, useQuery, useRenderCounter, ProjectPropType }
+import { PropTypeProject } from './types'
+export { useObserver, useQuery, useRenderCounter, PropTypeProject }
 
 /**
  * Generates a key that is passed to the React element.
@@ -15,3 +15,30 @@ export { useObserver, useQuery, useRenderCounter, ProjectPropType }
  * @returns {string} - Key
  */
 export const generateKey = (str, i) => `${str.split(' ').join('-')}-${i}`
+
+/**
+ * Returns a callback function for `React.memo` to check whether every current
+ * prop is equal to the incoming prop.
+ *
+ * @example
+ * const MyComponent = (props) => {...}
+ * MyComponent.propTypes = {
+ *     title: PropTypes.string.isRequired,
+ *     isHidden: PropTypes.bool.isRequired,
+ * }
+ *
+ * export default React.memo(MyComponent, arePropsEqual(['title', 'isHidden']))
+ *
+ * @param {Array<string>} propKeys - Array of prop keys
+ *
+ * @returns {boolean} - If `true`, the component will render
+ */
+export const arePropsEqual = (propKeys = []) => (prevProps, nextProps) => {
+    const keys = propKeys
+
+    for (let i = 0; i < keys.length; ++i) {
+        if (prevProps[keys[i]] !== nextProps[keys[i]]) return false
+    }
+
+    return true
+}

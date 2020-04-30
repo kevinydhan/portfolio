@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { ProjectCard } from '@components'
-import { ProjectPropType } from '@utils'
+import { PropTypeProject } from '@utils'
 import { backgroundActionClassNames as bgac } from '@data/classnames'
 
 // =============================================================================
@@ -27,7 +27,7 @@ const getProjectCardClassName = (i) => {
 
 Projects.propTypes = {
     observeElement: PropTypes.func.isRequired,
-    projects: PropTypes.arrayOf(PropTypes.exact({ ...ProjectPropType }))
+    projects: PropTypes.arrayOf(PropTypes.exact({ ...PropTypeProject }))
         .isRequired,
 }
 

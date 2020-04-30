@@ -49,6 +49,11 @@ export default createGlobalStyle`
         font-size: 15px;
     }
 
+    #gatsby-focus-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
     @media only screen and (min-width: 768px) {
         h1 {
             font-size: 40px;

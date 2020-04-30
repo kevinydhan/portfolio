@@ -1,16 +1,8 @@
-import React, { memo, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {
-    theme,
-    CSSMixins as CMx,
-    IconLink,
-    ExternalLinkIcon,
-    GithubCircleIcon,
-    GitLabIcon,
-    FigmaIcon,
-} from '@theme'
-import { ProjectPropType } from '@utils'
+import { theme, CSSMixins as CMx, IconContainer } from '@theme'
+import { PropTypeProject } from '@utils'
 
 // =============================================================================
 
@@ -46,39 +38,14 @@ const ProjectCard = ({
                         </TechnologyTag>
                     ))}
                 </TechnologyList>
-
-                <IconContainer>
-                    {links.map((link, i) => {
-                        const { type, ...linkProps } = link
-                        let child
-                        switch (type) {
-                            case 'external':
-                                child = <ExternalLinkIcon />
-                                break
-                            case 'github':
-                                child = <GithubCircleIcon />
-                                break
-                            case 'gitlab':
-                                child = <GitLabIcon />
-                                break
-                            case 'figma':
-                                child = <FigmaIcon />
-                                break
-                        }
-                        return (
-                            <IconLink key={`${type}-${i}`} {...linkProps}>
-                                {child}
-                            </IconLink>
-                        )
-                    })}
-                </IconContainer>
+                <IconContainer links={links} />
             </ProjectBody>
         </ProjectContainer>
     )
 }
 
 ProjectCard.propTypes = {
-    ...ProjectPropType,
+    ...PropTypeProject,
     observeElement: PropTypes.func.isRequired,
 }
 
@@ -88,7 +55,12 @@ const ProjectContainer = styled('div')`
     width: 100%;
     max-width: ${theme.maxWidthMain};
     min-height: 100vh;
-    padding: 3em 16px;
+    padding: 3em 0;
+
+    @media only screen and (max-width: 768px) and (orientation: landscape) {
+        height: auto;
+        padding: 5em 0;
+    }
 
     &:nth-child(3n + 1) {
         picture {
@@ -139,8 +111,8 @@ const Picture = styled('picture')`
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 36px 16px;
+    box-shadow: ${theme.boxShadowMain};
 
     img {
         width: 100%;
@@ -240,18 +212,18 @@ const TechnologyTag = styled('li')`
 
 // =============================================================================
 
-const IconContainer = styled('div')`
-    margin: 1.75em 0 0;
+// const IconContainer = styled('div')`
+//     margin: 1.75em 0 0;
 
-    a + a {
-        margin-left: 24px;
-    }
+//     a + a {
+//         margin-left: 24px;
+//     }
 
-    @media only screen and (min-width: 1366px) {
-        margin: 2em 0 0;
-    }
-`
+//     @media only screen and (min-width: 1366px) {
+//         margin: 2em 0 0;
+//     }
+// `
 
 // =============================================================================
 
-export default memo(ProjectCard)
+export default ProjectCard

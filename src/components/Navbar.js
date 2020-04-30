@@ -1,16 +1,17 @@
-import React, { memo, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import NavList from './NavList'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme, Keyframes as KF, SquareOutlineIcon } from '@theme'
 import debounce from 'lodash.debounce'
 
 // =============================================================================
 
-const Navbar = ({ mainContentRef }) => {
+const Navbar = ({ mainContentRef, themeColor }) => {
     const [state, setState] = useState({
         isOpen: false,
         isHidden: false,
+        isBackgroundTransparent: true,
         scrollPosition: 0,
     })
 
@@ -24,8 +25,10 @@ const Navbar = ({ mainContentRef }) => {
             return {
                 ...prevState,
                 scrollPosition,
-                isHidden: scrollPosition < prevState.scrollPosition,
                 isOpen: false,
+                isHidden: scrollPosition < prevState.scrollPosition,
+                isBackgroundTransparent:
+                    Math.abs(scrollPosition) < window.innerHeight,
             }
         })
     }, debounceInteral)
@@ -44,13 +47,23 @@ const Navbar = ({ mainContentRef }) => {
     }, [])
 
     return (
-        <Header className={state.isHidden && 'hidden'}>
+        <Header
+            className={state.isHidden && 'hidden'}
+            isBackgroundTransparent={state.isBackgroundTransparent}
+        >
             <Nav>
-                <MenuButtonContainer onClick={toggleNavList}>
+                <MenuButton
+                    onClick={toggleNavList}
+                    aria-label="Dropdown navigation menu"
+                >
                     <SquareOutlineIcon />
-                </MenuButtonContainer>
+                </MenuButton>
                 <Logo href="#">Kevin Han</Logo>
-                <NavList isOpen={state.isOpen} closeNavList={closeNavList} />
+                <NavList
+                    isOpen={state.isOpen}
+                    closeNavList={closeNavList}
+                    themeColor={themeColor}
+                />
             </Nav>
         </Header>
     )
@@ -60,6 +73,7 @@ const debounceInteral = 50
 
 Navbar.propTypes = {
     mainContentRef: PropTypes.object,
+    themeColor: PropTypes.string.isRequired,
 }
 
 // =============================================================================
@@ -74,18 +88,35 @@ const Header = styled('header')`
     width: 100%;
     height: ${theme.heightNavbar};
     background: rgba(${theme.colorBackground}, 1);
+    box-shadow: ${theme.boxShadowMain};
 
     transform: translateY(0);
-    transition: transform ${theme.transitionNavbar};
+    transition: transform ${theme.transitionNavbar},
+        background ${theme.transitionNavbar},
+        box-shadow ${theme.transitionNavbar};
 
     &.hidden {
-        transform: translateY(calc(${theme.heightNavbar} * -1));
+        transform: translateY(calc(${theme.heightNavbar} * -1.5));
     }
 
     @media only screen and (min-width: 768px) {
-        background: rgba(${theme.colorBackground}, 0.98);
+        ${({ isBackgroundTransparent }) => {
+            return isBackgroundTransparent
+                ? css`
+                      background: transparent;
+                      box-shadow: none;
+                  `
+                : css`
+                      background: rgba(${theme.colorBackground}, 0.98);
+                      box-shadow: ${theme.boxShadowMain};
+                  `
+        }}
     }
 `
+
+Header.propTypes = {
+    isBackgroundTransparent: PropTypes.bool.isRequired,
+}
 
 // =============================================================================
 
@@ -120,7 +151,7 @@ const Logo = styled('a')`
 
 // =============================================================================
 
-const MenuButtonContainer = styled('button')`
+const MenuButton = styled('button')`
     background: transparent;
     border: 0;
     cursor: pointer;
@@ -144,25 +175,29 @@ const Nav = styled('nav')`
     width: 100%;
     max-width: ${theme.maxWidthMain};
     height: 100%;
-    padding: 0 16px;
+
+    @media only screen and (min-width: ${theme.breakpointXs}) {
+        padding: 0 ${theme.paddingSidesMainXs};
+    }
+
+    @media only screen and (min-width: ${theme.breakpointSm}) {
+        padding: 0 ${theme.paddingSidesMainSm};
+    }
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
-        margin: 0 36px;
-        padding: 0;
+        padding: 0 ${theme.paddingSidesMainMd};
     }
 
     @media only screen and (min-width: 1024px) {
-        margin: 0 48px;
+        padding: 0 ${theme.paddingSidesMainLg};
+    }
+
+    @media only screen and (min-width: 1366px) {
+        padding: 0;
     }
 `
 
 // =============================================================================
 
-export default memo(Navbar, (prevProps, nextProps) => {
-    const isSameMainContentRefProp =
-        prevProps.mainContentRef.current &&
-        prevProps.mainContentRef.current === nextProps.mainContentRef.current
-
-    return isSameMainContentRefProp
-})
+export default Navbar
