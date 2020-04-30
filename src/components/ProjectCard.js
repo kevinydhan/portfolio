@@ -10,6 +10,9 @@ import {
     GitLabIcon,
     FigmaIcon,
 } from '@theme'
+import { ProjectPropType } from '@utils'
+
+// =============================================================================
 
 const ProjectCard = ({
     title,
@@ -21,13 +24,6 @@ const ProjectCard = ({
     links,
     observeElement,
 }) => {
-    // const counter = useRef(0)
-    // const increment = () => counter.current++
-    // increment()
-    // console.log(
-    //     `ProjectCard component was rendered ${counter.current} time(s).`
-    // )
-
     const ref = useRef()
 
     useEffect(() => {
@@ -82,21 +78,7 @@ const ProjectCard = ({
 }
 
 ProjectCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    originalImgName: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    imgSrc: PropTypes.string.isRequired,
-    imgAlt: PropTypes.string.isRequired,
-    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    links: PropTypes.arrayOf(
-        PropTypes.shape({
-            type: PropTypes.string.isRequired,
-            href: PropTypes.string.isRequired,
-            target: PropTypes.string,
-            rel: PropTypes.string,
-        })
-    ).isRequired,
+    ...ProjectPropType,
     observeElement: PropTypes.func.isRequired,
 }
 

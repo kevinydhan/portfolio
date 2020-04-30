@@ -7,7 +7,7 @@ import { useQuery, useObserver } from '@utils'
 import { backgroundActionClassNames as bgac } from '@data/classnames'
 
 const Main = () => {
-    const { ogImage, projectImageSrc } = useQuery()
+    const { ogImageSrc, projects } = useQuery()
     const mainContentRef = useRef()
     const [backgroundState, dispatch] = useReducer(reducer, initialState)
 
@@ -33,16 +33,13 @@ const Main = () => {
 
     return (
         <>
-            <Head ogImgSrc={ogImage} />
+            <Head ogImgSrc={ogImageSrc} />
             <GlobalStyle />
             <Navbar mainContentRef={mainContentRef} />
             <Background state={backgroundState} />
             <MainContent ref={mainContentRef}>
                 <Landing observeElement={observeElement} />
-                <Projects
-                    observeElement={observeElement}
-                    projectImageSrc={projectImageSrc}
-                />
+                <Projects observeElement={observeElement} projects={projects} />
             </MainContent>
         </>
     )

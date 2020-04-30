@@ -1,5 +1,26 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import projectData from '@data/projects.yml'
+
+/**
+ * Creates a counter that increments every time the component is rendered. The
+ * function logs the total number of times the component rendered after each
+ * increment.
+ *
+ * **This hook is used for development purposes only.**
+ *
+ * @param {string} componentName - Name of the component
+ *
+ * @returns {void}
+ */
+export const useRenderCounter = (componentName) => {
+    const counter = useRef(0)
+    const increment = () => counter.current++
+    increment()
+    console.log(
+        `${componentName} component was rendered ${counter.current} time(s).`
+    )
+}
 
 /**
  * Creates an `IntersectionObserver`. Returns an object literal with the
@@ -42,7 +63,7 @@ export const useObserver = (callback, options = {}) => {
 export const useQuery = () => {
     const data = useStaticQuery(graphql`
         query getImages {
-            ogImage: file(relativePath: { eq: "og.png" }) {
+            ogImageSrc: file(relativePath: { eq: "og.png" }) {
                 childImageSharp {
                     fixed(width: 1100, height: 600) {
                         srcWebp
@@ -67,7 +88,7 @@ export const useQuery = () => {
     return queryData
 }
 
-const formatQuerySearchResults = ({ ogImage, projectImages }) => {
+const formatQuerySearchResults = ({ ogImageSrc, projectImages }) => {
     const regex = RegExp(/project-image-[-\w]{1,}/gi)
 
     let key
@@ -77,8 +98,13 @@ const formatQuerySearchResults = ({ ogImage, projectImages }) => {
         return map
     }, {})
 
+    const projects = projectData.projects.map((project) => ({
+        ...project,
+        imgSrc: projectImageSrc[project.originalImgName],
+    }))
+
     return {
-        projectImageSrc,
-        ogImage: ogImage.childImageSharp.fixed.srcWebp,
+        projects,
+        ogImageSrc: ogImageSrc.childImageSharp.fixed.srcWebp,
     }
 }

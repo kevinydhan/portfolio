@@ -8,13 +8,6 @@ import { backgroundActionClassNames as bgac } from '@data/classnames'
 // =============================================================================
 
 const Landing = ({ observeElement }) => {
-    // const counter = useRef(0)
-    // const increment = () => counter.current++
-    // increment()
-    // console.log(
-    //     `Landing view component was rendered ${counter.current} time(s).`
-    // )
-
     const ref = useRef()
 
     useEffect(() => {
