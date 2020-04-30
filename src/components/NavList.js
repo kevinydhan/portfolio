@@ -2,12 +2,12 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { theme, Keyframes as KF } from '@theme'
-import { generateKey } from '@utils'
+import { generateKey, arePropsEqual } from '@utils'
 import { navLinks } from '@data/site.yml'
 
 // =============================================================================
 
-const NavList = ({ isOpen, closeNavList }) => (
+const NavList = ({ isOpen, closeNavList, themeColor }) => (
     <List isOpen={isOpen}>
         {navLinks.map((link, i) => {
             const { text, ...linkProps } = link
@@ -19,7 +19,11 @@ const NavList = ({ isOpen, closeNavList }) => (
 
             return (
                 <NavListItem key={generateKey(text, i)} {...navListItemProps}>
-                    <NavLink {...linkProps} onClick={closeNavList}>
+                    <NavLink
+                        {...linkProps}
+                        onClick={closeNavList}
+                        themeColor={themeColor}
+                    >
                         {text}
                     </NavLink>
                 </NavListItem>
@@ -33,6 +37,7 @@ const hiddenNavListItems = ['Home']
 NavList.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     closeNavList: PropTypes.func.isRequired,
+    themeColor: PropTypes.string.isRequired,
 }
 
 // =============================================================================
@@ -46,6 +51,7 @@ const List = styled('ul')`
     padding: 0 16px;
     list-style: none;
     background: rgba(${theme.colorBackground}, 1);
+    box-shadow: ${theme.boxShadowMain};
 
     @media only screen and (min-width: 768px) {
         position: relative;
@@ -55,8 +61,9 @@ const List = styled('ul')`
         width: auto;
         height: 100%;
         padding: 0;
-        /* background: rgba(${theme.colorBackground}, 0.98); */
+        background: transparent;
         border: 0;
+        box-shadow: none;
     }
 `
 
@@ -103,7 +110,7 @@ const NavListItem = styled('li')`
         }
     }
 
-    ${(props) => props.additionalStyles}
+    ${({ additionalStyles }) => additionalStyles}
 `
 
 const additionalHiddenNavListItemStyles = css`
@@ -133,7 +140,7 @@ const NavLink = styled('a')`
             left: 0;
             width: 100%;
             height: 3px;
-            background: rgba(${theme.colorPrimary}, 1);
+            background: ${({ themeColor }) => `rgba(${theme[themeColor]}, 1)`};
             transform: scaleX(0);
             transform-origin: right;
             transition: transform ${theme.transitionNavLink};
@@ -152,9 +159,14 @@ const NavLink = styled('a')`
     }
 `
 
+NavLink.defaultProps = {
+    themeColor: 'colorPrimary',
+}
+
+NavLink.propTypes = {
+    themeColor: PropTypes.string,
+}
+
 // =============================================================================
 
-export default memo(NavList, (prevProps, nextProps) => {
-    const isSameIsOpenProp = prevProps.isOpen === nextProps.isOpen
-    return isSameIsOpenProp
-})
+export default memo(NavList, arePropsEqual(['isOpen', 'themeColor']))
