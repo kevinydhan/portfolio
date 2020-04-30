@@ -1,37 +1,46 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Background = () => {
+const Background = ({ state }) => {
+    // const counter = useRef(0)
+    // const increment = () => counter.current++
+    // increment()
+    // console.log(`Background component was rendered ${counter.current} time(s).`)
+
     return (
         <BackgroundContainer>
             <SVG viewBox="0 0 1366 768" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    className="bg-trapezoid yellow-trapezoid"
+                <Trapezoid
+                    className="yellow-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-yellow)"
                     fillOpacity="0.07"
+                    opacity={state.opacityYellow}
                 />
-                <path
-                    className="bg-trapezoid lightblue-trapezoid"
+                <Trapezoid
+                    className="lightblue-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-lightblue)"
                     fillOpacity="0.1"
+                    opacity={state.opacityLightBlue}
                 />
-                <path
-                    className="bg-trapezoid red-trapezoid"
+                <Trapezoid
+                    className="red-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
                     fill="url(#background-trapezoid-red)"
                     fillOpacity="0.12"
+                    opacity={state.opacityRed}
                 />
-                <path
-                    className="bg-trapezoid midnightblue-trapezoid"
+                <Trapezoid
+                    className="default-trapezoid"
                     d="M937 768L509 0H1366V768H937Z"
-                    fill="url(#background-trapezoid-midnightblue)"
+                    fill="url(#background-trapezoid-default)"
+                    opacity={state.opacityDefault}
                 />
-                <path
-                    className="bg-stripe"
+                <Stripe
                     d="M451 0L879 768H929L501 0H451Z"
-                    fill="#010027"
+                    fill={state.stripeColor}
                 />
                 <defs>
                     <linearGradient
@@ -68,7 +77,7 @@ const Background = () => {
                         <stop offset="1" />
                     </linearGradient>
                     <linearGradient
-                        id="background-trapezoid-midnightblue"
+                        id="background-trapezoid-default"
                         x1="764.5"
                         y1="450.5"
                         x2="1416"
@@ -82,6 +91,16 @@ const Background = () => {
             </SVG>
         </BackgroundContainer>
     )
+}
+
+Background.propTypes = {
+    state: PropTypes.exact({
+        stripeColor: PropTypes.string.isRequired,
+        opacityDefault: PropTypes.number.isRequired,
+        opacityYellow: PropTypes.number.isRequired,
+        opacityLightBlue: PropTypes.number.isRequired,
+        opacityRed: PropTypes.number.isRequired,
+    }).isRequired,
 }
 
 // =============================================================================
@@ -103,14 +122,6 @@ const BackgroundContainer = styled('div')`
 const SVG = styled('svg')`
     position: absolute;
 
-    .bg-stripe {
-        transition: fill 250ms linear;
-    }
-
-    .bg-trapezoid {
-        transition: opacity 250ms linear;
-    }
-
     @media only screen and (orientation: portrait) {
         height: 100%;
     }
@@ -122,6 +133,18 @@ const SVG = styled('svg')`
     @media only screen and (orientation: landscape) and (max-aspect-ratio: 16/9) {
         width: calc((16 * 100vh / 9) + 1px);
     }
+`
+
+// =============================================================================
+
+const Stripe = styled('path')`
+    transition: fill 250ms linear;
+`
+
+// =============================================================================
+
+const Trapezoid = styled('path')`
+    transition: opacity 250ms linear;
 `
 
 // =============================================================================

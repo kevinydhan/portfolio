@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { memo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { ProjectCard } from '@components'
 import data from '@data/projects.yml'
+import { backgroundActionClassNames as bgac } from '@data/classnames'
 
-const Projects = (props) => {
-    const { observeElement, projectImageSrc } = props
+const Projects = ({ observeElement, projectImageSrc }) => {
+    // const counter = useRef(0)
+    // const increment = () => counter.current++
+    // increment()
+    // console.log(
+    //     `Projects view component was rendered ${counter.current} time(s).`
+    // )
 
     const projects = data.projects.map((project) => ({
         ...project,
@@ -16,8 +22,8 @@ const Projects = (props) => {
             {projects.map((project, i) => (
                 <ProjectCard
                     {...project}
-                    className={data.classNames[i % data.classNames.length]}
                     key={project.originalImgName}
+                    className={getProjectCardClassName(i)}
                     observeElement={observeElement}
                 />
             ))}
@@ -25,9 +31,23 @@ const Projects = (props) => {
     )
 }
 
+const colorOrder = ['lightblue', 'yellow', 'red']
+const getProjectCardClassName = (i) => {
+    const k = colorOrder[i % colorOrder.length]
+    return bgac[k]
+}
+
 Projects.propTypes = {
     observeElement: PropTypes.func.isRequired,
     projectImageSrc: PropTypes.objectOf(PropTypes.string).isRequired,
 }
 
-export default Projects
+export default memo(Projects, (prevProps, nextProps) => {
+    const isSameObserveElementProp =
+        prevProps.observeElement == nextProps.observeElement
+
+    const isSameProjectImageSrcProp =
+        prevProps.projectImageSrc === nextProps.projectImageSrc
+
+    return isSameObserveElementProp && isSameProjectImageSrcProp
+})

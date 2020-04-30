@@ -1,66 +1,37 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-
-const updateStripeColor = (color) => {
-    document.querySelector('.bg-stripe').style.fill = color
-}
-
-const updateTrapezoidOpacities = (color) => {
-    const trapezoids = [...document.querySelectorAll('.bg-trapezoid')]
-
-    trapezoids.forEach((trapezoid) => {
-        trapezoid.style.opacity = trapezoid.className.baseVal.includes(color)
-            ? 1
-            : 0
-    })
-}
 
 /**
  * Creates an `IntersectionObserver`. Returns an object literal with the
- * following properties:
- * - `observeElement`
+ * following keys:
+ * - `observeElement`: Function that takes in an HTML element as an argument
+ *   and invokes `new IntersectionObserver().observe()` on the element
  *
- * @returns {Object<{ observeElement: (HTMLElement) => void }>} -
+ * @param {(entries) => void} callback - Callback function to be invoked by
+ * `IntersectionObserver`
+ * @param {object} options - Options for `IntersectionObserver`
+ *
+ * @returns {object} - Object literal
  */
-export const useObserver = () => {
+export const useObserver = (callback, options = {}) => {
     const [observer, setObserver] = useState(null)
-    const options = { threshold: 0.625 }
-    const regex = RegExp(/project-card--[\w]{1,}/gi)
-
-    const handleEvents = useCallback((entries) => {
-        entries.forEach((entry) => {
-            const { isIntersecting, target } = entry
-            const className = target.className.match(regex)
-
-            if (isIntersecting && className) {
-                switch (className[0]) {
-                    case 'project-card--lightblue':
-                        updateStripeColor('rgba(13, 136, 255, 0.1)')
-                        updateTrapezoidOpacities('lightblue')
-                        break
-                    case 'project-card--yellow':
-                        updateStripeColor('rgba(234, 255, 25, 0.07)')
-                        updateTrapezoidOpacities('yellow')
-                        break
-                    case 'project-card--red':
-                        updateStripeColor('rgba(179, 68, 9, 0.12)')
-                        updateTrapezoidOpacities('red')
-                        break
-                }
-            } else if (isIntersecting) {
-                updateStripeColor('#010027')
-                updateTrapezoidOpacities('midnightblue')
-            }
-        })
-    })
 
     useEffect(() => {
-        setObserver(new IntersectionObserver(handleEvents, options))
+        const o = new IntersectionObserver(callback, options)
+        setObserver(o)
+
+        return () => {
+            o.disconnect()
+            setObserver(null)
+        }
     }, [])
 
-    const observeElement = (ref) => {
-        if (observer) observer.observe(ref)
-    }
+    const observeElement = useCallback(
+        (ref) => {
+            if (observer) observer.observe(ref)
+        },
+        [observer]
+    )
 
     return { observeElement }
 }
@@ -78,7 +49,11 @@ export const useQuery = () => {
                     }
                 }
             }
-            projectImages: allImageSharp {
+            projectImages: allImageSharp(
+                filter: {
+                    fluid: { originalName: { regex: "/project-image/" } }
+                }
+            ) {
                 nodes {
                     fluid(maxWidth: 339, maxHeight: 182, quality: 80) {
                         srcWebp
@@ -88,20 +63,22 @@ export const useQuery = () => {
         }
     `)
 
-    const regex = new RegExp(/project-image-[-\w]{1,}/)
+    const queryData = useMemo(() => formatQuerySearchResults(data), [])
+    return queryData
+}
+
+const formatQuerySearchResults = ({ ogImage, projectImages }) => {
+    const regex = RegExp(/project-image-[-\w]{1,}/gi)
+
+    let key
+    const projectImageSrc = projectImages.nodes.reduce((map, node) => {
+        key = node.fluid.srcWebp.match(regex)
+        map[key] = node.fluid.srcWebp
+        return map
+    }, {})
 
     return {
-        ogImage: data.ogImage.childImageSharp.fixed.srcWebp,
-        projectImageSrc: data.projectImages.nodes
-            .map((node) => node.fluid.srcWebp)
-            .filter((srcWebp) => srcWebp.includes('project-image'))
-            .reduce((hash, src) => {
-                const key = src.match(regex)[0]
-
-                if (!hash[key]) hash[key] = src
-                else console.warn(`${key} is already registered.`)
-
-                return hash
-            }, {}),
+        projectImageSrc,
+        ogImage: ogImage.childImageSharp.fixed.srcWebp,
     }
 }

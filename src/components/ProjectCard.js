@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { memo, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -11,17 +11,22 @@ import {
     FigmaIcon,
 } from '@theme'
 
-const ProjectCard = (props) => {
-    const {
-        title,
-        description,
-        className,
-        imgSrc,
-        imgAlt,
-        technologies,
-        links,
-        observeElement,
-    } = props
+const ProjectCard = ({
+    title,
+    description,
+    className,
+    imgSrc,
+    imgAlt,
+    technologies,
+    links,
+    observeElement,
+}) => {
+    // const counter = useRef(0)
+    // const increment = () => counter.current++
+    // increment()
+    // console.log(
+    //     `ProjectCard component was rendered ${counter.current} time(s).`
+    // )
 
     const ref = useRef()
 
@@ -267,4 +272,4 @@ const IconContainer = styled('div')`
 
 // =============================================================================
 
-export default ProjectCard
+export default memo(ProjectCard)

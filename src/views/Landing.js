@@ -1,19 +1,28 @@
-import React, { useRef, useEffect } from 'react'
+import React, { memo, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { CSSMixins as CMx, Keyframes as KF, ButtonLink } from '@theme'
 import { landing } from '@data/site.yml'
+import { backgroundActionClassNames as bgac } from '@data/classnames'
 
-const Landing = (props) => {
+// =============================================================================
+
+const Landing = ({ observeElement }) => {
+    // const counter = useRef(0)
+    // const increment = () => counter.current++
+    // increment()
+    // console.log(
+    //     `Landing view component was rendered ${counter.current} time(s).`
+    // )
+
     const ref = useRef()
-    const { observeElement } = props
 
     useEffect(() => {
         if (ref.current) observeElement(ref.current)
     }, [observeElement])
 
     return (
-        <Section ref={ref}>
+        <Section ref={ref} className={bgac.default}>
             <div>
                 <Heading>{landing.heading}</Heading>
                 <AdCopy>{landing.adCopy}</AdCopy>
@@ -105,4 +114,4 @@ const CTAContainer = styled('div')`
 
 // =============================================================================
 
-export default Landing
+export default memo(Landing)
