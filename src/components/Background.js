@@ -1,87 +1,101 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Background = () => {
-    return (
-        <BackgroundContainer>
-            <SVG viewBox="0 0 1366 768" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    className="bg-trapezoid yellow-trapezoid"
-                    d="M937 768L509 0H1366V768H937Z"
-                    fill="url(#background-trapezoid-yellow)"
-                    fillOpacity="0.07"
-                />
-                <path
-                    className="bg-trapezoid lightblue-trapezoid"
-                    d="M937 768L509 0H1366V768H937Z"
-                    fill="url(#background-trapezoid-lightblue)"
-                    fillOpacity="0.1"
-                />
-                <path
-                    className="bg-trapezoid red-trapezoid"
-                    d="M937 768L509 0H1366V768H937Z"
-                    fill="url(#background-trapezoid-red)"
-                    fillOpacity="0.12"
-                />
-                <path
-                    className="bg-trapezoid midnightblue-trapezoid"
-                    d="M937 768L509 0H1366V768H937Z"
-                    fill="url(#background-trapezoid-midnightblue)"
-                />
-                <path
-                    className="bg-stripe"
-                    d="M451 0L879 768H929L501 0H451Z"
-                    fill="#010027"
-                />
-                <defs>
-                    <linearGradient
-                        id="background-trapezoid-yellow"
-                        x1="764.5"
-                        y1="450.5"
-                        x2="1416"
-                        y2="109.5"
-                        gradientUnits="userSpaceOnUse"
-                    >
-                        <stop offset="0.159462" stopColor="#EAFF19" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient
-                        id="background-trapezoid-lightblue"
-                        x1="764.5"
-                        y1="450.5"
-                        x2="1416"
-                        y2="109.5"
-                        gradientUnits="userSpaceOnUse"
-                    >
-                        <stop offset="0.159462" stopColor="#0D88FF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient
-                        id="background-trapezoid-red"
-                        x1="764.5"
-                        y1="450.5"
-                        x2="1416"
-                        y2="109.5"
-                        gradientUnits="userSpaceOnUse"
-                    >
-                        <stop offset="0.159462" stopColor="#B34409" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient
-                        id="background-trapezoid-midnightblue"
-                        x1="764.5"
-                        y1="450.5"
-                        x2="1416"
-                        y2="109.5"
-                        gradientUnits="userSpaceOnUse"
-                    >
-                        <stop offset="0.159462" stopColor="#010027" />
-                        <stop offset="1" />
-                    </linearGradient>
-                </defs>
-            </SVG>
-        </BackgroundContainer>
-    )
+// =============================================================================
+
+const Background = ({ state }) => (
+    <BackgroundContainer>
+        <SVG viewBox="0 0 1366 768" xmlns="http://www.w3.org/2000/svg">
+            <Trapezoid
+                className="yellow-trapezoid"
+                d="M937 768L509 0H1366V768H937Z"
+                fill="url(#background-trapezoid-yellow)"
+                fillOpacity="0.07"
+                opacity={state.opacityYellow}
+            />
+            <Trapezoid
+                className="lightblue-trapezoid"
+                d="M937 768L509 0H1366V768H937Z"
+                fill="url(#background-trapezoid-lightblue)"
+                fillOpacity="0.1"
+                opacity={state.opacityLightBlue}
+            />
+            <Trapezoid
+                className="red-trapezoid"
+                d="M937 768L509 0H1366V768H937Z"
+                fill="url(#background-trapezoid-red)"
+                fillOpacity="0.12"
+                opacity={state.opacityRed}
+            />
+            <Trapezoid
+                className="default-trapezoid"
+                d="M937 768L509 0H1366V768H937Z"
+                fill="url(#background-trapezoid-default)"
+                opacity={state.opacityDefault}
+            />
+            <Stripe
+                d="M451 0L879 768H929L501 0H451Z"
+                fill={state.stripeColor}
+            />
+            <defs>
+                <linearGradient
+                    id="background-trapezoid-yellow"
+                    x1="764.5"
+                    y1="450.5"
+                    x2="1416"
+                    y2="109.5"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop offset="0.159462" stopColor="#EAFF19" />
+                    <stop offset="1" />
+                </linearGradient>
+                <linearGradient
+                    id="background-trapezoid-lightblue"
+                    x1="764.5"
+                    y1="450.5"
+                    x2="1416"
+                    y2="109.5"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop offset="0.159462" stopColor="#0D88FF" />
+                    <stop offset="1" />
+                </linearGradient>
+                <linearGradient
+                    id="background-trapezoid-red"
+                    x1="764.5"
+                    y1="450.5"
+                    x2="1416"
+                    y2="109.5"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop offset="0.159462" stopColor="#B34409" />
+                    <stop offset="1" />
+                </linearGradient>
+                <linearGradient
+                    id="background-trapezoid-default"
+                    x1="764.5"
+                    y1="450.5"
+                    x2="1416"
+                    y2="109.5"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop offset="0.159462" stopColor="#010027" />
+                    <stop offset="1" />
+                </linearGradient>
+            </defs>
+        </SVG>
+    </BackgroundContainer>
+)
+
+Background.propTypes = {
+    state: PropTypes.exact({
+        stripeColor: PropTypes.string.isRequired,
+        opacityDefault: PropTypes.number.isRequired,
+        opacityYellow: PropTypes.number.isRequired,
+        opacityLightBlue: PropTypes.number.isRequired,
+        opacityRed: PropTypes.number.isRequired,
+    }).isRequired,
 }
 
 // =============================================================================
@@ -103,14 +117,6 @@ const BackgroundContainer = styled('div')`
 const SVG = styled('svg')`
     position: absolute;
 
-    .bg-stripe {
-        transition: fill 250ms linear;
-    }
-
-    .bg-trapezoid {
-        transition: opacity 250ms linear;
-    }
-
     @media only screen and (orientation: portrait) {
         height: 100%;
     }
@@ -122,6 +128,18 @@ const SVG = styled('svg')`
     @media only screen and (orientation: landscape) and (max-aspect-ratio: 16/9) {
         width: calc((16 * 100vh / 9) + 1px);
     }
+`
+
+// =============================================================================
+
+const Stripe = styled('path')`
+    transition: fill 250ms linear;
+`
+
+// =============================================================================
+
+const Trapezoid = styled('path')`
+    transition: opacity 250ms linear;
 `
 
 // =============================================================================

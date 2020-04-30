@@ -1,33 +1,43 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { ProjectCard } from '@components'
-import data from '@data/projects.yml'
+import { ProjectPropType } from '@utils'
+import { backgroundActionClassNames as bgac } from '@data/classnames'
 
-const Projects = (props) => {
-    const { observeElement, projectImageSrc } = props
+// =============================================================================
 
-    const projects = data.projects.map((project) => ({
-        ...project,
-        imgSrc: projectImageSrc[project.originalImgName],
-    }))
+const Projects = ({ observeElement, projects }) => (
+    <section id="projects">
+        {projects.map((project, i) => (
+            <ProjectCard
+                {...project}
+                key={project.originalImgName}
+                className={getProjectCardClassName(i)}
+                observeElement={observeElement}
+            />
+        ))}
+    </section>
+)
 
-    return (
-        <section id="projects">
-            {projects.map((project, i) => (
-                <ProjectCard
-                    {...project}
-                    className={data.classNames[i % data.classNames.length]}
-                    key={project.originalImgName}
-                    observeElement={observeElement}
-                />
-            ))}
-        </section>
-    )
+const colorOrder = ['lightblue', 'yellow', 'red']
+const getProjectCardClassName = (i) => {
+    const k = colorOrder[i % colorOrder.length]
+    return bgac[k]
 }
 
 Projects.propTypes = {
     observeElement: PropTypes.func.isRequired,
-    projectImageSrc: PropTypes.objectOf(PropTypes.string).isRequired,
+    projects: PropTypes.arrayOf(PropTypes.exact({ ...ProjectPropType }))
+        .isRequired,
 }
 
-export default Projects
+// =============================================================================
+
+export default memo(Projects, (prevProps, nextProps) => {
+    const isSameObserveElementProp =
+        prevProps.observeElement == nextProps.observeElement
+
+    const isSameprojectsProp = prevProps.projects === nextProps.projects
+
+    return isSameObserveElementProp && isSameprojectsProp
+})

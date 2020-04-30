@@ -1,4 +1,6 @@
-import { useObserver, useQuery } from './hooks'
+import { useObserver, useQuery, useRenderCounter } from './hooks'
+import { ProjectPropType } from './types'
+export { useObserver, useQuery, useRenderCounter, ProjectPropType }
 
 /**
  * Generates a key that is passed to the React element.
@@ -13,5 +15,3 @@ import { useObserver, useQuery } from './hooks'
  * @returns {string} - Key
  */
 export const generateKey = (str, i) => `${str.split(' ').join('-')}-${i}`
-
-export { useObserver, useQuery }

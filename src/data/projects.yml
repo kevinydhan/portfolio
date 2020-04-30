@@ -109,8 +109,3 @@ projects:
         target: _blank
         rel: noreferrer noopener nofollow
         aria-label: Figma
-
-classNames:
-  - project-card--lightblue
-  - project-card--yellow
-  - project-card--red

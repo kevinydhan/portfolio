@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import config from '@config'
 import { Helmet } from 'react-helmet'
@@ -35,4 +35,4 @@ Head.propTypes = {
     ogImgSrc: PropTypes.string.isRequired,
 }
 
-export default Head
+export default memo(Head)

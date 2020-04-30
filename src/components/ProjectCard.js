@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { memo, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -10,19 +10,20 @@ import {
     GitLabIcon,
     FigmaIcon,
 } from '@theme'
+import { ProjectPropType } from '@utils'
 
-const ProjectCard = (props) => {
-    const {
-        title,
-        description,
-        className,
-        imgSrc,
-        imgAlt,
-        technologies,
-        links,
-        observeElement,
-    } = props
+// =============================================================================
 
+const ProjectCard = ({
+    title,
+    description,
+    className,
+    imgSrc,
+    imgAlt,
+    technologies,
+    links,
+    observeElement,
+}) => {
     const ref = useRef()
 
     useEffect(() => {
@@ -77,21 +78,7 @@ const ProjectCard = (props) => {
 }
 
 ProjectCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    originalImgName: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    imgSrc: PropTypes.string.isRequired,
-    imgAlt: PropTypes.string.isRequired,
-    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    links: PropTypes.arrayOf(
-        PropTypes.shape({
-            type: PropTypes.string.isRequired,
-            href: PropTypes.string.isRequired,
-            target: PropTypes.string,
-            rel: PropTypes.string,
-        })
-    ).isRequired,
+    ...ProjectPropType,
     observeElement: PropTypes.func.isRequired,
 }
 
@@ -267,4 +254,4 @@ const IconContainer = styled('div')`
 
 // =============================================================================
 
-export default ProjectCard
+export default memo(ProjectCard)
