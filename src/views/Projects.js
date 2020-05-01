@@ -20,6 +20,7 @@ const Projects = ({ observeElement, projects }) => (
 )
 
 const colorOrder = ['lightblue', 'yellow', 'red']
+
 const getProjectCardClassName = (i) => {
     const k = colorOrder[i % colorOrder.length]
     return bgac[k]

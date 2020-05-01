@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { theme } from '@theme'
+import theme from './theme'
 
 const IconLink = styled('a')`
     svg {
-        height: 36px;
+        height: 2.25rem;
         transform: translateY(0);
         transition: transform ${theme.transitionIconLink};
     }
@@ -17,7 +17,7 @@ const IconLink = styled('a')`
     &:hover,
     &:active {
         svg {
-            transform: translateY(-5px);
+            transform: translateY(-0.25rem);
         }
 
         path,
@@ -26,10 +26,10 @@ const IconLink = styled('a')`
         }
     }
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: ${theme.breakpointXl}) {
         svg {
-            width: 40px;
-            height: 40px;
+            width: 2.5rem;
+            height: 2.5rem;
         }
     }
 `

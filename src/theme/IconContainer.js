@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import theme from './theme'
 import IconLink from './IconLink'
 import ExternalLinkIcon from './icons/ExternalLinkIcon'
 import FigmaIcon from './icons/FigmaIcon'
@@ -12,13 +13,17 @@ import { PropTypeIconLink } from '@utils/types'
 
 // =============================================================================
 
-const IconContainer = ({ links, additionalStyles }) => (
+const IconContainer = ({ links, additionalStyles, additionalProps }) => (
     <Container additionalStyles={additionalStyles}>
         {links.map((link, i) => {
             const { type, ...linkProps } = link
 
             return (
-                <IconLink key={`${type}-${i}`} {...linkProps}>
+                <IconLink
+                    key={`${type}-${i}`}
+                    {...linkProps}
+                    additionalProps={additionalProps}
+                >
                     {iconTypes[type]()}
                 </IconLink>
             )
@@ -38,19 +43,20 @@ const iconTypes = {
 IconContainer.propTypes = {
     links: PropTypes.arrayOf(PropTypes.shape(PropTypeIconLink)).isRequired,
     additionalStyles: PropTypes.array,
+    additionalProps: PropTypes.object,
 }
 
 // =============================================================================
 
 const Container = styled('div')`
-    margin: 1.75em 0 0;
+    margin: 1.75rem 0 0;
 
     a + a {
-        margin-left: 24px;
+        margin-left: 1.5rem;
     }
 
-    @media only screen and (min-width: 1366px) {
-        margin: 2em 0 0;
+    @media only screen and (min-width: ${theme.breakpointXl}) {
+        margin: 2rem 0 0;
     }
 
     ${({ additionalStyles }) => additionalStyles}
@@ -58,6 +64,7 @@ const Container = styled('div')`
 
 Container.propTypes = {
     additionalStyles: PropTypes.array,
+    additionalProps: PropTypes.object,
 }
 
 // =============================================================================

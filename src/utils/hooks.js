@@ -1,32 +1,6 @@
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import projectData from '@data/projects.yml'
-
-/**
- * Creates a counter that increments every time the component is rendered. The
- * function logs the total number of times the component rendered after each
- * increment.
- *
- * **This hook is used for development purposes only.**
- *
- * @example
- * const MyComponent = () => {
- *     useRenderCounter('MyComponent')
- *     ...
- * }
- *
- * @param {string} componentName - Name of the component
- *
- * @returns {void}
- */
-export const useRenderCounter = (componentName) => {
-    const counter = useRef(0)
-    const increment = () => counter.current++
-    increment()
-    console.log(
-        `${componentName} component was rendered ${counter.current} time(s).`
-    )
-}
 
 /**
  * Creates an `IntersectionObserver`. Returns an object literal with the
@@ -51,7 +25,7 @@ export const useObserver = (callback, options = {}) => {
             o.disconnect()
             setObserver(null)
         }
-    }, [])
+    }, [callback, options])
 
     const observeElement = useCallback(
         (ref) => {
@@ -90,7 +64,7 @@ export const useQuery = () => {
         }
     `)
 
-    const queryData = useMemo(() => formatQuerySearchResults(data), [])
+    const queryData = useMemo(() => formatQuerySearchResults(data), [data])
     return queryData
 }
 

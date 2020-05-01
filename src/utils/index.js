@@ -1,6 +1,6 @@
-import { useObserver, useQuery, useRenderCounter } from './hooks'
+import { useObserver, useQuery } from './hooks'
 import { PropTypeProject } from './types'
-export { useObserver, useQuery, useRenderCounter, PropTypeProject }
+export { useObserver, useQuery, PropTypeProject }
 
 /**
  * Generates a key that is passed to the React element.

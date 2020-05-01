@@ -2,6 +2,17 @@ import { createGlobalStyle } from 'styled-components'
 import FontFace from '@theme/FontFace'
 import { theme } from '@theme'
 
+const {
+    colorText,
+    colorHeading,
+    colorBackground,
+    fontFamilyPrimary,
+    fontSizes,
+    breakpointMd,
+    breakpointLg,
+    breakpointXl,
+} = theme
+
 export default createGlobalStyle`
     ${FontFace}
 
@@ -16,37 +27,43 @@ export default createGlobalStyle`
     html {
         box-sizing: border-box;
         overflow-x: hidden;
-        color: rgba(${theme.colorText}, 1);
-        font-family: ${theme.fontFamilyPrimary}, sans-serif;
-        letter-spacing: 0.1em;
+        color: rgba(${colorText}, 1);
+        font-size: 100%;
+        font-family: ${fontFamilyPrimary}, sans-serif;
+        letter-spacing: 0.1rem;
         scroll-behavior: smooth;
     }
 
     body {
-        background: rgba(${theme.colorBackground}, 1);
-    }
-
-    a {
-        color: rgba(${theme.colorHeading}, 1);
-        text-decoration: none;
+        background: rgba(${colorBackground}, 1);
     }
 
     h1,
     h2,
     h3 {
-        color: rgba(${theme.colorHeading}, 1);
+        color: rgba(${colorHeading}, 1);
+    }
+
+    a {
+        color: rgba(${colorHeading}, 1);
+        text-decoration: none;
     }
 
     h1 {
-        font-size: 7.662vw;
+        font-size: ${fontSizes['+4']};
+    }
+
+    h2 {
+        font-size: ${fontSizes['+3']};
     }
 
     h3 {
-        font-size: 22px;
+        font-size: ${fontSizes['+2']};
     }
 
-    p {
-        font-size: 15px;
+    p,
+    a {
+        font-size: ${fontSizes['0']};
     }
 
     #gatsby-focus-wrapper {
@@ -54,46 +71,51 @@ export default createGlobalStyle`
         justify-content: center;
     }
 
-    @media only screen and (min-width: 768px) {
-        h1 {
-            font-size: 40px;
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.8;
+    @media only screen and (min-width: ${breakpointMd}) {
+        html {
+            font-size: 102.5%;
         }
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: ${breakpointLg}) {
+        html {
+            font-size: 105%;
+        }
+
         h1 {
-            font-size: 44px;
+            font-size: ${fontSizes['+5']};
+        }
+
+        h2 {
+            font-size: ${fontSizes['+4']};
         }
 
         h3 {
-            font-size: 32px;
+            font-size: ${fontSizes['+3']};
         }
     }
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: ${breakpointXl}) {
+        html {
+            font-size: 107.25%;
+            letter-spacing: 0.12rem;
+        }
+
         h1 {
-            font-size: 48px;
+            font-size: ${fontSizes['+6']};
+        }
+
+        h2 {
+            font-size: ${fontSizes['+5']};
         }
 
         h3 {
-            font-size: 36px;
+            font-size: ${fontSizes['+4']};
         }
 
         p {
-            max-width: 560px;
-            font-size: 19px;
-            line-height: 1.6;
-        }
-    }
-
-    @media screen and (min-width: 1600px) {
-        h1 {
-            font-size: 52px;
+            font-size: ${fontSizes['+0.5']};
+            line-height: 1.65;
         }
     }
 `
