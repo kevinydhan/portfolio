@@ -7,6 +7,7 @@ module.exports = {
         'plugin:jsx-a11y/recommended',
         'plugin:prettier/recommended',
         'plugin:react/recommended',
+        'plugin:react-hooks/recommended',
     ],
     globals: {
         Atomics: 'readonly',
@@ -23,6 +24,7 @@ module.exports = {
     plugins: [
         'jsx-a11y',
         'react',
+        'react-hooks',
     ],
     settings: {
         react: {

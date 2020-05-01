@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { theme, CSSMixins as CMx, IconContainer } from '@theme'
+import { theme, IconContainer } from '@theme'
 import { PropTypeProject } from '@utils'
 
 // =============================================================================
@@ -51,55 +51,69 @@ ProjectCard.propTypes = {
 
 // =============================================================================
 
+const {
+    colorLightBlue,
+    colorRed,
+    colorYellow,
+    fontSizes,
+    maxWidthMain,
+    breakpointMd,
+    breakpointLg,
+    breakpointXl,
+    boxShadowMain,
+} = theme
+
+// =============================================================================
+
 const ProjectContainer = styled('div')`
     width: 100%;
-    max-width: ${theme.maxWidthMain};
+    max-width: ${maxWidthMain};
     min-height: 100vh;
-    padding: 3em 0;
-
-    @media only screen and (max-width: 768px) and (orientation: landscape) {
-        height: auto;
-        padding: 5em 0;
-    }
+    padding: 3rem 0;
 
     &:nth-child(3n + 1) {
         picture {
-            background: rgba(${theme.colorLightBlue}, 0.85);
+            background: rgba(${colorLightBlue}, 0.75);
         }
 
         ul {
-            color: rgba(${theme.colorLightBlue}, 1);
+            color: rgba(${colorLightBlue}, 1);
         }
     }
 
     &:nth-child(3n + 2) {
         picture {
-            background: rgba(${theme.colorYellow}, 0.85);
+            background: rgba(${colorYellow}, 0.75);
         }
 
         ul {
-            color: rgba(${theme.colorYellow}, 1);
+            color: rgba(${colorYellow}, 1);
         }
     }
 
     &:nth-child(3n + 3) {
         picture {
-            background: rgba(${theme.colorRed}, 0.85);
+            background: rgba(${colorRed}, 0.75);
         }
 
         ul {
-            color: rgba(${theme.colorRed}, 1);
+            color: rgba(${colorRed}, 1);
         }
     }
 
-    @media only screen and (min-width: 768px) {
-        ${CMx.fullPage()}
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 36px;
+    @media only screen and (max-width: ${breakpointMd}) and (orientation: landscape) {
+        height: auto;
+        padding: 5rem 0;
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: ${breakpointMd}) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @media only screen and (min-width: ${breakpointLg}) {
         justify-content: center;
         margin: 0 auto;
     }
@@ -111,65 +125,49 @@ const Picture = styled('picture')`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 36px 16px;
-    box-shadow: ${theme.boxShadowMain};
+    padding: 2.25rem 1rem;
+    box-shadow: ${boxShadowMain};
 
     img {
         width: 100%;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         width: 47.5%;
         height: 50vw;
-        min-height: 350px;
-        max-height: 425px;
-        padding: 0 16px;
+        min-height: 21.875rem;
+        max-height: 26.25rem;
+        padding: 0 1rem;
     }
 
-    @media only screen and (min-width: 1024px) {
-        width: 500px;
-        height: 50vw;
-        min-height: 350px;
-        max-height: 500px;
-        padding: 0 24px;
-    }
-
-    @media only screen and (min-width: 1366px) {
-        width: 500px;
-        height: 500px;
-    }
-
-    @media only screen and (min-width: 1600px) {
-        width: 500px;
-        height: 500px;
+    @media only screen and (min-width: ${breakpointLg}) {
+        width: 31.25rem;
+        min-height: 21.875rem;
+        max-height: 31.25rem;
+        padding: 0 1.5rem;
     }
 `
 
 // =============================================================================
 
 const ProjectBody = styled('div')`
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         width: 47.5%;
         margin: 0;
     }
 
-    @media only screen and (min-width: 1024px) {
-        width: 500px;
-        margin: 0 0 0 96px;
-    }
-
-    @media only screen and (min-width: 1366px) {
-        width: 500px;
-        margin: 0 0 0 96px;
+    @media only screen and (min-width: ${breakpointLg}) {
+        width: 31.25rem;
+        margin: 0 0 0 6rem;
     }
 `
 
 // =============================================================================
 
 const Title = styled('h3')`
-    margin: 1em 0 0;
+    margin: 1rem 0 0;
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         margin: 0;
     }
 `
@@ -177,10 +175,10 @@ const Title = styled('h3')`
 // =============================================================================
 
 const Description = styled('p')`
-    margin: 0.5em 0 0;
+    margin: 0.5rem 0 0;
 
-    @media only screen and (min-width: 1366px) {
-        margin: 1em 0 0;
+    @media only screen and (min-width: ${breakpointXl}) {
+        margin: 1rem 0 0;
     }
 `
 
@@ -190,39 +188,25 @@ const TechnologyList = styled('ul')`
     display: flex;
     flex-wrap: wrap;
 
-    margin: 4em 0 0;
+    margin: 4rem 0 0;
     list-style: none;
 
-    @media only screen and (min-width: 1366px) {
-        margin: 7em 0 0;
+    @media only screen and (min-width: ${breakpointXl}) {
+        margin: 7rem 0 0;
     }
 `
 
 // =============================================================================
 
 const TechnologyTag = styled('li')`
-    margin: 8px 20px 0 0;
-    font-size: 12px;
+    margin: 0.5rem 1.25rem 0 0;
+    font-size: ${fontSizes['-1.5']};
 
-    @media only screen and (min-width: 1024px) {
-        margin: 10px 20px 0 0;
-        font-size: 14px;
+    @media only screen and (min-width: ${breakpointLg}) {
+        margin: 0.625rem 1.25rem 0 0;
+        font-size: ${fontSizes['-0.5']};
     }
 `
-
-// =============================================================================
-
-// const IconContainer = styled('div')`
-//     margin: 1.75em 0 0;
-
-//     a + a {
-//         margin-left: 24px;
-//     }
-
-//     @media only screen and (min-width: 1366px) {
-//         margin: 2em 0 0;
-//     }
-// `
 
 // =============================================================================
 

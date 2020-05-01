@@ -3,53 +3,30 @@ import PropTypes from 'prop-types'
 import NavList from './NavList'
 import styled, { css } from 'styled-components'
 import { theme, Keyframes as KF, SquareOutlineIcon } from '@theme'
-import debounce from 'lodash.debounce'
 
 // =============================================================================
 
-const Navbar = ({ mainContentRef, themeColor }) => {
-    const [state, setState] = useState({
-        isOpen: false,
-        isHidden: false,
-        isBackgroundTransparent: true,
-        scrollPosition: 0,
-    })
+const Navbar = ({ mainContentRef, themeColor, visualState }) => {
+    const [isOpen, setIsOpen] = useState(false)
 
-    const toggleNavList = () => setState({ ...state, isOpen: !state.isOpen })
-    const closeNavList = () => setState({ ...state, isOpen: false })
-
-    const handleScroll = debounce(() => {
-        setState((prevState) => {
-            const scrollPosition = document.body.getBoundingClientRect().top
-
-            return {
-                ...prevState,
-                scrollPosition,
-                isOpen: false,
-                isHidden: scrollPosition < prevState.scrollPosition,
-                isBackgroundTransparent:
-                    Math.abs(scrollPosition) < window.innerHeight,
-            }
-        })
-    }, debounceInteral)
+    const toggleNavList = () => setIsOpen(!isOpen)
+    const closeNavList = () => setIsOpen(false)
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
-
         if (mainContentRef.current) {
             mainContentRef.current.addEventListener('click', closeNavList)
         }
 
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-            mainContentRef.current.removeEventListener('click', closeNavList)
+            const mainContentRef = mainContentRef.current
+            mainContentRef.removeEventListener('click', closeNavList)
         }
-    }, [])
+    }, [mainContentRef])
 
     return (
         <Header
-            className={state.isHidden && 'hidden'}
-            isBackgroundTransparent={state.isBackgroundTransparent}
+            className={visualState.isHidden && 'hidden'}
+            isBackgroundTransparent={visualState.isBackgroundTransparent}
         >
             <Nav>
                 <MenuButton
@@ -60,7 +37,7 @@ const Navbar = ({ mainContentRef, themeColor }) => {
                 </MenuButton>
                 <Logo href="#">Kevin Han</Logo>
                 <NavList
-                    isOpen={state.isOpen}
+                    isOpen={visualState.isOpen}
                     closeNavList={closeNavList}
                     themeColor={themeColor}
                 />
@@ -69,12 +46,37 @@ const Navbar = ({ mainContentRef, themeColor }) => {
     )
 }
 
-const debounceInteral = 50
-
 Navbar.propTypes = {
     mainContentRef: PropTypes.object,
     themeColor: PropTypes.string.isRequired,
+    visualState: PropTypes.exact({
+        isHidden: PropTypes.bool.isRequired,
+        isBackgroundTransparent: PropTypes.bool.isRequired,
+    }).isRequired,
 }
+
+// =============================================================================
+
+const {
+    colorBackground,
+    colorHeading,
+    fontFamilyLogo,
+    fontSizes,
+    heightNavbar,
+    maxWidthMain,
+    paddingSidesMainXs,
+    paddingSidesMainSm,
+    paddingSidesMainMd,
+    paddingSidesMainLg,
+    breakpointXs,
+    breakpointSm,
+    breakpointMd,
+    breakpointLg,
+    breakpointXl,
+    boxShadowMain,
+    transitionLogo,
+    transitionNavbar,
+} = theme
 
 // =============================================================================
 
@@ -86,20 +88,19 @@ const Header = styled('header')`
     display: flex;
     justify-content: center;
     width: 100%;
-    height: ${theme.heightNavbar};
-    background: rgba(${theme.colorBackground}, 1);
-    box-shadow: ${theme.boxShadowMain};
+    height: ${heightNavbar};
+    background: rgba(${colorBackground}, 1);
+    box-shadow: ${boxShadowMain};
 
     transform: translateY(0);
-    transition: transform ${theme.transitionNavbar},
-        background ${theme.transitionNavbar},
-        box-shadow ${theme.transitionNavbar};
+    transition: transform ${transitionNavbar}, background ${transitionNavbar},
+        box-shadow ${transitionNavbar};
 
     &.hidden {
-        transform: translateY(calc(${theme.heightNavbar} * -1.5));
+        transform: translateY(calc(${heightNavbar} * -1.5));
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         ${({ isBackgroundTransparent }) => {
             return isBackgroundTransparent
                 ? css`
@@ -107,8 +108,8 @@ const Header = styled('header')`
                       box-shadow: none;
                   `
                 : css`
-                      background: rgba(${theme.colorBackground}, 0.98);
-                      box-shadow: ${theme.boxShadowMain};
+                      background: rgba(${colorBackground}, 0.98);
+                      box-shadow: ${boxShadowMain};
                   `
         }}
     }
@@ -122,30 +123,22 @@ Header.propTypes = {
 
 const Logo = styled('a')`
     display: none;
-    color: rgba(${theme.colorHeading}, 1);
+    color: rgba(${colorHeading}, 1);
     font-weight: 400;
-    font-family: ${theme.fontFamilyLogo};
+    font-size: ${fontSizes['+1']};
+    font-family: ${fontFamilyLogo};
     text-transform: uppercase;
     opacity: 0;
-    transition: color ${theme.transitionLogo};
+    transition: color ${transitionLogo};
     animation: ${KF.slide} 500ms linear 1500ms 1 forwards;
 
     &:hover,
     &:active {
-        color: rgba(${theme.colorHeading}, 0.6);
+        color: rgba(${colorHeading}, 0.6);
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         display: block;
-        font-size: 20px;
-    }
-
-    @media only screen and (min-width: 1024px) {
-        font-size: 22px;
-    }
-
-    @media only screen and (min-width: 1366px) {
-        font-size: 24px;
     }
 `
 
@@ -157,11 +150,11 @@ const MenuButton = styled('button')`
     cursor: pointer;
 
     svg {
-        width: 36px;
-        height: 36px;
+        width: 2.25rem;
+        height: 2.25rem;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         display: none;
     }
 `
@@ -173,28 +166,24 @@ const Nav = styled('nav')`
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: ${theme.maxWidthMain};
+    max-width: ${maxWidthMain};
     height: 100%;
 
-    @media only screen and (min-width: ${theme.breakpointXs}) {
-        padding: 0 ${theme.paddingSidesMainXs};
+    @media only screen and (min-width: ${breakpointXs}) {
+        padding: 0 ${paddingSidesMainXs};
     }
 
-    @media only screen and (min-width: ${theme.breakpointSm}) {
-        padding: 0 ${theme.paddingSidesMainSm};
+    @media only screen and (min-width: ${breakpointSm}) {
+        padding: 0 ${paddingSidesMainSm};
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         justify-content: space-between;
-        padding: 0 ${theme.paddingSidesMainMd};
+        padding: 0 ${paddingSidesMainMd};
     }
 
-    @media only screen and (min-width: 1024px) {
-        padding: 0 ${theme.paddingSidesMainLg};
-    }
-
-    @media only screen and (min-width: 1366px) {
-        padding: 0;
+    @media only screen and (min-width: ${breakpointLg}) {
+        padding: 0 ${paddingSidesMainLg};
     }
 `
 

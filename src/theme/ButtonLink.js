@@ -1,6 +1,16 @@
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from '@theme'
+
+const {
+    colorPrimary,
+    colorBackground,
+    colorHeading,
+    colorText,
+    breakpointMd,
+    breakpointXl,
+    transitionButtonLink,
+} = theme
 
 const ButtonLink = styled('a')`
     position: relative;
@@ -8,32 +18,41 @@ const ButtonLink = styled('a')`
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 14px 0;
-    font-size: 14px;
-    border: 2px solid
+    padding: 1rem 0;
+    border: 0.125rem solid
         ${({ variant }) => {
             return variant === 'outlined'
-                ? `rgba(${theme.colorHeading}, 1)`
-                : `rgba(${theme.colorPrimary}, 1)`
+                ? `rgba(${colorHeading}, 1)`
+                : `rgba(${colorPrimary}, 1)`
         }};
-    transition: color ${theme.transitionButtonLink},
-        border ${theme.transitionButtonLink};
+    transition: color ${transitionButtonLink},
+        border ${transitionButtonLink};
 
     & + & {
-        margin: 1.25em 0 0;
+        margin: 1.25rem 0 0;
     }
 
     &::before {
         position: absolute;
         z-index: -1;
-        width: calc(100% - 6px);
-        height: calc(100% - 6px);
+        ${({ variant }) => {
+            return variant === 'outlined'
+                ? css`
+                      width: 100%;
+                      height: 100%;
+                  `
+                : css`
+                      width: calc(100% - 0.375rem);
+                      height: calc(100% - 0.375rem);
+                  `
+        }}
+
         background: ${({ variant }) => {
             return variant === 'outlined'
-                ? `rgba(${theme.colorBackground}, 1)`
-                : `rgba(${theme.colorPrimary}, 1)`
+                ? `rgba(${colorBackground}, 1)`
+                : `rgba(${colorPrimary}, 1)`
         }};
-        transition: opacity ${theme.transitionButtonLink};
+        transition: background ${transitionButtonLink};
         content: '';
     }
 
@@ -41,51 +60,38 @@ const ButtonLink = styled('a')`
     &:active {
         color: ${({ variant }) => {
             return variant === 'outlined'
-                ? `rgba(${theme.colorText}, 0.75)`
-                : `rgba(${theme.colorText}, 0.75)`
+                ? `rgba(${colorText}, 0.75)`
+                : `rgba(${colorText}, 0.75)`
         }};
-        background: ${({ variant }) => {
-            return variant === 'outlined'
-                ? `rgba(${theme.colorBackground}, 0.6)`
-                : `rgba(${theme.colorPrimary}, 0.6)`
-        }};
-
-        border: 2px solid
+        border: 0.125rem solid
             ${({ variant }) => {
                 return variant === 'outlined'
-                    ? `rgba(${theme.colorHeading}, 0.6)`
-                    : `rgba(${theme.colorPrimary}, 0.6)`
+                    ? `rgba(${colorHeading}, 0.6)`
+                    : `rgba(${colorPrimary}, 0.6)`
             }};
 
         &::before {
-            opacity: 0.6;
+            background: ${({ variant }) => {
+                return variant === 'outlined'
+                    ? `rgba(${colorBackground}, 1)`
+                    : `rgba(${colorPrimary}, 0.6)`
+            }};
         }
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         width: auto;
-        padding: 14px 20px;
-        font-size: 16px;
+        padding: 0.875rem 1.25rem;
 
         & + & {
-            margin: 0 0 0 2.75em;
+            margin: 0 0 0 2.75rem;
         }
     }
 
-    @media only screen and (min-width: 1024px) {
-        padding: 14px 20px;
-        font-size: 16px;
+    @media only screen and (min-width: ${breakpointXl}) {
+        padding: 1rem 1.75rem;
     }
 
-    @media only screen and (min-width: 1366px) {
-        padding: 14px 20px;
-        font-size: 17px;
-    }
-
-    @media only screen and (min-width: 1600px) {
-        padding: 16px 22px;
-        font-size: 17px;
-    }
 `
 
 ButtonLink.defaultProps = {

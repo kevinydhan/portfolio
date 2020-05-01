@@ -1,48 +1,80 @@
-import React, { useRef, useReducer } from 'react'
+import React, { useRef, useReducer, useEffect, useCallback } from 'react'
 import { Landing, Projects } from '@views'
 import { Head, Background, Navbar } from '@components'
 import styled from 'styled-components'
 import { theme, GlobalStyle } from '@theme'
 import { useQuery, useObserver } from '@utils'
 import { backgroundActionClassNames as bgac } from '@data/classnames'
+import debounce from 'lodash.debounce'
 
 // =============================================================================
 
 const Main = () => {
+    // Fetches data
     const { ogImageSrc, projects } = useQuery()
-    const mainContentRef = useRef()
-    const [backgroundState, dispatch] = useReducer(reducer, initialState)
+
+    // Sets up the creation of the IntersectionObserver
+    const observerOptions = useRef({ threshold: 0.625 })
+
+    const handleObserverEvent = useCallback((entries) => {
+        entries.forEach(({ isIntersecting, target }) => {
+            if (!isIntersecting) return
+            if (target.className.includes(bgac.default)) {
+                dispatch({ type: CHANGE_BACKGROUND_TO_DEFAULT })
+            } else if (target.className.includes(bgac.yellow)) {
+                dispatch({ type: CHANGE_BACKGROUND_TO_YELLOW })
+            } else if (target.className.includes(bgac.lightblue)) {
+                dispatch({ type: CHANGE_BACKGROUND_TO_LIGHTBLUE })
+            } else if (target.className.includes(bgac.red)) {
+                dispatch({ type: CHANGE_BACKGROUND_TO_RED })
+            }
+        })
+    }, [])
 
     const { observeElement } = useObserver(
-        (entries) => {
-            entries.forEach(({ isIntersecting, target }) => {
-                if (!isIntersecting) return
-                if (target.className.includes(bgac.default)) {
-                    dispatch({ type: CHANGE_TO_DEFAULT })
-                } else if (target.className.includes(bgac.yellow)) {
-                    dispatch({ type: CHANGE_TO_YELLOW })
-                } else if (target.className.includes(bgac.lightblue)) {
-                    dispatch({ type: CHANGE_TO_LIGHTBLUE })
-                } else if (target.className.includes(bgac.red)) {
-                    dispatch({ type: CHANGE_TO_RED })
-                }
-            })
-        },
-        {
-            threshold: 0.625,
-        }
+        handleObserverEvent,
+        observerOptions.current
     )
 
-    const { themeColor, ...bgState } = backgroundState
+    // Sets up the state management system for the page
+    const mainContentRef = useRef()
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const { themeColor, backgroundState, navbarState, landingState } = state
+
+    const handleScroll = useRef(
+        debounce(() => {
+            const scrollPosition = document.body.getBoundingClientRect().top
+            dispatch({
+                type: UPDATE_PAGE_SCROLL_POSITION,
+                payload: { scrollPosition },
+            })
+        }, debounceInteral)
+    )
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll.current)
+
+        return () => {
+            const handleScroll = handleScroll.current
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     return (
         <>
             <Head ogImgSrc={ogImageSrc} />
             <GlobalStyle />
-            <Navbar mainContentRef={mainContentRef} themeColor={themeColor} />
-            <Background state={bgState} />
+            <Navbar
+                mainContentRef={mainContentRef}
+                themeColor={themeColor}
+                visualState={navbarState}
+            />
+            <Background state={backgroundState} />
             <MainContent ref={mainContentRef}>
-                <Landing observeElement={observeElement} />
+                <Landing
+                    observeElement={observeElement}
+                    visualState={landingState}
+                />
                 <Projects observeElement={observeElement} projects={projects} />
             </MainContent>
         </>
@@ -51,11 +83,14 @@ const Main = () => {
 
 // =============================================================================
 
+const debounceInteral = 50
+
 // Local reducer action types
-const CHANGE_TO_DEFAULT = 'CHANGE_TO_DEFAULT'
-const CHANGE_TO_LIGHTBLUE = 'CHANGE_TO_LIGHTBLUE'
-const CHANGE_TO_YELLOW = 'CHANGE_TO_YELLOW'
-const CHANGE_TO_RED = 'CHANGE_TO_RED'
+const CHANGE_BACKGROUND_TO_DEFAULT = 'CHANGE_BACKGROUND_TO_DEFAULT'
+const CHANGE_BACKGROUND_TO_LIGHTBLUE = 'CHANGE_BACKGROUND_TO_LIGHTBLUE'
+const CHANGE_BACKGROUND_TO_YELLOW = 'CHANGE_BACKGROUND_TO_YELLOW'
+const CHANGE_BACKGROUND_TO_RED = 'CHANGE_BACKGROUND_TO_RED'
+const UPDATE_PAGE_SCROLL_POSITION = 'UPDATE_PAGE_SCROLL_POSITION'
 
 /**
  * Defines the different colors of the background stripe.
@@ -78,13 +113,7 @@ const themeColors = {
     red: 'colorRed',
 }
 
-/**
- * Defines the initial state for the local reducer. This state manages which
- * color gets displayed in the background based on the current view that is
- * being displayed.
- */
-const initialState = {
-    themeColor: themeColors.default,
+const initialBackgroundState = {
     stripeColor: stripeColors.default,
     opacityDefault: 0,
     opacityYellow: 0,
@@ -92,40 +121,97 @@ const initialState = {
     opacityRed: 0,
 }
 
+const initialNavbarState = {
+    isHidden: false,
+    isBackgroundTransparent: true,
+}
+
+const initialLandingState = {
+    isIconContainerHidden: false,
+}
+
+/**
+ * Defines the initial state for the local reducer. This state manages which
+ * color gets displayed in the background based on the current view that is
+ * being displayed.
+ */
+const initialState = {
+    themeColor: themeColors.default,
+    scrollPosition: 0,
+    backgroundState: { ...initialBackgroundState },
+    navbarState: { ...initialNavbarState },
+    landingState: { ...initialLandingState },
+}
+
 // =============================================================================
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case CHANGE_TO_DEFAULT:
+        case CHANGE_BACKGROUND_TO_DEFAULT:
             return {
-                ...initialState,
+                ...state,
                 themeColor: themeColors.default,
-                stripeColor: stripeColors.default,
-                opacityDefault: 1,
+                backgroundState: {
+                    ...initialBackgroundState,
+                    stripeColor: stripeColors.default,
+                    opacityDefault: 1,
+                },
             }
 
-        case CHANGE_TO_LIGHTBLUE:
+        case CHANGE_BACKGROUND_TO_LIGHTBLUE:
             return {
-                ...initialState,
+                ...state,
                 themeColor: themeColors.lightblue,
-                stripeColor: stripeColors.lightblue,
-                opacityLightBlue: 1,
+                backgroundState: {
+                    ...initialBackgroundState,
+                    stripeColor: stripeColors.lightblue,
+                    opacityLightBlue: 1,
+                },
             }
 
-        case CHANGE_TO_YELLOW:
+        case CHANGE_BACKGROUND_TO_YELLOW:
             return {
-                ...initialState,
+                ...state,
                 themeColor: themeColors.yellow,
-                stripeColor: stripeColors.yellow,
-                opacityYellow: 1,
+                backgroundState: {
+                    ...initialBackgroundState,
+                    stripeColor: stripeColors.yellow,
+                    opacityYellow: 1,
+                },
             }
 
-        case CHANGE_TO_RED:
+        case CHANGE_BACKGROUND_TO_RED:
             return {
-                ...initialState,
+                ...state,
                 themeColor: themeColors.red,
-                stripeColor: stripeColors.red,
-                opacityRed: 1,
+                backgroundState: {
+                    ...initialBackgroundState,
+                    stripeColor: stripeColors.red,
+                    opacityRed: 1,
+                },
+            }
+
+        /**
+         * @todo
+         * - Fix the arbitrary numbers that are calculated on
+         * `window.innerHeight` and `state.scrollPosition`
+         */
+        case UPDATE_PAGE_SCROLL_POSITION:
+            return {
+                ...state,
+                scrollPosition: action.payload.scrollPosition,
+                navbarState: {
+                    isHidden:
+                        action.payload.scrollPosition < state.scrollPosition,
+                    isBackgroundTransparent:
+                        Math.abs(action.payload.scrollPosition) <
+                        window.innerHeight / 8,
+                },
+                landingState: {
+                    isIconContainerHidden:
+                        action.payload.scrollPosition <
+                        state.scrollPosition + 80,
+                },
             }
 
         default:
@@ -157,10 +243,6 @@ const MainContent = styled('main')`
 
     @media only screen and (min-width: ${theme.breakpointLg}) {
         padding: 0 ${theme.paddingSidesMainLg};
-    }
-
-    @media only screen and (min-width: ${theme.breakpointXl}) {
-        padding: 0;
     }
 `
 

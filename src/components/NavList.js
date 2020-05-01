@@ -42,18 +42,31 @@ NavList.propTypes = {
 
 // =============================================================================
 
+const {
+    colorBackground,
+    colorHeading,
+    paddingSidesMainXs,
+    breakpointMd,
+    breakpointLg,
+    breakpointXl,
+    boxShadowMain,
+    transitionNavLink,
+} = theme
+
+// =============================================================================
+
 const List = styled('ul')`
     position: absolute;
     top: 100%;
     left: 0;
     display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
     width: 100%;
-    padding: 0 16px;
+    padding: 0 ${paddingSidesMainXs};
     list-style: none;
-    background: rgba(${theme.colorBackground}, 1);
-    box-shadow: ${theme.boxShadowMain};
+    background: rgba(${colorBackground}, 1);
+    box-shadow: ${boxShadowMain};
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         position: relative;
         top: unset;
         left: unset;
@@ -78,11 +91,11 @@ NavList.propTypes = {
 // =============================================================================
 
 const NavListItem = styled('li')`
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         opacity: 0;
 
         & + & {
-            margin-left: 46px;
+            margin-left: 2.875rem;
         }
 
         &:nth-child(2) {
@@ -98,15 +111,15 @@ const NavListItem = styled('li')`
         }
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: ${breakpointLg}) {
         & + & {
-            margin-left: 50px;
+            margin-left: 3.125rem;
         }
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: ${breakpointXl}) {
         & + & {
-            margin-left: 60px;
+            margin-left: 3.75rem;
         }
     }
 
@@ -114,7 +127,7 @@ const NavListItem = styled('li')`
 `
 
 const additionalHiddenNavListItemStyles = css`
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         display: none;
     }
 `
@@ -123,15 +136,14 @@ const additionalHiddenNavListItemStyles = css`
 
 const NavLink = styled('a')`
     display: flex;
-    padding: 16px 0;
-    font-size: 16px;
+    padding: ${paddingSidesMainXs} 0;
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) {
         position: relative;
         align-items: center;
         height: 100%;
         padding: 0;
-        transition: color ${theme.transitionNavLink};
+        transition: color ${transitionNavLink};
 
         /* Defines the underline at the bottom of each navigation list item. */
         &::after {
@@ -139,17 +151,17 @@ const NavLink = styled('a')`
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 0.1875rem;
             background: ${({ themeColor }) => `rgba(${theme[themeColor]}, 1)`};
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform ${theme.transitionNavLink};
+            transition: transform ${transitionNavLink};
             content: '';
         }
 
         &:hover,
         &:active {
-            color: rgba(${theme.colorHeading}, 0.6);
+            color: rgba(${colorHeading}, 0.6);
 
             &::after {
                 transform: scaleX(1);
