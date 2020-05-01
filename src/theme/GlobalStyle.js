@@ -8,6 +8,8 @@ const {
     colorBackground,
     fontFamilyPrimary,
     fontSizes,
+    breakpointXs,
+    breakpointSm,
     breakpointMd,
     breakpointLg,
     breakpointXl,
@@ -50,7 +52,7 @@ export default createGlobalStyle`
     }
 
     h1 {
-        font-size: ${fontSizes['+4']};
+        font-size: ${fontSizes['+3']};
     }
 
     h2 {
@@ -64,11 +66,38 @@ export default createGlobalStyle`
     p,
     a {
         font-size: ${fontSizes['0']};
+        line-height: 1.65;
     }
 
     #gatsby-focus-wrapper {
         display: flex;
+        /* align-items: center; */
         justify-content: center;
+    }
+
+    @media only screen and (min-width: ${breakpointXs}) and (orientation: portrait) {
+        h1 {
+            font-size: 12vw;
+            line-height: 1.2;
+        }
+    }
+
+    @media only screen and (min-width: ${breakpointSm}) and (orientation: landscape) {
+        h1 {
+            font-size: 8vw;
+            line-height: 1.2;
+        }
+    }
+
+    @media only screen and (min-width: ${breakpointMd}) and (orientation: portrait) {
+        h1 {
+            font-size: ${fontSizes['+5']};
+        }
+    }
+    @media only screen and (min-width: ${breakpointMd}) and (orientation: landscape) {
+        h1 {
+            font-size: ${fontSizes['+4']};
+        }
     }
 
     @media only screen and (min-width: ${breakpointMd}) {

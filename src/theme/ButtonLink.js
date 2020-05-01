@@ -7,6 +7,8 @@ const {
     colorBackground,
     colorHeading,
     colorText,
+    fontSizes,
+    breakpointSm,
     breakpointMd,
     breakpointXl,
     transitionButtonLink,
@@ -14,11 +16,13 @@ const {
 
 const ButtonLink = styled('a')`
     position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     padding: 1rem 0;
+    font-size: ${fontSizes['-0.5']};
     border: 0.125rem solid
         ${({ variant }) => {
             return variant === 'outlined'
@@ -79,12 +83,20 @@ const ButtonLink = styled('a')`
         }
     }
 
+    @media only screen and (min-width: ${breakpointSm}) and (orientation: landscape) {
+        width: 15rem;
+
+        & + & {
+            margin: 0  0 0 1.25rem;
+        }
+    }
+
     @media only screen and (min-width: ${breakpointMd}) {
         width: auto;
         padding: 0.875rem 1.25rem;
 
         & + & {
-            margin: 0 0 0 2.75rem;
+            margin: 0 0 0 2rem;
         }
     }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { theme } from '@theme'
 
 // =============================================================================
 
@@ -102,6 +103,10 @@ Background.propTypes = {
 
 // =============================================================================
 
+const { breakpointMd, transitionBackground } = theme
+
+// =============================================================================
+
 const BackgroundContainer = styled('div')`
     position: fixed;
     top: 0;
@@ -118,6 +123,7 @@ const BackgroundContainer = styled('div')`
 
 const SVG = styled('svg')`
     position: absolute;
+    z-index: -999;
 
     @media only screen and (orientation: portrait) {
         height: 100%;
@@ -135,13 +141,17 @@ const SVG = styled('svg')`
 // =============================================================================
 
 const Stripe = styled('path')`
-    transition: fill 250ms linear;
+    @media only screen and (min-width: ${breakpointMd}) {
+        transition: fill ${transitionBackground};
+    }
 `
 
 // =============================================================================
 
 const Trapezoid = styled('path')`
-    transition: opacity 250ms linear;
+    @media only screen and (min-width: ${breakpointMd}) {
+        transition: opacity ${transitionBackground};
+    }
 `
 
 // =============================================================================

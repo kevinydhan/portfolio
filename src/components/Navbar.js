@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import NavList from './NavList'
 import styled, { css } from 'styled-components'
@@ -6,11 +6,18 @@ import { theme, Keyframes as KF, SquareOutlineIcon } from '@theme'
 
 // =============================================================================
 
-const Navbar = ({ mainContentRef, themeColor, visualState }) => {
-    const [isOpen, setIsOpen] = useState(false)
-
-    const toggleNavList = () => setIsOpen(!isOpen)
-    const closeNavList = () => setIsOpen(false)
+const Navbar = ({
+    mainContentRef,
+    themeColor,
+    visualState,
+    toggleNavList,
+    closeNavList,
+}) => {
+    const {
+        isNavbarHidden,
+        isBackgroundTransparent,
+        isNavbarDropdownMenuOpen,
+    } = visualState
 
     useEffect(() => {
         if (mainContentRef.current) {
@@ -18,15 +25,15 @@ const Navbar = ({ mainContentRef, themeColor, visualState }) => {
         }
 
         return () => {
-            const mainContentRef = mainContentRef.current
-            mainContentRef.removeEventListener('click', closeNavList)
+            const mainContent = mainContentRef
+            mainContent.current.removeEventListener('click', closeNavList)
         }
-    }, [mainContentRef])
+    }, [mainContentRef, closeNavList])
 
     return (
         <Header
-            className={visualState.isHidden && 'hidden'}
-            isBackgroundTransparent={visualState.isBackgroundTransparent}
+            className={isNavbarHidden && 'hidden'}
+            isBackgroundTransparent={isBackgroundTransparent}
         >
             <Nav>
                 <MenuButton
@@ -37,7 +44,7 @@ const Navbar = ({ mainContentRef, themeColor, visualState }) => {
                 </MenuButton>
                 <Logo href="#">Kevin Han</Logo>
                 <NavList
-                    isOpen={visualState.isOpen}
+                    isNavbarDropdownMenuOpen={isNavbarDropdownMenuOpen}
                     closeNavList={closeNavList}
                     themeColor={themeColor}
                 />
@@ -50,9 +57,12 @@ Navbar.propTypes = {
     mainContentRef: PropTypes.object,
     themeColor: PropTypes.string.isRequired,
     visualState: PropTypes.exact({
-        isHidden: PropTypes.bool.isRequired,
+        isNavbarHidden: PropTypes.bool.isRequired,
         isBackgroundTransparent: PropTypes.bool.isRequired,
+        isNavbarDropdownMenuOpen: PropTypes.bool.isRequired,
     }).isRequired,
+    toggleNavList: PropTypes.func.isRequired,
+    closeNavList: PropTypes.func.isRequired,
 }
 
 // =============================================================================
@@ -87,7 +97,7 @@ const Header = styled('header')`
     z-index: 999;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     height: ${heightNavbar};
     background: rgba(${colorBackground}, 1);
     box-shadow: ${boxShadowMain};
@@ -128,9 +138,7 @@ const Logo = styled('a')`
     font-size: ${fontSizes['+1']};
     font-family: ${fontFamilyLogo};
     text-transform: uppercase;
-    opacity: 0;
     transition: color ${transitionLogo};
-    animation: ${KF.slide} 500ms linear 1500ms 1 forwards;
 
     &:hover,
     &:active {

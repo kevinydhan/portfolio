@@ -35,11 +35,24 @@ export default {
     maxWidthMain: '85.375rem', // 1366px @ 1rem = 16px
     minHeightMain: '48rem', // 768px @ 1rem = 16px
 
+    /**
+     * `paddingSidesMain<SIZE>` is used to apply consistent padding on the
+     * elements that are affected by viewport's side bounds.
+     */
     paddingSidesMainXs: '1rem',
     paddingSidesMainSm: '1.5rem',
     paddingSidesMainMd: '2.25rem',
     paddingSidesMainLg: '3rem',
     paddingSidesMainXl: '3rem',
+
+    /**
+     * `paddingTopFullPage<SIZE>` and `paddingBottomFullPage<SIZE>`are used to
+     * apply consistent padding to full-page elements.
+     */
+    paddingTopFullPageXs: '2rem',
+    paddingBottomFullPageXs: '12rem',
+    paddingTopFullPageMd: '6rem',
+    paddingBottomFullPageMd: '6rem',
 
     breakpointXs: '20em', // 320px @ 1rem = 16px
     breakpointSm: '35.5em', // 568px @ 1rem = 16px
@@ -49,6 +62,7 @@ export default {
 
     boxShadowMain: '0 0.625rem 1.875rem -0.625rem rgba(2, 12, 27, 0.7)',
 
+    transitionBackground: '250ms linear',
     transitionButtonLink: '150ms ease-out',
     transitionIconLink: '150ms ease-out',
     transitionNavbar: '300ms ease-out',
