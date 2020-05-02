@@ -101,6 +101,10 @@ const Heading = styled('h1')`
     @media only screen and (min-width: ${breakpointMd}) {
         max-width: 28rem;
     }
+
+    @media only screen and (min-width: ${breakpointXl}) {
+        max-width: 33rem;
+    }
 `
 
 // =============================================================================
@@ -115,7 +119,7 @@ const AdCopy = styled('p')`
     }
 
     @media only screen and (min-width: ${breakpointXl}) {
-        max-width: 35rem;
+        max-width: 33rem;
     }
 `
 

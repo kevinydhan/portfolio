@@ -51,8 +51,8 @@ export default {
      */
     paddingTopFullPageXs: '2rem',
     paddingBottomFullPageXs: '12rem',
-    paddingTopFullPageMd: '6rem',
-    paddingBottomFullPageMd: '6rem',
+    paddingTopFullPageMd: '10rem',
+    paddingBottomFullPageMd: '10rem',
 
     breakpointXs: '20em', // 320px @ 1rem = 16px
     breakpointSm: '35.5em', // 568px @ 1rem = 16px

@@ -97,7 +97,7 @@ const Header = styled('header')`
     z-index: 999;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     height: ${heightNavbar};
     background: rgba(${colorBackground}, 1);
     box-shadow: ${boxShadowMain};

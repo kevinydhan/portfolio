@@ -14,7 +14,7 @@ const Main = () => {
     const { ogImageSrc, projects } = useQuery()
 
     // Sets up the creation of the IntersectionObserver
-    const observerOptions = useRef({ threshold: 0.4 })
+    const observerOptions = useRef({ threshold: 0.425 })
 
     const handleObserverEvent = useCallback((entries) => {
         entries.forEach(({ isIntersecting, target }) => {
