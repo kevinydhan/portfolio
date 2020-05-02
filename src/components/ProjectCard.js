@@ -57,6 +57,11 @@ const {
     colorYellow,
     fontSizes,
     maxWidthMain,
+    paddingTopFullPageXs,
+    paddingBottomFullPageXs,
+    paddingTopFullPageMd,
+    paddingBottomFullPageMd,
+    breakpointSm,
     breakpointMd,
     breakpointLg,
     breakpointXl,
@@ -66,10 +71,13 @@ const {
 // =============================================================================
 
 const ProjectContainer = styled('div')`
-    width: 100%;
     max-width: ${maxWidthMain};
     min-height: 100vh;
-    padding: 3rem 0;
+    padding: ${paddingTopFullPageXs} 0 ${paddingBottomFullPageXs};
+
+    &:last-child {
+        padding: ${paddingTopFullPageXs} 0;
+    }
 
     &:nth-child(3n + 1) {
         picture {
@@ -101,9 +109,8 @@ const ProjectContainer = styled('div')`
         }
     }
 
-    @media only screen and (max-width: ${breakpointMd}) and (orientation: landscape) {
+    @media only screen and (min-width: ${breakpointSm}) and (orientation: landscape) {
         height: auto;
-        padding: 5rem 0;
     }
 
     @media only screen and (min-width: ${breakpointMd}) {
@@ -111,11 +118,19 @@ const ProjectContainer = styled('div')`
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        height: auto;
+        min-height: unset;
+        max-height: calc(${breakpointMd} * 1.5);
+        padding: ${paddingTopFullPageMd} 0 ${paddingBottomFullPageMd};
     }
 
     @media only screen and (min-width: ${breakpointLg}) {
-        justify-content: center;
+        justify-content: space-between;
         margin: 0 auto;
+
+        &:last-child {
+            padding: ${paddingTopFullPageMd} 0;
+        }
     }
 `
 
@@ -132,19 +147,30 @@ const Picture = styled('picture')`
         width: 100%;
     }
 
+    @media only screen and (min-width: ${breakpointSm}) and (orientation: landscape) {
+        img {
+            width: 60%;
+        }
+    }
+
+    @media only screen and (min-width: ${breakpointMd}) and (orientation: landscape) {
+        img {
+            width: 100%;
+        }
+    }
+
     @media only screen and (min-width: ${breakpointMd}) {
-        width: 47.5%;
+        width: 46.25%;
         height: 50vw;
         min-height: 21.875rem;
-        max-height: 26.25rem;
-        padding: 0 1rem;
+        max-height: 30rem;
+        padding: 0 1.5rem;
     }
 
     @media only screen and (min-width: ${breakpointLg}) {
-        width: 31.25rem;
+        max-width: 37.5rem;
         min-height: 21.875rem;
-        max-height: 31.25rem;
-        padding: 0 1.5rem;
+        max-height: 30rem;
     }
 `
 
@@ -152,20 +178,19 @@ const Picture = styled('picture')`
 
 const ProjectBody = styled('div')`
     @media only screen and (min-width: ${breakpointMd}) {
-        width: 47.5%;
+        width: 46.25%;
         margin: 0;
     }
 
     @media only screen and (min-width: ${breakpointLg}) {
-        width: 31.25rem;
-        margin: 0 0 0 6rem;
+        max-width: 37.5rem;
     }
 `
 
 // =============================================================================
 
 const Title = styled('h3')`
-    margin: 1rem 0 0;
+    margin: 2rem 0 0;
 
     @media only screen and (min-width: ${breakpointMd}) {
         margin: 0;
@@ -175,7 +200,7 @@ const Title = styled('h3')`
 // =============================================================================
 
 const Description = styled('p')`
-    margin: 0.5rem 0 0;
+    margin: 0.75rem 0 0;
 
     @media only screen and (min-width: ${breakpointXl}) {
         margin: 1rem 0 0;

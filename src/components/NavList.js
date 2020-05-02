@@ -1,14 +1,14 @@
-import React, { memo } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { theme, Keyframes as KF } from '@theme'
-import { generateKey, arePropsEqual } from '@utils'
+import { theme } from '@theme'
+import { generateKey } from '@utils'
 import { navLinks } from '@data/site.yml'
 
 // =============================================================================
 
-const NavList = ({ isOpen, closeNavList, themeColor }) => (
-    <List isOpen={isOpen}>
+const NavList = ({ isNavbarDropdownMenuOpen, closeNavList, themeColor }) => (
+    <List isNavbarDropdownMenuOpen={isNavbarDropdownMenuOpen}>
         {navLinks.map((link, i) => {
             const { text, ...linkProps } = link
             const navListItemProps = {}
@@ -35,7 +35,7 @@ const NavList = ({ isOpen, closeNavList, themeColor }) => (
 const hiddenNavListItems = ['Home']
 
 NavList.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
+    isNavbarDropdownMenuOpen: PropTypes.bool.isRequired,
     closeNavList: PropTypes.func.isRequired,
     themeColor: PropTypes.string.isRequired,
 }
@@ -59,7 +59,8 @@ const List = styled('ul')`
     position: absolute;
     top: 100%;
     left: 0;
-    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+    display: ${({ isNavbarDropdownMenuOpen }) =>
+        isNavbarDropdownMenuOpen ? 'block' : 'none'};
     width: 100%;
     padding: 0 ${paddingSidesMainXs};
     list-style: none;
@@ -81,33 +82,19 @@ const List = styled('ul')`
 `
 
 NavList.defaultProps = {
-    isOpen: false,
+    isNavbarDropdownMenuOpen: false,
 }
 
 NavList.propTypes = {
-    isOpen: PropTypes.bool,
+    isNavbarDropdownMenuOpen: PropTypes.bool,
 }
 
 // =============================================================================
 
 const NavListItem = styled('li')`
     @media only screen and (min-width: ${breakpointMd}) {
-        opacity: 0;
-
         & + & {
             margin-left: 2.875rem;
-        }
-
-        &:nth-child(2) {
-            animation: ${KF.slide} 500ms linear 1750ms 1 forwards;
-        }
-
-        &:nth-child(3) {
-            animation: ${KF.slide} 500ms linear 1900ms 1 forwards;
-        }
-
-        &:nth-child(4) {
-            animation: ${KF.slide} 500ms linear 2050ms 1 forwards;
         }
     }
 
@@ -181,4 +168,4 @@ NavLink.propTypes = {
 
 // =============================================================================
 
-export default memo(NavList, arePropsEqual(['isOpen', 'themeColor']))
+export default NavList

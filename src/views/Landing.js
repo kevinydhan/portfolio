@@ -1,13 +1,7 @@
-import React, { memo, useState, useRef, useEffect } from 'react'
+import React, { memo, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import {
-    theme,
-    CSSMixins as CMx,
-    Keyframes as KF,
-    ButtonLink,
-    IconContainer,
-} from '@theme'
+import { theme, ButtonLink, IconContainer } from '@theme'
 import { landing, socialLinks } from '@data/site.yml'
 import { backgroundActionClassNames as bgac } from '@data/classnames'
 
@@ -56,7 +50,17 @@ Landing.propTypes = {
 
 // =============================================================================
 
-const { breakpointMd, breakpointLg, breakpointXl, transitionNavbar } = theme
+const {
+    fontSizes,
+    heightNavbar,
+    paddingTopFullPageXs,
+    paddingBottomFullPageXs,
+    breakpointSm,
+    breakpointMd,
+    breakpointLg,
+    breakpointXl,
+    transitionNavbar,
+} = theme
 
 // =============================================================================
 
@@ -67,15 +71,16 @@ const Section = styled('section')`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding: calc(${heightNavbar} + ${paddingTopFullPageXs}) 0
+        ${paddingBottomFullPageXs};
 
-    @media only screen and (max-width: ${breakpointMd}) and (orientation: landscape) {
+    @media only screen and (min-width: ${breakpointSm}) and (orientation: landscape) {
         height: auto;
-        padding: 7rem 0;
     }
 
     @media only screen and (min-width: ${breakpointMd}) {
-        /* min-height: 768px; */
+        padding: 0;
     }
 
     @media only screen and (min-width: ${breakpointLg}) {
@@ -92,54 +97,57 @@ const Section = styled('section')`
 
 const Heading = styled('h1')`
     font-weight: 400;
-    animation: ${KF.slide} 500ms linear 1 forwards;
+
+    @media only screen and (min-width: ${breakpointMd}) {
+        max-width: 28rem;
+    }
+
+    @media only screen and (min-width: ${breakpointXl}) {
+        max-width: 33rem;
+    }
 `
 
 // =============================================================================
 
 const AdCopy = styled('p')`
-    margin: 0.5rem 0 0;
-    transform: translateY(-1.875rem);
-    opacity: 0;
-    animation: ${KF.slide} 500ms linear 500ms 1 forwards;
+    margin: 1rem 0 0;
+    font-size: ${fontSizes['+0.5']};
 
     @media only screen and (min-width: ${breakpointMd}) {
-        max-width: 31.25rem;
+        max-width: 28rem;
         margin: 0.75rem 0 0;
     }
 
     @media only screen and (min-width: ${breakpointXl}) {
-        max-width: 35rem;
+        max-width: 33rem;
     }
 `
 
 // =============================================================================
 
 const CTAContainer = styled('div')`
-    margin: 37.5rem 0 0;
+    margin: 5rem 0 0;
 
-    > a {
-        opacity: 0;
+    @media only screen and (min-width: ${breakpointSm}) and (orientation: landscape) {
+        display: flex;
+        justify-content: center;
+        margin: 6rem 0 0;
     }
 
-    > a:nth-child(1) {
-        animation: ${KF.slide} 500ms linear 1000ms 1 forwards;
-    }
-
-    > a:nth-child(2) {
-        animation: ${KF.slide} 500ms linear 1250ms 1 forwards;
-    }
-
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: ${breakpointMd}) and (orientation: portrait) {
         display: flex;
         margin: 6rem 0 0;
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: ${breakpointMd}) and (orientation: landscape) {
+        justify-content: flex-start;
+    }
+
+    @media only screen and (min-width: ${breakpointLg}) {
         margin: 6rem 0 0;
     }
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: ${breakpointXl}) {
         margin: 7rem 0 0;
     }
 `
@@ -147,30 +155,27 @@ const CTAContainer = styled('div')`
 // =============================================================================
 
 const iconLinkAdditionalStyles = ({ isIconContainerHidden }) => css`
-    transform: ${isIconContainerHidden ? 'translateY(5rem)' : 'translateX(0)'};
-    opacity: ${isIconContainerHidden ? 0 : 1};
-    transition: transform ${transitionNavbar}, opacity ${transitionNavbar};
-
-    svg {
-        width: 1.75rem;
-    }
-
-    @media only screen and (max-width: ${breakpointMd}) and (orientation: landscape) {
-        padding: 2.25rem 0 0;
-
-        svg {
-            width: 1.875rem;
-        }
-    }
+    padding: 2rem 0 0;
 
     @media only screen and (min-width: ${breakpointMd}) {
         position: absolute;
         right: 0;
-        bottom: 1.5rem;
+        bottom: 2rem;
         z-index: 1;
+        margin: 0;
+        padding: 0;
+        transform: ${isIconContainerHidden
+            ? 'translateY(5rem)'
+            : 'translateX(0)'};
+        opacity: ${isIconContainerHidden ? 0 : 1};
+        transition: transform ${transitionNavbar}, opacity ${transitionNavbar};
 
         a + a {
             margin: 0 0 0 1.25rem;
+        }
+
+        svg {
+            width: 2rem;
         }
     }
 `

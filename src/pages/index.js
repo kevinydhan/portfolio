@@ -14,7 +14,7 @@ const Main = () => {
     const { ogImageSrc, projects } = useQuery()
 
     // Sets up the creation of the IntersectionObserver
-    const observerOptions = useRef({ threshold: 0.625 })
+    const observerOptions = useRef({ threshold: 0.425 })
 
     const handleObserverEvent = useCallback((entries) => {
         entries.forEach(({ isIntersecting, target }) => {
@@ -60,6 +60,14 @@ const Main = () => {
         }
     }, [])
 
+    const toggleNavList = () => {
+        dispatch({ type: TOGGLE_NAVIGATION_DROPDOWN_MENU })
+    }
+
+    const closeNavList = () => {
+        dispatch({ type: CLOSE_NAVIGATION_DROPDOWN_MENU })
+    }
+
     return (
         <>
             <Head ogImgSrc={ogImageSrc} />
@@ -68,6 +76,8 @@ const Main = () => {
                 mainContentRef={mainContentRef}
                 themeColor={themeColor}
                 visualState={navbarState}
+                toggleNavList={toggleNavList}
+                closeNavList={closeNavList}
             />
             <Background state={backgroundState} />
             <MainContent ref={mainContentRef}>
@@ -91,6 +101,8 @@ const CHANGE_BACKGROUND_TO_LIGHTBLUE = 'CHANGE_BACKGROUND_TO_LIGHTBLUE'
 const CHANGE_BACKGROUND_TO_YELLOW = 'CHANGE_BACKGROUND_TO_YELLOW'
 const CHANGE_BACKGROUND_TO_RED = 'CHANGE_BACKGROUND_TO_RED'
 const UPDATE_PAGE_SCROLL_POSITION = 'UPDATE_PAGE_SCROLL_POSITION'
+const TOGGLE_NAVIGATION_DROPDOWN_MENU = 'TOGGLE_NAVIGATION_DROPDOWN_MENU'
+const CLOSE_NAVIGATION_DROPDOWN_MENU = 'CLOSE_NAVIGATION_DROPDOWN_MENU'
 
 /**
  * Defines the different colors of the background stripe.
@@ -122,8 +134,9 @@ const initialBackgroundState = {
 }
 
 const initialNavbarState = {
-    isHidden: false,
+    isNavbarHidden: false,
     isBackgroundTransparent: true,
+    isNavbarDropdownMenuOpen: false,
 }
 
 const initialLandingState = {
@@ -201,16 +214,36 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 scrollPosition: action.payload.scrollPosition,
                 navbarState: {
-                    isHidden:
+                    isNavbarHidden:
                         action.payload.scrollPosition < state.scrollPosition,
                     isBackgroundTransparent:
                         Math.abs(action.payload.scrollPosition) <
                         window.innerHeight / 8,
+                    isNavbarDropdownMenuOpen: false,
                 },
                 landingState: {
                     isIconContainerHidden:
                         action.payload.scrollPosition <
                         state.scrollPosition + 80,
+                },
+            }
+
+        case TOGGLE_NAVIGATION_DROPDOWN_MENU:
+            return {
+                ...state,
+                navbarState: {
+                    ...state.navbarState,
+                    isNavbarDropdownMenuOpen: !state.navbarState
+                        .isNavbarDropdownMenuOpen,
+                },
+            }
+
+        case CLOSE_NAVIGATION_DROPDOWN_MENU:
+            return {
+                ...state,
+                navbarState: {
+                    ...state.navbarState,
+                    isNavbarDropdownMenuOpen: false,
                 },
             }
 

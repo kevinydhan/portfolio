@@ -24,10 +24,10 @@ export const generateKey = (str, i) => `${str.split(' ').join('-')}-${i}`
  * const MyComponent = (props) => {...}
  * MyComponent.propTypes = {
  *     title: PropTypes.string.isRequired,
- *     isHidden: PropTypes.bool.isRequired,
+ *     isNavbarHidden: PropTypes.bool.isRequired,
  * }
  *
- * export default React.memo(MyComponent, arePropsEqual(['title', 'isHidden']))
+ * export default React.memo(MyComponent, arePropsEqual(['title', 'isNavbarHidden']))
  *
  * @param {Array<string>} propKeys - Array of prop keys
  *
