@@ -8,7 +8,7 @@ landing:
 
     - text: View my resume
       variant: filled
-      href: https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing
+      href: https://google.com
       target: _blank
       rel: noreferrer noopener nofollow
 
@@ -20,34 +20,34 @@ navLinks:
     href: "#projects"
 
   - text: Resume
-    href: https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing
+    href: https://google.com
     target: _blank
     rel: noreferrer noopener nofollow
 
   - text: Contact
-    href: mailto:kevinhanyd@gmail.com
+    href: https://google.com
 
 socialLinks:
   - type: linkedin
-    href: https://linkedin.com/in/kevinydhan
+    href: https://google.com
     target: _blank
     rel: noreferrer noopener nofollow
     aria-label: LinkedIn
 
   - type: github
-    href: https://github.com/kevinydhan
+    href: https://google.com
     target: _blank
     rel: noreferrer noopener nofollow
     aria-label: Github
 
   - type: gitlab
-    href: https://gitlab.com/kevinydhan
+    href: https://google.com
     target: _blank
     rel: noreferrer noopener nofollow
     aria-label: GitLab
 
   - type: stackoverflow
-    href: https://stackoverflow.com/users/11715889/khan
+    href: https://google.com
     target: _blank
     rel: noreferrer noopener nofollow
     aria-label: Stack Overflow

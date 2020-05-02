@@ -1,7 +1,7 @@
 module.exports = {
     siteType: 'website',
     siteTitle: 'Kevin Han | Full-Stack Developer',
-    siteUrl: 'https://kevinhan.dev',
+    siteUrl: 'https://kevinydhan-portfolio-staging.netlify.app',
     siteDescription:
         'Kevin Han is a full-stack developer based in New Jersey, USA. He creates functional, intuitive websites and web applications.',
     siteAuthor: 'Kevin Han',
@@ -34,21 +34,13 @@ module.exports = {
         },
         {
             name: 'Resume',
-            href:
-                'https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing',
+            href: 'https://google.com',
             target: '_blank',
             rel: 'noreferrer noopener nofollow',
         },
         {
             name: 'Contact',
-            href: 'mailto:kevinhanyd@gmail.com',
+            href: '#',
         },
     ],
-
-    socialLinks: {
-        linkedin: 'https://linkedin.com/in/kevinydhan',
-        github: 'https://github.com/kevinydhan',
-        gitlab: 'https://gitlab.com/kevinydhan',
-        stackoverflow: 'https://stackoverflow.com/users/11715889/khan',
-    },
 }
