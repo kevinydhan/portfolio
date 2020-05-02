@@ -10,6 +10,7 @@
 
 # Development
 /.cache
+/.local
 
 # Production
 /public

@@ -1,8 +1,8 @@
 projects:
-  - title: fuslie
-    description: Personal website redesign for fuslie, a Twitch streamer and content creator
+  - title: Lorem
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     originalImgName: project-image-fuslie
-    imgAlt: Macbook Pro and iPhone 11 mockups displaying https://fuslie.com on their screens
+    imgAlt: Macbook Pro and iPhone 11 mockups displaying a website on their screens
     technologies:
       - Javascript
       - React
@@ -28,10 +28,10 @@ projects:
         aria-label: Figma
 
 
-  - title: JVNA
-    description: Personal website redesign for JVNA, a music producer and DJ
+  - title: Lorem
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     originalImgName: project-image-jvna
-    imgAlt: Macbook Pro and iPhone 11 mockups displaying https://jvnamusic.com on their screens
+    imgAlt: Macbook Pro and iPhone 11 mockups displaying a website on their screens
     technologies:
       - Javascript
       - React
@@ -57,10 +57,10 @@ projects:
         aria-label: Figma
 
 
-  - title: Fitness Factory
-    description: Company website and mobile application redesign for Fitness Factory, a fitness center based in the east coast
+  - title: Lorem
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     originalImgName: project-image-fitness-factory
-    imgAlt: Macbook Pro and iPhone 11 mockups displaying https://fitnessfactorygym.com on their screens
+    imgAlt: Macbook Pro and iPhone 11 mockups displaying a website on their screens
     technologies:
       - Javascript
       - React
@@ -85,10 +85,10 @@ projects:
         aria-label: Figma
 
 
-  - title: DongWon Industry
-    description: Company website redesign for DongWon Industry USA, a window shade fabric wholesaler
+  - title: Lorem
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     originalImgName: project-image-dongwon-industry
-    imgAlt: Macbook Pro and iPhone 11 mockups displaying https://fitnessfactorygym.com on their screens
+    imgAlt: Macbook Pro and iPhone 11 mockups displaying a website on their screens
     technologies:
       - Javascript
       - Wordpress
