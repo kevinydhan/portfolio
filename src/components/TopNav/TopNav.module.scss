@@ -1,0 +1,22 @@
+@import '../../theme/variables';
+
+.header {
+    display: none;
+
+    @media only screen and (min-width: map-get($breakpoints, 'md')) {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        height: $height-top-nav;
+        background: yellow;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-transform: uppercase;
+}

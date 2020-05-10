@@ -1,25 +1,22 @@
-module.exports = {
+  module.exports = {
     extends: [
         'stylelint-config-recommended',
         'stylelint-config-sass-guidelines',
-        'stylelint-config-rational-order'
-    ],
-    plugins: [
-        'stylelint-order',
+        'stylelint-config-rational-order',
+        'stylelint-prettier',
     ],
     ignoreFiles: [
         'src/images',
-        'src/theme/fonts'
+        'src/theme/fonts',
     ],
     rules: {
         // Disables indentation rule. This rule is handled by Prettier.
         indentation: null,
 
-        // This rule is handled by Prettier.
-        'no-missing-end-of-source-newline': null,
-
         // This rule is disabled in favor of rational-order.
         'order/properties-alphabetical-order': null,
+
+        'selector-class-pattern': null,
 
         // Limits the number of ID selectors in a selector.
         // @see https://stylelint.io/user-guide/rules/selector-max-id
