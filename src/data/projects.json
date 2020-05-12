@@ -1,0 +1,220 @@
+{
+  "featured": [
+    "JVNA",
+    "Fuslie",
+    "Fitness Factory"
+  ],
+  "projects": [
+    {
+      "title": "JVNA",
+      "description": "Website redesign for JVNA, a music producer and DJ, Website redesign for JVNA, a music producer and DJ",
+      "technologies": [
+        "Javascript",
+        "React",
+        "Sass",
+        "Gatsby",
+        "Netlify",
+        "Inkscape",
+        "GIMP"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://jvna-website.netlify.app",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/kevinydhan/jvna-website",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        },
+        {
+          "type": "figma",
+          "href": "https://www.figma.com/file/cmajhCMg8mdfOV3aEF7Qc5/JVNA-Personal-Website?node-id=0%3A1",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Figma"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": null,
+      "categories": [
+        "Website Redesign"
+      ],
+      "imgDetails": {
+        "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Fuslie",
+      "description": "Website redesign for Fuslie, a Twitch streamer and content creator, Website redesign for Fuslie, a Twitch streamer and content creator",
+      "technologies": [
+        "Javascript",
+        "React",
+        "Sass",
+        "Gatsby",
+        "Netlify",
+        "Inkscape",
+        "GIMP"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://jvna-website.netlify.app",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/kevinydhan/jvna-website",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        },
+        {
+          "type": "figma",
+          "href": "https://www.figma.com/file/cmajhCMg8mdfOV3aEF7Qc5/JVNA-Personal-Website?node-id=0%3A1",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Figma"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": null,
+      "categories": [
+        "Full-Stack Application"
+      ],
+      "imgDetails": {
+        "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Fitness Factory",
+      "description": "Website and mobile application redesign for Fitness Factory, a fitness center based in the east coast of the United States",
+      "technologies": [
+        "Javascript",
+        "React",
+        "Redux",
+        "Webpack",
+        "Node.js",
+        "Sequelize",
+        "PostgreSQL",
+        "Heroku"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://jvna-website.netlify.app",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/kevinydhan/jvna-website",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        },
+        {
+          "type": "figma",
+          "href": "https://www.figma.com/file/cmajhCMg8mdfOV3aEF7Qc5/JVNA-Personal-Website?node-id=0%3A1",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Figma"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": null,
+      "categories": [
+        "Website & Mobile App Redesign"
+      ],
+      "imgDetails": {
+        "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Bunny Eats",
+      "description": "Simple grid-based browser game where the player tries to collect items in the least amount of steps",
+      "technologies": [
+        "TypeScript",
+        "React",
+        "Redux",
+        "Styled Components",
+        "Netlify"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://bunny-eats.netlify.app",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/kevinydhan/bunny-eats",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": "2020-05-07T00:00:00.000Z",
+      "categories": [
+        "Front-End Application"
+      ],
+      "imgDetails": {
+        "originalName": "",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Grace Shopper",
+      "description": "Mock jewelry e-commerce website",
+      "technologies": [
+        "Javascript",
+        "React",
+        "Redux",
+        "Webpack",
+        "Node.js",
+        "Sequelize",
+        "PostgreSQL",
+        "Heroku"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://kbmk.herokuapp.com",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/graceshoppers/grace-shoppers",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": "2020-05-07T00:00:00.000Z",
+      "categories": [
+        "Full-Stack Application"
+      ],
+      "imgDetails": {
+        "originalName": "",
+        "alt": ""
+      }
+    }
+  ]
+}

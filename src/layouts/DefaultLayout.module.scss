@@ -1,0 +1,7 @@
+@import '../theme/variables';
+@import '../theme/media';
+
+/// Targets the `<main>` element in the `DefaultLayout` component.
+.main {
+    margin: 0 auto;
+}

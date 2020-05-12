@@ -1,0 +1,68 @@
+@import '../variables';
+@import '../media';
+
+.main {
+    position: relative;
+    width: 87.5%;
+    padding: 2rem 0 calc(#{$height-bottom-nav} + 2rem);
+
+    @include media($min-width: 'sm-1', $max-width: 'lg') {
+        width: 75%;
+        max-width: 31.875rem;
+    }
+
+    @include media($min-width: 'md') {
+        padding: calc(#{$height-top-nav} + 2rem) 0 2rem;
+    }
+
+    @include media($min-width: 'lg') {
+        width: 90%;
+        max-width: 75rem;
+        padding: calc(#{$height-top-nav} + 3rem) 0 3rem;
+    }
+
+    @include media($min-width: 'xl') {
+        padding: calc(#{$height-top-nav} + 4rem) 0 4rem;
+    }
+}
+
+.heading {
+    margin-bottom: 3rem;
+
+    @include media($min-width: 'sm') {
+        font-size: 2.5rem;
+    }
+
+    @include media($min-width: 'lg') {
+        position: relative;
+        margin-bottom: 5rem;
+        font-size: 2.75rem;
+        text-shadow: $text-shadow-project-page-heading;
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            z-index: -999;
+            width: 60%;
+            height: 0.125rem;
+            background: rgba($color-annotation, 0.5);
+            content: '';
+        }
+    }
+
+    @include media($min-width: 'xl') {
+        margin-bottom: 6.5rem;
+        font-size: 3rem;
+    }
+}
+
+.other-project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include media($min-width: 'lg') {
+        margin-bottom: 15rem;
+    }
+}

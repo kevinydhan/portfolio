@@ -1,0 +1,46 @@
+@import './fonts';
+@import './variables';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color: $color-paragraph;
+    font-size: 100%;
+    font-family: 'Manrope', Arial, Helvetica, sans-serif;
+    letter-spacing: 0.0625rem;
+}
+
+body {
+    background: $color-background;
+}
+
+h1,
+h2,
+h3 {
+    color: $color-heading;
+}
+
+a {
+    color: $color-paragraph;
+    text-decoration: none;
+
+    nav & {
+        color: $color-nav-link;
+    }
+}
+
+span {
+    color: $color-annotation;
+}
+
+#gatsby-focus-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
