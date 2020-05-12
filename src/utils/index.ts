@@ -1,5 +1,2 @@
-export {
-    PropTypeReactChildren,
-    PropTypePortfolioProjectLink,
-} from './prop-types'
+export { PropTypeReactChildren, IconLink } from './prop-types'
 export { useProjectDataQuery } from './hooks'

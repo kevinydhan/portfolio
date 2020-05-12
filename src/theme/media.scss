@@ -9,6 +9,8 @@ $breakpoints: (
         'sm': 35.5em,
     // 666px
         'sm-1': 37.5em,
+    // 710px
+        'sm-2': 44.375em,
     // 768px
         'md': 48em,
     // 896px
@@ -37,20 +39,26 @@ $orientations: ('portrait', 'landscape');
     $media-type: 'screen',
     $min-width: null,
     $max-width: null,
+    $min-height: null,
+    $max-height: null,
     $min-aspect-ratio: null,
     $max-aspect-ratio: null,
     $orientation: null
 ) {
     $queries: '';
 
+    /// Appends a media query keyword if exists.
     @if $media-keyword {
         $queries: $queries + ' ' + $media-keyword;
     }
 
+    /// Appends a media type if exists.
     @if $media-type {
         $queries: $queries + ' ' + $media-type;
     }
 
+    /// @query `min-width`
+    /// Appends a `min-width` query if a value is passed.
     @if $min-width and map-get($breakpoints, $min-width) {
         $value: map-get($breakpoints, $min-width);
         $queries: $queries + ' ' + 'and (min-width: #{$value})';
@@ -58,6 +66,8 @@ $orientations: ('portrait', 'landscape');
         $queries: $queries + ' ' + 'and (min-width: #{$min-width})';
     }
 
+    /// @query `max-width`
+    /// Appends a `max-width` query if a value is passed.
     @if $max-width and map-get($breakpoints, $max-width) {
         $value: map-get($breakpoints, $max-width);
         $queries: $queries +
@@ -67,6 +77,28 @@ $orientations: ('portrait', 'landscape');
         $queries: $queries +
             ' ' +
             'and (max-width: calc(#{$max-width} - 0.0625em))';
+    }
+
+    /// @query `min-height`
+    /// Appends a `min-height` query if a value is passed.
+    @if $min-height and map-get($breakpoints, $min-height) {
+        $value: map-get($breakpoints, $min-height);
+        $queries: $queries + ' ' + 'and (min-height: #{$value})';
+    } @else if $min-height {
+        $queries: $queries + ' ' + 'and (min-height: #{$min-height})';
+    }
+
+    /// @query `max-height`
+    /// Appends a `max-height` query if a value is passed.
+    @if $max-height and map-get($breakpoints, $max-height) {
+        $value: map-get($breakpoints, $max-height);
+        $queries: $queries +
+            ' ' +
+            'and (max-height: calc(#{$value} - 0.0625em))';
+    } @else if $max-height {
+        $queries: $queries +
+            ' ' +
+            'and (max-height: calc(#{$max-height} - 0.0625em))';
     }
 
     @if $min-aspect-ratio {

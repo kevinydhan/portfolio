@@ -8,6 +8,13 @@ export enum PortfolioProjectLinkTypes {
     'figma' = 'figma',
 }
 
+export enum SocialLinkTypes {
+    'linkedin' = 'linkedin',
+    'github' = 'github',
+    'gitlab' = 'gitlab',
+    'stackoverflow' = 'stackoverflow',
+}
+
 /**
  * Defines the allowed categories for a portfolio project.
  */
@@ -37,6 +44,10 @@ export interface NavigationLink extends AnchorTagAttributes {
 
 export interface PortfolioProjectLink extends AnchorTagAttributes {
     type: keyof typeof PortfolioProjectLinkTypes
+}
+
+export interface SocialLink extends AnchorTagAttributes {
+    type: keyof typeof SocialLinkTypes
 }
 
 /**

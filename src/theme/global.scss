@@ -9,7 +9,7 @@
 }
 
 html {
-    color: #{$color-paragraph};
+    color: $color-paragraph;
     font-size: 100%;
     font-family: 'Manrope', Arial, Helvetica, sans-serif;
     letter-spacing: 0.0625rem;
@@ -26,15 +26,12 @@ h3 {
 }
 
 a {
+    color: $color-paragraph;
     text-decoration: none;
 
     nav & {
         color: $color-nav-link;
     }
-}
-
-p {
-    color: $color-paragraph;
 }
 
 span {

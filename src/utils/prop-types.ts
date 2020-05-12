@@ -8,7 +8,7 @@ export const PropTypeReactChildren = PropTypes.oneOfType([
     PropTypes.node,
 ])
 
-export const PropTypePortfolioProjectLink = PropTypes.shape({
+export const IconLink = PropTypes.shape({
     type: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
     target: PropTypes.string,

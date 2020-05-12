@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import IconContainer from '../IconContainer/IconContainer'
 import { PortfolioProjectCategories } from '../../typings'
-import { PropTypePortfolioProjectLink } from '../../utils'
+import { IconLink } from '../../utils'
 import styles from './ProjectCard.module.scss'
 
 const ProjectCard = ({
@@ -77,7 +77,7 @@ ProjectCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    links: PropTypes.arrayOf(PropTypePortfolioProjectLink).isRequired,
+    links: PropTypes.arrayOf(IconLink).isRequired,
     startDate: PropTypes.string,
     endDate: PropTypes.string,
     categories: PropTypes.arrayOf(

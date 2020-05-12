@@ -18,6 +18,22 @@
     }
 }
 
+.container.flex {
+    display: flex;
+
+    @include media($min-width: 'md') {
+        display: none;
+    }
+
+    @include media(
+        $min-width: 'xs',
+        $max-width: 'md-1',
+        $min-aspect-ratio: '2/1'
+    ) {
+        display: flex;
+    }
+}
+
 /// Selects the `<a>` element that wraps around each icon.
 .icon-link:not(:last-child) {
     margin-right: 0.875rem;
@@ -37,5 +53,20 @@
 
     path {
         fill: $color-heading;
+    }
+}
+
+.icon-link.circled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.625rem;
+    height: 1.625rem;
+    padding: 1rem;
+    background: darken($color-secondary, 12%);
+    border-radius: 50%;
+
+    svg {
+        width: 100%;
     }
 }

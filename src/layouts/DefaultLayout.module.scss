@@ -3,25 +3,5 @@
 
 /// Targets the `<main>` element in the `DefaultLayout` component.
 .main {
-    $padding-top-and-bottom: 2rem;
     margin: 0 auto;
-    padding: $padding-top-and-bottom 0
-        calc(#{$height-bottom-nav} + #{$padding-top-and-bottom});
-
-    @include media($min-width: 'md') {
-        padding: calc(#{$height-top-nav} + #{$padding-top-and-bottom}) 0
-            $padding-top-and-bottom;
-    }
-
-    @include media($min-width: 'lg') {
-        $padding-top-and-bottom: 3rem;
-        padding: calc(#{$height-top-nav} + #{$padding-top-and-bottom}) 0
-            $padding-top-and-bottom;
-    }
-
-    @include media($min-width: 'xl') {
-        $padding-top-and-bottom: 4rem;
-        padding: calc(#{$height-top-nav} + #{$padding-top-and-bottom}) 0
-            $padding-top-and-bottom;
-    }
 }

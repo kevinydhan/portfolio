@@ -49,9 +49,6 @@
     height: 100%;
     margin: 0 auto;
 
-    @include media($max-width: 'lg') {
-    }
-
     @include media($min-width: 'lg') {
         width: 90%;
         max-width: 75rem;
@@ -70,6 +67,7 @@
 
 .nav-link-container:not(:last-of-type) {
     margin-right: 2.25rem;
+
     @include media($min-width: 'lg') {
         margin-right: 3.5rem;
     }

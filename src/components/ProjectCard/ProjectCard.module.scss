@@ -151,8 +151,18 @@
 
 /// Selects the `<span>` elements, or the project's metadata *(start/end date and project category)*.
 .metadata {
-    color: #{$color-annotation};
     text-transform: uppercase;
+    text-overflow: ellipsis;
+
+    &:nth-child(2) {
+        display: none;
+    }
+
+    @include media($min-width: 'sm') {
+        &:nth-child(2) {
+            display: block;
+        }
+    }
 
     @include media($max-width: 'lg') {
         display: block;

@@ -1,5 +1,11 @@
 import React from 'react'
-import { ProjectCard, OtherProjectCard, BackgroundCurves } from '../components'
+import {
+    Head,
+    ProjectCard,
+    OtherProjectCard,
+    Footer,
+    BackgroundCurves,
+} from '../components'
 import { useProjectDataQuery } from '../utils'
 import DefaultLayout from '../layouts/DefaultLayout'
 import styles from '../theme/pages/projects.module.scss'
@@ -9,6 +15,7 @@ const ProjectsPage = (): JSX.Element => {
 
     return (
         <>
+            <Head title="Projects | Kevin Han" />
             <BackgroundCurves />
             <DefaultLayout additionalClassNames={styles.main}>
                 <h1 className={styles.heading}>Featured Projects</h1>
@@ -22,6 +29,7 @@ const ProjectsPage = (): JSX.Element => {
                     ))}
                 </div>
             </DefaultLayout>
+            <Footer />
         </>
     )
 }

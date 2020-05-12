@@ -3,27 +3,51 @@ import PropTypes from 'prop-types'
 import ExternalLinkIcon from '../_icons/ExternalLinkIcon'
 import GithubIcon from '../_icons/GithubIcon'
 import FigmaIcon from '../_icons/FigmaIcon'
-import { PropTypePortfolioProjectLink } from '../../utils/prop-types'
+import LinkedInIcon from '../_icons/LinkedInIcon'
+import GitLabIcon from '../_icons/GitLabIcon'
+import StackOverflowIcon from '../_icons/StackOverflowIcon'
+import { IconLink } from '../../utils/prop-types'
 import styles from './IconContainer.module.scss'
 
 const iconMap = {
     external: <ExternalLinkIcon />,
     github: <GithubIcon />,
     figma: <FigmaIcon />,
+    linkedin: <LinkedInIcon />,
+    gitlab: <GitLabIcon />,
+    stackoverflow: <StackOverflowIcon />,
 }
 
-const IconContainer = ({ links }): JSX.Element => (
-    <div className={styles.container}>
-        {links.map(({ type, ...linkProps }, i: number) => (
-            <a className={styles.iconLink} key={`${type}-${i}`} {...linkProps}>
-                {iconMap[type]}
-            </a>
-        ))}
-    </div>
-)
+const IconContainer = ({ links, isCircled }): JSX.Element => {
+    const containerClassName =
+        styles.container + (isCircled ? ` ${styles.flex}` : '')
+    const iconLinkClassName =
+        styles.iconLink + (isCircled ? ` ${styles.circled}` : '')
+
+    console.log(containerClassName)
+
+    return (
+        <div className={containerClassName}>
+            {links.map(({ type, ...linkProps }, i: number) => (
+                <a
+                    className={iconLinkClassName}
+                    key={`${type}-${i}`}
+                    {...linkProps}
+                >
+                    {iconMap[type]}
+                </a>
+            ))}
+        </div>
+    )
+}
+
+IconContainer.defaultProps = {
+    isCircled: false,
+}
 
 IconContainer.propTypes = {
-    links: PropTypes.arrayOf(PropTypePortfolioProjectLink).isRequired,
+    links: PropTypes.arrayOf(IconLink).isRequired,
+    isCircled: PropTypes.bool,
 }
 
 export default IconContainer
