@@ -13,6 +13,15 @@
         // Disables indentation rule. This rule is handled by Prettier.
         indentation: null,
 
+        'order/order': [
+            {
+                type: 'at-rule',
+                name: 'include',
+                parameter: 'icon',
+                hasBlock: true,
+            },
+        ],
+
         // This rule is disabled in favor of rational-order.
         'order/properties-alphabetical-order': null,
 

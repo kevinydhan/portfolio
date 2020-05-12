@@ -1,2 +1,5 @@
 export { default as TopNav } from './TopNav/TopNav'
 export { default as BottomNav } from './BottomNav/BottomNav'
+export { default as ProjectCard } from './ProjectCard/ProjectCard'
+export { default as OtherProjectCard } from './ProjectCard/OtherProjectCard'
+export { default as BackgroundCurves } from './BackgroundCurves/BackgroundCurves'

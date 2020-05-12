@@ -1,29 +1,26 @@
 // Colors
-$color-black: '#0c0c0c';
-$color-white: '#fcfcfc';
-$color-grey: (
-    200: '#C9C9C9',
-    300: '#8A8A8A',
-    400: '#5B5A5E',
-);
+$color-black: #151417;
+$color-white: #fcfcfc;
 
 $color-background: #{$color-black};
-$color-heading: #{$color-white};
-$color-nav-link: #{$color-white};
-$color-paragraph: map-get($color-grey, 300);
-$color-annotation: map-get($color-grey, 400);
-$color-bottom-nav-border: map-get($color-grey, 400);
-$color-technology-tag: map-get($color-grey, 200);
-$color-icon: #{$color-white};
+// $color-background: #666;
+$color-primary: #2a0c42;
+$color-heading: $color-white;
+$color-nav-link: $color-white;
+$color-paragraph: #d0d0d0;
+$color-annotation: #8a8a8a;
+$color-bottom-nav-border: #5b5a5e;
+$color-technology-tag: #c9c9c9;
+$color-icon: $color-white;
 
-// Dimensions
-$breakpoints: (
-    'xs': 20em,
-    'sm': 35.5em,
-    'md': 48em,
-    'lg': 64em,
-    'xl': 85.375em,
-);
-
-$height-top-nav: 5rem;
+$height-top-nav: 6rem;
 $height-bottom-nav: 5rem;
+
+// Visual/decorative
+$border-radius-main: 1rem;
+
+$box-shadow-project-image: 0 0.5rem 2rem rgba(0, 0, 0, 0.5);
+$box-shadow-project-card: 0 0.5rem 2rem rgba(0, 0, 0, 0.5);
+$box-shadow-top-nav: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+$box-shadow-bottom-nav: 0 -0.5rem 1rem rgba(0, 0, 0, 0.2);
+$text-shadow-project-page-heading: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.5);

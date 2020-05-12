@@ -40,3 +40,10 @@ p {
 span {
     color: $color-annotation;
 }
+
+#gatsby-focus-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

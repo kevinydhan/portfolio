@@ -1,14 +1,23 @@
 import React from 'react'
-import NavLinks from '../NavLinks/NavLinks'
-import { siteConfig } from '../../config'
+import { siteConfig, navLinks } from '../../config'
 import styles from './TopNav.module.scss'
 
 const TopNav = (): JSX.Element => (
     <header className={styles.header}>
-        <a className={styles.logo} href="/">
-            {siteConfig.authorName}
-        </a>
-        <NavLinks />
+        <nav className={styles.nav}>
+            <a className={styles.logo} href="/">
+                {siteConfig.authorName}
+            </a>
+            <ul className={styles.navLinks}>
+                {navLinks.map(({ text, ...linkProps }) => (
+                    <li className={styles.navLinkContainer} key={text}>
+                        <a className={styles.navLink} {...linkProps}>
+                            {text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
     </header>
 )
 

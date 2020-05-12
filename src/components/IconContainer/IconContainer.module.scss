@@ -1,0 +1,41 @@
+@import '../../theme/variables';
+@import '../../theme/media';
+
+/// Selects the root element of the `IconContainer` component.
+.container {
+    height: 1.875rem;
+
+    @include media($min-width: 'xs-1') {
+        height: 2rem;
+    }
+
+    @include media($min-width: 'xs-2') {
+        height: 2.25rem;
+    }
+
+    @include media($min-width: 'xl') {
+        height: 2.5rem;
+    }
+}
+
+/// Selects the `<a>` element that wraps around each icon.
+.icon-link:not(:last-child) {
+    margin-right: 0.875rem;
+
+    @include media($min-width: 'xs-2') {
+        margin-right: 1rem;
+    }
+
+    @include media($min-width: 'sm') {
+        margin-right: 1.25rem;
+    }
+}
+
+/// Selects the `<svg>` element, or the icon's root element.
+.icon-link svg {
+    height: 100%;
+
+    path {
+        fill: $color-heading;
+    }
+}

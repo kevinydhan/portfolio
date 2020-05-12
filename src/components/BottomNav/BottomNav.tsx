@@ -1,6 +1,31 @@
 import React from 'react'
-import NavLinks from '../NavLinks/NavLinks'
+import { navLinks } from '../../config'
+import HomeIcon from '../_icons/HomeIcon'
+import FolderIcon from '../_icons/FolderIcon'
+import PagesIcon from '../_icons/PagesIcon'
+import MailIcon from '../_icons/MailIcon'
+import styles from './BottomNav.module.scss'
 
-const BottomNav = (): JSX.Element => <NavLinks />
+const iconMap = {
+    Home: <HomeIcon />,
+    Projects: <FolderIcon />,
+    Resume: <PagesIcon />,
+    Contact: <MailIcon />,
+}
+
+const BottomNav = (): JSX.Element => (
+    <nav className={styles.nav}>
+        <ul className={styles.navLinks}>
+            {navLinks.map(({ text, ...linkProps }) => (
+                <li className={styles.navLinkContainer} key={text}>
+                    <a className={styles.navLink} {...linkProps}>
+                        {iconMap[text]}
+                        {text}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+)
 
 export default BottomNav

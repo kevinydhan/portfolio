@@ -1,16 +1,30 @@
 @import '../../theme/variables';
+@import '../../theme/media';
 
 .header {
     display: none;
 
-    @media only screen and (min-width: map-get($breakpoints, 'md')) {
+    @include media($min-width: 'md') {
         position: fixed;
         top: 0;
         right: 0;
         left: 0;
-        display: flex;
+        z-index: 999;
+        display: block;
         height: $height-top-nav;
-        background: yellow;
+        background: $color-background;
+        box-shadow: #{$box-shadow-top-nav};
+    }
+
+    // Hides the navigation for iPhone X (375x812) and Pixel 2 XL (411x823) in
+    // favor of displaying the bottom navigation. This is enforce consistency
+    // when a mobile user with one of these devices.
+    @include media(
+        $min-width: 'xs',
+        $max-width: 'md-1',
+        $min-aspect-ratio: '2/1'
+    ) {
+        display: none;
     }
 }
 
@@ -18,5 +32,57 @@
     display: flex;
     align-items: center;
     height: 100%;
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: 0.125rem;
     text-transform: uppercase;
+
+    @include media($min-width: 'xl') {
+        font-size: 1.5rem;
+    }
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+
+    @include media($max-width: 'lg') {
+    }
+
+    @include media($min-width: 'lg') {
+        width: 90%;
+        max-width: 75rem;
+    }
+}
+
+.nav-links {
+    display: flex;
+    height: 100%;
+    list-style: none;
+}
+
+.nav-link-container {
+    height: 100%;
+}
+
+.nav-link-container:not(:last-of-type) {
+    margin-right: 2.25rem;
+    @include media($min-width: 'lg') {
+        margin-right: 3.5rem;
+    }
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    letter-spacing: 0.125rem;
+
+    @include media($min-width: 'lg') {
+        font-size: 1.125rem;
+    }
 }
