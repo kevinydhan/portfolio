@@ -149,6 +149,19 @@
     }
 }
 
+.metadata,
+.technology-tag {
+    font-size: 0.625rem;
+
+    @include media($min-width: 'xs-1') {
+        font-size: 0.6875rem;
+    }
+
+    @include media($min-width: 'xs-2') {
+        font-size: 0.75rem;
+    }
+}
+
 /// Selects the `<span>` elements, or the project's metadata *(start/end date and project category)*.
 .metadata {
     text-transform: uppercase;
@@ -229,17 +242,4 @@
 
 .technology-tag {
     margin: 0 1.25rem 0.375rem 0;
-}
-
-.metadata,
-.technology-tag {
-    font-size: 0.625rem;
-
-    @include media($min-width: 'xs-1') {
-        font-size: 0.6875rem;
-    }
-
-    @include media($min-width: 'xs-2') {
-        font-size: 0.75rem;
-    }
 }
