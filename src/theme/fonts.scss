@@ -1,14 +1,8 @@
 @font-face {
-    font-weight: 300;
-    font-family: 'Manrope';
-    font-style: normal;
-    src: url('./fonts/Manrope-Light.ttf') format('truetype');
-}
-
-@font-face {
     font-weight: 400;
     font-family: 'Manrope';
     font-style: normal;
+    font-display: swap;
     src: url('./fonts/Manrope-Regular.ttf') format('truetype');
 }
 
@@ -16,5 +10,6 @@
     font-weight: 600;
     font-family: 'Manrope';
     font-style: normal;
+    font-display: swap;
     src: url('./fonts/Manrope-SemiBold.ttf') format('truetype');
 }
