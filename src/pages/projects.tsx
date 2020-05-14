@@ -1,13 +1,13 @@
 import React from 'react'
 import {
     Head,
+    Layout,
     ProjectCard,
     OtherProjectCard,
     Footer,
     BackgroundCurves,
 } from '../components'
 import { useProjectDataQuery } from '../utils'
-import DefaultLayout from '../layouts/DefaultLayout'
 import styles from '../theme/pages/projects.module.scss'
 
 const ProjectsPage = (): JSX.Element => {
@@ -17,7 +17,7 @@ const ProjectsPage = (): JSX.Element => {
         <>
             <Head title="Projects | Kevin Han" />
             <BackgroundCurves />
-            <DefaultLayout additionalClassNames={styles.main}>
+            <Layout additionalClassNames={styles.main}>
                 <h1 className={styles.heading}>Featured Projects</h1>
                 {featured.map((project) => (
                     <ProjectCard featured key={project.title} {...project} />
@@ -28,7 +28,7 @@ const ProjectsPage = (): JSX.Element => {
                         <OtherProjectCard key={project.title} {...project} />
                     ))}
                 </div>
-            </DefaultLayout>
+            </Layout>
             <Footer />
         </>
     )

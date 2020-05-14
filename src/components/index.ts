@@ -1,6 +1,5 @@
 export { default as Head } from './Head'
-export { default as TopNav } from './TopNav/TopNav'
-export { default as BottomNav } from './BottomNav/BottomNav'
+export { default as Layout } from './Layout'
 export { default as Footer } from './Footer/Footer'
 export { default as IconContainer } from './IconContainer/IconContainer'
 export { default as ProjectCard } from './ProjectCard/ProjectCard'
