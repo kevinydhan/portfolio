@@ -12,10 +12,16 @@ export const useProjectDataQuery = (): FeaturedAndOtherProjectsDataMap => {
                     }
                 ) {
                     nodes {
-                        fluid(maxWidth: 624, quality: 80) {
+                        fluid(
+                            maxWidth: 600
+                            quality: 70
+                            webpQuality: 70
+                            srcSetBreakpoints: [375, 510, 600]
+                        ) {
                             srcSetWebp
-                            originalImg
                             originalName
+                            src
+                            srcSet
                         }
                     }
                 }

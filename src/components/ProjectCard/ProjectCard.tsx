@@ -12,17 +12,19 @@ const ProjectCard = ({
     links,
     startDate,
     endDate,
-    categories,
+    category,
     imgDetails,
     featured,
 }): JSX.Element => (
-    <section className={styles.featuredProject} key={title}>
+    <section className={styles.featuredProject}>
         {/* Picture */}
         {featured && (
             <picture className={styles.picture}>
+                <source srcSet={imgDetails.srcSetWebp} type="image/webp" />
                 <img
                     className={styles.projectImage}
-                    srcSet={imgDetails.srcSetWebp}
+                    srcSet={imgDetails.srcSet}
+                    src={imgDetails.src}
                     alt={imgDetails.alt}
                 />
             </picture>
@@ -36,9 +38,7 @@ const ProjectCard = ({
                         {startDate.slice(0, 4)} –{' '}
                         {endDate ? endDate.slice(0, 4) : 'Current'}
                     </span>
-                    <span className={styles.metadata}>
-                        {categories.join(', ')}
-                    </span>
+                    <span className={styles.metadata}>{category}</span>
                 </div>
 
                 {/* Icons */}
@@ -80,12 +80,13 @@ ProjectCard.propTypes = {
     links: PropTypes.arrayOf(IconLink).isRequired,
     startDate: PropTypes.string,
     endDate: PropTypes.string,
-    categories: PropTypes.arrayOf(
-        PropTypes.oneOf(Object.keys(PortfolioProjectCategories))
-    ).isRequired,
+    category: PropTypes.oneOf(Object.keys(PortfolioProjectCategories))
+        .isRequired,
     imgDetails: PropTypes.shape({
         originalName: PropTypes.string,
         alt: PropTypes.string,
+        src: PropTypes.string,
+        srcSet: PropTypes.string,
         srcSetWebp: PropTypes.string,
         originalImg: PropTypes.string,
     }),
