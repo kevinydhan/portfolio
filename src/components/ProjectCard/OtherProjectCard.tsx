@@ -12,7 +12,7 @@ const OtherProjectCard = ({
     links,
     startDate,
     endDate,
-    category,
+    categories,
 }): JSX.Element => (
     <div className={styles.content + ' ' + styles.otherProject}>
         <div className={styles.projectHeader}>
@@ -22,7 +22,7 @@ const OtherProjectCard = ({
                     {startDate.slice(0, 4)} –{' '}
                     {endDate ? endDate.slice(0, 4) : 'Current'}
                 </span>
-                <span className={styles.metadata}>{category}</span>
+                <span className={styles.metadata}>{categories.join(', ')}</span>
             </div>
 
             {/* Icons */}
@@ -63,8 +63,9 @@ OtherProjectCard.propTypes = {
     links: PropTypes.arrayOf(IconLink).isRequired,
     startDate: PropTypes.string,
     endDate: PropTypes.string,
-    category: PropTypes.oneOf(Object.keys(PortfolioProjectCategories))
-        .isRequired,
+    categories: PropTypes.arrayOf(
+        PropTypes.oneOf(Object.keys(PortfolioProjectCategories))
+    ).isRequired,
     imgDetails: PropTypes.shape({
         originalName: PropTypes.string,
         alt: PropTypes.string,

@@ -1,6 +1,8 @@
 {
   "featured": [
-    "JVNA"
+    "JVNA",
+    "Fuslie",
+    "Fitness Factory"
   ],
   "projects": [
     {
@@ -12,6 +14,7 @@
         "Sass",
         "Gatsby",
         "Netlify",
+        "Inkscape",
         "GIMP"
       ],
       "links": [
@@ -39,10 +42,103 @@
       ],
       "startDate": "2020-05-07T00:00:00.000Z",
       "endDate": null,
-      "category": "Website Redesign",
+      "categories": [
+        "Website Redesign"
+      ],
       "imgDetails": {
-        "originalName": "ProjectImage_JVNA_1440x1024_2x.jpg",
-        "alt": "Website's landing page for JVNA, a female music producer and DJ"
+        "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Fuslie",
+      "description": "Website redesign for Fuslie, a Twitch streamer and content creator, Website redesign for Fuslie, a Twitch streamer and content creator",
+      "technologies": [
+        "Javascript",
+        "React",
+        "Sass",
+        "Gatsby",
+        "Netlify",
+        "Inkscape",
+        "GIMP"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://jvna-website.netlify.app",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/kevinydhan/jvna-website",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        },
+        {
+          "type": "figma",
+          "href": "https://www.figma.com/file/cmajhCMg8mdfOV3aEF7Qc5/JVNA-Personal-Website?node-id=0%3A1",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Figma"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": null,
+      "categories": [
+        "Full-Stack Application"
+      ],
+      "imgDetails": {
+        "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Fitness Factory",
+      "description": "Website and mobile application redesign for Fitness Factory, a fitness center based in the east coast of the United States",
+      "technologies": [
+        "Javascript",
+        "React",
+        "Redux",
+        "Webpack",
+        "Node.js",
+        "Sequelize",
+        "PostgreSQL",
+        "Heroku"
+      ],
+      "links": [
+        {
+          "type": "external",
+          "href": "https://jvna-website.netlify.app",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Netlify"
+        },
+        {
+          "type": "github",
+          "href": "https://github.com/kevinydhan/jvna-website",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Github"
+        },
+        {
+          "type": "figma",
+          "href": "https://www.figma.com/file/cmajhCMg8mdfOV3aEF7Qc5/JVNA-Personal-Website?node-id=0%3A1",
+          "target": "_blank",
+          "rel": "noreferrer noopener nofollow",
+          "aria-label": "Figma"
+        }
+      ],
+      "startDate": "2020-05-07T00:00:00.000Z",
+      "endDate": null,
+      "categories": [
+        "Website & Mobile App Redesign"
+      ],
+      "imgDetails": {
+        "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
+        "alt": ""
       }
     },
     {
@@ -73,7 +169,9 @@
       ],
       "startDate": "2020-05-07T00:00:00.000Z",
       "endDate": "2020-05-07T00:00:00.000Z",
-      "category": "Front-End Application",
+      "categories": [
+        "Front-End Application"
+      ],
       "imgDetails": {
         "originalName": "",
         "alt": ""
@@ -110,7 +208,9 @@
       ],
       "startDate": "2020-05-07T00:00:00.000Z",
       "endDate": "2020-05-07T00:00:00.000Z",
-      "category": "Full-Stack Application",
+      "categories": [
+        "Full-Stack Application"
+      ],
       "imgDetails": {
         "originalName": "",
         "alt": ""
