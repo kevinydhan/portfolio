@@ -1,66 +1,35 @@
 @import '../variables';
 @import '../media';
+@import '../mixins';
 
-/// Targets the `<main>` element in the `DefaultLayout` component.
 .main {
-    display: flex;
-    align-items: center;
-    width: 87.5%;
-    max-width: 75em;
-    min-height: calc(100vh - #{$height-bottom-nav});
-    margin: 0 auto;
+    align-self: center;
+    @include top-level-element;
     padding: 3rem 0 calc(3rem + #{$height-bottom-nav});
 
-    @include media($min-height: 'sm') {
-        padding: 2rem 0 calc(2rem + #{$height-bottom-nav});
-    }
-
-    @include media($min-height: 'sm-1') {
+    @include media($max-width: 'md', $min-height: 'sm-1') {
         padding: 0;
     }
 
     @include media($min-width: 'md') {
-        min-height: calc(100vh - #{$height-top-nav});
-        padding-top: $height-top-nav;
+        padding-top: calc(#{$height-top-nav} + 3rem);
+    }
+
+    @include media($min-width: 'xs', $max-width: 'md-1', $min-aspect-ratio: '2/1') {
+        padding: 3rem 0 calc(3rem + #{$height-bottom-nav});
     }
 }
 
 .job-title {
     margin-bottom: 0.75rem;
-    font-size: 2.5rem;
-    text-shadow: 0 0.125rem 0.75rem rgba($color-secondary, 0.5);
-
-    @include media($min-width: 'lg') {
-        font-size: 2.75rem;
-    }
-
-    @include media($min-width: 'xl') {
-        font-size: 3rem;
-    }
 }
 
 .ad-copy {
     margin-bottom: 5rem;
-    font-size: 1.125rem;
-    line-height: 1.75;
-
-    @include media($min-width: 'md') {
-        font-size: 1.1875rem;
-    }
-
-    @include media($min-width: 'lg') {
-        font-size: 1.25rem;
-    }
-
-    @include media($min-width: 'xl') {
-        font-size: 1.375rem;
-    }
 }
 
 .job-title,
 .ad-copy {
-    max-width: 38rem;
-
     @include media($min-width: 'md') {
         max-width: 32rem;
     }
@@ -70,61 +39,26 @@
     }
 }
 
-.button-container {
-    @include media($min-width: 'lg') {
-        display: flex;
-    }
-}
-
-// .button {
-//     display: block;
-//     width: 100%;
-//     padding: 1rem 0;
-//     letter-spacing: 0.125rem;
-//     text-align: center;
-//     border-radius: 0.25rem;
-//     box-shadow: $box-shadow-call-to-action-button;
-
-//     &--filled {
-//         background: $color-secondary;
-//         border: 0.0625rem solid $color-secondary;
-//     }
-
-//     &--outlined {
-//         background: $color-background;
-//         border: 0.0625rem solid $color-heading;
-//     }
-
-//     &:not(:last-of-type) {
-//         margin-bottom: 1rem;
-//     }
-
-//     @include media($min-width: 'lg') {
-//         width: 12rem;
-//         padding: 1.25rem;
-
-//         &:not(:last-of-type) {
-//             margin: 0 2rem 0 0;
-//         }
-//     }
-// }
-
 .button {
-    display: none;
+    $border-attributes: 0.0625rem solid;
 
     &--filled {
         background: $color-secondary;
-        border: 0.0625rem solid $color-secondary;
+        border: $border-attributes $color-secondary;
     }
 
     &--outlined {
         background: $color-background;
-        border: 0.0625rem solid $color-heading;
+        border: $border-attributes $color-heading;
+    }
+
+    @include media($max-width: 'md') {
+        display: none;
     }
 
     @include media($min-width: 'md') {
         display: inline-block;
-        width: 11rem;
+        width: 13.5rem;
         padding: 1.125rem;
         letter-spacing: 0.125rem;
         text-align: center;
@@ -137,15 +71,11 @@
     }
 
     @include media($min-width: 'lg') {
-        width: 12rem;
+        width: 14rem;
         padding: 1.25rem;
     }
 
-    @include media(
-        $min-width: 'xs',
-        $max-width: 'md-1',
-        $min-aspect-ratio: '2/1'
-    ) {
+    @include media($min-width: 'xs', $max-width: 'md-1', $min-aspect-ratio: '2/1') {
         display: none;
     }
 }

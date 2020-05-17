@@ -70,13 +70,9 @@ $orientations: ('portrait', 'landscape');
     /// Appends a `max-width` query if a value is passed.
     @if $max-width and map-get($breakpoints, $max-width) {
         $value: map-get($breakpoints, $max-width);
-        $queries: $queries +
-            ' ' +
-            'and (max-width: calc(#{$value} - 0.0625em))';
+        $queries: $queries + ' ' + 'and (max-width: calc(#{$value} - 0.0625em))';
     } @else if $max-width {
-        $queries: $queries +
-            ' ' +
-            'and (max-width: calc(#{$max-width} - 0.0625em))';
+        $queries: $queries + ' ' + 'and (max-width: calc(#{$max-width} - 0.0625em))';
     }
 
     /// @query `min-height`
@@ -92,19 +88,17 @@ $orientations: ('portrait', 'landscape');
     /// Appends a `max-height` query if a value is passed.
     @if $max-height and map-get($breakpoints, $max-height) {
         $value: map-get($breakpoints, $max-height);
-        $queries: $queries +
-            ' ' +
-            'and (max-height: calc(#{$value} - 0.0625em))';
+        $queries: $queries + ' ' + 'and (max-height: calc(#{$value} - 0.0625em))';
     } @else if $max-height {
-        $queries: $queries +
-            ' ' +
-            'and (max-height: calc(#{$max-height} - 0.0625em))';
+        $queries: $queries + ' ' + 'and (max-height: calc(#{$max-height} - 0.0625em))';
     }
 
     @if $min-aspect-ratio {
-        $queries: $queries +
-            ' ' +
-            'and (min-aspect-ratio: #{$min-aspect-ratio})';
+        $queries: $queries + ' ' + 'and (min-aspect-ratio: #{$min-aspect-ratio})';
+    }
+
+    @if $max-aspect-ratio {
+        $queries: $queries + ' ' + 'and (max-aspect-ratio: #{$max-aspect-ratio})';
     }
 
     @if $orientation {

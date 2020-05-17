@@ -1,15 +1,17 @@
 @import './fonts';
 @import './variables';
+@import './media';
 
 *,
 *::before,
 *::after {
+    box-sizing: inherit;
     margin: 0;
     padding: 0;
 }
 
 html {
-    color: $color-paragraph;
+    box-sizing: border-box;
     font-size: 100%;
     font-family: 'Manrope', Arial, Helvetica, sans-serif;
     letter-spacing: 0.0625rem;
@@ -19,28 +21,79 @@ body {
     background: $color-background;
 }
 
+a {
+    text-decoration: none;
+}
+
+// -----------------------------------------------------------------------------
+// Text color styles
+// -----------------------------------------------------------------------------
+
 h1,
 h2,
 h3 {
     color: $color-heading;
 }
 
+html,
 a {
     color: $color-paragraph;
-    text-decoration: none;
-
-    nav & {
-        color: $color-nav-link;
-    }
 }
 
 span {
     color: $color-annotation;
 }
 
+nav a {
+    color: $color-nav-link;
+}
+
+// -----------------------------------------------------------------------------
+// Text sizing styles
+// -----------------------------------------------------------------------------
+
+h1 {
+    font-size: 2.5rem;
+
+    @include media($min-width: 'lg') {
+        font-size: 2.75rem;
+    }
+
+    @include media($min-width: 'xl') {
+        font-size: 3rem;
+    }
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+
+    @include media($min-width: 'md') {
+        font-size: 1.1875rem;
+    }
+
+    @include media($min-width: 'lg') {
+        font-size: 1.25rem;
+    }
+
+    @include media($min-width: 'xl') {
+        font-size: 1.375rem;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Root element styles
+// -----------------------------------------------------------------------------
+
 #gatsby-focus-wrapper {
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    @include media($max-width: 'md') {
+        min-height: calc(100vh - #{$height-bottom-nav});
+    }
+
+    @include media($min-width: 'md') {
+        min-height: 100vh;
+    }
 }
