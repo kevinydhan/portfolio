@@ -24,8 +24,6 @@ const IconContainer = ({ links, isCircled }): JSX.Element => {
     const iconLinkClassName =
         styles.iconLink + (isCircled ? ` ${styles.circled}` : '')
 
-    console.log(containerClassName)
-
     return (
         <div className={containerClassName}>
             {links.map(({ type, ...linkProps }, i: number) => (

@@ -20,9 +20,16 @@
     background: $color-primary;
     box-shadow: $box-shadow-project-card;
 
+    @include media($min-width: 'md-1') {
+        width: 49%;
+        margin: 0 0 5rem;
+    }
+
     @include media($min-width: 'lg') {
         position: relative;
         display: flex;
+        width: 100%;
+        max-width: unset;
         height: 32rem;
         margin-bottom: 20rem;
         background: transparent;
@@ -30,7 +37,7 @@
     }
 }
 
-/// Selects the `<img>` element, or the project image.
+// /// Selects the `<img>` element, or the project image.
 .project-image {
     width: 100%;
 
@@ -43,7 +50,7 @@
     }
 }
 
-.featured-project:nth-child(2n + 1) {
+.featured-project:nth-of-type(2n + 1) {
     @include media($min-width: 'lg') {
         align-items: flex-end;
         justify-content: flex-end;
@@ -56,7 +63,7 @@
     }
 }
 
-.featured-project:nth-child(2n) {
+.featured-project:nth-of-type(2n) {
     @include media($min-width: 'lg') {
         align-items: flex-end;
         justify-content: flex-start;
@@ -69,8 +76,8 @@
     }
 }
 
-/// Selects the `<div>` element, or the root element that contains all of the
-/// text-related elements and icon links.
+// /// Selects the `<div>` element, or the root element that contains all of the
+// /// text-related elements and icon links.
 .content {
     display: flex;
     flex-direction: column;
@@ -86,15 +93,16 @@
     }
 
     @include media($min-width: 'sm') {
+        height: 27rem;
         padding: 2.5rem;
     }
 
     @include media($min-width: 'lg') {
         position: absolute;
         z-index: 1;
-        width: calc(40% + 5rem);
-        max-width: 34rem;
-        height: 19.5rem;
+        width: calc(35% + 12.5rem);
+        max-width: 38rem;
+        height: 26rem;
         padding: 3rem 2.5rem;
         background: $color-primary;
         border-radius: 0.875rem;

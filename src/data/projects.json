@@ -1,13 +1,8 @@
 {
-  "featured": [
-    "JVNA",
-    "Fuslie",
-    "Fitness Factory"
-  ],
   "projects": [
     {
       "title": "JVNA",
-      "description": "Website redesign for JVNA, a music producer and DJ, Website redesign for JVNA, a music producer and DJ",
+      "description": "Website redesign for JVNA, a music producer and DJ",
       "technologies": [
         "Javascript",
         "React",
@@ -42,9 +37,7 @@
       ],
       "startDate": "2020-05-07T00:00:00.000Z",
       "endDate": null,
-      "categories": [
-        "Website Redesign"
-      ],
+      "category": "Website Redesign",
       "imgDetails": {
         "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
         "alt": ""
@@ -52,7 +45,7 @@
     },
     {
       "title": "Fuslie",
-      "description": "Website redesign for Fuslie, a Twitch streamer and content creator, Website redesign for Fuslie, a Twitch streamer and content creator",
+      "description": "Website redesign for Fuslie, a Twitch streamer and content creator",
       "technologies": [
         "Javascript",
         "React",
@@ -87,9 +80,7 @@
       ],
       "startDate": "2020-05-07T00:00:00.000Z",
       "endDate": null,
-      "categories": [
-        "Full-Stack Application"
-      ],
+      "category": "Full-Stack Application",
       "imgDetails": {
         "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
         "alt": ""
@@ -133,86 +124,9 @@
       ],
       "startDate": "2020-05-07T00:00:00.000Z",
       "endDate": null,
-      "categories": [
-        "Website & Mobile App Redesign"
-      ],
+      "category": "Website & Mobile App Redesign",
       "imgDetails": {
         "originalName": "ProjectImage_Fuslie_1440x1024_2x.jpg",
-        "alt": ""
-      }
-    },
-    {
-      "title": "Bunny Eats",
-      "description": "Simple grid-based browser game where the player tries to collect items in the least amount of steps",
-      "technologies": [
-        "TypeScript",
-        "React",
-        "Redux",
-        "Styled Components",
-        "Netlify"
-      ],
-      "links": [
-        {
-          "type": "external",
-          "href": "https://bunny-eats.netlify.app",
-          "target": "_blank",
-          "rel": "noreferrer noopener nofollow",
-          "aria-label": "Netlify"
-        },
-        {
-          "type": "github",
-          "href": "https://github.com/kevinydhan/bunny-eats",
-          "target": "_blank",
-          "rel": "noreferrer noopener nofollow",
-          "aria-label": "Github"
-        }
-      ],
-      "startDate": "2020-05-07T00:00:00.000Z",
-      "endDate": "2020-05-07T00:00:00.000Z",
-      "categories": [
-        "Front-End Application"
-      ],
-      "imgDetails": {
-        "originalName": "",
-        "alt": ""
-      }
-    },
-    {
-      "title": "Grace Shopper",
-      "description": "Mock jewelry e-commerce website",
-      "technologies": [
-        "Javascript",
-        "React",
-        "Redux",
-        "Webpack",
-        "Node.js",
-        "Sequelize",
-        "PostgreSQL",
-        "Heroku"
-      ],
-      "links": [
-        {
-          "type": "external",
-          "href": "https://kbmk.herokuapp.com",
-          "target": "_blank",
-          "rel": "noreferrer noopener nofollow",
-          "aria-label": "Netlify"
-        },
-        {
-          "type": "github",
-          "href": "https://github.com/graceshoppers/grace-shoppers",
-          "target": "_blank",
-          "rel": "noreferrer noopener nofollow",
-          "aria-label": "Github"
-        }
-      ],
-      "startDate": "2020-05-07T00:00:00.000Z",
-      "endDate": "2020-05-07T00:00:00.000Z",
-      "categories": [
-        "Full-Stack Application"
-      ],
-      "imgDetails": {
-        "originalName": "",
         "alt": ""
       }
     }

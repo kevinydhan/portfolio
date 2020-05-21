@@ -4,10 +4,7 @@ import {
     PortfolioProjectImageMap,
     FeaturedAndOtherProjectsDataMap,
 } from '../typings'
-import projectData from '../data/projects.json'
-
-const projects = projectData.projects as PortfolioProject[]
-const featured = projectData.featured
+import { projects } from '../data/projects.json'
 
 export const createProjectImageDataMap = (
     queryData: GatsbyProjectImageStaticQueryData[]
@@ -23,21 +20,12 @@ export const createProjectImageDataMap = (
 
 export const transformQueryData = (
     projectImageMap: PortfolioProjectImageMap
-): FeaturedAndOtherProjectsDataMap => {
-    const allProjects = projects.map((project) => ({
+) => {
+    return projects.map((project) => ({
         ...project,
         imgDetails: {
             ...project.imgDetails,
             ...projectImageMap[project.imgDetails.originalName],
         },
     }))
-
-    return {
-        featured: allProjects.filter((project) => {
-            return featured.includes(project.title)
-        }),
-        other: allProjects.filter((project) => {
-            return !featured.includes(project.title)
-        }),
-    }
 }

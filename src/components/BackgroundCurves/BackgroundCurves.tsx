@@ -5,7 +5,7 @@ const BackgroundCurves = (): JSX.Element => (
     <svg
         className={styles.svg}
         viewBox="0 0 1119 3212"
-        preserveAspectRatio="none"
+        // preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
     >
         <g opacity="0.5" filter="url(#filter0_d)">

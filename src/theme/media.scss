@@ -20,7 +20,15 @@ $breakpoints: (
     // 1280px
         'lg-2': 77em,
     // 1366px
-        'xl': 85.375em
+        'xl': 85.375em,
+    // 1600px
+        'xxl': 100em,
+    // 1920px
+        'fhd': 120em,
+    // 2560px
+        'qhd': 160em,
+    // 3840px
+        '4k': 240em
 );
 
 /// @see - https://www.w3schools.com/cssref/css3_pr_mediaquery.asp
@@ -70,9 +78,13 @@ $orientations: ('portrait', 'landscape');
     /// Appends a `max-width` query if a value is passed.
     @if $max-width and map-get($breakpoints, $max-width) {
         $value: map-get($breakpoints, $max-width);
-        $queries: $queries + ' ' + 'and (max-width: calc(#{$value} - 0.0625em))';
+        $queries: $queries +
+            ' ' +
+            'and (max-width: calc(#{$value} - 0.0625em))';
     } @else if $max-width {
-        $queries: $queries + ' ' + 'and (max-width: calc(#{$max-width} - 0.0625em))';
+        $queries: $queries +
+            ' ' +
+            'and (max-width: calc(#{$max-width} - 0.0625em))';
     }
 
     /// @query `min-height`
@@ -88,17 +100,25 @@ $orientations: ('portrait', 'landscape');
     /// Appends a `max-height` query if a value is passed.
     @if $max-height and map-get($breakpoints, $max-height) {
         $value: map-get($breakpoints, $max-height);
-        $queries: $queries + ' ' + 'and (max-height: calc(#{$value} - 0.0625em))';
+        $queries: $queries +
+            ' ' +
+            'and (max-height: calc(#{$value} - 0.0625em))';
     } @else if $max-height {
-        $queries: $queries + ' ' + 'and (max-height: calc(#{$max-height} - 0.0625em))';
+        $queries: $queries +
+            ' ' +
+            'and (max-height: calc(#{$max-height} - 0.0625em))';
     }
 
     @if $min-aspect-ratio {
-        $queries: $queries + ' ' + 'and (min-aspect-ratio: #{$min-aspect-ratio})';
+        $queries: $queries +
+            ' ' +
+            'and (min-aspect-ratio: #{$min-aspect-ratio})';
     }
 
     @if $max-aspect-ratio {
-        $queries: $queries + ' ' + 'and (max-aspect-ratio: #{$max-aspect-ratio})';
+        $queries: $queries +
+            ' ' +
+            'and (max-aspect-ratio: #{$max-aspect-ratio})';
     }
 
     @if $orientation {

@@ -5,7 +5,7 @@ const LandingBackground = (): JSX.Element => (
     <svg
         className={styles.svg}
         viewBox="0 0 1089 900"
-        preserveAspectRatio="none"
+        // preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
     >
         <g filter="url(#filter0_d)">

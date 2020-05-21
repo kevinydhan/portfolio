@@ -4,10 +4,11 @@
     position: absolute;
     top: 0;
     z-index: -999;
-    width: 100%;
+    // width: 100%;
     max-width: 75rem;
     height: 100%;
-
+    margin-right: auto;
+    margin-left: auto;
     @include media($min-width: 'lg') {
         height: calc(100% - 15rem);
     }
