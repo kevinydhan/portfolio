@@ -12,21 +12,20 @@ const ProjectCard = ({
     links,
     startDate,
     endDate,
-    categories,
+    category,
     imgDetails,
-    featured,
 }): JSX.Element => (
     <section className={styles.featuredProject} key={title}>
         {/* Picture */}
-        {featured && (
-            <picture className={styles.picture}>
-                <img
-                    className={styles.projectImage}
-                    srcSet={imgDetails.srcSetWebp}
-                    alt={imgDetails.alt}
-                />
-            </picture>
-        )}
+        <picture className={styles.picture}>
+            <source srcSet={imgDetails.srcSetWebp} type="image/webp" />
+            <img
+                className={styles.projectImage}
+                srcSet={imgDetails.srcSet}
+                src={imgDetails.src}
+                alt={imgDetails.alt}
+            />
+        </picture>
 
         <div className={styles.content}>
             <div className={styles.projectHeader}>
@@ -35,9 +34,6 @@ const ProjectCard = ({
                     <span className={styles.metadata}>
                         {startDate.slice(0, 4)} –{' '}
                         {endDate ? endDate.slice(0, 4) : 'Current'}
-                    </span>
-                    <span className={styles.metadata}>
-                        {categories.join(', ')}
                     </span>
                 </div>
 
@@ -54,7 +50,7 @@ const ProjectCard = ({
 
                 {/* Technology Tags */}
                 <ul className={styles.technologyList}>
-                    {technologies.map((tag) => (
+                    {technologies.map((tag: string) => (
                         <li
                             className={styles.technologyTag}
                             key={`${title}-${tag}`}
@@ -68,27 +64,22 @@ const ProjectCard = ({
     </section>
 )
 
-ProjectCard.defaultProps = {
-    featured: false,
-}
-
 ProjectCard.propTypes = {
-    featured: PropTypes.bool,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     links: PropTypes.arrayOf(IconLink).isRequired,
     startDate: PropTypes.string,
     endDate: PropTypes.string,
-    categories: PropTypes.arrayOf(
-        PropTypes.oneOf(Object.keys(PortfolioProjectCategories))
-    ).isRequired,
+    category: PropTypes.oneOf(Object.keys(PortfolioProjectCategories))
+        .isRequired,
     imgDetails: PropTypes.shape({
         originalName: PropTypes.string,
         alt: PropTypes.string,
+        src: PropTypes.string,
+        srcSet: PropTypes.string,
         srcSetWebp: PropTypes.string,
-        originalImg: PropTypes.string,
-    }),
+    }).isRequired,
 }
 
 export default ProjectCard

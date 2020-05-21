@@ -60,12 +60,13 @@ export interface PortfolioProject {
     links: PortfolioProjectLink[]
     startDate: string
     endDate: string | null
-    categories: (keyof typeof PortfolioProjectCategories)[]
+    category: keyof typeof PortfolioProjectCategories
     imgDetails: {
         originalName: string
         alt: string
+        src?: string
+        srcSet?: string
         srcSetWebp?: string
-        originalImg?: string
     }
 }
 
@@ -73,8 +74,9 @@ export interface PortfolioProject {
  * Defines the properties received by `useProjectDataQuery` in `src/utils/hooks.ts`.
  */
 export interface PortfolioProjectImageQueryData {
+    src: string
+    srcSet: string
     srcSetWebp: string
-    originalImg: string
     originalName: string
 }
 
@@ -84,9 +86,4 @@ export interface GatsbyProjectImageStaticQueryData {
 
 export interface PortfolioProjectImageMap {
     [key: string]: Omit<PortfolioProjectImageQueryData, 'originalName'>
-}
-
-export interface FeaturedAndOtherProjectsDataMap {
-    featured: PortfolioProject[]
-    other: PortfolioProject[]
 }

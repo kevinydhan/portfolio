@@ -1,8 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { FeaturedAndOtherProjectsDataMap } from '../typings'
 import { createProjectImageDataMap, transformQueryData } from './helpers'
 
-export const useProjectDataQuery = (): FeaturedAndOtherProjectsDataMap => {
+export const useProjectDataQuery = () => {
     const { allImageSharp } = useStaticQuery(
         graphql`
             query getProjectImages {
@@ -12,9 +11,15 @@ export const useProjectDataQuery = (): FeaturedAndOtherProjectsDataMap => {
                     }
                 ) {
                     nodes {
-                        fluid(maxWidth: 624, quality: 80) {
+                        fluid(
+                            maxWidth: 600
+                            quality: 80
+                            webpQuality: 80
+                            srcSetBreakpoints: [375, 500, 600]
+                        ) {
+                            src
+                            srcSet
                             srcSetWebp
-                            originalImg
                             originalName
                         }
                     }
