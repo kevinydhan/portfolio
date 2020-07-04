@@ -1,55 +1,74 @@
-import { NavigationLink, SocialLink } from '../typings'
+/**
+ * The object literals in this file are used to configure the site's components.
+ */
 import config from './site.config'
 
-export const navLinks: NavigationLink[] = [
+const sharedLinkAttributes = {
+    target: '_blank',
+    rel: 'noreferrer noopener nofollow',
+}
+
+const projectLink = {
+    text: 'Projects',
+    href: '/#projects',
+}
+
+const resumeLink = {
+    ...sharedLinkAttributes,
+    text: 'Resume',
+    href: `https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing`,
+}
+
+export const navLinks = [
     {
         text: 'Home',
-        href: '/',
+        href: '/#',
     },
-    {
-        text: 'Projects',
-        href: '/projects',
-    },
-    {
-        text: 'Resume',
-        href:
-            'https://drive.google.com/file/d/1cvFz11fSctsSGyyFaj5fHjj0w6CKfwOP/view?usp=sharing',
-        target: '_blank',
-        rel: 'noreferrer noopener nofollow',
-    },
+    { ...projectLink },
+    { ...resumeLink },
     {
         text: 'Contact',
         href: `mailto:${config.siteAuthorEmail}`,
     },
 ]
 
-export const socialLinks: SocialLink[] = [
+export const ctaLinks = [
     {
-        type: 'linkedin',
-        href: 'https://linkedin.com/in/kevinydhan',
-        target: '_blank',
-        rel: 'noreferrer noopener nofollow',
-        'aria-label': 'LinkedIn',
+        ...projectLink,
+        text: 'See my projects',
     },
     {
-        type: 'github',
-        href: 'https://github.com/kevinydhan',
-        target: '_blank',
-        rel: 'noreferrer noopener nofollow',
-        'aria-label': 'Github',
-    },
-    {
-        type: 'gitlab',
-        href: 'https://gitlab.com/kevinydhan',
-        target: '_blank',
-        rel: 'noreferrer noopener nofollow',
-        'aria-label': 'GitLab',
-    },
-    {
-        type: 'stackoverflow',
-        href: 'https://stackoverflow.com/users/11715889/khan',
-        target: '_blank',
-        rel: 'noreferrer noopener nofollow',
-        'aria-label': 'Stack Overflow',
+        ...resumeLink,
+        text: 'View my resume',
     },
 ]
+
+export const socialLinks = [
+    {
+        ...sharedLinkAttributes,
+        text: 'LinkedIn',
+        href: 'https://linkedin.com/in/kevinydhan',
+    },
+    {
+        ...sharedLinkAttributes,
+        text: 'Github',
+        href: 'https://github.com/kevinydhan',
+    },
+    {
+        ...sharedLinkAttributes,
+        text: 'GitLab',
+        href: 'https://gitlab.com/kevinydhan',
+    },
+    {
+        ...sharedLinkAttributes,
+        text: 'Stack Overflow',
+        href: 'https://stackoverflow.com/users/11715889/khan',
+    },
+]
+
+export const landingData = {
+    headline: 'Helping others create their perfect website',
+    tagline: `I’m a front-end developer and website designer based in New Jersey, USA. I design and build intuitive, performant websites and web applications.`,
+}
+
+export { default as projects } from './projects'

@@ -1,0 +1,84 @@
+@import '../shared/functions';
+@import '../shared/variables';
+@import '../mixins';
+
+.grid {
+    @mixin grid-template-columns($columns, $side-margin) {
+        grid-template-columns: $side-margin
+            repeat($columns, 1fr)
+            $side-margin;
+    }
+
+    display: grid;
+
+    @include media($max-width: 768) {
+        $inner-columns: map-get($grid-columns, 0) - 2;
+        $side-margin: convert-px(12);
+        @include grid-template-columns($inner-columns, $side-margin);
+    }
+
+    @include media($min-width: 768, $max-width: 1280) {
+        $inner-columns: map-get($grid-columns, 768) - 2;
+        $side-margin: convert-px(48);
+        @include grid-template-columns($inner-columns, $side-margin);
+    }
+
+    @include media($min-width: 1280, $max-width: 1600) {
+        $inner-columns: map-get($grid-columns, 1280) - 2;
+        $side-margin: convert-px(72);
+        @include grid-template-columns($inner-columns, $side-margin);
+    }
+
+    @include media($min-width: 1600) {
+        $inner-columns: map-get($grid-columns, 1280) - 2;
+        $column-width: (1600 - (96 * 2)) / $inner-columns;
+        grid-template-columns: 1fr
+            repeat($inner-columns, convert-px($column-width))
+            1fr;
+    }
+}
+
+.grid-child {
+    @include media($max-width: 768) {
+        grid-column: 2;
+    }
+
+    @include media($min-width: 768, $max-width: 1280) {
+        grid-column-start: 2;
+        grid-column-end: map-get($grid-columns, 768);
+    }
+
+    @include media($min-width: 1280) {
+        grid-column-start: 2;
+        grid-column-end: map-get($grid-columns, 1280);
+    }
+}
+
+.background-grid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -999;
+
+    div:not(:last-child) {
+        border-right: convert-px(1) solid map-get($colors, gridlines);
+    }
+
+    @for $i from $max-grid-columns - map-get($grid-columns, 0) to $max-grid-columns {
+        @include media($max-width: 768) {
+            div:nth-of-type(#{$i}) {
+                display: none;
+            }
+        }
+    }
+
+    @for $i from map-get($grid-columns, 768) to $max-grid-columns {
+        @include media($min-width: 768, $max-width: 1280) {
+            div:nth-of-type(#{$i + 1}) {
+                display: none;
+            }
+        }
+    }
+}

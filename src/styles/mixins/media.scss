@@ -1,0 +1,98 @@
+@import '../shared/functions';
+
+$breakpoints: (
+    320: convert-px($value: 320, $unit: 1em),
+    768: convert-px($value: 768, $unit: 1em),
+    1024: convert-px($value: 1024, $unit: 1em),
+    1280: convert-px($value: 1280, $unit: 1em),
+    1440: convert-px($value: 1440, $unit: 1em),
+    1600: convert-px($value: 1600, $unit: 1em),
+);
+
+/// @see - https://www.w3schools.com/cssref/css3_pr_mediaquery.asp
+$media-types: ('all', 'screen', 'print', 'speech');
+
+/// @see - https://www.w3schools.com/cssref/css3_pr_mediaquery.asp
+$media-keywords: ('not', 'only', 'and');
+
+$orientations: ('portrait', 'landscape');
+
+/// @todo
+/// - Right now, `$max-width` is non-inclusive, meaning that it generates the
+///   media query based on the specified dimension minus `1px`.
+@mixin media(
+    $media-keyword: 'only',
+    $media-type: 'screen',
+    $min-width: null,
+    $max-width: null,
+    $min-height: null,
+    $max-height: null,
+    $min-aspect-ratio: null,
+    $max-aspect-ratio: null,
+    $orientation: null
+) {
+    $one-px: convert-px(1, 1em);
+    $queries: '';
+
+    /// Appends a media query keyword if exists.
+    @if $media-keyword {
+        $queries: $queries + ' ' + $media-keyword;
+    }
+
+    /// Appends a media type if exists.
+    @if $media-type {
+        $queries: $queries + ' ' + $media-type;
+    }
+
+    /// @query `min-width`
+    /// Appends a `min-width` query if a value is passed.
+    @if $min-width and map-get($breakpoints, $min-width) {
+        $value: map-get($breakpoints, $min-width);
+        $queries: $queries + ' ' + 'and (min-width: #{$value})';
+    } @else if $min-width {
+        $queries: $queries + ' ' + 'and (min-width: #{$min-width})';
+    }
+
+    /// @query `max-width`
+    /// Appends a `max-width` query if a value is passed.
+    @if $max-width and map-get($breakpoints, $max-width) {
+        $value: map-get($breakpoints, $max-width);
+        $queries: $queries + ' ' + 'and (max-width: calc(#{$value} - #{$one-px}))';
+    } @else if $max-width {
+        $queries: $queries + ' ' + 'and (max-width: calc(#{$max-width} - #{$one-px}))';
+    }
+
+    /// @query `min-height`
+    /// Appends a `min-height` query if a value is passed.
+    @if $min-height and map-get($breakpoints, $min-height) {
+        $value: map-get($breakpoints, $min-height);
+        $queries: $queries + ' ' + 'and (min-height: #{$value})';
+    } @else if $min-height {
+        $queries: $queries + ' ' + 'and (min-height: #{$min-height})';
+    }
+
+    /// @query `max-height`
+    /// Appends a `max-height` query if a value is passed.
+    @if $max-height and map-get($breakpoints, $max-height) {
+        $value: map-get($breakpoints, $max-height);
+        $queries: $queries + ' ' + 'and (max-height: calc(#{$value} - #{$one-px}))';
+    } @else if $max-height {
+        $queries: $queries + ' ' + 'and (max-height: calc(#{$max-height} - #{$one-px}))';
+    }
+
+    @if $min-aspect-ratio {
+        $queries: $queries + ' ' + 'and (min-aspect-ratio: #{$min-aspect-ratio})';
+    }
+
+    @if $max-aspect-ratio {
+        $queries: $queries + ' ' + 'and (max-aspect-ratio: #{$max-aspect-ratio})';
+    }
+
+    @if $orientation {
+        $queries: $queries + ' ' + 'and (orientation: #{$orientation})';
+    }
+
+    @media #{$queries} {
+        @content;
+    }
+}

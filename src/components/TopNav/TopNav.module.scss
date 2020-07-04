@@ -1,72 +1,79 @@
-@import '../../theme/variables';
-@import '../../theme/media';
-@import '../../theme/mixins';
+@import '../../styles/shared/variables';
+@import '../../styles/shared/functions';
+@import '../../styles/mixins';
 
 .header {
-    @include media($max-width: 'md') {
-        display: none;
-    }
+    @include position($position: fixed, $t: 0, $l: 0, $r: 0, $z: 999);
+    height: map-get($heights, top-nav);
+    background: map-get($colors, background);
+    box-shadow: map-get($box-shadows, top-nav);
+}
 
-    @include media($min-width: 'md') {
-        @include position($position: fixed, $t: 0, $r: 0, $l: 0, $z: 999);
-        height: $height-top-nav;
-        background: $color-background;
-        box-shadow: #{$box-shadow-top-nav};
-    }
+.nav {
+    @include flex;
+    width: 100%;
+    height: 100%;
 
-    // Hides the navigation for iPhone X (375x812) and Pixel 2 XL (411x823) in
-    // favor of displaying the bottom navigation. This is enforce consistency
-    // when a mobile user with one of these devices.
-    @include media($min-width: 'xs', $max-width: 'md-1', $min-aspect-ratio: '2/1') {
-        display: none;
+    @include media($min-width: 1024) {
+        justify-content: space-between;
     }
 }
 
 .logo {
-    @include flex($ai: center);
+    width: auto;
     height: 100%;
-    font-weight: 600;
-    font-size: 1.25rem;
-    letter-spacing: 0.125rem;
-    text-transform: uppercase;
+    @include flex($ai: center);
 
-    @include media($min-width: 'xl') {
-        font-size: 1.5rem;
+    svg {
+        height: 2.75rem;
+    }
+
+    path {
+        fill: $color-black;
     }
 }
 
-.nav {
-    @include flex($jc: space-between);
-    @include top-level-element;
-    height: 100%;
-}
-
-.nav-links {
-    @include flex;
-    height: 100%;
+.nav-link-list {
+    display: none;
     list-style: none;
+
+    @include media($max-width: 1024) {
+        display: none;
+        background: map-get($colors, background);
+        box-shadow: map-get($box-shadows, 'nav');
+        @include position($position: absolute, $t: 100%, $l: 0, $r: 0);
+    }
+
+    @include media($min-width: 1024) {
+        @include flex($jc: space-between);
+    }
 }
 
 .nav-link-container {
-    height: 100%;
-}
-
-.nav-link-container:not(:last-of-type) {
-    @include media($max-width: 'lg') {
-        margin-right: 3rem;
+    @include media($max-width: 1024) {
+        padding: 1.25rem 1rem;
     }
 
-    @include media($min-width: 'lg') {
-        margin-right: 4rem;
+    @include media($min-width: 1024) {
+        &:not(:last-child) {
+            margin-right: use-modular-scale(10) * 1em;
+        }
     }
 }
 
 .nav-link {
-    @include flex($jc: center, $ai: center);
-    height: 100%;
-    letter-spacing: 0.125rem;
+    color: map-get($colors, heading);
 
-    @include media($min-width: 'lg') {
-        font-size: 1.125rem;
+    @include media($min-width: 1024) {
+        @include flex($ai: center);
+        font-size: 1.095445rem;
+    }
+}
+
+.nav-link-list,
+.nav-link-container,
+.nav-link {
+    @include media($min-width: 1024) {
+        height: 100%;
     }
 }

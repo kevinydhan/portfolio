@@ -1,0 +1,42 @@
+@import '../shared/variables';
+@import '../shared/functions';
+@import '../mixins';
+@import './grid.module';
+
+@mixin generic-button() {
+    display: inline-block;
+    padding: 0.91287em 0;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    background: map-get($colors, background);
+    border: convert-px(1) solid map-get($colors, 'link');
+
+    @include media($max-width: 768) {
+        font-size: use-modular-scale(-1) * 1rem;
+    }
+}
+
+.medium-button {
+    @include generic-button();
+    min-width: convert-px(205, 1em);
+}
+
+.small-button {
+    @include generic-button();
+    min-width: convert-px(160, 1em);
+}
+
+.button-container {
+    .small-button,
+    .medium-button {
+        margin-right: use-modular-scale(-1) * 1em;
+    }
+}
+
+.project-section-heading {
+    $margin-y: 1em;
+    margin-top: calc(#{map-get($heights, top-nav)} + #{$margin-y});
+    margin-bottom: $margin-y;
+}

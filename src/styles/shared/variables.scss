@@ -1,0 +1,32 @@
+@import './functions';
+
+$color-black: #000;
+$color-white: #f0f1f2;
+
+$colors: (
+    background: $color-white,
+    gridlines: #e6eaee,
+    heading: $color-black,
+    body-text: #686c70,
+    link: $color-black,
+);
+
+$max-grid-columns: 6;
+$grid-columns: (
+    0: 3,
+    768: 4,
+    1280: $max-grid-columns,
+);
+
+$heights: (
+    top-nav: convert-px(80),
+    bottom-nav: convert-px(80),
+);
+
+$box-shadows: (
+    top-nav: 0
+        convert-px(4)
+        convert-px(16)
+        rgba($color-black, 0.1),
+    project-card: 0 0.5rem 2rem rgba($color-black, 0.15),
+);

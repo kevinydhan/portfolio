@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types'
 
-/**
- * Defines the type of React children passed as props between components.
- */
-export const PropTypeReactChildren = PropTypes.oneOfType([
+export const ReactChildrenPropType = [
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-])
+]
 
-export const IconLink = PropTypes.shape({
-    type: PropTypes.string.isRequired,
+export const GenericLinkPropType = {
     href: PropTypes.string.isRequired,
-    target: PropTypes.string,
+    target: PropTypes.oneOf(['_blank']),
     rel: PropTypes.string,
-    'aria-label': PropTypes.string,
-})
+}
+
+export const GatsbyImageSharpFluidPropType = {
+    aspectRatio: PropTypes.number,
+    base64: PropTypes.string,
+    sizes: PropTypes.string,
+    src: PropTypes.string,
+    srcSet: PropTypes.string,
+}

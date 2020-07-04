@@ -1,8 +1,10 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { createProjectImageDataMap, transformQueryData } from './helpers'
+import { projects } from '../config'
 
 export const useProjectDataQuery = () => {
-    const { allImageSharp } = useStaticQuery(
+    const {
+        allImageSharp: { nodes },
+    } = useStaticQuery(
         graphql`
             query getProjectImages {
                 allImageSharp(
@@ -12,15 +14,13 @@ export const useProjectDataQuery = () => {
                 ) {
                     nodes {
                         fluid(
-                            maxWidth: 600
+                            maxWidth: 1000
                             quality: 80
                             webpQuality: 80
-                            srcSetBreakpoints: [375, 500, 600]
+                            srcSetBreakpoints: [375, 500, 650]
                         ) {
-                            src
-                            srcSet
+                            ...GatsbyImageSharpFluid
                             srcSetWebp
-                            originalName
                         }
                     }
                 }
@@ -28,7 +28,12 @@ export const useProjectDataQuery = () => {
         `
     )
 
-    const projectImageMap = createProjectImageDataMap(allImageSharp.nodes)
-
-    return transformQueryData(projectImageMap)
+    return projects.map((project) => {
+        return {
+            ...project,
+            ...nodes.find((node) => {
+                return node.fluid.src.includes(project.imgDetails.originalName)
+            }),
+        }
+    })
 }

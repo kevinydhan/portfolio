@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: 'https://kevinhan.dev',
     siteStartUrl: '/',
     siteDescription:
-        'Kevin Han is a full-stack developer based in New Jersey, USA. He creates functional, intuitive websites and web applications.',
+        'Kevin Han is a front-end developer and website designer based in New Jersey, NY. He designs and builds intuitive, performant websites and web applications.',
     siteLanguage: 'en_US',
     siteKeywords: [
         // Personal keywords
@@ -23,7 +23,7 @@ module.exports = {
         // Skill-related keywords
         'javascript',
         'react',
-    ].join(', '),
-    siteThemeColor: '#6b00bf',
-    siteBackgroundColor: '#2a0c42',
+    ].join(','),
+    siteThemeColor: '#4f60ff',
+    siteBackgroundColor: '#fff',
 }

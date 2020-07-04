@@ -1,0 +1,49 @@
+@import '../../styles/shared/variables';
+@import '../../styles/shared/functions';
+@import '../../styles/mixins';
+
+.root-container {
+    height: 100vh;
+
+    @include flex($fd: column ,$jc: center);
+
+    @include media($max-width: 768, $orientation: portrait) {
+        min-height: convert-px(568);
+        max-height: convert-px(823);
+    }
+
+    @include media($min-width: 768) {
+        min-height: convert-px(768);
+        max-height: convert-px(1366);
+    }
+}
+
+.headline,
+.tagline,
+.cta-container {
+    @include media($min-width: 768) {
+        width: 75%;
+    }
+
+    @include media($min-width: 1280) {
+        width: 50%;
+    }
+}
+
+.tagline {
+    @include media($min-width: 1440) {
+        font-size: 1.314534rem;
+    }
+}
+
+.cta-container {
+    @include media($max-width: 768) {
+        a {
+            width: 100%;
+        }
+
+        a:not(:last-child) {
+            margin-bottom: use-modular-scale(0) * 0.5em;
+        }
+    }
+}

@@ -1,15 +1,16 @@
 import React from 'react'
+import Logo from '../Logo'
 import { navLinks } from '../../config'
-import siteConfig from '../../config/site.config'
 import styles from './TopNav.module.scss'
+import sharedStyles from '../../styles/modules/index.module.scss'
 
 const TopNav = (): JSX.Element => (
-    <header className={styles.header}>
-        <nav className={styles.nav}>
-            <a className={styles.logo} href="/">
-                {siteConfig.siteAuthor}
+    <header className={`${sharedStyles.grid} ${styles.header}`}>
+        <nav className={`${sharedStyles.gridChild} ${styles.nav}`}>
+            <a href="/#" className={styles.logo}>
+                <Logo />
             </a>
-            <ul className={styles.navLinks}>
+            <ul className={styles.navLinkList}>
                 {navLinks.map(({ text, ...linkProps }) => (
                     <li className={styles.navLinkContainer} key={text}>
                         <a className={styles.navLink} {...linkProps}>

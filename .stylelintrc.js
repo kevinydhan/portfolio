@@ -1,17 +1,17 @@
-  module.exports = {
+module.exports = {
     extends: [
         'stylelint-config-recommended',
         'stylelint-config-sass-guidelines',
         'stylelint-config-rational-order',
         'stylelint-prettier',
     ],
-    ignoreFiles: [
-        'src/images',
-        'src/theme/fonts',
-    ],
+    ignoreFiles: ['src/images', 'src/theme/fonts'],
     rules: {
         // Disables indentation rule. This rule is handled by Prettier.
         indentation: null,
+
+        // Need to find out how to ignore pseudo-elements.
+        'max-nesting-depth': 2,
 
         'order/order': [
             {
