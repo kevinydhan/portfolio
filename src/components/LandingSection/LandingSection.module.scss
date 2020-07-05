@@ -7,12 +7,16 @@
 
     @include flex($fd: column ,$jc: center);
 
-    @include media($max-width: 768, $orientation: portrait) {
+    @include media($max-width: tablet-0, $orientation: portrait) {
         min-height: convert-px(568);
         max-height: convert-px(823);
     }
 
-    @include media($min-width: 768) {
+    @include media($max-height: mobile-1, $orientation: landscape) {
+        margin-top: calc(#{map-get($heights, top-nav)} + 1em);
+    }
+
+    @include media($min-width: tablet-0) {
         min-height: convert-px(768);
         max-height: convert-px(1366);
     }
@@ -21,29 +25,33 @@
 .headline,
 .tagline,
 .cta-container {
-    @include media($min-width: 768) {
-        width: 75%;
+    @include media($max-width: tablet-0) {
+        max-width: convert-px(470);
     }
 
-    @include media($min-width: 1280) {
-        width: 50%;
+    @include media($min-width: tablet-0, $max-width: desktop-0) {
+        max-width: convert-px(550);
+    }
+
+    @include media($min-width: desktop-0) {
+        max-width: convert-px(590);
     }
 }
 
 .tagline {
-    @include media($min-width: 1440) {
-        font-size: 1.314534rem;
+    @include media($min-width: desktop-0) {
+        font-size: 1.31453rem;
     }
 }
 
 .cta-container {
-    @include media($max-width: 768) {
+    @include media($max-width: mobile-1) {
         a {
             width: 100%;
         }
 
         a:not(:last-child) {
-            margin-bottom: use-modular-scale(0) * 0.5em;
+            margin-bottom: use-modular-scale(-2) * 1em;
         }
     }
 }

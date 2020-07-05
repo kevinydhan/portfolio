@@ -21,6 +21,7 @@ html {
 }
 
 body {
+    min-width: convert-px(320);
     background: map-get($colors, background);
 }
 
@@ -36,11 +37,11 @@ h1 {
     font-size: use-modular-scale(5) * 1rem;
     line-height: 1.04663;
 
-    @include media($min-width: 768) {
+    @include media($min-width: tablet-0) {
         font-size: use-modular-scale(6) * 1rem;
     }
 
-    @include media($min-width: 1440) {
+    @include media($min-width: desktop-0) {
         font-size: use-modular-scale(7) * 1rem;
     }
 }
@@ -48,11 +49,11 @@ h1 {
 h2 {
     font-size: use-modular-scale(4) * 1rem;
 
-    @include media($min-width: 768) {
+    @include media($min-width: tablet-0) {
         font-size: use-modular-scale(5) * 1rem;
     }
 
-    @include media($min-width: 1440) {
+    @include media($min-width: desktop-0) {
         font-size: use-modular-scale(6) * 1rem;
     }
 }
@@ -60,7 +61,7 @@ h2 {
 h3 {
     font-size: use-modular-scale(2) * 1rem;
 
-    @include media($min-width: 768) {
+    @include media($min-width: tablet-0) {
         font-size: use-modular-scale(4) * 1rem;
     }
 }
@@ -73,13 +74,13 @@ p {
         margin-bottom: 3em;
     }
 
-    @include media($max-width: 768) {
+    @include media($max-width: tablet-0) {
         font-size: use-modular-scale(0) * 1rem;
     }
 
-    @include media($min-width: 768) {
+    @include media($min-width: tablet-0) {
         font-size: use-modular-scale(1) * 1rem;
-        line-height: 1.577;
+        line-height: 1.57744;
     }
 }
 

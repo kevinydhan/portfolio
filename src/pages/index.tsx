@@ -1,5 +1,5 @@
 import React from 'react'
-import { TopNav, LandingSection, ProjectCard } from '../components'
+import { Head, TopNav, LandingSection, ProjectCard } from '../components'
 import { useProjectDataQuery } from '../utils'
 import '../styles/global.scss'
 import sharedStyles from '../styles/modules/index.module.scss'
@@ -9,6 +9,7 @@ const IndexPage = (): JSX.Element => {
 
     return (
         <>
+            <Head />
             <div
                 className={`${sharedStyles.grid} ${sharedStyles.backgroundGrid}`}
             >

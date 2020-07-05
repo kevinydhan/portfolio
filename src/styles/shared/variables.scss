@@ -14,6 +14,9 @@ $colors: (
 $max-grid-columns: 6;
 $grid-columns: (
     0: 3,
+    tablet-0: 4,
+    tablet-2: $max-grid-columns,
+
     768: 4,
     1280: $max-grid-columns,
 );
@@ -28,5 +31,4 @@ $box-shadows: (
         convert-px(4)
         convert-px(16)
         rgba($color-black, 0.1),
-    project-card: 0 0.5rem 2rem rgba($color-black, 0.15),
 );

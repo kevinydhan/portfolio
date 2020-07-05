@@ -10,15 +10,15 @@ $image-offset: 9%;
         width: 100%;
     }
 
-    @include media($max-width: 768) {
+    @include media($max-width: tablet-0) {
         margin-bottom: use-modular-scale(12) * 1em;
     }
 
-    @include media($min-width: 768, $max-width: 1280) {
+    @include media($min-width: tablet-0, $max-width: tablet-2) {
         margin-bottom: use-modular-scale(14) * 1em;
     }
 
-    @include media($min-width: 1280) {
+    @include media($min-width: tablet-2) {
         display: flex;
         align-items: center;
         margin-bottom: use-modular-scale(16) * 1em;
@@ -30,7 +30,7 @@ $image-offset: 9%;
 }
 
 .root-container:nth-of-type(2n + 1) {
-    @include media($min-width: 1280) {
+    @include media($min-width: tablet-2) {
         flex-direction: row-reverse;
 
         picture {
@@ -40,7 +40,7 @@ $image-offset: 9%;
 }
 
 .root-container:nth-of-type(2n) {
-    @include media($min-width: 1280) {
+    @include media($min-width: tablet-2) {
         picture {
             transform: translateX($image-offset * -1);
         }
@@ -48,17 +48,17 @@ $image-offset: 9%;
 }
 
 .project-body-container {
-    @include media($min-width: 1280) {
+    @include media($min-width: tablet-2) {
         flex: 1 1 0;
     }
 }
 
 .image {
-    @include media($max-width: 768) {
+    @include media($max-width: tablet-0) {
         margin-bottom: use-modular-scale(1) * 1em;
     }
 
-    @include media($min-width: 768, $max-width: 1280) {
+    @include media($min-width: tablet-0, $max-width: tablet-2) {
         margin-bottom: use-modular-scale(2) * 1em;
     }
 }

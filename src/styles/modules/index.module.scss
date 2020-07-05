@@ -13,18 +13,18 @@
     background: map-get($colors, background);
     border: convert-px(1) solid map-get($colors, 'link');
 
-    @include media($max-width: 768) {
+    @include media($max-width: tablet-0) {
         font-size: use-modular-scale(-1) * 1rem;
     }
 }
 
 .medium-button {
-    @include generic-button();
+    @include generic-button;
     min-width: convert-px(205, 1em);
 }
 
 .small-button {
-    @include generic-button();
+    @include generic-button;
     min-width: convert-px(160, 1em);
 }
 

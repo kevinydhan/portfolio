@@ -2,34 +2,40 @@
 @import '../shared/variables';
 @import '../mixins';
 
-.grid {
-    @mixin grid-template-columns($columns, $side-margin) {
-        grid-template-columns: $side-margin
-            repeat($columns, 1fr)
-            $side-margin;
-    }
+@mixin grid-template-columns($columns, $side-margin) {
+    grid-template-columns: $side-margin
+        repeat($columns, 1fr)
+        $side-margin;
+}
 
+.grid {
     display: grid;
 
-    @include media($max-width: 768) {
+    @include media($max-width: mobile-1) {
         $inner-columns: map-get($grid-columns, 0) - 2;
         $side-margin: convert-px(12);
         @include grid-template-columns($inner-columns, $side-margin);
     }
 
-    @include media($min-width: 768, $max-width: 1280) {
+    @include media($min-width: mobile-1, $max-width: tablet-0) {
+        $inner-columns: map-get($grid-columns, 0) - 2;
+        $side-margin: 2.12676%;
+        @include grid-template-columns($inner-columns, $side-margin);
+    }
+
+    @include media($min-width: tablet-0, $max-width: tablet-1) {
         $inner-columns: map-get($grid-columns, 768) - 2;
         $side-margin: convert-px(48);
         @include grid-template-columns($inner-columns, $side-margin);
     }
 
-    @include media($min-width: 1280, $max-width: 1600) {
+    @include media($min-width: tablet-1, $max-width: desktop-1) {
         $inner-columns: map-get($grid-columns, 1280) - 2;
         $side-margin: convert-px(72);
         @include grid-template-columns($inner-columns, $side-margin);
     }
 
-    @include media($min-width: 1600) {
+    @include media($min-width: desktop-1) {
         $inner-columns: map-get($grid-columns, 1280) - 2;
         $column-width: (1600 - (96 * 2)) / $inner-columns;
         grid-template-columns: 1fr
@@ -39,16 +45,16 @@
 }
 
 .grid-child {
-    @include media($max-width: 768) {
+    @include media($max-width: tablet-0) {
         grid-column: 2;
     }
 
-    @include media($min-width: 768, $max-width: 1280) {
+    @include media($min-width: tablet-0, $max-width: tablet-1) {
         grid-column-start: 2;
         grid-column-end: map-get($grid-columns, 768);
     }
 
-    @include media($min-width: 1280) {
+    @include media($min-width: tablet-1) {
         grid-column-start: 2;
         grid-column-end: map-get($grid-columns, 1280);
     }
@@ -67,7 +73,7 @@
     }
 
     @for $i from $max-grid-columns - map-get($grid-columns, 0) to $max-grid-columns {
-        @include media($max-width: 768) {
+        @include media($max-width: tablet-0) {
             div:nth-of-type(#{$i}) {
                 display: none;
             }
@@ -75,7 +81,7 @@
     }
 
     @for $i from map-get($grid-columns, 768) to $max-grid-columns {
-        @include media($min-width: 768, $max-width: 1280) {
+        @include media($min-width: tablet-0, $max-width: tablet-1) {
             div:nth-of-type(#{$i + 1}) {
                 display: none;
             }
