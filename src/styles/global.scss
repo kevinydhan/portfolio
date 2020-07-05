@@ -37,7 +37,7 @@ h1 {
     font-size: use-modular-scale(5) * 1rem;
     line-height: 1.04663;
 
-    @include media($min-width: tablet-0) {
+    @include media($min-width: tablet-0, $max-width: desktop-0) {
         font-size: use-modular-scale(6) * 1rem;
     }
 
@@ -49,7 +49,7 @@ h1 {
 h2 {
     font-size: use-modular-scale(4) * 1rem;
 
-    @include media($min-width: tablet-0) {
+    @include media($min-width: tablet-0, $max-width: desktop-0) {
         font-size: use-modular-scale(5) * 1rem;
     }
 

@@ -25,19 +25,19 @@
 
     @include media($min-width: tablet-0, $max-width: tablet-1) {
         $inner-columns: map-get($grid-columns, 768) - 2;
-        $side-margin: convert-px(48);
+        $side-margin: convert-px(80);
         @include grid-template-columns($inner-columns, $side-margin);
     }
 
     @include media($min-width: tablet-1, $max-width: desktop-1) {
         $inner-columns: map-get($grid-columns, 1280) - 2;
-        $side-margin: convert-px(72);
+        $side-margin: convert-px(80);
         @include grid-template-columns($inner-columns, $side-margin);
     }
 
     @include media($min-width: desktop-1) {
         $inner-columns: map-get($grid-columns, 1280) - 2;
-        $column-width: (1600 - (96 * 2)) / $inner-columns;
+        $column-width: (1600 - (80 * 2)) / $inner-columns;
         grid-template-columns: 1fr
             repeat($inner-columns, convert-px($column-width))
             1fr;

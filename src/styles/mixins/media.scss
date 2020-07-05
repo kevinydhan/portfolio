@@ -8,13 +8,6 @@ $breakpoints: (
     tablet-2: convert-px($value: 1200, $unit: 1em),
     desktop-0: convert-px($value: 1440, $unit: 1em),
     desktop-1: convert-px($value: 1600, $unit: 1em),
-
-    320: convert-px($value: 320, $unit: 1em),
-    768: convert-px($value: 768, $unit: 1em),
-    1024: convert-px($value: 1024, $unit: 1em),
-    1280: convert-px($value: 1280, $unit: 1em),
-    1440: convert-px($value: 1440, $unit: 1em),
-    1600: convert-px($value: 1600, $unit: 1em),
 );
 
 /// @see - https://www.w3schools.com/cssref/css3_pr_mediaquery.asp

@@ -36,7 +36,14 @@
 }
 
 .project-section-heading {
-    $margin-y: 1em;
+    $margin-y: use-modular-scale(-2) * 1em;
     margin-top: calc(#{map-get($heights, top-nav)} + #{$margin-y});
-    margin-bottom: $margin-y;
+
+    @include media($max-width: tablet-2) {
+        margin-bottom: use-modular-scale(1) * 1em;
+    }
+
+    @include media($min-width: tablet-2) {
+        margin-bottom: use-modular-scale(5) * 1em;
+    }
 }

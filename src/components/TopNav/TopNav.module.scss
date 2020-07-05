@@ -14,7 +14,7 @@
     width: 100%;
     height: 100%;
 
-    @include media($min-width: 1024) {
+    @include media($min-width: tablet-1) {
         justify-content: space-between;
     }
 }
@@ -37,24 +37,24 @@
     display: none;
     list-style: none;
 
-    @include media($max-width: 1024) {
+    @include media($max-width: tablet-1) {
         display: none;
         background: map-get($colors, background);
         box-shadow: map-get($box-shadows, 'nav');
         @include position($position: absolute, $t: 100%, $l: 0, $r: 0);
     }
 
-    @include media($min-width: 1024) {
+    @include media($min-width: tablet-1) {
         @include flex($jc: space-between);
     }
 }
 
 .nav-link-container {
-    @include media($max-width: 1024) {
+    @include media($max-width: tablet-1) {
         padding: 1.25rem 1rem;
     }
 
-    @include media($min-width: 1024) {
+    @include media($min-width: tablet-1) {
         &:not(:last-child) {
             margin-right: use-modular-scale(10) * 1em;
         }
@@ -64,16 +64,16 @@
 .nav-link {
     color: map-get($colors, heading);
 
-    @include media($min-width: 1024) {
+    @include media($min-width: tablet-1) {
         @include flex($ai: center);
-        font-size: 1.095445rem;
+        font-size: 1.09545rem;
     }
 }
 
 .nav-link-list,
 .nav-link-container,
 .nav-link {
-    @include media($min-width: 1024) {
+    @include media($min-width: tablet-1) {
         height: 100%;
     }
 }
