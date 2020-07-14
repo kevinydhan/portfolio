@@ -1,35 +1,35 @@
 export default [
-    {
-        title: 'JVNA',
-        description: `JVNA is an up-and-coming music producer and DJ. Her website, previously built on Squarespace, was requested for a redesign. The new design offered a visual update and faster page loads.`,
-        links: [
-            {
-                type: 'external',
-                href: 'https://jvna-website.netlify.app',
-                target: '_blank',
-                rel: 'noreferrer noopener nofollow',
-            },
-            {
-                type: 'github',
-                href: 'https://github.com/kevinydhan/jvna-website',
-                target: '_blank',
-                rel: 'noreferrer noopener nofollow',
-            },
-        ],
-        technologies: [
-            'Javascript',
-            'React',
-            'Sass',
-            'Gatsby',
-            'Netlify',
-            'Inkscape',
-            'GIMP',
-        ],
-        imgDetails: {
-            originalName: 'ProjectImage_JVNA.png',
-            alt: '',
-        },
-    },
+    // {
+    //     title: 'JVNA',
+    //     description: `JVNA is an up-and-coming music producer and DJ. Her website, previously built on Squarespace, was requested for a redesign. The new design offered a visual update and faster page loads.`,
+    //     links: [
+    //         {
+    //             type: 'external',
+    //             href: 'https://jvna-website.netlify.app',
+    //             target: '_blank',
+    //             rel: 'noreferrer noopener nofollow',
+    //         },
+    //         {
+    //             type: 'github',
+    //             href: 'https://github.com/kevinydhan/jvna-website',
+    //             target: '_blank',
+    //             rel: 'noreferrer noopener nofollow',
+    //         },
+    //     ],
+    //     technologies: [
+    //         'Javascript',
+    //         'React',
+    //         'Sass',
+    //         'Gatsby',
+    //         'Netlify',
+    //         'Inkscape',
+    //         'GIMP',
+    //     ],
+    //     imgDetails: {
+    //         originalName: 'ProjectImage_JVNA.png',
+    //         alt: '',
+    //     },
+    // },
     {
         title: 'TechCeFaCos',
         description: `TechCeFaCos Group is a non-profit organization based in Cameroon, Africa. Their aim is to empower underprivileged individuals and aid communities to be self-reliant and sustainable.`,
@@ -59,37 +59,37 @@ export default [
             alt: '',
         },
     },
-    {
-        title: 'Fuslie',
-        description: `Fuslie is an established Twitch streamer and content creator. The redesign for her personal website featured a visual update, updates to meta tags, and better content management using a CMS.`,
-        links: [
-            {
-                type: 'external',
-                href: 'https://jvna-website.netlify.app',
-                target: '_blank',
-                rel: 'noreferrer noopener nofollow',
-            },
-            {
-                type: 'github',
-                href: 'https://github.com/kevinydhan/jvna-website',
-                target: '_blank',
-                rel: 'noreferrer noopener nofollow',
-            },
-        ],
-        technologies: [
-            'Javascript',
-            'React',
-            'Sass',
-            'Gatsby',
-            'Netlify',
-            'Inkscape',
-            'GIMP',
-        ],
-        imgDetails: {
-            originalName: 'ProjectImage_Fuslie.png',
-            alt: '',
-        },
-    },
+    // {
+    //     title: 'Fuslie',
+    //     description: `Fuslie is an established Twitch streamer and content creator. The redesign for her personal website featured a visual update, updates to meta tags, and better content management using a CMS.`,
+    //     links: [
+    //         {
+    //             type: 'external',
+    //             href: 'https://jvna-website.netlify.app',
+    //             target: '_blank',
+    //             rel: 'noreferrer noopener nofollow',
+    //         },
+    //         {
+    //             type: 'github',
+    //             href: 'https://github.com/kevinydhan/jvna-website',
+    //             target: '_blank',
+    //             rel: 'noreferrer noopener nofollow',
+    //         },
+    //     ],
+    //     technologies: [
+    //         'Javascript',
+    //         'React',
+    //         'Sass',
+    //         'Gatsby',
+    //         'Netlify',
+    //         'Inkscape',
+    //         'GIMP',
+    //     ],
+    //     imgDetails: {
+    //         originalName: 'ProjectImage_Fuslie.png',
+    //         alt: '',
+    //     },
+    // },
     // {
     //     title: 'Fitness Factory',
     //     description:

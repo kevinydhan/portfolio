@@ -5,7 +5,7 @@ const config = require('./src/config/site.config')
 module.exports = {
     plugins: [
         {
-            resolve: `gatsby-plugin-typescript`,
+            resolve: 'gatsby-plugin-typescript',
             options: {
                 transpileOnly: false,
                 compilerOptions: {
@@ -22,7 +22,7 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-manifest`,
+            resolve: 'gatsby-plugin-manifest',
             options: {
                 name: config.siteTitle,
                 short_name: config.siteTitle,
@@ -30,7 +30,7 @@ module.exports = {
                 start_url: config.siteStartUrl,
                 background_color: config.siteBackgroundColor,
                 theme_color: config.siteThemeColor,
-                display: `standalone`,
+                display: 'standalone',
                 icon: 'src/images/icon.png',
             },
         },

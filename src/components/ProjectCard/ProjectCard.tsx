@@ -6,10 +6,7 @@ import {
     sentencize,
 } from '../../utils'
 import styles from './ProjectCard.module.scss'
-import {
-    smallButton as smallButtonStyles,
-    buttonContainer as buttonContainerStyles,
-} from '../../styles/modules/index.module.scss'
+import sharedStyles from '../../styles/modules/index.module.scss'
 
 const linkTextMap = {
     external: 'View site',
@@ -43,10 +40,10 @@ const ProjectCard = ({
             <p>
                 This project was built with <b>{sentencize(technologies)}</b>.
             </p>
-            <div className={buttonContainerStyles}>
+            <div className={sharedStyles.buttonContainer}>
                 {links.map((link, i) => (
                     <a
-                        className={smallButtonStyles}
+                        className={sharedStyles.smallButton}
                         key={link.href + i}
                         {...link}
                     >
