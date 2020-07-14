@@ -1,25 +1,19 @@
-const config = require('./src/config')
+/* eslint @typescript-eslint/camelcase: 0 */
 const path = require('path')
+const config = require('./src/config/site.config')
 
 module.exports = {
     plugins: [
-        // @see https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-manifest
-        // @see https://web.dev/add-manifest/#create
         {
-            resolve: `gatsby-plugin-manifest`,
+            resolve: 'gatsby-plugin-typescript',
             options: {
-                name: config.siteTitle,
-                short_name: `Kevin Han's Portfolio`,
-                description: config.siteDescription,
-                start_url: `/`,
-                background_color: `#161616`,
-                theme_color: `#161616`,
-                display: `standalone`,
-                icon: 'src/images/icon.png',
+                transpileOnly: false,
+                compilerOptions: {
+                    target: 'es2015',
+                    jsx: 'react',
+                },
             },
         },
-
-        // @see https://www.gatsbyjs.org/packages/gatsby-image/#install
         {
             resolve: 'gatsby-source-filesystem',
             options: {
@@ -27,33 +21,31 @@ module.exports = {
                 path: path.join(__dirname, 'src', 'images'),
             },
         },
-
-        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-html-attributes
+        {
+            resolve: 'gatsby-plugin-manifest',
+            options: {
+                name: config.siteTitle,
+                short_name: config.siteTitle,
+                description: config.siteDescription,
+                start_url: config.siteStartUrl,
+                background_color: config.siteBackgroundColor,
+                theme_color: config.siteThemeColor,
+                display: 'standalone',
+                icon: 'src/images/icon.png',
+            },
+        },
         {
             resolve: 'gatsby-plugin-html-attributes',
             options: {
                 lang: 'en',
             },
         },
-
-        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-offline
-        'gatsby-plugin-offline',
-
-        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-sharp
-        'gatsby-plugin-sharp',
-
-        // @see https://www.gatsbyjs.org/packages/gatsby-transformer-sharp
-        'gatsby-transformer-sharp',
-
-        // @see https://www.gatsbyjs.org/packages/gatsby-plugin-robots-txt
         'gatsby-plugin-robots-txt',
-
-        // @see https://github.com/nfl/react-helmet
-        // @see https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-react-helmet
-        'gatsby-plugin-react-helmet',
-
-        // @see https://www.gatsbyjs.org/docs/styled-components
-        'gatsby-plugin-styled-components',
+        'gatsby-plugin-offline',
+        'gatsby-transformer-sharp',
+        'gatsby-plugin-sharp',
+        'gatsby-plugin-sass',
+        'gatsby-plugin-minify-classnames',
     ],
     siteMetadata: {
         title: config.siteTitle,

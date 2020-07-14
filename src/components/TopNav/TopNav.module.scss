@@ -1,0 +1,79 @@
+@import '../../styles/shared/variables';
+@import '../../styles/shared/functions';
+@import '../../styles/mixins';
+
+.header {
+    @include position($position: fixed, $t: 0, $l: 0, $r: 0, $z: 999);
+    height: map-get($heights, top-nav);
+    background: map-get($colors, background);
+    box-shadow: map-get($box-shadows, top-nav);
+}
+
+.nav {
+    @include flex;
+    width: 100%;
+    height: 100%;
+
+    @include media($min-width: tablet-1) {
+        justify-content: space-between;
+    }
+}
+
+.logo {
+    width: auto;
+    height: 100%;
+    @include flex($ai: center);
+
+    svg {
+        height: 2.75rem;
+    }
+
+    path {
+        fill: $color-black;
+    }
+}
+
+.nav-link-list {
+    display: none;
+    list-style: none;
+
+    @include media($max-width: tablet-1) {
+        display: none;
+        background: map-get($colors, background);
+        box-shadow: map-get($box-shadows, 'nav');
+        @include position($position: absolute, $t: 100%, $l: 0, $r: 0);
+    }
+
+    @include media($min-width: tablet-1) {
+        @include flex($jc: space-between);
+    }
+}
+
+.nav-link-container {
+    @include media($max-width: tablet-1) {
+        padding: 1.25rem 1rem;
+    }
+
+    @include media($min-width: tablet-1) {
+        &:not(:last-child) {
+            margin-right: use-modular-scale(10) * 1em;
+        }
+    }
+}
+
+.nav-link {
+    color: map-get($colors, heading);
+
+    @include media($min-width: tablet-1) {
+        @include flex($ai: center);
+        font-size: 1.09545rem;
+    }
+}
+
+.nav-link-list,
+.nav-link-container,
+.nav-link {
+    @include media($min-width: tablet-1) {
+        height: 100%;
+    }
+}

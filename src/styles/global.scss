@@ -1,0 +1,98 @@
+@import './shared/fonts';
+@import './shared/variables';
+@import './shared/functions';
+@import './mixins';
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    color: map-get($colors, body-text);
+    font-size: 100%;
+    font-family: 'Muli', Arial, Helvetica, sans-serif;
+    letter-spacing: 0.015em;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: convert-px(320);
+    background: map-get($colors, background);
+}
+
+h1,
+h2,
+h3 {
+    margin-bottom: 0.25em;
+    color: map-get($colors, heading);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: use-modular-scale(5) * 1rem;
+    line-height: 1.04663;
+
+    @include media($min-width: tablet-0, $max-width: desktop-0) {
+        font-size: use-modular-scale(6) * 1rem;
+    }
+
+    @include media($min-width: desktop-0) {
+        font-size: use-modular-scale(7) * 1rem;
+    }
+}
+
+h2 {
+    font-size: use-modular-scale(4) * 1rem;
+
+    @include media($min-width: tablet-0, $max-width: desktop-0) {
+        font-size: use-modular-scale(5) * 1rem;
+    }
+
+    @include media($min-width: desktop-0) {
+        font-size: use-modular-scale(6) * 1rem;
+    }
+}
+
+h3 {
+    font-size: use-modular-scale(2) * 1rem;
+
+    @include media($min-width: tablet-0) {
+        font-size: use-modular-scale(4) * 1rem;
+    }
+}
+
+p {
+    margin-bottom: 0.5em;
+    line-height: use-modular-scale(2);
+
+    &:last-of-type {
+        margin-bottom: 3em;
+    }
+
+    @include media($max-width: tablet-0) {
+        font-size: use-modular-scale(0) * 1rem;
+    }
+
+    @include media($min-width: tablet-0) {
+        font-size: use-modular-scale(1) * 1rem;
+        line-height: 1.57744;
+    }
+}
+
+a {
+    color: map-get($colors, 'link');
+    text-decoration: none;
+}
+
+b {
+    font-weight: 600;
+}
+
+#gatsby-focus-wrapper {
+    position: relative;
+}
