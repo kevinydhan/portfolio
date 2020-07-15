@@ -13,12 +13,7 @@ export const useProjectDataQuery = () => {
                     }
                 ) {
                     nodes {
-                        fluid(
-                            maxWidth: 1000
-                            quality: 80
-                            webpQuality: 80
-                            srcSetBreakpoints: [375, 500, 650]
-                        ) {
+                        fluid(maxWidth: 1000, quality: 80, webpQuality: 80) {
                             ...GatsbyImageSharpFluid
                             srcSetWebp
                         }

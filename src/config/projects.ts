@@ -47,13 +47,7 @@ export default [
                 rel: 'noreferrer noopener nofollow',
             },
         ],
-        technologies: [
-            'Node.js',
-            'Handlebars',
-            'Sass',
-            'Webpack',
-            'Microsoft Azure',
-        ],
+        technologies: ['Node.js', 'Handlebars', 'Sass', 'Webpack'],
         imgDetails: {
             originalName: 'ProjectImage_TechCeFaCos.png',
             alt: '',
