@@ -1,7 +1,7 @@
 export {
-    ReactChildrenPropType,
-    GenericLinkPropType,
-    GatsbyImageSharpFluidPropType,
+  ReactChildrenPropType,
+  GenericLinkPropType,
+  GatsbyImageSharpFluidPropType,
 } from './prop-types'
 export { useProjectDataQuery } from './hooks'
 
@@ -23,13 +23,13 @@ export { useProjectDataQuery } from './hooks'
  * @returns {string} - Comma-separated list
  */
 export const sentencize = (words: string[]): string => {
-    let sentence = ''
+  let sentence = ''
 
-    words.forEach((word: string, i: number) => {
-        if (i === 0) sentence += word
-        else if (i === words.length - 1) sentence += `, and ${word}`
-        else sentence += `, ${word}`
-    })
+  words.forEach((word: string, i: number) => {
+    if (i === 0) sentence += word
+    else if (i === words.length - 1) sentence += `, and ${word}`
+    else sentence += `, ${word}`
+  })
 
-    return sentence
+  return sentence
 }

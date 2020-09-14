@@ -5,60 +5,60 @@
 $image-offset: 9%;
 
 .root-container {
-    picture,
-    img {
-        width: 100%;
-    }
+  picture,
+  img {
+    width: 100%;
+  }
 
-    @include media($max-width: tablet-0) {
-        margin-bottom: use-modular-scale(12) * 1em;
-    }
+  @include media($max-width: tablet-0) {
+    margin-bottom: use-modular-scale(12) * 1em;
+  }
 
-    @include media($min-width: tablet-0, $max-width: tablet-2) {
-        margin-bottom: use-modular-scale(14) * 1em;
-    }
+  @include media($min-width: tablet-0, $max-width: tablet-2) {
+    margin-bottom: use-modular-scale(14) * 1em;
+  }
 
-    @include media($min-width: tablet-2) {
-        display: flex;
-        align-items: center;
-        margin-bottom: use-modular-scale(16) * 1em;
+  @include media($min-width: tablet-2) {
+    display: flex;
+    align-items: center;
+    margin-bottom: use-modular-scale(16) * 1em;
 
-        picture {
-            width: 61%;
-        }
+    picture {
+      width: 61%;
     }
+  }
 }
 
 .root-container:nth-of-type(2n + 1) {
-    @include media($min-width: tablet-2) {
-        flex-direction: row-reverse;
+  @include media($min-width: tablet-2) {
+    flex-direction: row-reverse;
 
-        picture {
-            transform: translateX($image-offset);
-        }
+    picture {
+      transform: translateX($image-offset);
     }
+  }
 }
 
 .root-container:nth-of-type(2n) {
-    @include media($min-width: tablet-2) {
-        picture {
-            transform: translateX($image-offset * -1);
-        }
+  @include media($min-width: tablet-2) {
+    picture {
+      transform: translateX($image-offset * -1);
     }
+  }
 }
 
 .project-body-container {
-    @include media($min-width: tablet-2) {
-        flex: 1 1 0;
-    }
+  @include media($min-width: tablet-2) {
+    flex: 1 1 0;
+  }
 }
 
 .image {
-    @include media($max-width: tablet-0) {
-        margin-bottom: use-modular-scale(1) * 1em;
-    }
+  @include media($max-width: tablet-0) {
+    margin-bottom: use-modular-scale(1) * 1em;
+  }
 
-    @include media($min-width: tablet-0, $max-width: tablet-2) {
-        margin-bottom: use-modular-scale(2) * 1em;
-    }
+  @include media($min-width: tablet-0, $max-width: tablet-2) {
+    margin-bottom: use-modular-scale(2) * 1em;
+  }
 }

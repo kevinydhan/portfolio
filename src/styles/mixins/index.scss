@@ -10,29 +10,29 @@
 /// @param {number | null} [$l=null] - Left position, `left: $l;`
 /// @param {number | null} [$z=null] - Z-index, `z-index: $z;`
 @mixin position(
-    $position: absolute,
-    $t: null,
-    $r: null,
-    $b: null,
-    $l: null,
-    $z: null
+  $position: absolute,
+  $t: null,
+  $r: null,
+  $b: null,
+  $l: null,
+  $z: null
 ) {
-    position: $position;
-    @if $t {
-        top: $t;
-    }
-    @if $r {
-        right: $r;
-    }
-    @if $b {
-        bottom: $b;
-    }
-    @if $l {
-        left: $l;
-    }
-    @if $z {
-        z-index: $z;
-    }
+  position: $position;
+  @if $t {
+    top: $t;
+  }
+  @if $r {
+    right: $r;
+  }
+  @if $b {
+    bottom: $b;
+  }
+  @if $l {
+    left: $l;
+  }
+  @if $z {
+    z-index: $z;
+  }
 }
 
 /// Applies Flexbox on the element.
@@ -42,17 +42,17 @@
 /// @param {string} $fd - Value for `flex-direction` property
 /// @param {string} $fw - Value for `flex-wrap` property
 @mixin flex($jc: null, $ai: null, $fd: null, $fw: null) {
-    display: flex;
-    @if $jc {
-        justify-content: $jc;
-    }
-    @if $ai {
-        align-items: $ai;
-    }
-    @if $fd {
-        flex-direction: $fd;
-    }
-    @if $fw {
-        flex-wrap: $fw;
-    }
+  display: flex;
+  @if $jc {
+    justify-content: $jc;
+  }
+  @if $ai {
+    align-items: $ai;
+  }
+  @if $fd {
+    flex-direction: $fd;
+  }
+  @if $fw {
+    flex-wrap: $fw;
+  }
 }
