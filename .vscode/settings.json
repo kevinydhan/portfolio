@@ -3,6 +3,11 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
+  "cSpell.ignorePaths": [
+    "**/node_modules/**",
+    "**/.git/objects/**",
+    ".env"
+  ],
   "cSpell.ignoreWords": [
     "Contentful",
     "contentfulchildren",
