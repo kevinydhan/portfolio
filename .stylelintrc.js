@@ -5,7 +5,7 @@ module.exports = {
     'stylelint-config-rational-order',
     'stylelint-prettier',
   ],
-  ignoreFiles: ['src/images', 'src/theme/fonts'],
+  ignoreFiles: ['src/theme/fonts'],
   rules: {
     // Disables indentation rule. This rule is handled by Prettier.
     indentation: null,
