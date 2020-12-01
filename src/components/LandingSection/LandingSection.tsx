@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { landingData, ctaLinks } from '../../config'
 import styles from './LandingSection.module.scss'
 import sharedStyles from '../../styles/modules/index.module.scss'
 
-const LandingSection = (): JSX.Element => (
+const LandingSection: FunctionComponent = () => (
   <section className={`${sharedStyles.gridChild} ${styles.rootContainer}`}>
     <h1 className={styles.headline}>{landingData.headline}</h1>
     <p className={styles.tagline}>{landingData.tagline}</p>

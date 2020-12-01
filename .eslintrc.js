@@ -39,6 +39,9 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'jsx-a11y', 'react', 'react-hooks'],
+  rules: {
+    'arrow-body-style': ['error', 'as-needed'],
+  },
   settings: {
     react: {
       version: 'detect',

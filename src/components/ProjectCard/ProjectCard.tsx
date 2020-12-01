@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import PropTypes from 'prop-types'
 import {
   GenericLinkPropType,
@@ -15,14 +15,21 @@ const linkTextMap = {
   figma: 'View design',
 }
 
-const ProjectCard = ({
+interface ProjectCardProps {
+  title: string
+  description: string
+  technologies: []
+  links: []
+}
+
+const ProjectCard: FunctionComponent<ProjectCardProps> = ({
   title,
   description,
   technologies,
   links,
   imgDetails,
   fluid,
-}): JSX.Element => (
+}) => (
   <div className={styles.rootContainer}>
     <picture>
       <source srcSet={fluid.srcSetWebp} type="image/webp" />
