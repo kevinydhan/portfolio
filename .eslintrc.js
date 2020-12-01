@@ -5,7 +5,6 @@ module.exports = {
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
@@ -38,7 +37,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
   },
