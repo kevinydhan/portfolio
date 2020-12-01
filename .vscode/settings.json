@@ -1,0 +1,23 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "cSpell.ignoreWords": [
+    "Contentful",
+    "contentfulchildren",
+    "DDTHH",
+    "gridlines",
+    "iPhone",
+    "Macbook",
+    "mixins",
+    "Muli",
+    "noreferrer",
+    "noopener",
+    "SSSZ",
+    "stylelint",
+    "truetype",
+    "viewports",
+    "webp"
+  ]
+}
