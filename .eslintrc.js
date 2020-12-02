@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    node: true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -11,39 +12,27 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
   ignorePatterns: ['node_modules', '.cache', 'public'],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
   overrides: [
-    // Turns off TypeScript-specific ESLint rules when linting Javascript
-    // files.
     {
-      files: ['*.js', '*.jsx', '*.mjs'],
+      files: ['*.js'],
       parserOptions: {
         parser: 'babel-eslint',
       },
       rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-var-requires': 'off',
       },
     },
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
   plugins: ['@typescript-eslint', 'react', 'react-hooks'],
-  rules: {
-    'arrow-body-style': ['error', 'as-needed'],
-  },
   settings: {
-    react: {
-      version: 'detect',
+    'import/resolver': {
+      alias: [
+        ['$components', 'src/components'],
+        ['$sections', 'src/sections'],
+        ['$theme', 'src/theme'],
+        ['$typings', 'src/typings'],
+      ],
     },
   },
 }
