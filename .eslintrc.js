@@ -34,5 +34,8 @@ module.exports = {
         ['$typings', 'src/typings'],
       ],
     },
+    react: {
+      version: 'detect',
+    },
   },
 }
