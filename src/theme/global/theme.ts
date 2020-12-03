@@ -68,7 +68,6 @@ export const numerics = {
    */
   contentMaxWidth: breakpoints['lg-1'],
   opacityOnHover: 0.5,
-  topNavigationHeight: 80,
 }
 
 export const transitions = {

@@ -2,11 +2,9 @@ import { em, padding, rem } from 'polished'
 import styled from 'styled-components'
 import { convertNumberToPercent as percent } from '$theme'
 import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
+import { ProjectRootProps } from './Project.d'
 
-export const Root = styled('div').attrs({
-  imageOffset: -0.055,
-  imageWidth: 0.61,
-})`
+export const Root = styled('div')<ProjectRootProps>`
   & + & {
     margin-top: ${rem(100)};
   }
@@ -41,9 +39,14 @@ export const Root = styled('div').attrs({
   }
 `
 
+Root.defaultProps = {
+  imageOffset: -0.055,
+  imageWidth: 0.61,
+}
+
 export const Content = styled('div')`
   @media screen and (min-width: 1024px) {
-    width: ${percent(1 - Root.attrs[0].imageWidth)};
+    width: ${percent(1 - Root.defaultProps.imageWidth)};
     max-width: ${rem(520)};
   }
 `
