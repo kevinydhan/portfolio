@@ -31,9 +31,24 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+
+  # Workflow for non-master or staging branches
+  build:
+    jobs:
+      - build
+    when:
+      or:
+        - equal: [ master, << pipeline.git.branch >> ]
+        - equal: [ staging, << pipeline.git.branch >> ]
+
+  # Workflow for staging branch
+  build-and-deploy-staging:
+    env:
+      NETLIFY_DEPLOY_HOOK: ${NETLIFY_STAGING_DEPLOY_HOOK}
     jobs:
       - build
       - deploy:
           requires:
             - build
+    when:
+      equal: [ staging, << pipeline.git.branch >> ]
