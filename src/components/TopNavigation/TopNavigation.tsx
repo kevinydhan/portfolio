@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-
 import { TopNavigationProps } from './TopNavigation.d'
 import withQuery from './TopNavigation.query'
 import {

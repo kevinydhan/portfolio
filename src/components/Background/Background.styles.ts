@@ -1,6 +1,5 @@
 import { position } from 'polished'
 import styled from 'styled-components'
-
 import { mainGridMixin } from '$theme'
 
 export const Root = styled('div')`

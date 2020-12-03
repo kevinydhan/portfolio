@@ -1,7 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-
 import { WithQuery } from '$typings'
-
 import { TopNavigationProps, TopNavigationQueryData } from './TopNavigation.d'
 
 const query = graphql`

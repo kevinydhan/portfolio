@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-
 import { BottomNavigationProps } from './BottomNavigation.d'
 import withQuery from './BottomNavigation.query'
 import { Link, List, ListItem, Root } from './BottomNavigation.styles'

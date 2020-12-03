@@ -1,8 +1,6 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
-
 import { mediaQueries } from '$theme'
-
 import { BottomNavigationRootProps } from './BottomNavigation.d'
 
 export const Root = styled('nav')<BottomNavigationRootProps>`

@@ -1,6 +1,5 @@
 import { em, rem } from 'polished'
 import styled from 'styled-components'
-
 import { TopNavigationRoot } from '$components'
 
 export const Root = styled('section')`

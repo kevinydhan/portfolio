@@ -1,7 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-
 import { WithQuery } from '$typings'
-
 import { LandingSectionProps, LandingSectionQueryData } from './Landing.d'
 
 const query = graphql`

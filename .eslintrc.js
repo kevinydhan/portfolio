@@ -41,8 +41,15 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
   rules: {
     'simple-import-sort/exports': 'error',
-    'simple-import-sort/imports': 'error',
-
+    'simple-import-sort/imports': [
+      'error',
+      {
+        /**
+         * @see https://github.com/lydell/eslint-plugin-simple-import-sort/issues/25#issuecomment-557628379
+         */
+        groups: [['^\\u0000', '^@?\\w', '^[^.]', '^\\.']],
+      },
+    ],
     'sort-keys': [
       'error',
       'asc',

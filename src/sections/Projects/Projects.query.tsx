@@ -1,7 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-
 import { WithQuery } from '$typings'
-
 import { ProjectsSectionProps, ProjectsSectionQueryData } from './Projects.d'
 
 const query = graphql`

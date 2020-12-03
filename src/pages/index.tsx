@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-
 import { Background, BottomNavigation, Head, TopNavigation } from '$components'
 import { LandingSection, ProjectsSection } from '$sections'
 

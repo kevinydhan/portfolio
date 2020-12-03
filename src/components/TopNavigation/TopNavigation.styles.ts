@@ -1,8 +1,6 @@
 import { em, position, rem, rgba, transitions } from 'polished'
 import styled from 'styled-components'
-
 import { contentContainerMixin, mediaQueries } from '$theme'
-
 import { TopNavigationRootProps } from './TopNavigation.d'
 
 export const Root = styled('header')<TopNavigationRootProps>`

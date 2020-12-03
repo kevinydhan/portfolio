@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-
 import { BackgroundProps } from './Background.d'
 import { Column, Root } from './Background.styles'
 

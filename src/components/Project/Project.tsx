@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react'
-
 import { ProjectImage, ProjectMetadata } from '$components'
 import { ProjectFragment } from '$typings'
-
 import {
   Bold,
   Button,

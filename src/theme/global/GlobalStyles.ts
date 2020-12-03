@@ -1,6 +1,5 @@
 import { normalize, rem } from 'polished'
 import { createGlobalStyle } from 'styled-components'
-
 import MuliBold from '../fonts/Muli-Bold.ttf'
 import MuliRegular from '../fonts/Muli-Regular.ttf'
 import MuliSemiBold from '../fonts/Muli-SemiBold.ttf'
