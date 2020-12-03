@@ -1,7 +1,4 @@
-# Javascript Node CircleCI 2.0 configuration file
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-
-version: 2.0
+version: 2.1
 
 jobs:
   build:
@@ -37,10 +34,9 @@ workflows:
     jobs:
       - build
     when:
-      condition:
-        or:
-          - not: [ master, << pipeline.git.branch >> ]
-          - not: [ staging, << pipeline.git.branch >> ]
+      not:
+        - equal: [ master, << pipeline.git.branch >> ]
+        - equal: [ staging, << pipeline.git.branch >> ]
 
   # Workflow for staging branch
   build-and-deploy-staging:
