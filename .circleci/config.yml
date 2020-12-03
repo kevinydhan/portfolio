@@ -37,9 +37,10 @@ workflows:
     jobs:
       - build
     when:
-      or:
-        - not: [ master, << pipeline.git.branch >> ]
-        - not: [ staging, << pipeline.git.branch >> ]
+      condition:
+        or:
+          - not: [ master, << pipeline.git.branch >> ]
+          - not: [ staging, << pipeline.git.branch >> ]
 
   # Workflow for staging branch
   build-and-deploy-staging:
