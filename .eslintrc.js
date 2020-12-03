@@ -59,6 +59,12 @@ module.exports = {
         natural: false,
       },
     ],
+    'sort-vars': [
+      'error',
+      {
+        ignoreCase: false,
+      },
+    ],
   },
   settings: {
     'import/resolver': {

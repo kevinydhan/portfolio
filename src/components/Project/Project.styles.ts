@@ -72,17 +72,21 @@ export const Description = styled('p')`
   }
 `
 
+export const Bold = styled('dt')`
+  grid-column: 1 / 3;
+  margin-bottom: ${rem(8)};
+  font-weight: 600;
+`
+
 export const List = styled('dl')`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-top: 0;
   margin-bottom: ${rem(40)};
-`
 
-export const Bold = styled('dt')`
-  grid-column: 1 / 3;
-  margin-bottom: ${rem(8)};
-  font-weight: 600;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 3fr 4fr;
+  }
 `
 
 export const ListItem = styled('dd')`
