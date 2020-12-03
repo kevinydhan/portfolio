@@ -12,6 +12,9 @@ module.exports = {
       resolve: 'gatsby-transformer-sharp',
     },
     {
+      resolve: 'gatsby-transformer-inline-svg',
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,

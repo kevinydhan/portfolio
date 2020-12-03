@@ -32,6 +32,8 @@ module.exports = {
     // This rule is disabled in favor of rational-order.
     'order/properties-alphabetical-order': null,
 
+    // 'order/properties-order': ,
+
     'selector-class-pattern': null,
 
     // Limits the number of ID selectors in a selector.
