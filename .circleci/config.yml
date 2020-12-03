@@ -23,6 +23,8 @@ jobs:
       - run: yarn build
 
   deploy:
+    docker:
+      - image: circleci/node:12.18.0
     - run: curl -X POST -d {} ${NETLIFY_DEPLOY_HOOK}
 
 workflows:
