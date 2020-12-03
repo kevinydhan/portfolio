@@ -1,9 +1,10 @@
 import React from 'react'
-import { Background, BottomNavigation, TopNavigation } from '$components'
+import { Background, BottomNavigation, Head, TopNavigation } from '$components'
 import { LandingSection, ProjectsSection } from '$sections'
 
 const IndexPage = (): JSX.Element => (
   <>
+    <Head />
     <TopNavigation />
     <main>
       <Background />
