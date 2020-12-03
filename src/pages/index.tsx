@@ -1,6 +1,6 @@
 import React from 'react'
 import { Background, BottomNavigation, TopNavigation } from '$components'
-import { LandingSection } from '$sections'
+import { LandingSection, ProjectsSection } from '$sections'
 
 const IndexPage = (): JSX.Element => (
   <>
@@ -8,6 +8,7 @@ const IndexPage = (): JSX.Element => (
     <main>
       <Background />
       <LandingSection />
+      <ProjectsSection />
     </main>
     <BottomNavigation />
   </>

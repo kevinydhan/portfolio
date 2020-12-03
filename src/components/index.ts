@@ -1,4 +1,7 @@
 export { default as Background } from './Background/Background'
 export { default as BottomNavigation } from './BottomNavigation/BottomNavigation'
+export { default as Project } from './Project/Project'
+export { default as ProjectImage } from './ProjectImage/ProjectImage'
+export { default as ProjectMetadata } from './ProjectMetadata/ProjectMetadata'
 export { default as TopNavigation } from './TopNavigation/TopNavigation'
 export { Root as TopNavigationRoot } from './TopNavigation/TopNavigation.styles'
