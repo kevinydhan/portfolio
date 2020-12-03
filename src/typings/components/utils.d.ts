@@ -1,5 +1,8 @@
 import { FunctionComponent, ReactElement } from 'react'
 
-export type WithQuery<P> = (
-  renderComponent: FunctionComponent<P>
-) => () => ReactElement<P>
+/**
+ * @template Props - Component props.
+ */
+export type WithQuery<Props = Record<string, never>> = (
+  renderComponent: FunctionComponent<Props>
+) => () => ReactElement<Props>
