@@ -38,8 +38,8 @@ workflows:
       - build
     when:
       or:
-        - equal: [ master, << pipeline.git.branch >> ]
-        - equal: [ staging, << pipeline.git.branch >> ]
+        - not: [ master, << pipeline.git.branch >> ]
+        - not: [ staging, << pipeline.git.branch >> ]
 
   # Workflow for staging branch
   build-and-deploy-staging:
