@@ -38,19 +38,11 @@ module.exports = {
     },
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'import', 'react', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
   rules: {
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          [('parent', 'sibling', 'index')],
-        ],
-      },
-    ],
+    'simple-import-sort/exports': 'error',
+    'simple-import-sort/imports': 'error',
+
     'sort-keys': [
       'error',
       'asc',

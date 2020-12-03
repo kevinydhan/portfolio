@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
+
 import { WithQuery } from '$typings'
+
 import {
   BottomNavigationProps,
   BottomNavigationQueryData,

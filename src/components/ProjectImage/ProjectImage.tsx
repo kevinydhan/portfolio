@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
+
 import { ProjectImageFragment } from '$typings'
-import { Root, Image } from './ProjectImage.styles'
+
+import { Image, Root } from './ProjectImage.styles'
 
 const ProjectImage: FunctionComponent<ProjectImageFragment> = ({
   description,

@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
+
+import { theme } from '$theme'
+
 import { HeadProps } from './Head.d'
 import withQuery from './Head.query'
-import { theme } from '$theme'
 
 export const Head: FunctionComponent<HeadProps> = ({
   title,

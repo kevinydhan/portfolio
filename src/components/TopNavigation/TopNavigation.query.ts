@@ -1,6 +1,8 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+
 import { WithQuery } from '$typings'
-import { TopNavigationQueryData, TopNavigationProps } from './TopNavigation.d'
+
+import { TopNavigationProps, TopNavigationQueryData } from './TopNavigation.d'
 
 const query = graphql`
   query getTopNavigationData {

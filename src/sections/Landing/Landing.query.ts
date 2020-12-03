@@ -1,6 +1,8 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+
 import { WithQuery } from '$typings'
-import { LandingSectionQueryData, LandingSectionProps } from './Landing.d'
+
+import { LandingSectionProps, LandingSectionQueryData } from './Landing.d'
 
 const query = graphql`
   query getLandingSectionData {

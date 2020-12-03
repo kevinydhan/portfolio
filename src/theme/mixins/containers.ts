@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
 import { margin, rem } from 'polished'
+import { css } from 'styled-components'
 
 /**
  * This mixin should be used on elements that span the entire width of the

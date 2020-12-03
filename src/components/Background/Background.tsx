@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
+
 import { BackgroundProps } from './Background.d'
-import { Root, Column } from './Background.styles'
+import { Column, Root } from './Background.styles'
 
 const Background: FunctionComponent<BackgroundProps> = ({ maxGridColumns }) => {
   const array = Array(maxGridColumns).fill(0)

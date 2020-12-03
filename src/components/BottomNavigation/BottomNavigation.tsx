@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
+
 import { BottomNavigationProps } from './BottomNavigation.d'
 import withQuery from './BottomNavigation.query'
-import { Root, List, ListItem, Link } from './BottomNavigation.styles'
+import { Link, List, ListItem, Root } from './BottomNavigation.styles'
 
 const BottomNavigation: FunctionComponent<BottomNavigationProps> = ({
   links,

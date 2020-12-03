@@ -1,6 +1,8 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+
 import { WithQuery } from '$typings'
-import { HeadQueryData, HeadProps } from './Head.d'
+
+import { HeadProps, HeadQueryData } from './Head.d'
 
 const query = graphql`
   query getHeadData {

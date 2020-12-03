@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
+
 import { LandingSectionProps } from './Landing.d'
 import withQuery from './Landing.query'
-import { Root, Heading, Description, Button } from './Landing.styles'
+import { Button, Description, Heading, Root } from './Landing.styles'
 
 const LandingSection: FunctionComponent<LandingSectionProps> = ({
   heading,

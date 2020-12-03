@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { rem } from 'polished'
+import styled from 'styled-components'
 
 export const Heading = styled('h2')`
   margin-top: 0;

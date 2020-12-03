@@ -1,15 +1,17 @@
 import React, { FunctionComponent } from 'react'
+
 import { ProjectImage, ProjectMetadata } from '$components'
 import { ProjectFragment } from '$typings'
+
 import {
-  Root,
-  Content,
-  Heading,
-  Description,
   Bold,
+  Button,
+  Content,
+  Description,
+  Heading,
   List,
   ListItem,
-  Button,
+  Root,
 } from './Project.styles'
 
 const Project: FunctionComponent<ProjectFragment> = ({

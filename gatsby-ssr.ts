@@ -1,6 +1,6 @@
+import { ReplaceRendererArgs } from 'gatsby'
 import { ReactElement } from 'react'
 import { renderToString } from 'react-dom/server'
-import { ReplaceRendererArgs } from 'gatsby'
 
 export const replaceRenderer = ({
   bodyComponent,

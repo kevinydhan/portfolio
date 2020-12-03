@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react'
+
 import { Project } from '$components'
+
 import { ProjectsSectionProps } from './Projects.d'
 import withQuery from './Projects.query'
 import { Heading } from './Projects.styles'

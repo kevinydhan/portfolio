@@ -1,7 +1,9 @@
-import styled from 'styled-components'
 import { em, padding, rem } from 'polished'
-import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
+import styled from 'styled-components'
+
 import { convertNumberToPercent as percent } from '$theme'
+
+import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
 
 export const Root = styled('div').attrs({
   imageOffset: -0.055,

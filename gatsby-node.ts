@@ -1,5 +1,5 @@
-import path from 'path'
 import { GatsbyNode } from 'gatsby'
+import path from 'path'
 
 export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
   actions,

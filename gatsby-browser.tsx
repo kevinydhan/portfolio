@@ -1,7 +1,8 @@
-import React, { ReactElement } from 'react'
 import { WrapRootElementBrowserArgs } from 'gatsby'
+import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme, GlobalStyles } from '$theme'
+
+import { GlobalStyles, theme } from '$theme'
 
 export const wrapRootElement = ({
   element,

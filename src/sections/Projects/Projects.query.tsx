@@ -1,6 +1,8 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+
 import { WithQuery } from '$typings'
-import { ProjectsSectionQueryData, ProjectsSectionProps } from './Projects.d'
+
+import { ProjectsSectionProps, ProjectsSectionQueryData } from './Projects.d'
 
 const query = graphql`
   query getProjectsSectionData {
