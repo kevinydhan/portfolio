@@ -1,5 +1,6 @@
 export { default as Background } from './Background/Background'
 export { default as BottomNavigation } from './BottomNavigation/BottomNavigation'
+export { default as Footer } from './Footer/Footer'
 export { default as Head } from './Head/Head'
 export { default as Project } from './Project/Project'
 export { default as ProjectImage } from './ProjectImage/ProjectImage'

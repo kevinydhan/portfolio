@@ -1,5 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import { Background, BottomNavigation, Head, TopNavigation } from '$components'
+import {
+  Background,
+  BottomNavigation,
+  Footer,
+  Head,
+  TopNavigation,
+} from '$components'
 import { LandingSection, ProjectsSection } from '$sections'
 
 const IndexPage: FunctionComponent = () => (
@@ -12,6 +18,7 @@ const IndexPage: FunctionComponent = () => (
       <ProjectsSection />
     </main>
     <BottomNavigation />
+    <Footer />
   </>
 )
 
