@@ -7,9 +7,9 @@ import boxShadow from '../helpers/createBoxShadowValue'
  */
 export const palette = {
   black: '#000',
-  white: '#f0f1f2',
-  lightGreyBlue: '#e6eaee',
   darkGreyBlue: '#595c5e',
+  lightGreyBlue: '#e6eaee',
+  white: '#f0f1f2',
 }
 
 /**
@@ -19,8 +19,8 @@ export const palette = {
  */
 export const colors = {
   background: palette.white,
-  gridlines: palette.lightGreyBlue,
   body: palette.darkGreyBlue,
+  gridlines: palette.lightGreyBlue,
   heading: palette.black,
   link: palette.black,
 }
@@ -31,8 +31,8 @@ export const borders = {
 }
 
 export const boxShadows = {
-  primary: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
   bottomNavigation: boxShadow([0, -4, 16], rgba(palette.black, 0.1)),
+  primary: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
 }
 
 /**
@@ -67,8 +67,8 @@ export const numerics = {
    * Defines the maximum width for the page's content.
    */
   contentMaxWidth: breakpoints['lg-1'],
-  topNavigationHeight: 80,
   opacityOnHover: 0.5,
+  topNavigationHeight: 80,
 }
 
 export const transitions = {
@@ -76,15 +76,15 @@ export const transitions = {
 }
 
 export const mediaQueries = {
+  desktop: [
+    '@media',
+    `(hover: hover) and (min-width: ${em(breakpoints['md-0'])})`,
+  ].join(', '),
   mobile: [
     '@media',
     '(hover: none)',
     '(hover: on-demand)',
     `(hover: hover) and (max-width: ${em(breakpoints['md-0'] - 1)})`,
-  ].join(', '),
-  desktop: [
-    '@media',
-    `(hover: hover) and (min-width: ${em(breakpoints['md-0'])})`,
   ].join(', '),
 }
 

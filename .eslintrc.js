@@ -28,9 +28,37 @@ module.exports = {
         'react/prop-types': 'off',
       },
     },
+    {
+      files: ['gatsby-config.js', 'package.json', 'src/theme/global/theme.ts'],
+      rules: {
+        'sort-keys': 'off',
+      },
+    },
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'import', 'react', 'react-hooks'],
+  rules: {
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          [('parent', 'sibling', 'index')],
+        ],
+      },
+    ],
+    'sort-keys': [
+      'error',
+      'asc',
+      {
+        caseSensitive: true,
+        minKeys: 2,
+        natural: false,
+      },
+    ],
+  },
   settings: {
     'import/resolver': {
       alias: [

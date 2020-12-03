@@ -2,13 +2,13 @@ import React, { FunctionComponent } from 'react'
 import { TopNavigationProps } from './TopNavigation.d'
 import withQuery from './TopNavigation.query'
 import {
-  Root,
-  NavContainer,
-  LogoLink,
-  Nav,
+  Link,
   List,
   ListItem,
-  Link,
+  LogoLink,
+  Nav,
+  NavContainer,
+  Root,
 } from './TopNavigation.styles'
 
 const TopNavigation: FunctionComponent<TopNavigationProps> = ({
