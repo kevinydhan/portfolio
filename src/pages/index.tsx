@@ -1,8 +1,8 @@
-import React from 'react'
-import { Background, BottomNavigation, Head, TopNavigation } from '$components'
+import React, { FunctionComponent } from 'react'
+import { Head, Background, BottomNavigation, TopNavigation } from '$components'
 import { LandingSection, ProjectsSection } from '$sections'
 
-const IndexPage = (): JSX.Element => (
+const IndexPage: FunctionComponent = () => (
   <>
     <Head />
     <TopNavigation />

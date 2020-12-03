@@ -1,12 +1,13 @@
 import { createGlobalStyle } from 'styled-components'
 import { normalize, rem } from 'polished'
-import { mediaQueries } from './theme'
-import { mainGridMixin, mainGridChildMixin } from '../mixins/grids'
-import { contentContainerMixin } from '../mixins/containers'
 
+import { mediaQueries } from './theme'
+import { contentContainerMixin } from '../mixins/containers'
+import { mainGridChildMixin, mainGridMixin } from '../mixins/grids'
+
+import MuliBold from '../fonts/Muli-Bold.ttf'
 import MuliRegular from '../fonts/Muli-Regular.ttf'
 import MuliSemiBold from '../fonts/Muli-SemiBold.ttf'
-import MuliBold from '../fonts/Muli-Bold.ttf'
 
 const GlobalStyles = createGlobalStyle`
   ${normalize()}
