@@ -28,6 +28,9 @@ module.exports = {
       resolve: 'gatsby-plugin-react-helmet',
     },
     {
+      resolve: 'gatsby-plugin-styled-components',
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icons: defaultIcons,
