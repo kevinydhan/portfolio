@@ -31,7 +31,7 @@ jobs:
       - image: circleci/node:12.18.0
     steps:
       - run: curl -X POST -d {} ${NETLIFY_PRODUCTION_DEPLOY_HOOK}
-
+      - run: echo "Successfully deployed site"
 
 workflows:
   # Workflow for non-master or staging branches
@@ -41,9 +41,9 @@ workflows:
     when:
       or:
         - not:
-            equal: [ master, << pipeline.git.branch >> ]
+            equal: [master, << pipeline.git.branch >>]
         - not:
-            equal: [ staging, << pipeline.git.branch >> ]
+            equal: [staging, << pipeline.git.branch >>]
 
   # Workflow for staging branch
   build-and-deploy-staging:
@@ -53,4 +53,4 @@ workflows:
           requires:
             - build
     when:
-      equal: [ staging, << pipeline.git.branch >> ]
+      equal: [staging, << pipeline.git.branch >>]
