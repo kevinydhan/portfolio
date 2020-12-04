@@ -9,6 +9,12 @@ export const Root = styled('div')<ProjectRootProps>`
     margin-top: ${rem(100)};
   }
 
+  @media screen and (min-width: 768px) {
+    & + & {
+      margin-top: ${rem(160)};
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     display: flex;
     align-items: center;

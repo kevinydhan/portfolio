@@ -67,7 +67,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ${mediaQueries.desktop} {
-      margin-top: ${rem(120)};
+      margin: ${rem(120)} 0;
     }
   }
 
