@@ -27,8 +27,6 @@ jobs:
       - run: curl -X POST -d {} ${NETLIFY_DEPLOY_HOOK}
 
 workflows:
-  version: 2
-
   # Workflow for non-master or staging branches
   build:
     jobs:
