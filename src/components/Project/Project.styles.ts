@@ -1,9 +1,9 @@
 import { em, padding, rem } from 'polished'
 import styled from 'styled-components'
+import { Button } from '$components'
 import {
   convertNumberToPercent as percent,
   createMediaQuery as media,
-  primaryButtonMixin,
 } from '$theme'
 import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
 import { ProjectRootProps } from './Project.d'
@@ -86,7 +86,7 @@ export const ButtonContainer = styled('div')`
   }
 `
 
-export const Button = styled('a')`
+export const CTAButton = styled(Button)`
   ${media({ maxWidthKey: 'sm-1' })} {
     & + & {
       margin-top: ${rem(8)};
@@ -102,6 +102,5 @@ export const Button = styled('a')`
     }
   }
 
-  ${primaryButtonMixin}
   ${padding(em(14), 0)}
 `

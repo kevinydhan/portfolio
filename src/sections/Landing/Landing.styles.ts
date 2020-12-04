@@ -1,7 +1,7 @@
 import { em, padding, rem } from 'polished'
 import styled from 'styled-components'
-import { TopNavigationRoot } from '$components'
-import { createMediaQuery as media, primaryButtonMixin } from '$theme'
+import { Button, TopNavigationRoot } from '$components'
+import { createMediaQuery as media } from '$theme'
 
 export const Root = styled('section')`
   display: flex;
@@ -38,7 +38,7 @@ export const Description = styled('p')`
   }
 `
 
-export const Button = styled('a')`
+export const CTAButton = styled(Button)`
   ${media({ maxWidthKey: 'sm-1' })} {
     ${padding(em(16), 0)}
 
@@ -56,6 +56,4 @@ export const Button = styled('a')`
       margin-left: ${rem(12)};
     }
   }
-
-  ${primaryButtonMixin}
 `
