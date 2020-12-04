@@ -61,7 +61,8 @@ const GlobalStyles = createGlobalStyle`
     ${mainGridChildMixin}
 
     ${mediaQueries.mobile} {
-      margin-bottom: ${rem(120)};
+      padding-top: ${rem(40)};
+      padding-bottom: ${rem(120)};
     }
 
     ${mediaQueries.desktop} {
