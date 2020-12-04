@@ -28,6 +28,15 @@ module.exports = {
       resolve: 'gatsby-plugin-react-helmet',
     },
     {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        displayName: false,
+        minify: true,
+        pure: true,
+        transpileTemplateLiterals: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icons: defaultIcons,
