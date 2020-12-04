@@ -6,7 +6,7 @@ export const Root = styled('picture')`
   height: 100%;
   margin-bottom: ${rem(20)};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
     margin-bottom: ${rem(32)};
   }
 `

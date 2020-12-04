@@ -18,7 +18,7 @@ export const Root = styled('dl')`
   }
 
   @media screen and (min-width: 1024px) {
-    margin-bottom: ${rem(32)};
+    margin-bottom: ${rem(40)};
   }
 `
 
