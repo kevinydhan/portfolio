@@ -1,21 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import { ProjectImage, ProjectMetadata } from '$components'
 import { ProjectFragment } from '$typings'
-import {
-  Bold,
-  Button,
-  Content,
-  Description,
-  Heading,
-  List,
-  ListItem,
-  Root,
-} from './Project.styles'
+import { Button, Content, Description, Heading, Root } from './Project.styles'
 
 const Project: FunctionComponent<ProjectFragment> = ({
   name,
   description,
-  technologies,
   links,
   images,
   ...metadata
@@ -24,14 +14,8 @@ const Project: FunctionComponent<ProjectFragment> = ({
     {images.length && <ProjectImage {...images[0]} />}
     <Content>
       {name && <Heading>{name}</Heading>}
-      <ProjectMetadata {...metadata} />
       {description && <Description>{description}</Description>}
-      <List>
-        <Bold>Technologies Used</Bold>
-        {technologies.map((technology) => (
-          <ListItem key={technology.id}>{technology.name}</ListItem>
-        ))}
-      </List>
+      <ProjectMetadata {...metadata} />
       {links.map((link) => (
         <Button
           key={link.id}

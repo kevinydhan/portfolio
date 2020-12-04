@@ -1,23 +1,43 @@
 import { rem } from 'polished'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import {
+  ProjectMetadataListDetailProps,
+  ProjectMetadataListTermProps,
+} from './ProjectMetadata.d'
 
 export const Root = styled('dl')`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-top: 0;
-  margin-bottom: ${rem(24)};
-  font-size: ${rem(16)};
-  line-height: 1.5;
+  margin-bottom: ${rem(40)};
 
   @media screen and (min-width: 768px) {
     grid-template-columns: 3fr 4fr;
+    margin-bottom: ${rem(28)};
   }
 `
 
-export const Term = styled('dt')`
-  font-weight: 600;
+export const Term = styled('dt')<ProjectMetadataListTermProps>`
+  grid-column: ${({ fullWidth }) => fullWidth && '1 / 3'};
 `
 
-export const Detail = styled('dd')`
-  margin: 0;
+Term.defaultProps = {
+  fullWidth: false,
+}
+
+const detailBulletMixin = css`
+  &::before {
+    margin-right: ${rem(10)};
+    content: '▪';
+  }
 `
+
+export const Detail = styled('dd')<ProjectMetadataListDetailProps>`
+  margin: 0;
+
+  ${({ showBullet }) => showBullet && detailBulletMixin}
+`
+
+Detail.defaultProps = {
+  showBullet: false,
+}

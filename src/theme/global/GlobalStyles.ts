@@ -64,11 +64,42 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  h1,
+  h2,
+  h3 {
+    line-height: 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  dt {
+    font-weight: 600;
+  }
+
+  p,
+  ul,
+  dl {
+    line-height: 1.5;
+  }
+
+  p {
+    @media screen and (min-width: 768px) {
+      font-size: ${rem(17)};
+    }
+  }
+
   p,
   ul,
   dd {
     color: ${({ theme }) => theme.colors.body};
   }
+
+  a,
+  dd::before {
+    color: ${({ theme }) => theme.colors.link};
+  }
+
 
   button {
     cursor: pointer;

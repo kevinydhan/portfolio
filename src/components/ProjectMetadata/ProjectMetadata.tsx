@@ -3,13 +3,14 @@ import { ProjectMetadataProps } from './ProjectMetadata.d'
 import { convertDateToISOString as isoString } from './ProjectMetadata.helpers'
 import { Detail, Root, Term } from './ProjectMetadata.styles'
 
-const ProjectsMetadata: FunctionComponent<ProjectMetadataProps> = ({
+const ProjectMetadata: FunctionComponent<ProjectMetadataProps> = ({
   type,
   startDate,
   startDateText,
   endDate,
   endDateText,
   roles,
+  technologies,
 }) => (
   <Root>
     <Term>Dates</Term>
@@ -26,7 +27,17 @@ const ProjectsMetadata: FunctionComponent<ProjectMetadataProps> = ({
     <Detail>{roles.map((role) => role.name).join(', ')}</Detail>
     <Term>Project Type</Term>
     <Detail>{type}</Detail>
+    <Term fullWidth>Technologies</Term>
+    {technologies.map((technology) => (
+      <Detail showBullet key={technology.id}>
+        {technology.name}
+      </Detail>
+    ))}
   </Root>
 )
 
-export default ProjectsMetadata
+ProjectMetadata.defaultProps = {
+  technologies: [],
+}
+
+export default ProjectMetadata

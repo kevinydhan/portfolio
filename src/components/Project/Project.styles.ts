@@ -1,6 +1,6 @@
-import { em, padding, rem } from 'polished'
+import { rem } from 'polished'
 import styled from 'styled-components'
-import { convertNumberToPercent as percent } from '$theme'
+import { convertNumberToPercent as percent, primaryButtonMixin } from '$theme'
 import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
 import { ProjectRootProps } from './Project.d'
 
@@ -54,9 +54,6 @@ export const Content = styled('div')`
 export const Heading = styled('h3')`
   margin-top: 0;
   margin-bottom: ${rem(16)};
-  font-weight: 600;
-  font-size: ${rem(24)};
-  line-height: 1;
 
   @media screen and (min-width: 768px) {
     font-size: ${rem(30)};
@@ -66,57 +63,9 @@ export const Heading = styled('h3')`
 export const Description = styled('p')`
   margin-top: 0;
   margin-bottom: ${rem(24)};
-  font-size: ${rem(16)};
-  line-height: 1.5;
-  letter-spacing: 0.016em;
-
-  @media screen and (min-width: 768px) {
-    font-size: ${rem(17)};
-  }
-`
-
-export const Bold = styled('dt')`
-  grid-column: 1 / 3;
-  margin-bottom: ${rem(8)};
-  font-weight: 600;
-`
-
-export const List = styled('dl')`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: 0;
-  margin-bottom: ${rem(40)};
-
-  @media screen and (min-width: 768px) {
-    grid-template-columns: 3fr 4fr;
-  }
-`
-
-export const ListItem = styled('dd')`
-  display: flex;
-  align-items: center;
-  margin: 0;
-  font-size: ${rem(16)};
-  line-height: 1.5;
-
-  &::before {
-    margin-right: ${rem(10)};
-    content: '▪';
-  }
 `
 
 export const Button = styled('a')`
-  display: block;
-  ${padding(rem(16), 0)}
-  color: ${({ theme }) => theme.colors.link};
-  font-weight: 600;
-  font-size: ${rem(17)};
-  letter-spacing: ${em(0.64, 17)};
-  text-align: center;
-  text-decoration: none;
-  background: ${({ theme }) => theme.colors.background};
-  border: ${rem(1)} solid #000;
-
   @media screen and (max-width: 567px) {
     & + & {
       margin-top: ${rem(8)};
@@ -131,4 +80,10 @@ export const Button = styled('a')`
       margin-right: ${rem(12)};
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    margin-top: ${rem(12)};
+  }
+
+  ${primaryButtonMixin}
 `
