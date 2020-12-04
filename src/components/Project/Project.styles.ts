@@ -46,7 +46,7 @@ Root.defaultProps = {
 
 export const Content = styled('div')`
   @media screen and (min-width: 1024px) {
-    width: ${percent(1 - Root.defaultProps.imageWidth)};
+    width: ${percent(1 - Root.defaultProps.imageWidth + 0.03)};
     max-width: ${rem(520)};
   }
 `
@@ -63,6 +63,10 @@ export const Heading = styled('h3')`
 export const Description = styled('p')`
   margin-top: 0;
   margin-bottom: ${rem(24)};
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: ${rem(32)};
+  }
 `
 
 export const Button = styled('a')`
@@ -74,10 +78,10 @@ export const Button = styled('a')`
 
   @media screen and (min-width: 568px) {
     display: inline-block;
-    min-width: ${rem(140)};
+    min-width: ${rem(120)};
 
     &:not(:last-child) {
-      margin-right: ${rem(12)};
+      margin-right: ${rem(8)};
     }
   }
 

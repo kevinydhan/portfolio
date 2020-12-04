@@ -15,6 +15,10 @@ export const Root = styled('dl')`
     grid-template-columns: 3fr 4fr;
     margin-bottom: ${rem(28)};
   }
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: ${rem(32)};
+  }
 `
 
 export const Term = styled('dt')<ProjectMetadataListTermProps>`
