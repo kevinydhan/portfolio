@@ -1,6 +1,7 @@
-import { em, rem } from 'polished'
+import { rem } from 'polished'
 import styled from 'styled-components'
 import { TopNavigationRoot } from '$components'
+import { primaryButtonMixin } from '$theme'
 
 export const Root = styled('section')`
   display: flex;
@@ -38,17 +39,6 @@ export const Description = styled('p')`
 `
 
 export const Button = styled('a')`
-  display: block;
-  padding: ${rem(16)} 0;
-  color: ${({ theme }) => theme.colors.link};
-  font-weight: 600;
-  font-size: ${rem(17)};
-  letter-spacing: ${em(0.64, 17)};
-  text-align: center;
-  text-decoration: none;
-  background: ${({ theme }) => theme.colors.background};
-  border: ${rem(1)} solid #000;
-
   @media screen and (max-width: 567px) {
     & + & {
       margin-top: ${rem(8)};
@@ -63,4 +53,6 @@ export const Button = styled('a')`
       margin-left: ${rem(12)};
     }
   }
+
+  ${primaryButtonMixin}
 `
