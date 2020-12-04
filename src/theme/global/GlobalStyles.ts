@@ -12,7 +12,7 @@ import { mediaQueries } from './theme'
  *
  *   vw  |  h1 | h2 | h3 | body | small
  *  320     46   36   26   16     14
- *  768                    17     16
+ *  768     52   42   30   17     16
  */
 const GlobalStyles = createGlobalStyle`
   ${normalize()}

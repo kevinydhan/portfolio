@@ -27,9 +27,21 @@ module.exports = {
     // This rule is disabled in favor of rational-order.
     'order/properties-alphabetical-order': null,
 
-    // 'order/properties-order': ,
-
     'selector-class-pattern': null,
+
+    'selector-type-no-unknown': [
+      true,
+      {
+        ignoreNamespaces: [
+          /\${[a-zA-Z0-9_\$]*\({\s?[a-zA-Z0-9_\$:',\-\s}\)]*}/,
+          /\${.*/,
+        ],
+        ignoreTypes: [
+          /\${[a-zA-Z0-9_\$]*\({\s?[a-zA-Z0-9_\$:',\-\s}\)]*}/,
+          /\${.*/,
+        ],
+      },
+    ],
 
     // Limits the number of ID selectors in a selector.
     // @see https://stylelint.io/user-guide/rules/selector-max-id

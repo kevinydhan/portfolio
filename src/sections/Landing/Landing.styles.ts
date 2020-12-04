@@ -1,7 +1,7 @@
 import { em, padding, rem } from 'polished'
 import styled from 'styled-components'
 import { TopNavigationRoot } from '$components'
-import { primaryButtonMixin } from '$theme'
+import { createMediaQuery as media, primaryButtonMixin } from '$theme'
 
 export const Root = styled('section')`
   display: flex;
@@ -20,7 +20,7 @@ export const Heading = styled('h1')`
   font-size: ${rem(46)};
   line-height: 1;
 
-  @media screen and (min-width: 768px) {
+  ${media({ minWidthKey: 'md-0' })} {
     margin-bottom: ${rem(28)};
     font-size: ${rem(52)};
   }
@@ -33,13 +33,13 @@ export const Description = styled('p')`
   font-size: ${rem(18)};
   line-height: 1.5;
 
-  @media screen and (min-width: 768px) {
+  ${media({ minWidthKey: 'md-0' })} {
     font-size: ${rem(20)};
   }
 `
 
 export const Button = styled('a')`
-  @media screen and (max-width: 567px) {
+  ${media({ maxWidthKey: 'sm-1' })} {
     ${padding(em(16), 0)}
 
     & + & {
@@ -47,7 +47,7 @@ export const Button = styled('a')`
     }
   }
 
-  @media screen and (min-width: 568px) {
+  ${media({ minWidthKey: 'sm-1' })} {
     display: inline-block;
     min-width: ${rem(200)};
     ${padding(em(17), 0)}
