@@ -76,6 +76,12 @@ export const Description = styled('p')`
   }
 `
 
+export const ButtonContainer = styled('div')`
+  @media screen and (min-width: 568px) {
+    display: flex;
+  }
+`
+
 export const Button = styled('a')`
   @media screen and (max-width: 567px) {
     & + & {
@@ -84,16 +90,12 @@ export const Button = styled('a')`
   }
 
   @media screen and (min-width: 568px) {
-    display: inline-block;
-    min-width: ${rem(120)};
+    flex: 1;
+    max-width: ${rem(140)};
 
-    &:not(:last-child) {
-      margin-right: ${rem(8)};
+    & + & {
+      margin-left: ${rem(8)};
     }
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-top: ${rem(12)};
   }
 
   ${primaryButtonMixin}

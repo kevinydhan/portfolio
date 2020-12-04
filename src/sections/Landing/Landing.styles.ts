@@ -1,4 +1,4 @@
-import { rem } from 'polished'
+import { em, padding, rem } from 'polished'
 import styled from 'styled-components'
 import { TopNavigationRoot } from '$components'
 import { primaryButtonMixin } from '$theme'
@@ -55,4 +55,8 @@ export const Button = styled('a')`
   }
 
   ${primaryButtonMixin}
+
+  @media screen and (min-width: 768px) {
+    ${padding(em(17), 0)}
+  }
 `
