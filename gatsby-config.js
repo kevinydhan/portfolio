@@ -1,56 +1,37 @@
-/* eslint @typescript-eslint/camelcase: 0 */
-const path = require('path')
-const config = require('./src/config/site.config')
+const { defaultIcons } = require('gatsby-plugin-manifest/common')
+require('dotenv').config()
 
 module.exports = {
   plugins: [
     {
-      resolve: 'gatsby-plugin-typescript',
+      resolve: 'gatsby-plugin-ts-config',
+    },
+    {
+      resolve: 'gatsby-plugin-sharp',
+    },
+    {
+      resolve: 'gatsby-transformer-sharp',
+    },
+    {
+      resolve: 'gatsby-transformer-inline-svg',
+    },
+    {
+      resolve: 'gatsby-source-contentful',
       options: {
-        transpileOnly: false,
-        compilerOptions: {
-          target: 'es2015',
-          jsx: 'react',
-        },
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        environment: process.env.CONTENTFUL_ENVIRONMENT,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        downloadLocal: true,
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: path.join(__dirname, 'src', 'images'),
-      },
+      resolve: 'gatsby-plugin-react-helmet',
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: config.siteTitle,
-        short_name: config.siteTitle,
-        description: config.siteDescription,
-        start_url: config.siteStartUrl,
-        background_color: config.siteBackgroundColor,
-        theme_color: config.siteThemeColor,
-        display: 'standalone',
-        icon: 'src/images/icon.png',
+        icons: defaultIcons,
       },
     },
-    {
-      resolve: 'gatsby-plugin-html-attributes',
-      options: {
-        lang: 'en',
-      },
-    },
-    'gatsby-plugin-robots-txt',
-    'gatsby-plugin-offline',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-sass',
-    'gatsby-plugin-minify-classnames',
   ],
-  siteMetadata: {
-    title: config.siteTitle,
-    author: config.siteAuthor,
-    siteUrl: config.siteUrl,
-    description: config.siteDescription,
-  },
 }

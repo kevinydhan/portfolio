@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "paths": {
+      "$components": ["src/components"],
+      "$sections": ["src/sections"],
+      "$theme": ["src/theme"],
+      "$theme/*": ["src/theme/*"],
+      "$typings": ["src/typings"]
+    }
+  }
+}

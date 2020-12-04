@@ -5,8 +5,15 @@ module.exports = {
     'stylelint-config-rational-order',
     'stylelint-prettier',
   ],
-  ignoreFiles: ['src/images', 'src/theme/fonts'],
+  ignoreFiles: ['src/theme/fonts'],
   rules: {
+    'font-family-no-missing-generic-family-keyword': [
+      true,
+      {
+        ignoreFontFamilies: ['Muli'],
+      },
+    ],
+
     // Disables indentation rule. This rule is handled by Prettier.
     indentation: null,
 
@@ -24,6 +31,8 @@ module.exports = {
 
     // This rule is disabled in favor of rational-order.
     'order/properties-alphabetical-order': null,
+
+    // 'order/properties-order': ,
 
     'selector-class-pattern': null,
 
