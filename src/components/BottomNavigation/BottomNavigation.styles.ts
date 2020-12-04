@@ -3,7 +3,11 @@ import styled from 'styled-components'
 import { mediaQueries } from '$theme'
 import { BottomNavigationRootProps } from './BottomNavigation.d'
 
-export const Root = styled('nav')<BottomNavigationRootProps>`
+export const Root = styled('nav').withConfig({
+  shouldForwardProp: (prop, validate) => {
+    return !['height'].includes(prop) && validate(prop)
+  },
+})<BottomNavigationRootProps>`
   ${mediaQueries.mobile} {
     position: fixed;
     bottom: 0;

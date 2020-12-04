@@ -3,7 +3,11 @@ import styled from 'styled-components'
 import { contentContainerMixin, mediaQueries } from '$theme'
 import { TopNavigationRootProps } from './TopNavigation.d'
 
-export const Root = styled('header')<TopNavigationRootProps>`
+export const Root = styled('header').withConfig({
+  shouldForwardProp: (prop, validate) => {
+    return !['height'].includes(prop) && validate(prop)
+  },
+})<TopNavigationRootProps>`
   ${mediaQueries.mobile} {
     display: none;
   }
@@ -84,7 +88,7 @@ export const Link = styled('a')`
 
   &::after {
     ${position('absolute', null, 0, 0, 0)}
-    height: ${rem(4)};
+    height: ${rem(2)};
     background: ${({ theme }) => theme.colors.link};
     transform: scaleX(0);
     transform-origin: right;
