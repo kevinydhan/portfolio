@@ -20,11 +20,18 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
 
-  deploy:
+  deploy-staging:
     docker:
       - image: circleci/node:12.18.0
     steps:
-      - run: curl -X POST -d {} ${NETLIFY_DEPLOY_HOOK}
+      - run: curl -X POST -d {} ${NETLIFY_STAGING_DEPLOY_HOOK}
+
+  deploy-production:
+    docker:
+      - image: circleci/node:12.18.0
+    steps:
+      - run: curl -X POST -d {} ${NETLIFY_PRODUCTION_DEPLOY_HOOK}
+
 
 workflows:
   # Workflow for non-master or staging branches
@@ -40,11 +47,9 @@ workflows:
 
   # Workflow for staging branch
   build-and-deploy-staging:
-    env:
-      NETLIFY_DEPLOY_HOOK: ${NETLIFY_STAGING_DEPLOY_HOOK}
     jobs:
       - build
-      - deploy:
+      - deploy-staging:
           requires:
             - build
     when:
