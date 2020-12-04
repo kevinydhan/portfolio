@@ -40,6 +40,8 @@ export const Description = styled('p')`
 
 export const Button = styled('a')`
   @media screen and (max-width: 567px) {
+    ${padding(em(16), 0)}
+
     & + & {
       margin-top: ${rem(8)};
     }
