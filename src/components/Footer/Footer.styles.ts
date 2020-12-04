@@ -1,6 +1,10 @@
 import { position, rem, rgba, transitions } from 'polished'
 import styled from 'styled-components'
-import { contentContainerMixin, mediaQueries } from '$theme'
+import {
+  contentContainerMixin,
+  createMediaQuery as media,
+  mediaQueries,
+} from '$theme'
 import { Root as BottomNavigationRoot } from '../BottomNavigation/BottomNavigation.styles'
 
 export const Root = styled('footer')`
@@ -19,7 +23,7 @@ export const ListHeading = styled('h2')`
   font-size: ${rem(20)};
   line-height: 1;
 
-  @media screen and (min-width: 768px) {
+  ${media({ minWidthKey: 'md-0' })} {
     font-size: ${rem(24)};
   }
 `

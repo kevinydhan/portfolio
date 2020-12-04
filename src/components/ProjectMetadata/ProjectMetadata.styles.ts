@@ -1,5 +1,6 @@
 import { rem } from 'polished'
 import styled, { css } from 'styled-components'
+import { createMediaQuery as media } from '$theme'
 import {
   ProjectMetadataListDetailProps,
   ProjectMetadataListTermProps,
@@ -12,12 +13,15 @@ export const Root = styled('dl')`
   margin-bottom: ${rem(40)};
   font-size: ${rem(14)};
 
-  @media screen and (min-width: 768px) {
-    margin-bottom: ${rem(28)};
+  ${media({ minWidthKey: 'md-0' })} {
     font-size: ${rem(16)};
   }
 
-  @media screen and (min-width: 1024px) {
+  ${media({ maxWidthKey: 'md-1', minWidthKey: 'md-0' })} {
+    margin-bottom: ${rem(28)};
+  }
+
+  ${media({ minWidthKey: 'md-1' })} {
     margin-bottom: ${rem(40)};
   }
 `

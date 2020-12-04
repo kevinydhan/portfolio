@@ -1,6 +1,6 @@
 import { position } from 'polished'
 import styled from 'styled-components'
-import { mainGridMixin } from '$theme'
+import { createMediaQuery as media, mainGridMixin } from '$theme'
 
 export const Root = styled('div')`
   ${mainGridMixin}
@@ -17,7 +17,7 @@ export const Column = styled('div')`
     border-left: ${({ theme }) => theme.borders.gridlines};
   }
 
-  @media screen and (max-width: 767px) {
+  ${media({ maxWidthKey: 'md-0' })} {
     &:nth-child(2),
     &:nth-child(3),
     &:nth-child(4) {
