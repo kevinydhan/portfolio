@@ -48,6 +48,7 @@ export const Button = styled('a')`
   @media screen and (min-width: 568px) {
     display: inline-block;
     min-width: ${rem(200)};
+    ${padding(em(17), 0)}
 
     & + & {
       margin-left: ${rem(12)};
@@ -55,8 +56,4 @@ export const Button = styled('a')`
   }
 
   ${primaryButtonMixin}
-
-  @media screen and (min-width: 768px) {
-    ${padding(em(17), 0)}
-  }
 `

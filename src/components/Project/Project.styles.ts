@@ -1,4 +1,4 @@
-import { rem } from 'polished'
+import { em, padding, rem } from 'polished'
 import styled from 'styled-components'
 import { convertNumberToPercent as percent, primaryButtonMixin } from '$theme'
 import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
@@ -99,4 +99,5 @@ export const Button = styled('a')`
   }
 
   ${primaryButtonMixin}
+  ${padding(em(14), 0)}
 `

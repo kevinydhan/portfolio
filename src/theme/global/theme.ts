@@ -55,8 +55,6 @@ export const breakpoints = {
   'md-1': 1024,
   'lg-0': 1200,
   'lg-1': 1440,
-  'xl-0': 1600,
-  'hd-0': 1920,
 }
 
 /**
