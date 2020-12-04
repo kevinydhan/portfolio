@@ -1,4 +1,4 @@
-const { favicons, defaultIcons } = require('gatsby-plugin-manifest/common')
+const { defaultIcons } = require('gatsby-plugin-manifest/common')
 require('dotenv').config()
 
 module.exports = {
