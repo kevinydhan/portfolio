@@ -1,3 +1,4 @@
+const { favicons, defaultIcons } = require('gatsby-plugin-manifest/common')
 require('dotenv').config()
 
 module.exports = {
@@ -25,6 +26,12 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-react-helmet',
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icons: defaultIcons,
+      },
     },
   ],
 }
