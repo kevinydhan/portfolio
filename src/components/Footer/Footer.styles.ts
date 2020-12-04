@@ -5,7 +5,7 @@ import { Root as BottomNavigationRoot } from '../BottomNavigation/BottomNavigati
 
 export const Root = styled('footer')`
   ${contentContainerMixin}
-  margin-bottom: ${rem(BottomNavigationRoot.defaultProps.height + 20)};
+  margin-bottom: ${rem(BottomNavigationRoot.defaultProps.height + 40)};
 
   ${mediaQueries.desktop} {
     margin-bottom: ${rem(40)};
