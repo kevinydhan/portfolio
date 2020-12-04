@@ -1,4 +1,4 @@
-import { em, position, rem, rgba, transitions } from 'polished'
+import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
 import { contentContainerMixin, mediaQueries } from '$theme'
 import { TopNavigationRootProps } from './TopNavigation.d'
@@ -74,17 +74,19 @@ export const ListItem = styled('li')`
   }
 `
 
+export const LinkText = styled('span')`
+  color: ${({ theme }) => theme.colors.link};
+  font-size: ${rem(17)};
+  opacity: 1;
+  ${transitions(['opacity'], '125ms ease-in')}
+`
+
 export const Link = styled('a')`
   position: relative;
   display: flex;
   align-items: center;
   height: 100%;
-  color: ${({ theme }) => theme.colors.link};
-  font-size: ${rem(17)};
-  letter-spacing: ${em(0.64, 17)};
   text-decoration: none;
-
-  ${transitions(['color'], '125ms ease-in')}
 
   &::after {
     ${position('absolute', null, 0, 0, 0)}
@@ -98,7 +100,9 @@ export const Link = styled('a')`
 
   &:hover,
   &:active {
-    color: ${({ theme }) => rgba(theme.colors.link, 0.5)};
+    ${LinkText} {
+      opacity: 0.5;
+    }
 
     &::after {
       transform: scaleX(1);
