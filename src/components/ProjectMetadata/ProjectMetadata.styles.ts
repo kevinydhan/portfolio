@@ -14,6 +14,7 @@ export const Root = styled('dl')`
 
   @media screen and (min-width: 768px) {
     margin-bottom: ${rem(28)};
+    font-size: ${rem(16)};
   }
 
   @media screen and (min-width: 1024px) {
@@ -38,7 +39,6 @@ const detailBulletMixin = css`
 
 export const Detail = styled('dd')<ProjectMetadataListDetailProps>`
   margin: 0;
-
   ${({ showBullet }) => showBullet && detailBulletMixin}
 `
 

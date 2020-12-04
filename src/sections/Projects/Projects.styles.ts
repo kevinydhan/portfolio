@@ -9,7 +9,7 @@ export const Heading = styled('h2')`
   line-height: 1;
 
   @media screen and (min-width: 768px) {
-    margin-bottom: ${rem(28)};
+    margin-bottom: ${rem(60)};
     font-size: ${rem(48)};
   }
 

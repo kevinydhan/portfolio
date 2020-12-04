@@ -4,7 +4,6 @@ import styled from 'styled-components'
 export const Root = styled('picture')`
   display: block;
   height: 100%;
-
   margin-bottom: ${rem(20)};
 `
 
