@@ -7,6 +7,12 @@ import { contentContainerMixin } from '../mixins/containers'
 import { mainGridChildMixin, mainGridMixin } from '../mixins/grids'
 import { mediaQueries } from './theme'
 
+/**
+ * Typographies
+ *
+ *   vw  |  h1 | h2 | h3 | body | small
+ *  320     46   36   26   16     14
+ */
 const GlobalStyles = createGlobalStyle`
   ${normalize()}
 

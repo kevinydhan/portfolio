@@ -7,12 +7,12 @@ import {
 
 export const Root = styled('dl')`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 3fr 4fr;
   margin-top: 0;
   margin-bottom: ${rem(40)};
+  font-size: ${rem(14)};
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 3fr 4fr;
     margin-bottom: ${rem(28)};
   }
 

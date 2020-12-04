@@ -54,6 +54,7 @@ export const Content = styled('div')`
 export const Heading = styled('h3')`
   margin-top: 0;
   margin-bottom: ${rem(16)};
+  font-size: ${rem(26)};
 
   @media screen and (min-width: 768px) {
     font-size: ${rem(30)};

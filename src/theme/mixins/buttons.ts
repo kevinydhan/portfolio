@@ -1,9 +1,9 @@
-import { padding, rem } from 'polished'
+import { em, padding, rem } from 'polished'
 import { css } from 'styled-components'
 
 export const primaryButtonMixin = css`
   display: block;
-  ${padding(rem(16), 0)}
+  ${padding(em(14), 0)}
   font-weight: 600;
   text-align: center;
   text-decoration: none;
