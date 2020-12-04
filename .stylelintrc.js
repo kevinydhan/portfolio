@@ -7,12 +7,7 @@ module.exports = {
   ],
   ignoreFiles: ['src/theme/fonts'],
   rules: {
-    'font-family-no-missing-generic-family-keyword': [
-      true,
-      {
-        ignoreFontFamilies: ['Muli'],
-      },
-    ],
+    'font-family-no-missing-generic-family-keyword': null,
 
     // Disables indentation rule. This rule is handled by Prettier.
     indentation: null,

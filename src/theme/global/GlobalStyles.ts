@@ -43,7 +43,9 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 100%;
-    font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
+    /* stylelint-disable-next-line
+       font-family-no-missing-generic-family-keyword */
+    font-family: ${({ theme }) => theme.fonts.primary};
     letter-spacing: 0.016em;
     scroll-behavior: smooth;
   }
