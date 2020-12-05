@@ -29,7 +29,9 @@ export default class ScrollContextProvider extends Component<
     this.scrollPosition = scrollY
   }
 
-  handleObserverEvent: IntersectionObserverCallback = () => {}
+  handleObserverEvent: IntersectionObserverCallback = () => {
+    return
+  }
 
   componentDidMount = (): void => {
     if (!window) return

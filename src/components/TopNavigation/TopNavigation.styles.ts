@@ -18,6 +18,9 @@ export const Root = styled('header').withConfig({
     height: ${({ height }) => rem(height)};
     background: ${getColor('background')};
     box-shadow: ${({ theme }) => theme.boxShadows.primary};
+    transform: ${({ isScrollingDown, height }) =>
+      `translateY(${isScrollingDown ? rem(height * -1) : 0})`};
+    transition: transform 150ms ease-out;
   }
 `
 

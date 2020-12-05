@@ -1,4 +1,8 @@
-import { InlineSvgFragment, LinkFragment } from '$typings'
+import {
+  InlineSvgFragment,
+  LinkFragment,
+  ScrollContextProviderState,
+} from '$typings'
 
 export interface TopNavigationQueryData {
   navigation: {
@@ -13,6 +17,7 @@ export interface TopNavigationProps
   logoSrc: TopNavigationQueryData['navigation']['logo']['svg']['dataURI']
 }
 
-export interface TopNavigationRootProps {
+export interface TopNavigationRootProps
+  extends Pick<ScrollContextProviderState, 'isScrollingDown'> {
   height?: number
 }
