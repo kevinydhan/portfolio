@@ -3,6 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 import MuliBold from '../fonts/Muli-Bold.ttf'
 import MuliRegular from '../fonts/Muli-Regular.ttf'
 import MuliSemiBold from '../fonts/Muli-SemiBold.ttf'
+import media from '../helpers/createMediaQuery'
+import { getColor } from '../helpers/getThemeValue'
 import { contentContainerMixin } from '../mixins/containers'
 import { mainGridChildMixin, mainGridMixin } from '../mixins/grids'
 import { mediaQueries } from './theme'
@@ -51,7 +53,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.colors.background};
+    background: ${getColor('background')};
   }
 
   main {
@@ -93,7 +95,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   p {
-    @media screen and (min-width: 768px) {
+    ${media({ minWidthKey: 'md-0' })} {
       font-size: ${rem(17)};
     }
   }
@@ -101,7 +103,7 @@ const GlobalStyles = createGlobalStyle`
   p,
   ul,
   dd {
-    color: ${({ theme }) => theme.colors.body};
+    color: ${getColor('body')};
   }
 
   a {
@@ -110,7 +112,7 @@ const GlobalStyles = createGlobalStyle`
 
   a,
   dd::before {
-    color: ${({ theme }) => theme.colors.link};
+    color: ${getColor('link')};
   }
 
   button {

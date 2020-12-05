@@ -1,5 +1,6 @@
 import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
+import { getColor } from '$theme'
 
 export const Text = styled('span')`
   display: inline-block;
@@ -18,7 +19,7 @@ export const Text = styled('span')`
 export const Background = styled('span')`
   ${position('absolute', 0, 0, 0, 0)}
   z-index: -1;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${getColor('background')};
 `
 
 export const Root = styled('a').attrs({
@@ -37,7 +38,7 @@ export const Root = styled('a').attrs({
   ${Background}::before, ${Background}::after {
     position: absolute;
     z-index: 1;
-    background: ${({ theme }) => theme.colors.link};
+    background: ${getColor('link')};
     ${({ transitionTiming }) => {
       return transitions(['transform'], `${transitionTiming}ms ease-out`)
     }}

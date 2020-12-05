@@ -1,6 +1,6 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
-import { mediaQueries } from '$theme'
+import { getColor, mediaQueries } from '$theme'
 import { BottomNavigationRootProps } from './BottomNavigation.d'
 
 export const Root = styled('nav').withConfig({
@@ -14,7 +14,7 @@ export const Root = styled('nav').withConfig({
     z-index: 999;
     width: 100%;
     height: ${({ height }) => rem(height)};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${getColor('background')};
     box-shadow: ${({ theme }) => theme.boxShadows.bottomNavigation};
   }
 

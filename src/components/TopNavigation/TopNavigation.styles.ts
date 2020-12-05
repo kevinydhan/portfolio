@@ -1,6 +1,6 @@
 import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
-import { contentContainerMixin, mediaQueries } from '$theme'
+import { contentContainerMixin, getColor, mediaQueries } from '$theme'
 import { TopNavigationRootProps } from './TopNavigation.d'
 
 export const Root = styled('header').withConfig({
@@ -16,7 +16,7 @@ export const Root = styled('header').withConfig({
     ${position('fixed', 0, 0, null, 0)}
     z-index: 999;
     height: ${({ height }) => rem(height)};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${getColor('background')};
     box-shadow: ${({ theme }) => theme.boxShadows.primary};
   }
 `
@@ -89,7 +89,7 @@ export const Link = styled('a')`
   &::after {
     ${position('absolute', null, 0, 0, 0)}
     height: ${rem(2)};
-    background: ${({ theme }) => theme.colors.link};
+    background: ${getColor('link')};
     transform: scaleX(0);
     transform-origin: right;
     ${transitions(['transform'], '125ms ease-in')}
