@@ -1,9 +1,13 @@
-import { em, position, rem, rgba, transitions } from 'polished'
+import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
-import { contentContainerMixin, mediaQueries } from '$theme'
+import { contentContainerMixin, getColor, mediaQueries } from '$theme'
 import { TopNavigationRootProps } from './TopNavigation.d'
 
-export const Root = styled('header')<TopNavigationRootProps>`
+export const Root = styled('header').withConfig({
+  shouldForwardProp: (prop, validate) => {
+    return !['height'].includes(prop) && validate(prop)
+  },
+})<TopNavigationRootProps>`
   ${mediaQueries.mobile} {
     display: none;
   }
@@ -12,7 +16,7 @@ export const Root = styled('header')<TopNavigationRootProps>`
     ${position('fixed', 0, 0, null, 0)}
     z-index: 999;
     height: ${({ height }) => rem(height)};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${getColor('background')};
     box-shadow: ${({ theme }) => theme.boxShadows.primary};
   }
 `
@@ -44,7 +48,7 @@ export const LogoLink = styled('a')`
   &:hover,
   &:active {
     svg {
-      transform: translateY(-${rem(4)});
+      transform: translateY(${rem(-4)});
       opacity: 0.5;
     }
   }
@@ -70,22 +74,22 @@ export const ListItem = styled('li')`
   }
 `
 
+export const LinkText = styled('span')`
+  font-size: ${rem(17)};
+  opacity: 1;
+  ${transitions(['opacity'], '125ms ease-in')}
+`
+
 export const Link = styled('a')`
   position: relative;
   display: flex;
   align-items: center;
   height: 100%;
-  color: ${({ theme }) => theme.colors.link};
-  font-size: ${rem(17)};
-  letter-spacing: ${em(0.64, 17)};
-  text-decoration: none;
-
-  ${transitions(['color'], '125ms ease-in')}
 
   &::after {
     ${position('absolute', null, 0, 0, 0)}
-    height: ${rem(4)};
-    background: ${({ theme }) => theme.colors.link};
+    height: ${rem(2)};
+    background: ${getColor('link')};
     transform: scaleX(0);
     transform-origin: right;
     ${transitions(['transform'], '125ms ease-in')}
@@ -94,7 +98,9 @@ export const Link = styled('a')`
 
   &:hover,
   &:active {
-    color: ${({ theme }) => rgba(theme.colors.link, 0.5)};
+    ${LinkText} {
+      opacity: 0.5;
+    }
 
     &::after {
       transform: scaleX(1);

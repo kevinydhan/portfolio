@@ -1,16 +1,20 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
-import { mediaQueries } from '$theme'
+import { getColor, mediaQueries } from '$theme'
 import { BottomNavigationRootProps } from './BottomNavigation.d'
 
-export const Root = styled('nav')<BottomNavigationRootProps>`
+export const Root = styled('nav').withConfig({
+  shouldForwardProp: (prop, validate) => {
+    return !['height'].includes(prop) && validate(prop)
+  },
+})<BottomNavigationRootProps>`
   ${mediaQueries.mobile} {
     position: fixed;
     bottom: 0;
     z-index: 999;
     width: 100%;
     height: ${({ height }) => rem(height)};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${getColor('background')};
     box-shadow: ${({ theme }) => theme.boxShadows.bottomNavigation};
   }
 
@@ -44,9 +48,7 @@ export const Link = styled('a')`
   box-sizing: border-box;
   height: 100%;
   padding: ${rem(14)} 0;
-  color: ${({ theme }) => theme.colors.link};
   font-size: ${rem(14)};
-  text-decoration: none;
 
   svg {
     width: ${rem(30)};

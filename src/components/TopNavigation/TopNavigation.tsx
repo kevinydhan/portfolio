@@ -3,6 +3,7 @@ import { TopNavigationProps } from './TopNavigation.d'
 import withQuery from './TopNavigation.query'
 import {
   Link,
+  LinkText,
   List,
   ListItem,
   LogoLink,
@@ -25,7 +26,7 @@ const TopNavigation: FunctionComponent<TopNavigationProps> = ({
           {links.map((link) => (
             <ListItem key={link.id}>
               <Link href={link.href} target={link.target} rel={link.rel}>
-                {link.name}
+                <LinkText>{link.name}</LinkText>
               </Link>
             </ListItem>
           ))}

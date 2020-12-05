@@ -1,6 +1,10 @@
-import { position, rem, rgba, transitions } from 'polished'
+import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
-import { contentContainerMixin, mediaQueries } from '$theme'
+import {
+  contentContainerMixin,
+  createMediaQuery as media,
+  mediaQueries,
+} from '$theme'
 import { Root as BottomNavigationRoot } from '../BottomNavigation/BottomNavigation.styles'
 
 export const Root = styled('footer')`
@@ -19,7 +23,7 @@ export const ListHeading = styled('h2')`
   font-size: ${rem(20)};
   line-height: 1;
 
-  @media screen and (min-width: 768px) {
+  ${media({ minWidthKey: 'md-0' })} {
     font-size: ${rem(24)};
   }
 `
@@ -29,13 +33,13 @@ export const List = styled('ul')`
   list-style: none;
 `
 
+export const LinkText = styled('span')`
+  opacity: 1;
+  ${({ theme }) => transitions(['opacity'], theme.transitions.primary)}
+`
+
 export const Link = styled('a')`
   position: relative;
-  color: ${({ theme }) => theme.colors.link};
-  font-size: ${rem(16)};
-  line-height: 1.5;
-  text-decoration: none;
-  ${({ theme }) => transitions(['color'], theme.transitions.primary)}
 
   &::after {
     ${position('absolute', '100%', 0, null, 0)}
@@ -49,7 +53,9 @@ export const Link = styled('a')`
 
   &:hover,
   &:active {
-    color: ${({ theme }) => rgba(theme.colors.link, 0.5)};
+    ${LinkText} {
+      opacity: 0.5;
+    }
 
     &::after {
       transform: scaleX(1);

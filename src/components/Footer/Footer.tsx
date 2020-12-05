@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { FooterProps } from './Footer.d'
 import withQuery from './Footer.query'
-import { Link, List, ListHeading, Root } from './Footer.styles'
+import { Link, LinkText, List, ListHeading, Root } from './Footer.styles'
 
 const Footer: FunctionComponent<FooterProps> = ({ heading, socialLinks }) => (
   <Root>
@@ -10,7 +10,7 @@ const Footer: FunctionComponent<FooterProps> = ({ heading, socialLinks }) => (
       {socialLinks.map((link) => (
         <li key={link.id}>
           <Link href={link.href} rel={link.rel} target={link.target}>
-            {link.innerText.text}
+            <LinkText>{link.innerText.text}</LinkText>
           </Link>
         </li>
       ))}
