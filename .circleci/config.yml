@@ -43,7 +43,7 @@ workflows:
     jobs:
       - build
     when:
-      or:
+      and:
         - not:
             equal: [master, << pipeline.git.branch >>]
         - not:
