@@ -33,6 +33,10 @@ export default class ScrollContextProvider extends Component<
     return
   }
 
+  observeElement = (): void => {
+    return
+  }
+
   componentDidMount = (): void => {
     if (!window) return
 
@@ -52,7 +56,9 @@ export default class ScrollContextProvider extends Component<
   }
 
   render = (): JSX.Element => (
-    <ScrollContext.Provider value={this.state}>
+    <ScrollContext.Provider
+      value={{ ...this.state, observeElement: this.observeElement }}
+    >
       {this.props.children}
     </ScrollContext.Provider>
   )

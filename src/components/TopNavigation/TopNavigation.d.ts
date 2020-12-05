@@ -1,8 +1,4 @@
-import {
-  InlineSvgFragment,
-  LinkFragment,
-  ScrollContextProviderState,
-} from '$typings'
+import { InlineSvgFragment, LinkFragment, ScrollContextValue } from '$typings'
 
 export interface TopNavigationQueryData {
   navigation: {
@@ -18,6 +14,6 @@ export interface TopNavigationProps
 }
 
 export interface TopNavigationRootProps
-  extends Pick<ScrollContextProviderState, 'isScrollingDown'> {
+  extends Pick<ScrollContextValue, 'isScrollingDown'> {
   height?: number
 }
