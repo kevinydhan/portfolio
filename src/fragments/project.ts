@@ -38,6 +38,8 @@ export const projectImageFragment = graphql`
           srcWebp
           srcSetWebp
           sizes
+          width: presentationWidth
+          height: presentationHeight
         }
       }
       internal {
