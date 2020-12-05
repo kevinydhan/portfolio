@@ -63,7 +63,7 @@ workflows:
     jobs:
       - build
       - deploy:
-          deploy_hook: ${NETLIFY_STAGING_PRODUCTION_HOOK}
+          deploy_hook: ${NETLIFY_PRODUCTION_DEPLOY_HOOK}
           requires:
             - build
     when:
