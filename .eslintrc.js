@@ -70,6 +70,7 @@ module.exports = {
     'import/resolver': {
       alias: [
         ['$components', 'src/components'],
+        ['$context', 'src/context'],
         ['$sections', 'src/sections'],
         ['$theme', 'src/theme'],
         ['$typings', 'src/typings'],

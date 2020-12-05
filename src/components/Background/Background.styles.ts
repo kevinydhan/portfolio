@@ -1,6 +1,6 @@
 import { position } from 'polished'
 import styled from 'styled-components'
-import { createMediaQuery as media, mainGridMixin } from '$theme'
+import { createMediaQuery as media, getBorder, mainGridMixin } from '$theme'
 
 export const Root = styled('div')`
   ${mainGridMixin}
@@ -11,10 +11,10 @@ export const Root = styled('div')`
 `
 
 export const Column = styled('div')`
-  border-right: ${({ theme }) => theme.borders.gridlines};
+  border-right: ${getBorder('gridlines')};
 
   &:first-of-type {
-    border-left: ${({ theme }) => theme.borders.gridlines};
+    border-left: ${getBorder('gridlines')};
   }
 
   ${media({ maxWidthKey: 'md-0' })} {

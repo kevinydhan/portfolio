@@ -1,5 +1,6 @@
-import { margin, rem } from 'polished'
+import { rem } from 'polished'
 import { css } from 'styled-components'
+import { breakpoints } from '../global/theme'
 
 /**
  * This mixin should be used on elements that span the entire width of the
@@ -7,6 +8,6 @@ import { css } from 'styled-components'
  */
 export const contentContainerMixin = css`
   width: 90%;
-  max-width: ${({ theme }) => rem(theme.numerics.contentMaxWidth)};
-  ${margin(null, 'auto')}
+  max-width: ${rem(breakpoints['lg-1'])};
+  margin: 0 auto;
 `

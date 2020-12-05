@@ -1,6 +1,6 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
-import { getColor, mediaQueries } from '$theme'
+import { getBoxShadow, getColor, getTransition, mediaQueries } from '$theme'
 import { BottomNavigationRootProps } from './BottomNavigation.d'
 
 export const Root = styled('nav').withConfig({
@@ -15,7 +15,12 @@ export const Root = styled('nav').withConfig({
     width: 100%;
     height: ${({ height }) => rem(height)};
     background: ${getColor('background')};
-    box-shadow: ${({ theme }) => theme.boxShadows.bottomNavigation};
+    box-shadow: ${getBoxShadow('bottomNavigation')};
+    transform: ${({ isScrollingDown, height }) => {
+      const translateValue = isScrollingDown ? rem(height) : 0
+      return `translateY(${translateValue})`
+    }};
+    transition: ${getTransition('navigationHide')};
   }
 
   ${mediaQueries.desktop} {
@@ -24,7 +29,7 @@ export const Root = styled('nav').withConfig({
 `
 
 Root.defaultProps = {
-  height: 80,
+  height: 56,
 }
 
 export const List = styled('ul')`
@@ -47,6 +52,6 @@ export const Link = styled('a')`
   justify-content: space-between;
   box-sizing: border-box;
   height: 100%;
-  padding: ${rem(14)} 0;
-  font-size: ${rem(14)};
+  padding: ${rem(8)} 0;
+  font-size: ${rem(12)};
 `

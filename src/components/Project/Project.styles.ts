@@ -1,4 +1,4 @@
-import { em, padding, rem } from 'polished'
+import { em, rem } from 'polished'
 import styled from 'styled-components'
 import { Button } from '$components'
 import {
@@ -87,6 +87,8 @@ export const ButtonContainer = styled('div')`
 `
 
 export const CTAButton = styled(Button)`
+  padding: ${em(14)} 0;
+
   ${media({ maxWidthKey: 'sm-1' })} {
     & + & {
       margin-top: ${rem(8)};
@@ -101,6 +103,4 @@ export const CTAButton = styled(Button)`
       margin-left: ${rem(8)};
     }
   }
-
-  ${padding(em(14), 0)}
 `

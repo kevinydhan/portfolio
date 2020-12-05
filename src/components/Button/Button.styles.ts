@@ -1,19 +1,19 @@
-import { position, rem, transitions } from 'polished'
+import { position, rem } from 'polished'
 import styled from 'styled-components'
-import { getColor } from '$theme'
+import { getColor, getOpacity, getTransition } from '$theme'
 
 export const Text = styled('span')`
   display: inline-block;
   transform: translateX(0);
   opacity: 1;
-  ${transitions(['opacity', 'transform'], '125ms ease-out')}
+  transition: ${getTransition('buttonTextHover')};
 
   &::after {
     position: absolute;
     left: 100%;
     opacity: 0;
+    transition: ${getTransition('buttonTextAfterHover')};
     content: '→';
-    ${transitions('opacity 125ms ease-out', 'transform 125ms ease-out 175ms')}
   }
 `
 
@@ -40,9 +40,9 @@ export const Root = styled('a').attrs({
     position: absolute;
     z-index: 1;
     background: ${getColor('link')};
-    ${({ transitionTiming }) => {
-      return transitions(['transform'], `${transitionTiming}ms ease-out`)
-    }}
+    transition: ${({ transitionTiming }) => {
+      return `transform ${transitionTiming}ms ease-out`
+    }};
     content: '';
   }
 
@@ -68,21 +68,27 @@ export const Root = styled('a').attrs({
   &::before {
     top: 0;
     transform-origin: right;
-    transition-delay: ${({ transitionTiming }) => transitionTiming * 3 + 'ms'};
+    transition-delay: ${({ transitionTiming }) => {
+      const value = transitionTiming * 3
+      return `${value}ms`
+    }};
   }
 
   /* Right border during neutral state */
   &::after {
     right: 0;
     transform-origin: bottom;
-    transition-delay: ${({ transitionTiming }) => transitionTiming * 2 + 'ms'};
+    transition-delay: ${({ transitionTiming }) => {
+      const value = transitionTiming * 2
+      return `${value}ms`
+    }};
   }
 
   /* Bottom border during neutral state */
   ${Background}::before {
     bottom: 0;
     transform-origin: left;
-    transition-delay: ${({ transitionTiming }) => transitionTiming * 1 + 'ms'};
+    transition-delay: ${({ transitionTiming }) => `${transitionTiming}ms`};
   }
 
   /* Left border during neutral state */
@@ -95,7 +101,7 @@ export const Root = styled('a').attrs({
   &:active {
     ${Text} {
       transform: translateX(${rem(4)});
-      opacity: 0.6;
+      opacity: ${getOpacity('linkTextHover')};
       transition-delay: 225ms;
 
       &::after {
@@ -116,24 +122,27 @@ export const Root = styled('a').attrs({
     &::after {
       transform: scaleY(0);
       transform-origin: bottom;
-      transition-delay: ${({ transitionTiming }) =>
-        transitionTiming * 1 + 'ms'};
+      transition-delay: ${({ transitionTiming }) => `${transitionTiming}ms`};
     }
 
     /* Bottom border during active state */
     ${Background}::before {
       transform: scaleX(0);
       transform-origin: left;
-      transition-delay: ${({ transitionTiming }) =>
-        transitionTiming * 2 + 'ms'};
+      transition-delay: ${({ transitionTiming }) => {
+        const value = transitionTiming * 2
+        return `${value}ms`
+      }};
     }
 
     /* Left border during active state */
     ${Background}::after {
       transform: scaleY(0);
       transform-origin: top;
-      transition-delay: ${({ transitionTiming }) =>
-        transitionTiming * 3 + 'ms'};
+      transition-delay: ${({ transitionTiming }) => {
+        const value = transitionTiming * 3
+        return `${value}ms`
+      }};
     }
   }
 `
