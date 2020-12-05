@@ -5,7 +5,7 @@
 
 ## File Structure
 
-Below is an explanation of the file structure
+Below is an explanation of the file structure:
 
 ```
 src
@@ -14,8 +14,8 @@ src
   pages        <- Website's pages, each file equates to a new route in the production website
   queries      <- GraphQL queries
   sections     <- React section components
-  theme        <- CSS/Sass-related files
-  typings      <- TypeScript typing and declaration files
+  theme        <- Styled components-related objects
+  typings      <- TypeScript definitions
 ```
 
 Diving to more specific conventions, each React component should be structured as such:
@@ -24,7 +24,7 @@ Diving to more specific conventions, each React component should be structured a
 src
   components
     Navigation                 <- Folder containing component-specific files
-      Navigation.d.ts          <- TypeScript type definitions
+      Navigation.d.ts          <- Component-specific TypeScript definitions
       Navigation.query.ts      <- Component-specific GraphQL query
       Navigation.styles.ts     <- Component-specific styles
       Navigation.tsx           <- React component
