@@ -5,8 +5,10 @@ module.exports = {
     'stylelint-config-rational-order',
     'stylelint-prettier',
   ],
-  ignoreFiles: ['src/images', 'src/theme/fonts'],
+  ignoreFiles: ['src/theme/fonts'],
   rules: {
+    'font-family-no-missing-generic-family-keyword': null,
+
     // Disables indentation rule. This rule is handled by Prettier.
     indentation: null,
 
@@ -26,6 +28,20 @@ module.exports = {
     'order/properties-alphabetical-order': null,
 
     'selector-class-pattern': null,
+
+    'selector-type-no-unknown': [
+      true,
+      {
+        ignoreNamespaces: [
+          /\${[a-zA-Z0-9_\$]*\({\s?[a-zA-Z0-9_\$:',\-\s}\)]*}/,
+          /\${.*/,
+        ],
+        ignoreTypes: [
+          /\${[a-zA-Z0-9_\$]*\({\s?[a-zA-Z0-9_\$:',\-\s}\)]*}/,
+          /\${.*/,
+        ],
+      },
+    ],
 
     // Limits the number of ID selectors in a selector.
     // @see https://stylelint.io/user-guide/rules/selector-max-id

@@ -1,36 +1,70 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
+
+# https://circleci.com/docs/2.0/reusing-config/#the-executors-key
+executors:
+  node-docker:
+    docker:
+      - image: circleci/node:12.18.0
+
 jobs:
   build:
-    docker:
-      # Specify the version you desire here
-      - image: circleci/node:12.13.0
-
+    executor: node-docker
     working_directory: ~/repo
-
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-
             # Fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: yarn
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn build
 
-      # Run tests
-      # - run: npm test
+  deploy:
+    executor: node-docker
+    parameters:
+      deploy_hook:
+        type: string
+        description: Build hook url
+        default: ${NETLIFY_STAGING_DEPLOY_HOOK}
+    steps:
+      - run: curl -X POST -d {} << parameters.deploy_hook >>
 
-      # Run linter
-      - run: yarn lint
+workflows:
+  # Workflow for non-master or staging branches
+  build:
+    jobs:
+      - build
+    when:
+      and:
+        - not:
+            equal: [master, << pipeline.git.branch >>]
+        - not:
+            equal: [staging, << pipeline.git.branch >>]
+
+  # Workflow for staging branch
+  build-and-deploy-staging:
+    jobs:
+      - build
+      - deploy:
+          deploy_hook: ${NETLIFY_STAGING_DEPLOY_HOOK}
+          requires:
+            - build
+    when:
+      equal: [staging, << pipeline.git.branch >>]
+
+  # Workflow for production branch
+  build-and-deploy-production:
+    jobs:
+      - build
+      - deploy:
+          deploy_hook: ${NETLIFY_STAGING_PRODUCTION_HOOK}
+          requires:
+            - build
+    when:
+      equal: [master, << pipeline.git.branch >>]

@@ -1,0 +1,27 @@
+import { position } from 'polished'
+import styled from 'styled-components'
+import { createMediaQuery as media, mainGridMixin } from '$theme'
+
+export const Root = styled('div')`
+  ${mainGridMixin}
+
+  ${position('absolute', 0, null)}
+  z-index: -999;
+  width: 100%;
+`
+
+export const Column = styled('div')`
+  border-right: ${({ theme }) => theme.borders.gridlines};
+
+  &:first-of-type {
+    border-left: ${({ theme }) => theme.borders.gridlines};
+  }
+
+  ${media({ maxWidthKey: 'md-0' })} {
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: none;
+    }
+  }
+`
