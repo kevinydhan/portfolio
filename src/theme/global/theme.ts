@@ -26,18 +26,15 @@ export const colors = {
 }
 
 export const borders = {
-  button: `${rem(1)} solid ${colors.link}`,
   gridlines: `${rem(1)} solid ${colors.gridlines}`,
 }
 
 export const boxShadows = {
   bottomNavigation: boxShadow([0, -4, 16], rgba(palette.black, 0.1)),
-  primary: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
+  projectImage: boxShadow([0, 4, 32], rgba(palette.black, 0.125)),
+  topNavigation: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
 }
 
-/**
- * Defines the `font-family` properties.
- */
 export const fonts = {
   primary: "'Muli', sans-serif",
 }
@@ -57,18 +54,22 @@ export const breakpoints = {
   'lg-1': 1440,
 }
 
-/**
- * Defines the `px` values for the UI elements.
- */
-export const numerics = {
-  /**
-   * Defines the maximum width for the page's content.
-   */
-  contentMaxWidth: breakpoints['lg-1'],
-  opacityOnHover: 0.6,
+export const opacities = {
+  linkTextHover: 0.6,
 }
 
 export const transitions = {
+  buttonTextHover: 'opacity 125ms ease-out, transform 125ms ease-out',
+  buttonTextAfterHover:
+    'opacity 125ms ease-out, transform 125ms ease-out 175ms',
+  linkHover: 'transform 150ms ease-out',
+  linkTextHover: 'opacity 150ms ease-out',
+  logoHover: 'opacity 150ms ease-out, transform 150ms ease-out',
+  /**
+   * Defines the transition used when the navigation transitions between
+   * visible and hidden states.
+   */
+  navigationHide: 'transform 150ms ease-out',
   primary: '175ms ease-out',
 }
 
@@ -91,7 +92,7 @@ const theme = {
   breakpoints,
   colors,
   fonts,
-  numerics,
+  opacities,
   transitions,
 }
 

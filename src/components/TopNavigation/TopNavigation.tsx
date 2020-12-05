@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { ScrollContext } from '$context'
 import { TopNavigationProps } from './TopNavigation.d'
 import withQuery from './TopNavigation.query'
 import {
@@ -6,6 +7,7 @@ import {
   LinkText,
   List,
   ListItem,
+  Logo,
   LogoLink,
   Nav,
   NavContainer,
@@ -17,24 +19,28 @@ const TopNavigation: FunctionComponent<TopNavigationProps> = ({
   logoSrc,
   logoDescription,
 }) => (
-  <Root role="banner">
-    <NavContainer>
-      <LogoLink href="/#" aria-label={logoDescription}>
-        <img src={logoSrc} alt={logoDescription} width="40" height="44" />
-      </LogoLink>
-      <Nav>
-        <List>
-          {links.map((link) => (
-            <ListItem key={link.id}>
-              <Link href={link.href} target={link.target} rel={link.rel}>
-                <LinkText>{link.name}</LinkText>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-      </Nav>
-    </NavContainer>
-  </Root>
+  <ScrollContext.Consumer>
+    {({ isScrollingDown }) => (
+      <Root role="banner" isScrollingDown={isScrollingDown}>
+        <NavContainer>
+          <LogoLink href="/#" aria-label={logoDescription}>
+            <Logo src={logoSrc} alt={logoDescription} />
+          </LogoLink>
+          <Nav>
+            <List>
+              {links.map((link) => (
+                <ListItem key={link.id}>
+                  <Link href={link.href} target={link.target} rel={link.rel}>
+                    <LinkText>{link.name}</LinkText>
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </Nav>
+        </NavContainer>
+      </Root>
+    )}
+  </ScrollContext.Consumer>
 )
 
 TopNavigation.defaultProps = {

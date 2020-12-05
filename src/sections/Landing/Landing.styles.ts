@@ -1,24 +1,29 @@
 import { em, rem } from 'polished'
 import styled from 'styled-components'
 import { Button, TopNavigationRoot } from '$components'
-import { createMediaQuery as media } from '$theme'
+import { createMediaQuery as media, mediaQueries } from '$theme'
 
 export const Root = styled('section')`
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: ${rem(580)};
-  height: calc(100vh - ${rem(TopNavigationRoot.defaultProps.height + 40)});
-  min-height: ${rem(568)};
-  max-height: ${rem(812)};
+  height: calc(100vh - ${rem(TopNavigationRoot.defaultProps.height)});
+
+  ${mediaQueries.mobile} {
+    min-height: ${rem(320)};
+  }
+
+  ${mediaQueries.desktop} {
+    min-height: ${rem(568)};
+    max-height: ${rem(812)};
+  }
 `
 
 export const Heading = styled('h1')`
   margin-top: 0;
   margin-bottom: ${rem(16)};
-  font-weight: 600;
   font-size: ${rem(46)};
-  line-height: 1;
 
   ${media({ minWidthKey: 'md-0' })} {
     margin-bottom: ${rem(28)};
@@ -31,7 +36,6 @@ export const Description = styled('p')`
   margin-top: 0;
   margin-bottom: ${rem(60)};
   font-size: ${rem(18)};
-  line-height: 1.5;
 
   ${media({ minWidthKey: 'md-0' })} {
     font-size: ${rem(20)};
