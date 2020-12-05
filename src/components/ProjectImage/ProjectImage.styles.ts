@@ -1,6 +1,6 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
-import { createMediaQuery as media } from '$theme'
+import { createMediaQuery as media, getBoxShadow } from '$theme'
 
 export const Root = styled('picture')`
   display: block;
@@ -19,4 +19,5 @@ export const Image = styled('img')`
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: drop-shadow(${getBoxShadow('projectImage')});
 `
