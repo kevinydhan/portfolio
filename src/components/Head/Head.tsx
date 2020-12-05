@@ -24,6 +24,7 @@ export const Head: FunctionComponent<HeadProps> = ({
     <meta name="background-color" content={theme.colors.background} />
 
     {/* General tags */}
+    <html lang="en" />
     <title>{title}</title>
     <link rel="canonical" href={url} />
     <meta name="description" content={description} />

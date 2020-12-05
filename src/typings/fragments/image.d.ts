@@ -51,10 +51,8 @@ export type ContentfulFixedImageFragment = ContentfulImageFragment<FixedImageSha
  * @fragment `InlineSvg`
  */
 export interface InlineSvgFragment {
+  description: string
   svg: {
-    /**
-     * Defines a string containing an `<svg>` element.
-     */
-    content: string
+    dataURI: string
   }
 }

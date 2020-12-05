@@ -13,13 +13,14 @@ import {
 } from './TopNavigation.styles'
 
 const TopNavigation: FunctionComponent<TopNavigationProps> = ({
-  logo,
   links,
+  logoSrc,
+  logoDescription,
 }) => (
   <Root role="banner">
     <NavContainer>
-      <LogoLink href="/#" aria-label="Logo">
-        <span dangerouslySetInnerHTML={{ __html: logo }} />
+      <LogoLink href="/#" aria-label={logoDescription}>
+        <img src={logoSrc} alt={logoDescription} width="40" height="44" />
       </LogoLink>
       <Nav>
         <List>

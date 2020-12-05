@@ -49,8 +49,4 @@ export const Link = styled('a')`
   height: 100%;
   padding: ${rem(14)} 0;
   font-size: ${rem(14)};
-
-  svg {
-    width: ${rem(30)};
-  }
 `
