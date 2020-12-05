@@ -4,6 +4,7 @@ import {
   contentContainerMixin,
   getBoxShadow,
   getColor,
+  getOpacity,
   getTransition,
   mediaQueries,
 } from '$theme'
@@ -24,8 +25,10 @@ export const Root = styled('header').withConfig({
     height: ${({ height }) => rem(height)};
     background: ${getColor('background')};
     box-shadow: ${getBoxShadow('topNavigation')};
-    transform: ${({ isScrollingDown, height }) =>
-      `translateY(${isScrollingDown ? rem(height * -1) : 0})`};
+    transform: ${({ isScrollingDown, height }) => {
+      const translateValue = isScrollingDown ? rem(height * -1) : 0
+      return `translateY(${translateValue})`
+    }};
     transition: ${getTransition('navigationHide')};
   }
 `
@@ -114,7 +117,7 @@ export const Link = styled('a')`
   &:hover,
   &:active {
     ${LinkText} {
-      opacity: 0.5;
+      opacity: ${getOpacity('linkTextHover')};
     }
 
     &::after {

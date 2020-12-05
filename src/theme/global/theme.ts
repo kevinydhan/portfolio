@@ -26,7 +26,6 @@ export const colors = {
 }
 
 export const borders = {
-  button: `${rem(1)} solid ${colors.link}`,
   gridlines: `${rem(1)} solid ${colors.gridlines}`,
 }
 
@@ -66,6 +65,10 @@ export const numerics = {
   opacityOnHover: 0.6,
 }
 
+export const opacities = {
+  linkTextHover: 0.6,
+}
+
 export const transitions = {
   linkHover: 'transform 150ms ease-out',
   linkTextHover: 'opacity 150ms ease-out',
@@ -98,6 +101,7 @@ const theme = {
   colors,
   fonts,
   numerics,
+  opacities,
   transitions,
 }
 

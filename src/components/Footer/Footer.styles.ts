@@ -4,6 +4,7 @@ import {
   contentContainerMixin,
   createMediaQuery as media,
   getColor,
+  getOpacity,
   getTransition,
   mediaQueries,
 } from '$theme'
@@ -56,7 +57,7 @@ export const Link = styled('a')`
   &:hover,
   &:active {
     ${LinkText} {
-      opacity: 0.6;
+      opacity: ${getOpacity('linkTextHover')};
     }
 
     &::after {

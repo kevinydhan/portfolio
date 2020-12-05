@@ -16,8 +16,10 @@ export const Root = styled('nav').withConfig({
     height: ${({ height }) => rem(height)};
     background: ${getColor('background')};
     box-shadow: ${getBoxShadow('bottomNavigation')};
-    transform: ${({ isScrollingDown, height }) =>
-      `translateY(${isScrollingDown ? rem(height) : 0})`};
+    transform: ${({ isScrollingDown, height }) => {
+      const translateValue = isScrollingDown ? rem(height) : 0
+      return `translateY(${translateValue})`
+    }};
     transition: ${getTransition('navigationHide')};
   }
 

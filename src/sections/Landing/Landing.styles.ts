@@ -23,9 +23,7 @@ export const Root = styled('section')`
 export const Heading = styled('h1')`
   margin-top: 0;
   margin-bottom: ${rem(16)};
-  font-weight: 600;
   font-size: ${rem(46)};
-  line-height: 1;
 
   ${media({ minWidthKey: 'md-0' })} {
     margin-bottom: ${rem(28)};
@@ -38,7 +36,6 @@ export const Description = styled('p')`
   margin-top: 0;
   margin-bottom: ${rem(60)};
   font-size: ${rem(18)};
-  line-height: 1.5;
 
   ${media({ minWidthKey: 'md-0' })} {
     font-size: ${rem(20)};
