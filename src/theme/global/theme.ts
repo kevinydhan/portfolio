@@ -54,25 +54,17 @@ export const breakpoints = {
   'lg-1': 1440,
 }
 
-/**
- * Defines the `px` values for the UI elements.
- */
-export const numerics = {
-  /**
-   * Defines the maximum width for the page's content.
-   */
-  contentMaxWidth: breakpoints['lg-1'],
-  opacityOnHover: 0.6,
-}
-
 export const opacities = {
   linkTextHover: 0.6,
 }
 
 export const transitions = {
+  buttonTextHover: 'opacity 125ms ease-out, transform 125ms ease-out',
+  buttonTextAfterHover:
+    'opacity 125ms ease-out, transform 125ms ease-out 175ms',
   linkHover: 'transform 150ms ease-out',
   linkTextHover: 'opacity 150ms ease-out',
-  logoHover: 'transform 150ms ease-out, opacity 150ms ease-out',
+  logoHover: 'opacity 150ms ease-out, transform 150ms ease-out',
   /**
    * Defines the transition used when the navigation transitions between
    * visible and hidden states.
@@ -100,7 +92,6 @@ const theme = {
   breakpoints,
   colors,
   fonts,
-  numerics,
   opacities,
   transitions,
 }
