@@ -85,7 +85,6 @@ export const Link = styled('a')`
   display: flex;
   align-items: center;
   height: 100%;
-  text-decoration: none;
 
   &::after {
     ${position('absolute', null, 0, 0, 0)}

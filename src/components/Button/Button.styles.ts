@@ -31,7 +31,6 @@ export const Root = styled('a').attrs({
   display: block;
   font-weight: 600;
   text-align: center;
-  text-decoration: none;
 
   &::before,
   &::after,
