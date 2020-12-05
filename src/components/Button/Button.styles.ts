@@ -5,7 +5,8 @@ import { getColor } from '$theme'
 export const Text = styled('span')`
   display: inline-block;
   transform: translateX(0);
-  ${transitions(['transform'], '125ms ease-out')}
+  opacity: 1;
+  ${transitions(['opacity', 'transform'], '125ms ease-out')}
 
   &::after {
     position: absolute;
@@ -26,7 +27,7 @@ export const Root = styled('a').attrs({
   /**
    * Determines the time, in milliseconds, of a single border's transition.
    */
-  transitionTiming: 100,
+  transitionTiming: 90,
 })`
   position: relative;
   display: block;
@@ -94,12 +95,13 @@ export const Root = styled('a').attrs({
   &:active {
     ${Text} {
       transform: translateX(${rem(4)});
-      transition-delay: 250ms;
+      opacity: 0.6;
+      transition-delay: 225ms;
 
       &::after {
         transform: translateX(${rem(8)});
         opacity: 1;
-        transition-delay: 250ms;
+        transition-delay: 225ms;
       }
     }
 

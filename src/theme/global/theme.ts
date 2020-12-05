@@ -65,7 +65,7 @@ export const numerics = {
    * Defines the maximum width for the page's content.
    */
   contentMaxWidth: breakpoints['lg-1'],
-  opacityOnHover: 0.5,
+  opacityOnHover: 0.6,
 }
 
 export const transitions = {

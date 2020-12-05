@@ -54,7 +54,7 @@ export const Link = styled('a')`
   &:hover,
   &:active {
     ${LinkText} {
-      opacity: 0.5;
+      opacity: 0.6;
     }
 
     &::after {
