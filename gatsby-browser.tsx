@@ -1,6 +1,7 @@
 import { WrapRootElementBrowserArgs } from 'gatsby'
 import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { ScrollContextProvider } from '$components'
 import { GlobalStyles, theme } from '$theme'
 
 export const wrapRootElement = ({
@@ -8,6 +9,6 @@ export const wrapRootElement = ({
 }: WrapRootElementBrowserArgs): ReactElement => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    {element}
+    <ScrollContextProvider>{element}</ScrollContextProvider>
   </ThemeProvider>
 )

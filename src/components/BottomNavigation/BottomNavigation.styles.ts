@@ -16,6 +16,9 @@ export const Root = styled('nav').withConfig({
     height: ${({ height }) => rem(height)};
     background: ${getColor('background')};
     box-shadow: ${({ theme }) => theme.boxShadows.bottomNavigation};
+    transform: ${({ isScrollingDown, height }) =>
+      `translateY(${isScrollingDown ? rem(height) : 0})`};
+    transition: transform 150ms ease-out;
   }
 
   ${mediaQueries.desktop} {

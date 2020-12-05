@@ -1,4 +1,8 @@
-import { LinkFragment, LinkIconFragment } from '$typings'
+import {
+  LinkFragment,
+  LinkIconFragment,
+  ScrollContextProviderState,
+} from '$typings'
 
 export interface BottomNavigationQueryData {
   navigation: {
@@ -8,6 +12,7 @@ export interface BottomNavigationQueryData {
 
 export type BottomNavigationProps = BottomNavigationQueryData['navigation']
 
-export interface BottomNavigationRootProps {
+export interface BottomNavigationRootProps
+  extends Pick<ScrollContextProviderState, 'isScrollingDown'> {
   height?: number
 }

@@ -5,6 +5,7 @@
     "jsx": "react",
     "paths": {
       "$components": ["src/components"],
+      "$context": ["src/context"],
       "$sections": ["src/sections"],
       "$theme": ["src/theme"],
       "$theme/*": ["src/theme/*"],
