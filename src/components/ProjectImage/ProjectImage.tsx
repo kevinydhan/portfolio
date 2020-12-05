@@ -16,8 +16,10 @@ const ProjectImage: FunctionComponent<ProjectImageFragment> = ({
       type={localFile.internal.mediaType}
     />
     <Image
-      src={localFile.childImageSharp.fluid.src}
       alt={description}
+      width={localFile.childImageSharp.fluid.width}
+      height={localFile.childImageSharp.fluid.height}
+      src={localFile.childImageSharp.fluid.src}
       sizes={localFile.childImageSharp.fluid.sizes}
       loading="lazy"
     />

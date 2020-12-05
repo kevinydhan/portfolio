@@ -20,6 +20,8 @@ export interface ProjectImageFragment {
         srcWebp: string
         srcSetWebp: string
         sizes: string
+        width: number
+        height: number
       }
     }
     internal: {
