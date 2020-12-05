@@ -9,7 +9,8 @@ export interface TopNavigationQueryData {
 
 export interface TopNavigationProps
   extends Omit<TopNavigationQueryData['navigation'], 'logo'> {
-  logo: TopNavigationQueryData['navigation']['logo']['svg']['content']
+  logoDescription: TopNavigationQueryData['navigation']['logo']['description']
+  logoSrc: TopNavigationQueryData['navigation']['logo']['svg']['dataURI']
 }
 
 export interface TopNavigationRootProps {

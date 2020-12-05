@@ -10,7 +10,6 @@ const query = graphql`
     navigation: contentfulNavigation(name: { regex: "/header/i" }) {
       links {
         ...Link
-        ...LinkIcon
       }
     }
   }

@@ -11,7 +11,7 @@ const BottomNavigation: FunctionComponent<BottomNavigationProps> = ({
       {links.map((link) => (
         <ListItem key={link.id}>
           <Link href={link.href} target={link.target} rel={link.rel}>
-            <span dangerouslySetInnerHTML={{ __html: link.icon.svg.content }} />
+            {/* <span dangerouslySetInnerHTML={{ __html: link.icon.svg.content }} /> */}
             <span>{link.name}</span>
           </Link>
         </ListItem>

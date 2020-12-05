@@ -19,7 +19,8 @@ const withQuery: WithQuery<TopNavigationProps> = (renderComponent) => () => {
   const { navigation } = useStaticQuery<TopNavigationQueryData>(query)
   return renderComponent({
     ...navigation,
-    logo: navigation.logo.svg.content,
+    logoDescription: navigation.logo.description,
+    logoSrc: navigation.logo.svg.dataURI,
   })
 }
 

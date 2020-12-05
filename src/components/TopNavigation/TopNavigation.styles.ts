@@ -38,8 +38,6 @@ export const LogoLink = styled('a')`
   align-items: center;
 
   svg {
-    width: auto;
-    height: ${rem(48)};
     transform: translateY(0);
     ${transitions(['opacity', 'transform'], '100ms ease-in')}
     opacity: 1;
