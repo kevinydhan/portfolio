@@ -33,9 +33,7 @@ jobs:
         description: Build hook url
         default: ${NETLIFY_STAGING_DEPLOY_HOOK}
     steps:
-      - run: echo "Deploying site"
       - run: curl -X POST -d {} << parameters.deploy_hook >>
-      - run: echo "Successfully deployed site"
 
 workflows:
   # Workflow for non-master or staging branches
