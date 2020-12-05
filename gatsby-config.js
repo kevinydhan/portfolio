@@ -42,5 +42,8 @@ module.exports = {
         icons: defaultIcons,
       },
     },
+    {
+      resolve: 'gatsby-plugin-offline',
+    },
   ],
 }
