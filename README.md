@@ -10,6 +10,7 @@ Below is an explanation of the file structure:
 ```
 src
   components   <- React components
+  context      <- React context objects and providers
   fragments    <- GraphQL fragments
   pages        <- Website's pages, each file equates to a new route in the production website
   queries      <- GraphQL queries
