@@ -1,4 +1,4 @@
-import { position, rem, rgba, transitions } from 'polished'
+import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
 import {
   contentContainerMixin,
@@ -33,13 +33,13 @@ export const List = styled('ul')`
   list-style: none;
 `
 
+export const LinkText = styled('span')`
+  opacity: 1;
+  ${({ theme }) => transitions(['opacity'], theme.transitions.primary)}
+`
+
 export const Link = styled('a')`
   position: relative;
-  color: ${({ theme }) => theme.colors.link};
-  font-size: ${rem(16)};
-  line-height: 1.5;
-  text-decoration: none;
-  ${({ theme }) => transitions(['color'], theme.transitions.primary)}
 
   &::after {
     ${position('absolute', '100%', 0, null, 0)}
@@ -53,7 +53,9 @@ export const Link = styled('a')`
 
   &:hover,
   &:active {
-    color: ${({ theme }) => rgba(theme.colors.link, 0.5)};
+    ${LinkText} {
+      opacity: 0.5;
+    }
 
     &::after {
       transform: scaleX(1);

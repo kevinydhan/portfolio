@@ -104,6 +104,10 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.body};
   }
 
+  a {
+    text-decoration: none;
+  }
+
   a,
   dd::before {
     color: ${({ theme }) => theme.colors.link};
