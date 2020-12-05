@@ -1,9 +1,10 @@
-import { position, rem, transitions } from 'polished'
+import { position, rem } from 'polished'
 import styled from 'styled-components'
 import {
   contentContainerMixin,
   getBoxShadow,
   getColor,
+  getTransition,
   mediaQueries,
 } from '$theme'
 import { TopNavigationRootProps } from './TopNavigation.d'
@@ -25,7 +26,7 @@ export const Root = styled('header').withConfig({
     box-shadow: ${getBoxShadow('topNavigation')};
     transform: ${({ isScrollingDown, height }) =>
       `translateY(${isScrollingDown ? rem(height * -1) : 0})`};
-    transition: transform 150ms ease-out;
+    transition: ${getTransition('navigationHide')};
   }
 `
 
@@ -41,19 +42,27 @@ export const NavContainer = styled('div')`
   height: 100%;
 `
 
+export const Logo = styled('img').attrs({
+  height: 44,
+  width: 40,
+})`
+  width: ${({ width }) => rem(width)};
+  height: ${({ height }) => rem(height)};
+`
+
 export const LogoLink = styled('a')`
   display: flex;
   align-items: center;
 
-  img {
+  ${Logo} {
     transform: translateY(0);
-    ${transitions(['opacity', 'transform'], '100ms ease-in')}
     opacity: 1;
+    transition: ${getTransition('logoHover')};
   }
 
   &:hover,
   &:active {
-    img {
+    ${Logo} {
       transform: translateY(${rem(-4)});
       opacity: 0.5;
     }
@@ -83,7 +92,7 @@ export const ListItem = styled('li')`
 export const LinkText = styled('span')`
   font-size: ${rem(17)};
   opacity: 1;
-  ${transitions(['opacity'], '125ms ease-in')}
+  transition: ${getTransition('linkTextHover')};
 `
 
 export const Link = styled('a')`
@@ -98,7 +107,7 @@ export const Link = styled('a')`
     background: ${getColor('link')};
     transform: scaleX(0);
     transform-origin: right;
-    ${transitions(['transform'], '125ms ease-in')}
+    transition: ${getTransition('linkHover')};
     content: '';
   }
 

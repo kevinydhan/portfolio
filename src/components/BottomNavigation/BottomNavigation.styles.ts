@@ -1,6 +1,6 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
-import { getBoxShadow, getColor, mediaQueries } from '$theme'
+import { getBoxShadow, getColor, getTransition, mediaQueries } from '$theme'
 import { BottomNavigationRootProps } from './BottomNavigation.d'
 
 export const Root = styled('nav').withConfig({
@@ -18,7 +18,7 @@ export const Root = styled('nav').withConfig({
     box-shadow: ${getBoxShadow('bottomNavigation')};
     transform: ${({ isScrollingDown, height }) =>
       `translateY(${isScrollingDown ? rem(height) : 0})`};
-    transition: transform 150ms ease-out;
+    transition: ${getTransition('navigationHide')};
   }
 
   ${mediaQueries.desktop} {

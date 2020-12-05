@@ -1,5 +1,5 @@
 import { GetThemeValueFunction } from '$typings'
-import { boxShadows, colors } from '../global/theme'
+import { boxShadows, colors, transitions } from '../global/theme'
 
 /**
  * Returns the value corresponding to the given key in `theme.colors`.
@@ -22,3 +22,14 @@ export const getColor: GetThemeValueFunction<keyof typeof colors> = (
 export const getBoxShadow: GetThemeValueFunction<keyof typeof boxShadows> = (
   boxShadowKey
 ) => ({ theme }) => theme.boxShadows[boxShadowKey]
+
+/**
+ * Returns the value corresponding to the given key in `theme.transitions`.
+ *
+ * @example
+ * getTransition('linkText')
+ * // Returns 'opacity 125ms ease-in'
+ */
+export const getTransition: GetThemeValueFunction<keyof typeof transitions> = (
+  transitionKey
+) => ({ theme }) => theme.transitions[transitionKey]

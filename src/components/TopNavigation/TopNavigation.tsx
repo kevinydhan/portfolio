@@ -7,6 +7,7 @@ import {
   LinkText,
   List,
   ListItem,
+  Logo,
   LogoLink,
   Nav,
   NavContainer,
@@ -23,7 +24,7 @@ const TopNavigation: FunctionComponent<TopNavigationProps> = ({
       <Root role="banner" isScrollingDown={isScrollingDown}>
         <NavContainer>
           <LogoLink href="/#" aria-label={logoDescription}>
-            <img src={logoSrc} alt={logoDescription} width="40" height="44" />
+            <Logo src={logoSrc} alt={logoDescription} />
           </LogoLink>
           <Nav>
             <List>

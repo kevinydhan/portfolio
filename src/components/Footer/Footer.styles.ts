@@ -1,8 +1,10 @@
-import { position, rem, transitions } from 'polished'
+import { position, rem } from 'polished'
 import styled from 'styled-components'
 import {
   contentContainerMixin,
   createMediaQuery as media,
+  getColor,
+  getTransition,
   mediaQueries,
 } from '$theme'
 import { Root as BottomNavigationRoot } from '../BottomNavigation/BottomNavigation.styles'
@@ -35,7 +37,7 @@ export const List = styled('ul')`
 
 export const LinkText = styled('span')`
   opacity: 1;
-  ${({ theme }) => transitions(['opacity'], theme.transitions.primary)}
+  transition: ${getTransition('linkTextHover')};
 `
 
 export const Link = styled('a')`
@@ -44,10 +46,10 @@ export const Link = styled('a')`
   &::after {
     ${position('absolute', '100%', 0, null, 0)}
     height: ${rem(1)};
-    background: ${({ theme }) => theme.colors.link};
+    background: ${getColor('link')};
     transform: scaleX(0);
     transform-origin: right;
-    ${({ theme }) => transitions(['transform'], theme.transitions.primary)}
+    transition: ${getTransition('linkHover')};
     content: '';
   }
 

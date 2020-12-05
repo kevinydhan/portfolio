@@ -36,9 +36,6 @@ export const boxShadows = {
   topNavigation: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
 }
 
-/**
- * Defines the `font-family` properties.
- */
 export const fonts = {
   primary: "'Muli', sans-serif",
 }
@@ -70,6 +67,14 @@ export const numerics = {
 }
 
 export const transitions = {
+  linkHover: 'transform 150ms ease-out',
+  linkTextHover: 'opacity 150ms ease-out',
+  logoHover: 'transform 150ms ease-out, opacity 150ms ease-out',
+  /**
+   * Defines the transition used when the navigation transitions between
+   * visible and hidden states.
+   */
+  navigationHide: 'transform 150ms ease-out',
   primary: '175ms ease-out',
 }
 
