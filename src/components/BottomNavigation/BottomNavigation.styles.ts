@@ -24,7 +24,7 @@ export const Root = styled('nav').withConfig({
 `
 
 Root.defaultProps = {
-  height: 80,
+  height: 56,
 }
 
 export const List = styled('ul')`
@@ -47,6 +47,6 @@ export const Link = styled('a')`
   justify-content: space-between;
   box-sizing: border-box;
   height: 100%;
-  padding: ${rem(14)} 0;
-  font-size: ${rem(14)};
+  padding: ${rem(8)} 0;
+  font-size: ${rem(12)};
 `

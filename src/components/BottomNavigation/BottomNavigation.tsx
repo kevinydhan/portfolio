@@ -14,8 +14,8 @@ const BottomNavigation: FunctionComponent<BottomNavigationProps> = ({
             <img
               src={link.icon.svg.dataURI}
               alt={link.icon.description}
-              width="30"
-              height="30"
+              width="20"
+              height="20"
             />
             <span>{link.name}</span>
           </Link>
