@@ -1,5 +1,3 @@
-import { ScrollContextProvider } from '$components'
-
 /**
  * Defines the state for `ScrollContextProvider`.
  */
@@ -10,6 +8,4 @@ export interface ScrollContextProviderState {
   isScrollingDown: boolean
 }
 
-export interface ScrollContextValue
-  extends ScrollContextProviderState,
-    Pick<ScrollContextProvider, 'observeElement'> {}
+export type ScrollContextValue = ScrollContextProviderState
