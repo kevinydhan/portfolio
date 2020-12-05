@@ -1,4 +1,4 @@
-import { em, padding, rem } from 'polished'
+import { em, rem } from 'polished'
 import styled from 'styled-components'
 import { Button, TopNavigationRoot } from '$components'
 import { createMediaQuery as media } from '$theme'
@@ -40,7 +40,7 @@ export const Description = styled('p')`
 
 export const CTAButton = styled(Button)`
   ${media({ maxWidthKey: 'sm-1' })} {
-    ${padding(em(16), 0)}
+    padding: ${em(16)} 0;
 
     & + & {
       margin-top: ${rem(8)};
@@ -50,7 +50,7 @@ export const CTAButton = styled(Button)`
   ${media({ minWidthKey: 'sm-1' })} {
     display: inline-block;
     min-width: ${rem(200)};
-    ${padding(em(17), 0)}
+    padding: ${em(18)} 0;
 
     & + & {
       margin-left: ${rem(12)};

@@ -48,7 +48,6 @@ export const Link = styled('a')`
   box-sizing: border-box;
   height: 100%;
   padding: ${rem(14)} 0;
-  color: ${({ theme }) => theme.colors.link};
   font-size: ${rem(14)};
   text-decoration: none;
 

@@ -36,7 +36,7 @@ Term.defaultProps = {
 
 const detailBulletMixin = css`
   &::before {
-    margin-right: ${rem(10)};
+    margin-right: ${rem(8)};
     content: '▪';
   }
 `

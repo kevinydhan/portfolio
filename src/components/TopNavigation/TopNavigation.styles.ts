@@ -48,7 +48,7 @@ export const LogoLink = styled('a')`
   &:hover,
   &:active {
     svg {
-      transform: translateY(-${rem(4)});
+      transform: translateY(${rem(-4)});
       opacity: 0.5;
     }
   }
@@ -75,7 +75,6 @@ export const ListItem = styled('li')`
 `
 
 export const LinkText = styled('span')`
-  color: ${({ theme }) => theme.colors.link};
   font-size: ${rem(17)};
   opacity: 1;
   ${transitions(['opacity'], '125ms ease-in')}

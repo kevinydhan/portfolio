@@ -109,7 +109,6 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.link};
   }
 
-
   button {
     cursor: pointer;
   }
