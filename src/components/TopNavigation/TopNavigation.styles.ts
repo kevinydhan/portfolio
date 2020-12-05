@@ -37,7 +37,7 @@ export const LogoLink = styled('a')`
   display: flex;
   align-items: center;
 
-  svg {
+  img {
     transform: translateY(0);
     ${transitions(['opacity', 'transform'], '100ms ease-in')}
     opacity: 1;
@@ -45,7 +45,7 @@ export const LogoLink = styled('a')`
 
   &:hover,
   &:active {
-    svg {
+    img {
       transform: translateY(${rem(-4)});
       opacity: 0.5;
     }
