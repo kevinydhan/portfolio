@@ -33,7 +33,7 @@ export const borders = {
 export const boxShadows = {
   bottomNavigation: boxShadow([0, -4, 16], rgba(palette.black, 0.1)),
   projectImage: boxShadow([0, 4, 32], rgba(palette.black, 0.125)),
-  primary: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
+  topNavigation: boxShadow([0, 4, 16], rgba(palette.black, 0.075)),
 }
 
 /**

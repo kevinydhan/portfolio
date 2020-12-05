@@ -1,6 +1,11 @@
 import { position, rem, transitions } from 'polished'
 import styled from 'styled-components'
-import { contentContainerMixin, getColor, mediaQueries } from '$theme'
+import {
+  contentContainerMixin,
+  getBoxShadow,
+  getColor,
+  mediaQueries,
+} from '$theme'
 import { TopNavigationRootProps } from './TopNavigation.d'
 
 export const Root = styled('header').withConfig({
@@ -17,7 +22,7 @@ export const Root = styled('header').withConfig({
     z-index: 999;
     height: ${({ height }) => rem(height)};
     background: ${getColor('background')};
-    box-shadow: ${({ theme }) => theme.boxShadows.primary};
+    box-shadow: ${getBoxShadow('topNavigation')};
     transform: ${({ isScrollingDown, height }) =>
       `translateY(${isScrollingDown ? rem(height * -1) : 0})`};
     transition: transform 150ms ease-out;
