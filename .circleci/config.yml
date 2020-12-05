@@ -1,9 +1,14 @@
 version: 2.1
 
-jobs:
-  build:
+# https://circleci.com/docs/2.0/reusing-config/#the-executors-key
+executors:
+  node-docker:
     docker:
       - image: circleci/node:12.18.0
+
+jobs:
+  build:
+    executor: node-docker
     working_directory: ~/repo
     steps:
       - checkout
@@ -20,17 +25,16 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
 
-  deploy-staging:
-    docker:
-      - image: circleci/node:12.18.0
+  deploy:
+    executor: node-docker
+    parameters:
+      deploy_hook:
+        type: string
+        description: Build hook url
+        default: ${NETLIFY_STAGING_DEPLOY_HOOK}
     steps:
-      - run: curl -X POST -d {} ${NETLIFY_STAGING_DEPLOY_HOOK}
-
-  deploy-production:
-    docker:
-      - image: circleci/node:12.18.0
-    steps:
-      - run: curl -X POST -d {} ${NETLIFY_PRODUCTION_DEPLOY_HOOK}
+      - run: echo "Deploying site"
+      - run: curl -X POST -d {} << parameters.deploy_hook >>
       - run: echo "Successfully deployed site"
 
 workflows:
@@ -49,8 +53,20 @@ workflows:
   build-and-deploy-staging:
     jobs:
       - build
-      - deploy-staging:
+      - deploy:
+          deploy_hook: ${NETLIFY_STAGING_DEPLOY_HOOK}
           requires:
             - build
     when:
       equal: [staging, << pipeline.git.branch >>]
+
+  # Workflow for production branch
+  build-and-deploy-production:
+    jobs:
+      - build
+      - deploy:
+          deploy_hook: ${NETLIFY_STAGING_PRODUCTION_HOOK}
+          requires:
+            - build
+    when:
+      equal: [master, << pipeline.git.branch >>]
