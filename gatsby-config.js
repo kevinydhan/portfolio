@@ -40,6 +40,9 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icons: defaultIcons,
+        icon_options: {
+          purpose: 'any maskable',
+        },
       },
     },
     {
