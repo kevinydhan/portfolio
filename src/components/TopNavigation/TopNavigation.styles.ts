@@ -8,7 +8,7 @@ import {
   getTransition,
   mediaQueries,
 } from '$theme'
-import { TopNavigationRootProps } from './TopNavigation.d'
+import type { TopNavigationRootProps } from './TopNavigation.d'
 
 export const Root = styled('header').withConfig({
   shouldForwardProp: (prop, validate) => {
