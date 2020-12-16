@@ -1,5 +1,6 @@
 export { default as Background } from './Background/Background'
 export { default as BottomNavigation } from './BottomNavigation/BottomNavigation'
+export { Root as BottomNavigationRoot } from './BottomNavigation/BottomNavigation.styles'
 export { default as Button } from './Button/Button'
 export { default as Footer } from './Footer/Footer'
 export { default as Head } from './Head/Head'

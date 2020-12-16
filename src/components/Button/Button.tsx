@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { ButtonProps } from './Button.d'
+import type { ButtonProps } from './Button.d'
 import { Background, Root, Text } from './Button.styles'
 
 const Button: FunctionComponent<ButtonProps> = ({

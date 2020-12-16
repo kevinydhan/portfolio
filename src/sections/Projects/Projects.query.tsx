@@ -1,6 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { WithQuery } from '$typings'
-import { ProjectsSectionProps, ProjectsSectionQueryData } from './Projects.d'
+import type {
+  ProjectsSectionProps as Props,
+  ProjectsSectionQueryData as QueryData,
+} from './Projects.d'
 
 const query = graphql`
   query getProjectsSectionData {
@@ -13,9 +15,9 @@ const query = graphql`
   }
 `
 
-const withQuery: WithQuery<ProjectsSectionProps> = (renderComponent) => () => {
-  const { section } = useStaticQuery<ProjectsSectionQueryData>(query)
-  return renderComponent(section)
+const useGetProjectsSectionDataQuery = (): Props => {
+  const { section } = useStaticQuery<QueryData>(query)
+  return section
 }
 
-export default withQuery
+export default useGetProjectsSectionDataQuery

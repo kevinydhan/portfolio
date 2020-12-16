@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { ScrollContext } from '$context'
-import { TopNavigationProps } from './TopNavigation.d'
-import withQuery from './TopNavigation.query'
+import { withQuery } from '$utils'
+import type { TopNavigationProps as Props } from './TopNavigation.d'
+import useQuery from './TopNavigation.query'
 import {
   Link,
   LinkText,
@@ -14,7 +15,7 @@ import {
   Root,
 } from './TopNavigation.styles'
 
-const TopNavigation: FunctionComponent<TopNavigationProps> = ({
+const TopNavigation: FunctionComponent<Props> = ({
   links,
   logoSrc,
   logoDescription,
@@ -47,4 +48,4 @@ TopNavigation.defaultProps = {
   links: [],
 }
 
-export default withQuery(TopNavigation)
+export default withQuery<Props>(TopNavigation, useQuery)

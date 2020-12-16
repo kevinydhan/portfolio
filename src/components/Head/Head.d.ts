@@ -1,4 +1,4 @@
-import { MetadataFragment } from '$typings'
+import type { MetadataFragment } from '$typings'
 
 export interface HeadQueryData {
   metadata: MetadataFragment

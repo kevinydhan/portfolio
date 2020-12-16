@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { WithQuery } from '$typings'
-import {
+import type {
   BottomNavigationProps,
   BottomNavigationQueryData,
 } from './BottomNavigation.d'
@@ -16,9 +15,9 @@ const query = graphql`
   }
 `
 
-const withQuery: WithQuery<BottomNavigationProps> = (renderComponent) => () => {
+const useGetBottomNavigationDataQuery = (): BottomNavigationProps => {
   const { navigation } = useStaticQuery<BottomNavigationQueryData>(query)
-  return renderComponent(navigation)
+  return navigation
 }
 
-export default withQuery
+export default useGetBottomNavigationDataQuery

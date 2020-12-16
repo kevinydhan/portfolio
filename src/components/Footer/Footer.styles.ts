@@ -1,5 +1,6 @@
 import { position, rem } from 'polished'
 import styled from 'styled-components'
+import { BottomNavigationRoot } from '$components'
 import {
   contentContainerMixin,
   createMediaQuery as media,
@@ -8,7 +9,6 @@ import {
   getTransition,
   mediaQueries,
 } from '$theme'
-import { Root as BottomNavigationRoot } from '../BottomNavigation/BottomNavigation.styles'
 
 export const Root = styled('footer')`
   ${contentContainerMixin}

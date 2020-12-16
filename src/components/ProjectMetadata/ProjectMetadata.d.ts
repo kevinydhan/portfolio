@@ -1,4 +1,4 @@
-import { ProjectFragment } from '$typings'
+import type { ProjectFragment } from '$typings'
 
 type ProjectMetadata =
   | 'endDate'

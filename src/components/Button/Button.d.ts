@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react'
-import { LinkFragment } from '$typings'
+import type { HTMLAttributes } from 'react'
+import type { LinkFragment } from '$typings'
 
 export interface ButtonProps
   extends LinkFragment,
