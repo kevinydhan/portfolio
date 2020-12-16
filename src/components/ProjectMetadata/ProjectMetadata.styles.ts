@@ -1,7 +1,7 @@
 import { rem } from 'polished'
 import styled, { css } from 'styled-components'
 import { createMediaQuery as media } from '$theme'
-import {
+import type {
   ProjectMetadataListDetailProps,
   ProjectMetadataListTermProps,
 } from './ProjectMetadata.d'

@@ -48,4 +48,4 @@ TopNavigation.defaultProps = {
   links: [],
 }
 
-export default withQuery(TopNavigation, useQuery)
+export default withQuery<Props>(TopNavigation, useQuery)

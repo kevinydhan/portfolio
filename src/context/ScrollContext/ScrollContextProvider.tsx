@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle'
 import React, { Component } from 'react'
-import { ScrollContextProviderState as State } from '$typings'
+import type { ScrollContextProviderState as State } from '$typings'
 import ScrollContext from './ScrollContext'
 
 class ScrollContextProvider extends Component<Record<string, unknown>, State> {

@@ -1,4 +1,4 @@
-import { GetThemeValueFunction } from '$typings'
+import type { GetThemeValueFunction } from '$typings'
 import {
   borders,
   boxShadows,

@@ -23,4 +23,4 @@ Footer.defaultProps = {
   socialLinks: [],
 }
 
-export default withQuery(Footer, useQuery)
+export default withQuery<Props>(Footer, useQuery)

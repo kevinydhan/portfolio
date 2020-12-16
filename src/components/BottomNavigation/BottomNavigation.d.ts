@@ -1,4 +1,8 @@
-import { LinkFragment, LinkIconFragment, ScrollContextValue } from '$typings'
+import type {
+  LinkFragment,
+  LinkIconFragment,
+  ScrollContextValue,
+} from '$typings'
 
 export interface BottomNavigationQueryData {
   navigation: {

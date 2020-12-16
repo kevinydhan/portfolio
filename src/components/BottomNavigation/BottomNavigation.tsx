@@ -1,5 +1,4 @@
-import type { FunctionComponent } from 'react'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { ScrollContext } from '$context'
 import { withQuery } from '$utils'
 import type { BottomNavigationProps as Props } from './BottomNavigation.d'

@@ -8,13 +8,13 @@ import {
   getTransition,
   mediaQueries,
 } from '$theme'
-import type { TopNavigationRootProps } from './TopNavigation.d'
+import type { TopNavigationRootProps as RootProps } from './TopNavigation.d'
 
 export const Root = styled('header').withConfig({
   shouldForwardProp: (prop, validate) => {
     return !['height'].includes(prop) && validate(prop)
   },
-})<TopNavigationRootProps>`
+})<RootProps>`
   ${mediaQueries.mobile} {
     display: none;
   }

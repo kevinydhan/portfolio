@@ -6,7 +6,7 @@ import {
   createMediaQuery as media,
 } from '$theme'
 import { Root as ProjectImageRoot } from '../ProjectImage/ProjectImage.styles'
-import { ProjectRootProps } from './Project.d'
+import type { ProjectRootProps } from './Project.d'
 
 export const Root = styled('div')<ProjectRootProps>`
   & + & {

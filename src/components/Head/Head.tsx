@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import { theme } from '$theme'
 import { withQuery } from '$utils'
-import type { HeadProps } from './Head.d'
+import type { HeadProps as Props } from './Head.d'
 import useQuery from './Head.query'
 
-export const Head: FunctionComponent<HeadProps> = ({
+export const Head: FunctionComponent<Props> = ({
   title,
   titleTemplate,
   url,
@@ -47,4 +47,4 @@ export const Head: FunctionComponent<HeadProps> = ({
   </Helmet>
 )
 
-export default withQuery(Head, useQuery)
+export default withQuery<Props>(Head, useQuery)
