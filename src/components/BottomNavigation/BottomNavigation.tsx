@@ -1,12 +1,12 @@
-import React, { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
+import React from 'react'
 import { ScrollContext } from '$context'
-import { BottomNavigationProps } from './BottomNavigation.d'
-import withQuery from './BottomNavigation.query'
+import { withQuery } from '$utils'
+import type { BottomNavigationProps as Props } from './BottomNavigation.d'
+import useQuery from './BottomNavigation.query'
 import { Link, List, ListItem, Root } from './BottomNavigation.styles'
 
-const BottomNavigation: FunctionComponent<BottomNavigationProps> = ({
-  links,
-}) => (
+const BottomNavigation: FunctionComponent<Props> = ({ links }) => (
   <ScrollContext.Consumer>
     {({ isScrollingDown }) => (
       <Root isScrollingDown={isScrollingDown}>
@@ -34,4 +34,4 @@ BottomNavigation.defaultProps = {
   links: [],
 }
 
-export default withQuery(BottomNavigation)
+export default withQuery<Props>(BottomNavigation, useQuery)
