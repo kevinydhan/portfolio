@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import { LandingSectionProps } from './Landing.d'
-import withQuery from './Landing.query'
+import { withQuery } from '$utils'
+import type { LandingSectionProps as Props } from './Landing.d'
+import useQuery from './Landing.query'
 import { CTAButton, Description, Heading, Root } from './Landing.styles'
 
-const LandingSection: FunctionComponent<LandingSectionProps> = ({
+const LandingSection: FunctionComponent<Props> = ({
   ctaLinks,
   description,
   heading,
@@ -19,4 +20,4 @@ const LandingSection: FunctionComponent<LandingSectionProps> = ({
   </Root>
 )
 
-export default withQuery(LandingSection)
+export default withQuery<Props>(LandingSection, useQuery)

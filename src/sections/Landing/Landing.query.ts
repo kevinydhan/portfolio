@@ -1,6 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { WithQuery } from '$typings'
-import { LandingSectionProps, LandingSectionQueryData } from './Landing.d'
+import type {
+  LandingSectionProps as Props,
+  LandingSectionQueryData as QueryData,
+} from './Landing.d'
 
 const query = graphql`
   query getLandingSectionData {
@@ -14,9 +16,9 @@ const query = graphql`
   }
 `
 
-const withQuery: WithQuery<LandingSectionProps> = (renderComponent) => () => {
-  const { section } = useStaticQuery<LandingSectionQueryData>(query)
-  return renderComponent(section)
+const useGetLandingSectionDataQuery = (): Props => {
+  const { section } = useStaticQuery<QueryData>(query)
+  return section
 }
 
-export default withQuery
+export default useGetLandingSectionDataQuery
