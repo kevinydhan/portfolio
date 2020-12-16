@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import type { ProjectMetadataProps } from './ProjectMetadata.d'
+import type { ProjectMetadataProps as Props } from './ProjectMetadata.d'
 import { convertDateToISOString as isoString } from './ProjectMetadata.helpers'
 import { Detail, Root, Term } from './ProjectMetadata.styles'
 
-const ProjectMetadata: FunctionComponent<ProjectMetadataProps> = ({
+const ProjectMetadata: FunctionComponent<Props> = ({
   type,
   startDate,
   startDateText,
