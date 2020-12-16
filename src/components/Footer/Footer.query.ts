@@ -1,6 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { WithQuery } from '$typings'
-import { FooterProps, FooterQueryData } from './Footer.d'
+import type {
+  FooterProps as Props,
+  FooterQueryData as QueryData,
+} from './Footer.d'
 
 const query = graphql`
   query getFooterData {
@@ -13,9 +15,9 @@ const query = graphql`
   }
 `
 
-const withQuery: WithQuery<FooterProps> = (renderComponent) => () => {
-  const { navigation } = useStaticQuery<FooterQueryData>(query)
-  return renderComponent(navigation)
+const useGetFooterDataQuery = (): Props => {
+  const { navigation } = useStaticQuery<QueryData>(query)
+  return navigation
 }
 
-export default withQuery
+export default useGetFooterDataQuery
