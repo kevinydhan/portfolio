@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import { theme } from '$theme'
-import { HeadProps } from './Head.d'
-import withQuery from './Head.query'
+import { withQuery } from '$utils'
+import type { HeadProps } from './Head.d'
+import useQuery from './Head.query'
 
 export const Head: FunctionComponent<HeadProps> = ({
   title,
@@ -46,4 +47,4 @@ export const Head: FunctionComponent<HeadProps> = ({
   </Helmet>
 )
 
-export default withQuery(Head)
+export default withQuery(Head, useQuery)

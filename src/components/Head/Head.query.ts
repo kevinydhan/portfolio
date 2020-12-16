@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { WithQuery } from '$typings'
-import { HeadProps, HeadQueryData } from './Head.d'
+import type { HeadProps as Props, HeadQueryData as QueryData } from './Head.d'
 
 const query = graphql`
   query getHeadData {
@@ -10,16 +9,16 @@ const query = graphql`
   }
 `
 
-const withQuery: WithQuery<HeadProps> = (renderComponent) => () => {
-  const queryData = useStaticQuery<HeadQueryData>(query)
+const useGetHeadDataQuery = (): Props => {
+  const queryData = useStaticQuery<QueryData>(query)
   const { ogImage, ...metadata } = queryData.metadata
   const ogImageSrc = `${metadata.url}${ogImage.localFile.childImageSharp.fixed.src}`
 
-  return renderComponent({
+  return {
     ...metadata,
     ogImage: ogImageSrc,
     ogImageAlt: ogImage.description,
-  })
+  }
 }
 
-export default withQuery
+export default useGetHeadDataQuery
