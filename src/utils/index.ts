@@ -28,7 +28,5 @@ export const withQuery: WithQuery = (Component, useQueryHook) => {
 
   WithQueryHOC.displayName = `WithQuery${componentName}`
 
-  console.log(WithQueryHOC.displayName)
-
   return WithQueryHOC
 }
