@@ -1,4 +1,4 @@
-import { InlineSvgFragment } from '$typings'
+import type { InlineSvgFragment } from '$typings'
 
 /**
  * @__typename `ContentfulLink`

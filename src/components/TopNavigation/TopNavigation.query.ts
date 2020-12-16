@@ -1,6 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { WithQuery } from '$typings'
-import { TopNavigationProps, TopNavigationQueryData } from './TopNavigation.d'
+import type {
+  TopNavigationProps as Props,
+  TopNavigationQueryData as QueryData,
+} from './TopNavigation.d'
 
 const query = graphql`
   query getTopNavigationData {
@@ -15,13 +17,13 @@ const query = graphql`
   }
 `
 
-const withQuery: WithQuery<TopNavigationProps> = (renderComponent) => () => {
-  const { navigation } = useStaticQuery<TopNavigationQueryData>(query)
-  return renderComponent({
+const useGetTopNavigationDataQuery = (): Props => {
+  const { navigation } = useStaticQuery<QueryData>(query)
+  return {
     ...navigation,
     logoDescription: navigation.logo.description,
     logoSrc: navigation.logo.svg.dataURI,
-  })
+  }
 }
 
-export default withQuery
+export default useGetTopNavigationDataQuery

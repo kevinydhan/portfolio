@@ -1,4 +1,4 @@
-import { ProjectFragment } from '$typings'
+import type { ProjectFragment } from '$typings'
 
 export interface ProjectsSectionQueryData {
   section: {

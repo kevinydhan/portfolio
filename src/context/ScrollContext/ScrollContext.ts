@@ -1,7 +1,7 @@
 import { createContext } from 'react'
-import { ScrollContextValue } from '$typings'
+import type { ScrollContextValue as Value } from '$typings'
 
-const ScrollContext = createContext<ScrollContextValue>({
+const ScrollContext = createContext<Value>({
   isScrollingDown: false,
 })
 

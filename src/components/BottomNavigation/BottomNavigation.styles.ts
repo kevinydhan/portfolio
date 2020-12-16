@@ -1,7 +1,7 @@
 import { rem } from 'polished'
 import styled from 'styled-components'
 import { getBoxShadow, getColor, getTransition, mediaQueries } from '$theme'
-import { BottomNavigationRootProps } from './BottomNavigation.d'
+import type { BottomNavigationRootProps } from './BottomNavigation.d'
 
 export const Root = styled('nav').withConfig({
   shouldForwardProp: (prop, validate) => {

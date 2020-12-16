@@ -1,5 +1,5 @@
 import { em } from 'polished'
-import { CreateMediaQueryOptions } from '$typings'
+import type { CreateMediaQueryOptions } from '$typings'
 import { breakpoints } from '../global/theme'
 
 const createMediaQuery = (options: CreateMediaQueryOptions): string => {

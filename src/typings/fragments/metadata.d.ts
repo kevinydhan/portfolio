@@ -1,4 +1,4 @@
-import { ContentfulFixedImageFragment } from '$typings'
+import type { ContentfulFixedImageFragment } from '$typings'
 
 /**
  * @__typename `ContentfulMetadata`

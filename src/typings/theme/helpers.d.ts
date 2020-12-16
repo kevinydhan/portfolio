@@ -1,4 +1,4 @@
-import { DefaultTheme, InterpolationFunction } from 'styled-components'
+import type { DefaultTheme, InterpolationFunction } from 'styled-components'
 import { theme } from '$theme'
 
 export interface CreateMediaQueryOptions {

@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import { Project } from '$components'
-import { ProjectsSectionProps } from './Projects.d'
-import withQuery from './Projects.query'
+import { withQuery } from '$utils'
+import type { ProjectsSectionProps as Props } from './Projects.d'
+import useQuery from './Projects.query'
 import { Heading } from './Projects.styles'
 
-const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
-  heading,
-  projects,
-}) => (
+const ProjectsSection: FunctionComponent<Props> = ({ heading, projects }) => (
   <section id="projects">
     <Heading>{heading}</Heading>
     {projects.map((project) => (
@@ -20,4 +18,4 @@ ProjectsSection.defaultProps = {
   projects: [],
 }
 
-export default withQuery(ProjectsSection)
+export default withQuery<Props>(ProjectsSection, useQuery)

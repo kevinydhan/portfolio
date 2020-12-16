@@ -1,4 +1,8 @@
-import { InlineSvgFragment, LinkFragment, ScrollContextValue } from '$typings'
+import type {
+  InlineSvgFragment,
+  LinkFragment,
+  ScrollContextValue,
+} from '$typings'
 
 export interface TopNavigationQueryData {
   navigation: {

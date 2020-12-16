@@ -1,4 +1,4 @@
-import { LinkFragment } from '$typings'
+import type { LinkFragment } from '$typings'
 
 export interface ProjectRoleFragment {
   name: string
