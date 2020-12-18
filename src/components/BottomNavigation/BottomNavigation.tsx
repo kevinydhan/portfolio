@@ -1,6 +1,6 @@
+import withQuery from 'gatsby-with-query'
 import React, { FunctionComponent } from 'react'
 import { ScrollContext } from '$context'
-import { withQuery } from '$utils'
 import type { BottomNavigationProps as Props } from './BottomNavigation.d'
 import useQuery from './BottomNavigation.query'
 import { Link, List, ListItem, Root } from './BottomNavigation.styles'

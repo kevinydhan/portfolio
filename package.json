@@ -24,6 +24,7 @@
     "gatsby-source-contentful": "^4.1.1",
     "gatsby-transformer-inline-svg": "^0.0.7",
     "gatsby-transformer-sharp": "^2.7.0",
+    "gatsby-with-query": "^0.0.5",
     "lodash.throttle": "^4.1.1",
     "polished": "^4.0.5",
     "react": "^17.0.1",

@@ -1,5 +1,5 @@
+import withQuery from 'gatsby-with-query'
 import React, { FunctionComponent } from 'react'
-import { withQuery } from '$utils'
 import type { FooterProps as Props } from './Footer.d'
 import useQuery from './Footer.query'
 import { Link, LinkText, List, ListHeading, Root } from './Footer.styles'

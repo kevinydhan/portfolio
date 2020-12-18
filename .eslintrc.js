@@ -74,7 +74,6 @@ module.exports = {
         ['$sections', 'src/sections'],
         ['$theme', 'src/theme'],
         ['$typings', 'src/typings'],
-        ['$utils', 'src/utils'],
       ],
     },
     react: {

@@ -43,7 +43,6 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
         $sections: path.resolve(__dirname, 'src/sections'),
         $theme: path.resolve(__dirname, 'src/theme'),
         $typings: path.resolve(__dirname, 'src/typings'),
-        $utils: path.resolve(__dirname, 'src/utils'),
       },
     },
   })

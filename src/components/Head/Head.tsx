@@ -1,7 +1,7 @@
+import withQuery from 'gatsby-with-query'
 import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import { theme } from '$theme'
-import { withQuery } from '$utils'
 import type { HeadProps as Props } from './Head.d'
 import useQuery from './Head.query'
 

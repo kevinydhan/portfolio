@@ -12,6 +12,3 @@ export * from './queries/manifest'
 
 // Theme
 export * from './theme/helpers'
-
-// Utilities
-export * from './utils/utils'

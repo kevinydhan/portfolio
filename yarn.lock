@@ -6938,6 +6938,11 @@ gatsby-transformer-sharp@^2.7.0:
     semver "^7.3.2"
     sharp "^0.26.3"
 
+gatsby-with-query@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-with-query/-/gatsby-with-query-0.0.5.tgz#38b5bae6a50515e4d255be502ed4a35ab3f95935"
+  integrity sha512-wyJLq4krz1KPk1HQfTWsknfCO0kSRw0vG+i/iGfM40p4cHMYAscHRcNCNtsNxhjI/H2/NcasclGX5wvu9W5gEA==
+
 gatsby@^2.19.11, gatsby@^2.28.0:
   version "2.28.0"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.28.0.tgz#ed2d3b1d1f953ff59f641797560df555a41bf1b2"

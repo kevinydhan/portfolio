@@ -1,6 +1,6 @@
+import withQuery from 'gatsby-with-query'
 import React, { FunctionComponent } from 'react'
 import { ScrollContext } from '$context'
-import { withQuery } from '$utils'
 import type { TopNavigationProps as Props } from './TopNavigation.d'
 import useQuery from './TopNavigation.query'
 import {

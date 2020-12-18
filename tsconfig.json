@@ -9,8 +9,7 @@
       "$sections": ["src/sections"],
       "$theme": ["src/theme"],
       "$theme/*": ["src/theme/*"],
-      "$typings": ["src/typings"],
-      "$utils": ["src/utils"]
+      "$typings": ["src/typings"]
     }
   }
 }

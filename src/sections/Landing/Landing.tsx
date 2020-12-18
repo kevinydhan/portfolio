@@ -1,5 +1,5 @@
+import withQuery from 'gatsby-with-query'
 import React, { FunctionComponent } from 'react'
-import { withQuery } from '$utils'
 import type { LandingSectionProps as Props } from './Landing.d'
 import useQuery from './Landing.query'
 import { CTAButton, Description, Heading, Root } from './Landing.styles'
